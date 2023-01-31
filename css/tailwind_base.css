@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* classe réutilisable */
+@layer components {
+   .title {
+      @apply font-bold
+      text-4xl
+      text-neutral;
+   }
+
+   .item-nav {
+      @apply text-neutral
+      hover:text-white
+      transition
+      font-leger;
+   }
+
+   .inputForm {
+      @apply input w-full max-w-xs bg-secondary placeholder:font-leger shadow-lg;
+   }
+
+   .button {
+      @apply px-10;
+   }
+
+   .container-home {
+      @apply rounded-lg shadow-lg p-2 bg-secondary;
+   }
+
+   .container-home-no-bg {
+      @apply rounded-lg p-2;
+   }
+}
