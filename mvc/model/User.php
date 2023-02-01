@@ -47,4 +47,15 @@ class User
          '$data->bannieretype'
       )");
    }
+
+   public function updateUser(string $pseudo, string $bio, int $id)
+   {
+      $sql = "UPDATE tblusers SET userPseudo = :pseudo, SET userBio = :bio WHERE idUser = :iduser";
+      $stmt = $this->pdo->prepare($sql);
+      $stmt->execute([
+         ":pseudo" => $pseudo,
+         ":bio" => $bio,
+         ":iduser" => $id
+      ]);
+   }
 }

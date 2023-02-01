@@ -1977,10 +1977,6 @@ html {
   max-width: 48rem;
 }
 
-.flex-1 {
-  flex: 1 1 0%;
-}
-
 .resize-none {
   resize: none;
 }
@@ -2107,10 +2103,6 @@ html {
 
 .pr-8 {
   padding-right: 2rem;
-}
-
-.text-center {
-  text-align: center;
 }
 
 .text-justify {

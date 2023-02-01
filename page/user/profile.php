@@ -4,8 +4,7 @@ $user = $controler->user->userModel->findById($_SESSION['id'], 'idUser');
 
 <div class='h-56 relative'>
    <!-- bannière de user -->
-   <img src="data:<?= $user['userTypeBanner'] ?>;base64,<?= base64_encode($user['userBanner']) ?>" alt="banner"
-      class='h-full block w-full object-cover absolute' />
+   <img src="data:<?= $user['userTypeBanner'] ?>;base64,<?= base64_encode($user['userBanner']) ?>" alt="banner" class='h-full block w-full object-cover absolute' />
    <!-- bannière de user -->
 
 
@@ -18,8 +17,7 @@ $user = $controler->user->userModel->findById($_SESSION['id'], 'idUser');
    <!-- Le menu en bas à gauche de la bannière -->
 
    <!-- Photo de profil -->
-   <img src="data:<?= $user['userTypeImg'] ?>;base64,<?= base64_encode($user['userImg']) ?>" alt="pp user"
-      class='w-60 h-60 rounded-full absolute top-24 left-10 shadow-lg' />
+   <img src="data:<?= $user['userTypeImg'] ?>;base64,<?= base64_encode($user['userImg']) ?>" alt="pp user" class='w-60 h-60 rounded-full absolute top-24 left-10 shadow-lg' />
    <!-- Photo de profil -->
 
 </div>
@@ -32,9 +30,9 @@ $user = $controler->user->userModel->findById($_SESSION['id'], 'idUser');
 
       <!-- Button setting (uniquement afficher pour l'utilisateur connecté) -->
       <?php if (isset($_SESSION) && $_SESSION['id'] === $user['idUser']) : ?>
-      <label for="modal-profil" class="btn">
-         <i class="fa-solid fa-gear"></i>
-      </label>
+         <label for="modal-profil" class="btn">
+            <i class="fa-solid fa-gear"></i>
+         </label>
       <?php endif; ?>
       <!-- Button setting -->
 
@@ -72,16 +70,16 @@ $user = $controler->user->userModel->findById($_SESSION['id'], 'idUser');
    <div class='mt-4 mb-4'>
       <?php if (!isset($_GET['req'])) : ?>
 
-      <!-- Les postes de l'utilisateur -->
-      <h1 class='title mb-4'>Postes</h1>
-      <div class='flex gap-4 flex-wrap'>
-         <div class='w-96 h-96 bg-slate-600 rounded-lg'></div>
-         <div class='w-96 h-96 bg-slate-600 rounded-lg'></div>
-         <div class='w-96 h-96 bg-slate-600 rounded-lg'></div>
-         <div class='w-96 h-96 bg-slate-600 rounded-lg'></div>
-         <div class='w-96 h-96 bg-slate-600 rounded-lg'></div>
-      </div>
-      <!-- Les postes de l'utilisateur -->
+         <!-- Les postes de l'utilisateur -->
+         <h1 class='title mb-4'>Postes</h1>
+         <div class='flex gap-4 flex-wrap'>
+            <div class='w-96 h-96 bg-slate-600 rounded-lg'></div>
+            <div class='w-96 h-96 bg-slate-600 rounded-lg'></div>
+            <div class='w-96 h-96 bg-slate-600 rounded-lg'></div>
+            <div class='w-96 h-96 bg-slate-600 rounded-lg'></div>
+            <div class='w-96 h-96 bg-slate-600 rounded-lg'></div>
+         </div>
+         <!-- Les postes de l'utilisateur -->
       <?php endif; ?>
 
       <?php

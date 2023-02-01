@@ -73,4 +73,14 @@ class User
       }
       var_dump('pas ok');
    }
+
+   public function updateUser(array $data): void
+   {
+      // parse notre tableau
+      $pseudo = htmlspecialchars($data['pseudo']);
+      $bio = htmlspecialchars($data['bio']);
+
+      // on appelle notre model
+      $this->userModel->updateUser($pseudo, $bio, $_SESSION['id']);
+   }
 }
