@@ -18,7 +18,9 @@ require_once('./mvc/model/Model.php');
 use \mvc\controler\controler\Controler;
 
 $controler = new Controler();
-$user = $controler->user->userModel->findById($_SESSION['id'], 'idUser');
+if (isset($_SESSION['id'])) {
+   $user = $controler->user->userModel->findById($_SESSION['id'], 'idUser');
+}
 ?>
 
 <input type="checkbox" id="modal-profil" class="modal-toggle" />

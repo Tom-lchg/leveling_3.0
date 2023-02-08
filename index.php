@@ -11,10 +11,18 @@
             <i class="fa-solid fa-house text-xl"></i>
             <a href="./?page=home" class='item-nav'>Home</a>
          </div>
-         <div class='flex gap-4 items-center text-accent'>
-            <i class="fa-regular fa-user text-xl"></i>
-            <a href="./?page=profile" class='item-nav'>Profile</a>
-         </div>
+
+         <!-- SI le user n'est pas connecté alors il n'a pas accès à son profil -->
+         <!-- s'affiche uniquement si le user est connecté  -->
+         <?php if (isset($_SESSION['id'])) : ?>
+            <div class='flex gap-4 items-center text-accent'>
+               <i class="fa-regular fa-user text-xl"></i>
+               <a href="./?page=profile" class='item-nav'>Profile</a>
+            </div>
+         <?php endif; ?>
+         <!-- s'affiche uniquement si le user est connecté  -->
+         <!-- SI le user n'est pas connecté alors il n'a pas accès à son profil -->
+
          <div class='flex gap-4 items-center text-accent'>
             <i class="fa-solid fa-gamepad text-xl"></i>
             <a href="./?page=games" class='item-nav'>Games</a>
