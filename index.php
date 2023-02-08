@@ -24,23 +24,23 @@
       <div class='flex flex-col gap-4'>
          <!-- Si on est pas connecté  -->
          <?php if (!isset($_SESSION['id'])) : ?>
-         <div class='flex gap-4 items-center text-accent'>
-            <i class="fa-solid fa-user-plus"></i>
-            <a href="./?page=inscription" class='item-nav'>Inscription</a>
-         </div>
-         <div class='flex gap-4 items-center text-accent'>
-            <i class="fa-solid fa-right-to-bracket"></i>
-            <a href="./?page=connexion" class='item-nav'>Connexion</a>
-         </div>
+            <div class='flex gap-4 items-center text-accent'>
+               <i class="fa-solid fa-user-plus"></i>
+               <a href="./?page=inscription" class='item-nav'>Inscription</a>
+            </div>
+            <div class='flex gap-4 items-center text-accent'>
+               <i class="fa-solid fa-right-to-bracket"></i>
+               <a href="./?page=connexion" class='item-nav'>Connexion</a>
+            </div>
          <?php endif; ?>
          <!-- Si on est pas connecté  -->
 
          <!-- Si on est connecté -->
          <?php if (isset($_SESSION['id'])) : ?>
-         <div class='flex gap-4 items-center text-accent'>
-            <i class="fa-solid fa-right-from-bracket"></i>
-            <a href="./?page=deconnexion" class='item-nav'>Déconnexion</a>
-         </div>
+            <div class='flex gap-4 items-center text-accent'>
+               <i class="fa-solid fa-right-from-bracket"></i>
+               <a href="./?page=deconnexion" class='item-nav'>Déconnexion</a>
+            </div>
          <?php endif; ?>
          <!-- Si on est connecté -->
       </div>
