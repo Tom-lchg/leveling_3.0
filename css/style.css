@@ -2281,12 +2281,12 @@ html {
   width: 3.5rem;
 }
 
-.w-52 {
-  width: 13rem;
-}
-
 .w-full {
   width: 100%;
+}
+
+.w-52 {
+  width: 13rem;
 }
 
 .w-96 {
@@ -2326,7 +2326,7 @@ html {
 }
 
 .grid-cols-post {
-  grid-template-columns: 200px 1fr;
+  grid-template-columns: 90px 1fr;
 }
 
 .flex-col {

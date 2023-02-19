@@ -64,8 +64,11 @@
                <div class='bg-secondary h-auto relative p-2 rounded-lg shadow-lg'>
                   <div class="grid grid-cols-post">
                      <div class="col-start-1 col-end-2">
-                        <div class='flex gap-4'>
-                           <img src="data:<?= $post['userTypeImg'] ?>;base64,<?= base64_encode($post['userImg']) ?>" alt="pp" class='w-14 h-14 rounded-full'>
+                        <img src="data:<?= $post['userTypeImg'] ?>;base64,<?= base64_encode($post['userImg']) ?>" alt="pp" class='w-14 h-14 rounded-full'>
+                     </div>
+                     <div class="col-start-2 col-end-3 relative">
+                        <div class='flex gap-4 w-full'>
+
                            <div>
                               <h3 class='font-leger text-xl'>
                                  <a href="#">
@@ -77,13 +80,8 @@
                                     @<?= $post['userPseudo'] ?>
                                  </a>
                               </h3>
-                              <div class='mt-4'>
-                                 <p><?= $post['postContent'] ?></p>
-                              </div>
                            </div>
                         </div>
-                     </div>
-                     <div class="col-start-2 col-end-3 relative">
                         <!-- afficher uniquement si le post appartient au user connecté -->
                         <?php if ($post['fkIdUser'] === $_SESSION['id']) : ?>
                            <div class="dropdown absolute right-0 z-10">
@@ -100,6 +98,9 @@
                            </div>
                         <?php endif; ?>
                         <!-- afficher uniquement si le post appartient au user connecté -->
+                        <div class='mt-4'>
+                           <p><?= $post['postContent'] ?></p>
+                        </div>
                      </div>
                   </div>
 

@@ -27,7 +27,7 @@ class Post
 
    public function createPost($content)
    {
-      $sql = "INSERT INTO tblPosts VALUES(null, :iduser, :content)";
+      $sql = "INSERT INTO tblPosts VALUES(null, :iduser, :content, 0, 0)";
       $array = [
          ":iduser" => $_SESSION['id'],
          ":content" => $content
