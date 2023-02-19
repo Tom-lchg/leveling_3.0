@@ -67,8 +67,9 @@
                         <img src="data:<?= $post['userTypeImg'] ?>;base64,<?= base64_encode($post['userImg']) ?>" alt="pp" class='w-14 h-14 rounded-full'>
                      </div>
                      <div class="col-start-2 col-end-3 relative">
-                        <div class='flex gap-4 w-full'>
 
+                        <!-- Pseudo et @ -->
+                        <div class='flex gap-4 w-full'>
                            <div>
                               <h3 class='font-leger text-xl'>
                                  <a href="#">
@@ -82,9 +83,11 @@
                               </h3>
                            </div>
                         </div>
+                        <!-- Pseudo et @ -->
+
                         <!-- afficher uniquement si le post appartient au user connecté -->
                         <?php if ($post['fkIdUser'] === $_SESSION['id']) : ?>
-                           <div class="dropdown absolute right-0 z-10">
+                           <div class="dropdown absolute right-0 top-0 z-10">
                               <label tabindex="0" class="btn btn-sm">
                                  <i class="fa-solid fa-ellipsis-vertical"></i>
                               </label>
@@ -98,9 +101,22 @@
                            </div>
                         <?php endif; ?>
                         <!-- afficher uniquement si le post appartient au user connecté -->
-                        <div class='mt-4'>
+                        <div class='my-4'>
                            <p><?= $post['postContent'] ?></p>
                         </div>
+
+                        <!-- message & like -->
+                        <div class="w-full bg-primary rounded-md p-3 flex justify-around gap-4">
+                           <p>
+                              <i class="fa-solid fa-comment"></i>
+                              0
+                           </p>
+                           <p>
+                              <i class="fa-solid fa-heart"></i>
+                              0
+                           </p>
+                        </div>
+                        <!-- message & like -->
                      </div>
                   </div>
 
