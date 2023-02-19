@@ -34,12 +34,23 @@ $groupes = $controler->user->userModel->getAllGroupe($_SESSION['id']);
       <!-- Foreach pour afficher tous les groupes -->
       <?php foreach ($groupes as $unGroupe) : ?>
          <!-- card pour un seul groupe -->
-         <div class="card w-96 shadow-xl image-full">
+         <div class="card w-96 shadow-xl image-full relative">
             <figure><img src="data:<?= $unGroupe['groupeTypeBanner'] ?>;base64,<?= base64_encode($unGroupe['groupeBanner']) ?>" alt="Shoes" /></figure>
             <div class="card-body">
                <h2 class="card-title"><?= $unGroupe['groupeName'] ?></h2>
                <p><?= $unGroupe['groupeDescription'] ?></p>
             </div>
+
+            <!-- Afficher uniquement si le groupe est privé -->
+            <?php if ($unGroupe['groupePrivacy'] === 'prive') : ?>
+               <div class="tooltip absolute right-4 top-2 z-10" data-tip="Ce groupe est privé et ne sera pas visible pour les autres utilisateurs">
+                  <p>
+                     <i class="fa-solid fa-lock"></i>
+                  </p>
+               </div>
+            <?php endif; ?>
+            <!-- Afficher uniquement si le groupe est privé -->
+
          </div>
          <!-- card pour un seul groupe -->
       <?php endforeach; ?>

@@ -45,4 +45,5 @@ if (isset($_POST['btn-edit-profile'])) {
 // formulaire pour ajouter un nouveau groupe
 if (isset($_POST['btn-add-groupe'])) {
    $controler->groupe->createGroupe($_POST, $_FILES);
+   header('Location: ../?page=profile&req=groupe');
 }
