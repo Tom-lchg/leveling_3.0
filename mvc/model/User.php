@@ -50,12 +50,19 @@ class User
 
    public function updateUser(string $pseudo, string $bio, int $id)
    {
-      $sql = "UPDATE tblusers SET userPseudo = :pseudo, SET userBio = :bio WHERE idUser = :iduser";
-      $stmt = $this->pdo->prepare($sql);
-      $stmt->execute([
+      $sql = "UPDATE tblUsers SET userPseudo = :pseudo, userBio = :bio WHERE idUser = :iduser";
+      $this->pdo->prepare($sql)->execute([
          ":pseudo" => $pseudo,
          ":bio" => $bio,
          ":iduser" => $id
       ]);
+   }
+
+   public function getAllGroupe(string $iduser): array
+   {
+      $sql = "SELECT * FROM tblGroups WHERE groupeFkIdUser = :iduser";
+      $stmt = $this->pdo->prepare($sql);
+      $stmt->execute(array(":iduser" => $iduser));
+      return $stmt->fetchAll();
    }
 }

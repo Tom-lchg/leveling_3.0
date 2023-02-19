@@ -55,7 +55,7 @@
 
    </div>
 
-   <div class='col-start-2 h-auto mx-auto max-w-web'>
+   <div class='col-start-2 h-auto'>
       <?php require_once('./page/router.php'); ?>
    </div>
 </div>

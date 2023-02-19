@@ -38,5 +38,11 @@ if (isset($_POST['btn-connexion'])) {
 // formulaire de modification d'un utilisateur
 if (isset($_POST['btn-edit-profile'])) {
    $controler->user->updateUser($_POST);
-   // header('Location: ./?page=profil');
+   header('Location: ../?page=profile');
+}
+
+
+// formulaire pour ajouter un nouveau groupe
+if (isset($_POST['btn-add-groupe'])) {
+   $controler->groupe->createGroupe($_POST, $_FILES);
 }

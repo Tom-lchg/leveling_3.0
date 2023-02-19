@@ -22,7 +22,7 @@ $user = $controler->user->userModel->findById($_SESSION['id'], 'idUser');
 
 </div>
 
-<div class='max-w-full h-auto px-8 mt-32'>
+<div class='h-auto px-8 mt-32'>
    <div class='flex justify-between items-center'>
       <!-- Pseudo du user -->
       <h1 class='title'><?= $user['userPseudo'] ?></h1>
