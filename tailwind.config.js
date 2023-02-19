@@ -11,7 +11,8 @@ module.exports = {
     extend: {
       gridTemplateColumns: {
         // custom grille
-        'layout': '300px 1fr'
+        'layout': '300px 1fr',
+        'post': '200px 1fr'
       },
       fontWeight: {
         'leger': 500

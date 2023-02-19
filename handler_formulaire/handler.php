@@ -6,12 +6,14 @@ require_once('../mvc/controler/Controler.php');
 require_once('../mvc/controler/User.php');
 require_once('../mvc/controler/Groupe.php');
 require_once('../mvc/controler/Games.php');
+require_once('../mvc/controler/Post.php');
 
 // require model
 require_once('../mvc/model/User.php');
 require_once('../mvc/model/Games.php');
 require_once('../mvc/model/Groupe.php');
 require_once('../mvc/model/Model.php');
+require_once('../mvc/model/Post.php');
 
 use \mvc\controler\controler\Controler;
 
@@ -46,4 +48,18 @@ if (isset($_POST['btn-edit-profile'])) {
 if (isset($_POST['btn-add-groupe'])) {
    $controler->groupe->createGroupe($_POST, $_FILES);
    header('Location: ../?page=profile&req=groupe');
+}
+
+
+// formulaire créer un post
+if (isset($_POST['btn-add-post'])) {
+   $controler->post->createPost($_POST);
+   header('Location: ../?page=home');
+}
+
+
+// delete un post
+if (isset($_POST['deletePost'])) {
+   $controler->post->postModel->delPost($_POST['idpost']);
+   header('Location: ../?page=home');
 }

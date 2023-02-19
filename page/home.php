@@ -40,31 +40,79 @@
       </div>
       <!-- Top jeux -->
 
+      <!-- Postes -->
       <div class='col-start-1 col-end-6 container-home-no-bg'>
-         <h1 class='title mb-6'>Postes</h1>
-         <!-- one poste -->
-         <div class='bg-secondary h-auto relative p-2 rounded-lg shadow-lg'>
-            <div class='flex justify-between items-center'>
-               <div class='flex gap-4'>
-                  <img src="../assets/pp.jpg" alt="pp" class='w-14 h-14 rounded-full'>
-                  <div>
-                     <h3 class='font-leger text-xl'>KiSEi</h3>
-                     <h3 class='font-leger text-accent'>@KiSEi</h3>
-                  </div>
-               </div>
-               <div>
-                  <button class='btn btn-sm'>
-                     <i class="fa-solid fa-ellipsis-vertical"></i>
-                  </button>
-               </div>
-            </div>
-            <div class='pl-16 mt-4'>
-               <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Possimus voluptatibus ipsum nam tempore
-                  reprehenderit ratione aperiam nostrum. Ullam accusantium blanditiis obcaecati minima, numquam eveniet.
-               </p>
-            </div>
+
+         <!-- récupération de tous les posts -->
+         <?php
+         $posts = $controler->post->postModel->getAllPosts();
+         ?>
+         <!-- récupération de tous les posts -->
+         <!-- Header -->
+         <div class="flex justify-between items-center">
+            <h1 class='title mb-6'>Postes</h1>
+            <label class="btn btn-sm" for="modal-create-post">
+               <i class="fa-solid fa-plus"></i>
+            </label>
          </div>
-         <!-- one poste -->
+         <!-- Header -->
+
+         <div class="flex flex-col gap-6">
+            <!-- foreach pour afficher tous les posts -->
+            <?php foreach ($posts as $post) : ?>
+               <!-- one poste -->
+               <div class='bg-secondary h-auto relative p-2 rounded-lg shadow-lg'>
+                  <div class="grid grid-cols-post">
+                     <div class="col-start-1 col-end-2">
+                        <div class='flex gap-4'>
+                           <img src="data:<?= $post['userTypeImg'] ?>;base64,<?= base64_encode($post['userImg']) ?>" alt="pp" class='w-14 h-14 rounded-full'>
+                           <div>
+                              <h3 class='font-leger text-xl'>
+                                 <a href="#">
+                                    <?= $post['userPrenom'] ?>
+                                 </a>
+                              </h3>
+                              <h3 class='font-leger text-accent'>
+                                 <a href="#">
+                                    @<?= $post['userPseudo'] ?>
+                                 </a>
+                              </h3>
+                              <div class='mt-4'>
+                                 <p><?= $post['postContent'] ?></p>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="col-start-2 col-end-3 relative">
+                        <!-- afficher uniquement si le post appartient au user connecté -->
+                        <?php if ($post['fkIdUser'] === $_SESSION['id']) : ?>
+                           <div class="dropdown absolute right-0 z-10">
+                              <label tabindex="0" class="btn btn-sm">
+                                 <i class="fa-solid fa-ellipsis-vertical"></i>
+                              </label>
+                              <ul tabindex="0" class="dropdown-content menu p-2 bg-primary shadow rounded-box w-52">
+                                 <li><button class="btn btn-secondary bg-slate-800">modifier</button></li>
+                                 <form action="../handler_formulaire/handler.php" method="post">
+                                    <input type="text" hidden name="idpost" value="<?= $post['idPost'] ?>">
+                                    <li><button type='submit' name="deletePost" class="btn btn-secondary bg-red-800">supprimer</button></li>
+                                 </form>
+                              </ul>
+                           </div>
+                        <?php endif; ?>
+                        <!-- afficher uniquement si le post appartient au user connecté -->
+                     </div>
+                  </div>
+
+               </div>
+               <!-- one poste -->
+
+            <?php endforeach; ?>
+            <!-- foreach pour afficher tous les posts -->
+
+         </div>
+
       </div>
+      <!-- Postes -->
+
    </div>
 </div>
