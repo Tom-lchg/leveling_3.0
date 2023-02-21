@@ -30,32 +30,42 @@ $groupes = $controler->user->userModel->getAllGroupe($_SESSION['id']);
 
 <!-- Si l'utilisateur possède des groupes alors on affiche -->
 <?php if (count($groupes) !== 0) : ?>
-   <div class='flex flex-wrap gap-4'>
+   <div class='flex flex-wrap gap-4 pb-4'>
       <!-- Foreach pour afficher tous les groupes -->
       <?php foreach ($groupes as $unGroupe) : ?>
          <!-- card pour un seul groupe -->
-         <div class="card w-96 shadow-xl image-full relative">
-            <figure><img src="data:<?= $unGroupe['groupeTypeBanner'] ?>;base64,<?= base64_encode($unGroupe['groupeBanner']) ?>" alt="Shoes" /></figure>
-            <div class="card-body">
-               <h2 class="card-title"><?= $unGroupe['groupeName'] ?></h2>
-               <p><?= $unGroupe['groupeDescription'] ?></p>
-            </div>
-
-            <!-- Afficher uniquement si le groupe est privé -->
-            <?php if ($unGroupe['groupePrivacy'] === 'prive') : ?>
-               <div class="tooltip absolute right-4 top-2 z-10" data-tip="Ce groupe est privé et ne sera pas visible pour les autres utilisateurs">
-                  <p>
-                     <i class="fa-solid fa-lock"></i>
-                  </p>
+         <a href="./?page=profile&req=groupe&user=<?= $_GET['user'] ?>&groupeName=<?= $unGroupe['groupeName'] ?>" class="hover:scale-105 transition">
+            <div class="card w-96 shadow-xl image-full relative">
+               <figure><img src="data:<?= $unGroupe['groupeTypeBanner'] ?>;base64,<?= base64_encode($unGroupe['groupeBanner']) ?>" alt="Shoes" /></figure>
+               <div class="card-body">
+                  <h2 class="card-title"><?= $unGroupe['groupeName'] ?></h2>
+                  <p><?= $unGroupe['groupeDescription'] ?></p>
                </div>
-            <?php endif; ?>
-            <!-- Afficher uniquement si le groupe est privé -->
 
-         </div>
-         <!-- card pour un seul groupe -->
+               <!-- Afficher uniquement si le groupe est privé -->
+               <?php if ($unGroupe['groupePrivacy'] === 'prive') : ?>
+                  <div class="tooltip absolute right-4 top-2 z-10" data-tip="Ce groupe est privé et ne sera pas visible pour les autres utilisateurs">
+                     <p>
+                        <i class="fa-solid fa-lock"></i>
+                     </p>
+                  </div>
+               <?php endif; ?>
+               <!-- Afficher uniquement si le groupe est privé -->
+
+            </div>
+            <!-- card pour un seul groupe -->
+         </a>
+
       <?php endforeach; ?>
       <!-- Foreach pour afficher tous les groupes -->
 
    </div>
    <!-- Si l'utilisateur possède des groupes alors on affiche -->
 <?php endif; ?>
+
+<!-- Page des groupes -->
+<?php if (isset($_GET['groupeName'])) : ?>
+   <hr class='my-4 border-slate-700'>
+   <h1 class="text-4xl"><?= $_GET['groupeName'] ?></h1>
+<?php endif; ?>
+<!-- Page des groupes -->
