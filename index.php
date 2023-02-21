@@ -17,7 +17,7 @@
          <?php if (isset($_SESSION['id'])) : ?>
             <div class='flex gap-4 items-center text-accent'>
                <i class="fa-regular fa-user text-xl"></i>
-               <a href="./?page=profile" class='item-nav'>Profile</a>
+               <a href="./?page=profile&user=<?= $_SESSION['pseudo'] ?>" class='item-nav'>Profile</a>
             </div>
          <?php endif; ?>
          <!-- s'affiche uniquement si le user est connecté  -->

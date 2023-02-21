@@ -49,4 +49,12 @@ class Post
       $a = [":idpost" => $idpost, ":iduser" => $_SESSION['id']];
       $this->pdo->prepare($sql)->execute($a);
    }
+
+   public function getAllPostsFromUser(string $iduser)
+   {
+      $sql = "SELECT * FROM tblPosts WHERE fkIdUser = :id";
+      $stmt = $this->pdo->prepare($sql);
+      $stmt->execute([":id" => $iduser]);
+      return $stmt->fetchAll();
+   }
 }

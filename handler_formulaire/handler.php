@@ -57,9 +57,25 @@ if (isset($_POST['btn-add-post'])) {
    header('Location: ../?page=home');
 }
 
+// formulaire créer un post depuis le profil
+if (isset($_POST['btn-add-post-from-profil'])) {
+   $controler->post->createPost($_POST);
+   // ça sera toujours session pseudo car c'est le user connecté qui peut supprimer ses posts
+   $user = $_SESSION['pseudo'];
+   header("Location: ../?page=profile&user=$user");
+}
+
 
 // delete un post
 if (isset($_POST['deletePost'])) {
    $controler->post->postModel->delPost($_POST['idpost']);
    header('Location: ../?page=home');
+}
+
+// delete un post from profil
+if (isset($_POST['deletePostFromProfil'])) {
+   $controler->post->postModel->delPost($_POST['idpost']);
+   // ça sera toujours session pseudo car c'est le user connecté qui peut supprimer ses posts
+   $user = $_SESSION['pseudo'];
+   header("Location: ../?page=profile&user=$user");
 }

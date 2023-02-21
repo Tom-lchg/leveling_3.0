@@ -25,6 +25,17 @@ class User
       return $this->model->findById($id, $target);
    }
 
+   public function getUserProfil(string $pseudo): array | bool
+   {
+      $sql = "SELECT * FROM tblUsers WHERE userPseudo = :psd";
+      $stmt = $this->pdo->prepare($sql);
+      $stmt->execute([
+         ":psd" => $pseudo
+      ]);
+
+      return $stmt->fetch();
+   }
+
    public function insertUser(object $data): void
    {
       $this->pdo->query("call insertUserSimple(
