@@ -17,13 +17,24 @@
       <!-- Top user -->
       <div class='col-start-4 col-end-6 container-home'>
          <h1 class='title'>Top users</h1>
-         <!-- un user -->
-         <div class='mt-4 flex gap-4 items-center'>
-            <h1 class='title text-yellow-300'>#1</h1>
-            <img src="../assets/pp.jpg" alt="pp" class='w-14 h-14 rounded-full'>
-            <h1 class='font-leger text-xl'>KiSEi</h1>
-         </div>
-         <!-- un user -->
+
+         <?php
+         // on récupère tous nos user
+         $users = $controler->user->userModel->getAll();
+         ?>
+
+         <!-- foreach pour afficher tous les users -->
+         <?php foreach ($users as $user) : ?>
+            <!-- un user -->
+            <div class='mt-4 flex gap-4 items-center'>
+               <h1 class='title text-yellow-300'>#1</h1>
+               <img src="../assets/pp.jpg" alt="pp" class='w-14 h-14 rounded-full'>
+               <h1 class='font-leger text-xl'>KiSEi</h1>
+            </div>
+            <!-- un user -->
+         <?php endforeach; ?>
+         <!-- foreach pour afficher tous les users -->
+
       </div>
       <!-- Top user -->
 
@@ -72,7 +83,7 @@
                         <div class='flex gap-4 w-full'>
                            <div>
                               <h3 class='font-leger text-xl'>
-                                 <a href="#">
+                                 <a href="/?page=profile&user=<?= $post['userPseudo'] ?>">
                                     <?= $post['userPrenom'] ?>
                                  </a>
                               </h3>
@@ -85,22 +96,27 @@
                         </div>
                         <!-- Pseudo et @ -->
 
-                        <!-- afficher uniquement si le post appartient au user connecté -->
-                        <?php if ($post['fkIdUser'] === $_SESSION['id']) : ?>
-                           <div class="dropdown absolute right-0 top-0 z-10">
-                              <label tabindex="0" class="btn btn-sm">
-                                 <i class="fa-solid fa-ellipsis-vertical"></i>
-                              </label>
-                              <ul tabindex="0" class="dropdown-content menu p-2 bg-primary shadow rounded-box w-52">
-                                 <li><button class="btn btn-secondary bg-slate-800">modifier</button></li>
-                                 <form action="../handler_formulaire/handler.php" method="post">
-                                    <input type="text" hidden name="idpost" value="<?= $post['idPost'] ?>">
-                                    <li><button type='submit' name="deletePost" class="btn btn-secondary bg-red-800">supprimer</button></li>
-                                 </form>
-                              </ul>
-                           </div>
+                        <!-- Afficher uniquement si on a un user connecté -->
+                        <?php if (isset($_SESSION['id'])) : ?>
+                           <!-- afficher uniquement si le post appartient au user connecté -->
+                           <?php if ($post['fkIdUser'] === $_SESSION['id']) : ?>
+                              <div class="dropdown absolute right-0 top-0 z-10">
+                                 <label tabindex="0" class="btn btn-sm">
+                                    <i class="fa-solid fa-ellipsis-vertical"></i>
+                                 </label>
+                                 <ul tabindex="0" class="dropdown-content menu p-2 bg-primary shadow rounded-box w-52">
+                                    <li><button class="btn btn-secondary bg-slate-800">modifier</button></li>
+                                    <form action="../handler_formulaire/handler.php" method="post">
+                                       <input type="text" hidden name="idpost" value="<?= $post['idPost'] ?>">
+                                       <li><button type='submit' name="deletePost" class="btn btn-secondary bg-red-800">supprimer</button></li>
+                                    </form>
+                                 </ul>
+                              </div>
+                           <?php endif; ?>
+                           <!-- afficher uniquement si le post appartient au user connecté -->
                         <?php endif; ?>
-                        <!-- afficher uniquement si le post appartient au user connecté -->
+                        <!-- Afficher uniquement si on a un user connecté -->
+
                         <div class='my-4'>
                            <p><?= $post['postContent'] ?></p>
                         </div>

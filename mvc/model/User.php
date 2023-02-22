@@ -69,7 +69,7 @@ class User
       ]);
    }
 
-   public function getAllGroupe(string $iduser): array
+   public function getAllGroupe(int $iduser): array
    {
       $sql = "SELECT * FROM tblGroups WHERE groupeFkIdUser = :iduser";
       $stmt = $this->pdo->prepare($sql);

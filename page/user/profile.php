@@ -40,10 +40,18 @@ $userPosts = $controler->post->postModel->getAllPostsFromUser($user['idUser']);
       <?php endif; ?>
       <!-- Button setting -->
 
+      <!-- Bouton ajouter en ami, visible uniquement si on est sur le profil d'un autre user -->
+      <?php if ($user['idUser'] !== $_SESSION['id']) : ?>
+         <label for="modal-profil" class="btn">
+            <i class="fa-solid fa-user-plus"></i>
+         </label>
+      <?php endif; ?>
+      <!-- Bouton ajouter en ami, visible uniquement si on est sur le profil d'un autre user -->
+
    </div>
 
    <!-- Le @ -->
-   <h3 class='text-accent'>@KiSEiXD</h3>
+   <h3 class='text-accent'>@<?= $user['userPrenom'] ?></h3>
    <!-- Le @ -->
 
    <!-- La bio -->
@@ -77,10 +85,18 @@ $userPosts = $controler->post->postModel->getAllPostsFromUser($user['idUser']);
          <!-- Les postes de l'utilisateur -->
          <div class="flex justify-between items-center">
             <h1 class='title mb-6'>Postes</h1>
-            <label class="btn btn-sm" for="modal-create-post-from-profil">
-               <i class="fa-solid fa-plus"></i>
-            </label>
+
+            <!-- Afficher uniquement si on est sur notre profil -->
+            <?php if ($user['idUser'] === $_SESSION['id']) : ?>
+               <label class="btn btn-sm" for="modal-create-post-from-profil">
+                  <i class="fa-solid fa-plus"></i>
+               </label>
+            <?php endif; ?>
+            <!-- Afficher uniquement si on est sur notre profil -->
+
          </div>
+
+
          <div class='flex w-full gap-4 flex-col'>
 
             <!-- foreach pour afficher tous les posts -->
