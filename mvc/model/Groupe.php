@@ -25,4 +25,38 @@ class Groupe
    {
       return $this->model->findById($id, $target);
    }
+
+   public function createGroupe($data)
+   {
+      // on vérifie si le groupe est en publique ou en privé
+      if ($data->privacy === 'publique') {
+         $this->pdo->query("call insertGroupePublic(
+            1,
+            0,
+            '$data->idUser',
+            '$data->nomGroupe',
+            '$data->description',
+            '$data->idUser',
+            '$data->privacy',
+            '$data->pp',
+            '$data->pptype',
+            '$data->banner',
+            '$data->bannertype'
+         )");
+      } else {
+         $this->pdo->query("call insertGroupePrivate(
+            0,
+            0,
+            '$data->idUser',
+            '$data->nomGroupe',
+            '$data->description',
+            '$data->idUser',
+            '$data->privacy',
+            '$data->pp',
+            '$data->pptype',
+            '$data->banner',
+            '$data->bannertype'
+         )");
+      }
+   }
 }

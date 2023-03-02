@@ -1,5 +1,9 @@
 <?php
-$user = $controler->user->userModel->findById($_SESSION['id'], 'idUser');
+// profil du user
+$user = $controler->user->userModel->getUserProfil($_GET['user']);
+
+// posts du user
+$userPosts = $controler->post->postModel->getAllPostsFromUser($user['idUser']);
 ?>
 
 <div class='h-56 relative'>
@@ -10,9 +14,9 @@ $user = $controler->user->userModel->findById($_SESSION['id'], 'idUser');
 
    <!-- Le menu en bas à gauche de la bannière -->
    <div class='relative z-10 flex gap-10 text-2xl w-full h-full pb-1 items-end pr-8 justify-end text-white font-leger'>
-      <a href="./?page=profile&req=groupe">Groupe</a>
-      <a href="./?page=profile">Profile</a>
-      <a href="./?page=profile&req=amis">Amis</a>
+      <a href="./?page=profile&req=groupe&user=<?= $_GET['user'] ?>">Groupe</a>
+      <a href="./?page=profile&user=<?= $_GET['user'] ?>">Profile</a>
+      <a href="./?page=profile&req=amis&user=<?= $_GET['user'] ?>">Amis</a>
    </div>
    <!-- Le menu en bas à gauche de la bannière -->
 
@@ -22,7 +26,7 @@ $user = $controler->user->userModel->findById($_SESSION['id'], 'idUser');
 
 </div>
 
-<div class='max-w-full h-auto px-8 mt-32'>
+<div class='h-auto px-8 mt-32'>
    <div class='flex justify-between items-center'>
       <!-- Pseudo du user -->
       <h1 class='title'><?= $user['userPseudo'] ?></h1>
@@ -36,10 +40,18 @@ $user = $controler->user->userModel->findById($_SESSION['id'], 'idUser');
       <?php endif; ?>
       <!-- Button setting -->
 
+      <!-- Bouton ajouter en ami, visible uniquement si on est sur le profil d'un autre user -->
+      <?php if ($user['idUser'] !== $_SESSION['id']) : ?>
+         <label for="modal-profil" class="btn">
+            <i class="fa-solid fa-user-plus"></i>
+         </label>
+      <?php endif; ?>
+      <!-- Bouton ajouter en ami, visible uniquement si on est sur le profil d'un autre user -->
+
    </div>
 
    <!-- Le @ -->
-   <h3 class='text-accent'>@KiSEiXD</h3>
+   <h3 class='text-accent'>@<?= $user['userPrenom'] ?></h3>
    <!-- Le @ -->
 
    <!-- La bio -->
@@ -71,13 +83,88 @@ $user = $controler->user->userModel->findById($_SESSION['id'], 'idUser');
       <?php if (!isset($_GET['req'])) : ?>
 
          <!-- Les postes de l'utilisateur -->
-         <h1 class='title mb-4'>Postes</h1>
-         <div class='flex gap-4 flex-wrap'>
-            <div class='w-96 h-96 bg-slate-600 rounded-lg'></div>
-            <div class='w-96 h-96 bg-slate-600 rounded-lg'></div>
-            <div class='w-96 h-96 bg-slate-600 rounded-lg'></div>
-            <div class='w-96 h-96 bg-slate-600 rounded-lg'></div>
-            <div class='w-96 h-96 bg-slate-600 rounded-lg'></div>
+         <div class="flex justify-between items-center">
+            <h1 class='title mb-6'>Postes</h1>
+
+            <!-- Afficher uniquement si on est sur notre profil -->
+            <?php if ($user['idUser'] === $_SESSION['id']) : ?>
+               <label class="btn btn-sm" for="modal-create-post-from-profil">
+                  <i class="fa-solid fa-plus"></i>
+               </label>
+            <?php endif; ?>
+            <!-- Afficher uniquement si on est sur notre profil -->
+
+         </div>
+
+
+         <div class='flex w-full gap-4 flex-col'>
+
+            <!-- foreach pour afficher tous les posts -->
+            <?php foreach ($userPosts as $post) : ?>
+               <div class='bg-secondary h-auto relative p-2 rounded-lg shadow-lg'>
+                  <div class="grid grid-cols-post">
+                     <div class="col-start-1 col-end-2">
+                        <img src="data:<?= $user['userTypeImg'] ?>;base64,<?= base64_encode($user['userImg']) ?>" alt="pp" class='w-14 h-14 rounded-full'>
+                     </div>
+                     <div class="col-start-2 col-end-3 relative">
+
+                        <!-- Pseudo et @ -->
+                        <div class='flex gap-4 w-full'>
+                           <div>
+                              <h3 class='font-leger text-xl'>
+                                 <a href="#">
+                                    <?= $user['userPrenom'] ?>
+                                 </a>
+                              </h3>
+                              <h3 class='font-leger text-accent'>
+                                 <a href="#">
+                                    @<?= $user['userPseudo'] ?>
+                                 </a>
+                              </h3>
+                           </div>
+                        </div>
+                        <!-- Pseudo et @ -->
+
+                        <!-- afficher uniquement si le post appartient au user connecté -->
+                        <?php if ($post['fkIdUser'] === $_SESSION['id']) : ?>
+                           <div class="dropdown dropdown-end absolute right-0 top-0 z-10">
+                              <label tabindex="0" class="btn btn-sm">
+                                 <i class="fa-solid fa-ellipsis-vertical"></i>
+                              </label>
+                              <ul tabindex="0" class="dropdown-content menu p-2 bg-primary shadow rounded-box w-52">
+                                 <li><button class="btn btn-secondary bg-slate-800">modifier</button></li>
+                                 <form action="../handler_formulaire/handler.php" method="post">
+                                    <input type="text" hidden name="idpost" value="<?= $post['idPost'] ?>">
+                                    <li><button type='submit' name="deletePostFromProfil" class="btn btn-secondary bg-red-800">supprimer</button></li>
+                                 </form>
+                              </ul>
+                           </div>
+                        <?php endif; ?>
+                        <!-- afficher uniquement si le post appartient au user connecté -->
+                        <div class='my-4'>
+                           <p><?= $post['postContent'] ?></p>
+                        </div>
+
+                        <!-- message & like -->
+                        <div class="w-full bg-primary rounded-md p-3 flex justify-around gap-4">
+                           <p>
+                              <i class="fa-solid fa-comment"></i>
+                              0
+                           </p>
+                           <p>
+                              <i class="fa-solid fa-heart"></i>
+                              0
+                           </p>
+                        </div>
+                        <!-- message & like -->
+                     </div>
+                  </div>
+
+               </div>
+               <!-- one poste -->
+            <?php endforeach; ?>
+            <!-- foreach pour afficher tous les posts -->
+
          </div>
          <!-- Les postes de l'utilisateur -->
       <?php endif; ?>

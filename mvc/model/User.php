@@ -25,6 +25,17 @@ class User
       return $this->model->findById($id, $target);
    }
 
+   public function getUserProfil(string $pseudo): array | bool
+   {
+      $sql = "SELECT * FROM tblUsers WHERE userPseudo = :psd";
+      $stmt = $this->pdo->prepare($sql);
+      $stmt->execute([
+         ":psd" => $pseudo
+      ]);
+
+      return $stmt->fetch();
+   }
+
    public function insertUser(object $data): void
    {
       $this->pdo->query("call insertUserSimple(
@@ -50,12 +61,19 @@ class User
 
    public function updateUser(string $pseudo, string $bio, int $id)
    {
-      $sql = "UPDATE tblusers SET userPseudo = :pseudo, SET userBio = :bio WHERE idUser = :iduser";
-      $stmt = $this->pdo->prepare($sql);
-      $stmt->execute([
+      $sql = "UPDATE tblUsers SET userPseudo = :pseudo, userBio = :bio WHERE idUser = :iduser";
+      $this->pdo->prepare($sql)->execute([
          ":pseudo" => $pseudo,
          ":bio" => $bio,
          ":iduser" => $id
       ]);
+   }
+
+   public function getAllGroupe(int $iduser): array
+   {
+      $sql = "SELECT * FROM tblGroups WHERE groupeFkIdUser = :iduser";
+      $stmt = $this->pdo->prepare($sql);
+      $stmt->execute(array(":iduser" => $iduser));
+      return $stmt->fetchAll();
    }
 }

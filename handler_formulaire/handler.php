@@ -6,12 +6,14 @@ require_once('../mvc/controler/Controler.php');
 require_once('../mvc/controler/User.php');
 require_once('../mvc/controler/Groupe.php');
 require_once('../mvc/controler/Games.php');
+require_once('../mvc/controler/Post.php');
 
 // require model
 require_once('../mvc/model/User.php');
 require_once('../mvc/model/Games.php');
 require_once('../mvc/model/Groupe.php');
 require_once('../mvc/model/Model.php');
+require_once('../mvc/model/Post.php');
 
 use \mvc\controler\controler\Controler;
 
@@ -38,5 +40,44 @@ if (isset($_POST['btn-connexion'])) {
 // formulaire de modification d'un utilisateur
 if (isset($_POST['btn-edit-profile'])) {
    $controler->user->updateUser($_POST);
-   // header('Location: ./?page=profil');
+   header('Location: ../?page=profile');
+}
+
+
+// formulaire pour ajouter un nouveau groupe
+if (isset($_POST['btn-add-groupe'])) {
+   $controler->groupe->createGroupe($_POST, $_FILES);
+   // ça sera toujours session pseudo car c'est le user connecté qui peut supprimer ses posts
+   $user = $_SESSION['pseudo'];
+   header("Location: ../?page=profile&req=groupe&user=$user");
+}
+
+
+// formulaire créer un post
+if (isset($_POST['btn-add-post'])) {
+   $controler->post->createPost($_POST);
+   header('Location: ../?page=home');
+}
+
+// formulaire créer un post depuis le profil
+if (isset($_POST['btn-add-post-from-profil'])) {
+   $controler->post->createPost($_POST);
+   // ça sera toujours session pseudo car c'est le user connecté qui peut supprimer ses posts
+   $user = $_SESSION['pseudo'];
+   header("Location: ../?page=profile&user=$user");
+}
+
+
+// delete un post
+if (isset($_POST['deletePost'])) {
+   $controler->post->postModel->delPost($_POST['idpost']);
+   header('Location: ../?page=home');
+}
+
+// delete un post from profil
+if (isset($_POST['deletePostFromProfil'])) {
+   $controler->post->postModel->delPost($_POST['idpost']);
+   // ça sera toujours session pseudo car c'est le user connecté qui peut supprimer ses posts
+   $user = $_SESSION['pseudo'];
+   header("Location: ../?page=profile&user=$user");
 }

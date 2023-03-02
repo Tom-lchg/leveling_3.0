@@ -20,7 +20,7 @@ class User
    // register = inscription
    public function register(array $data, array $img): void
    {
-      // On parse notre tableau avec htmlspecialchars() pour vérifier toutes entrées utilisateus
+      // On parse notre tableau avec htmlspecialchars() pour vérifier toutes entrées utilisateur
       $prenom = htmlspecialchars($data['prenom']);
       $pseudo = htmlspecialchars($data['pseudo']);
       $nom = htmlspecialchars($data['nom']);
