@@ -40,7 +40,8 @@ if (isset($_POST['btn-connexion'])) {
 // formulaire de modification d'un utilisateur
 if (isset($_POST['btn-edit-profile'])) {
    $controler->user->updateUser($_POST);
-   header('Location: ../?page=profile');
+   $user = $_SESSION['pseudo'];
+   header("Location: ../?page=profile&user=$user");
 }
 
 
