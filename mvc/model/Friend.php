@@ -12,15 +12,15 @@ class Friend
     public function __construct()
     {
         $this->pdo = new PDO('mysql:host=localhost;dbname=leveling2', 'root', '');
-        $this->model = new Model('tblGames');
+        $this->model = new Model('tblFriends');
     }
 
-    public function getAll(): array
+    public function getAll(): array | bool
     {
         return $this->model->getAll();
     }
 
-    public function findById(int $id, string $target): array
+    public function findById(int $id, string $target): array | bool
     {
         return $this->model->findById($id, $target);
     }

@@ -15,12 +15,12 @@ class Model
       $this->pdo = new PDO('mysql:host=localhost;dbname=leveling2', 'root', '');
    }
 
-   public function getAll(): array
+   public function getAll(): array | bool
    {
       return $this->pdo->query("SELECT * FROM $this->table")->fetchAll();
    }
 
-   public function findById(int $id, string $target): array
+   public function findById(int $id, string $target): array | bool
    {
       return $this->pdo->query("SELECT * FROM $this->table WHERE $target = $id")->fetch();
    }
