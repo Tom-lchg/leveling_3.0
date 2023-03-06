@@ -7,6 +7,7 @@ require_once('../mvc/controler/User.php');
 require_once('../mvc/controler/Groupe.php');
 require_once('../mvc/controler/Games.php');
 require_once('../mvc/controler/Post.php');
+require_once('../mvc/controler/Friend.php');
 
 // require model
 require_once('../mvc/model/User.php');
@@ -14,6 +15,7 @@ require_once('../mvc/model/Games.php');
 require_once('../mvc/model/Groupe.php');
 require_once('../mvc/model/Model.php');
 require_once('../mvc/model/Post.php');
+require_once('../mvc/model/Friend.php');
 
 use \mvc\controler\controler\Controler;
 
@@ -80,5 +82,20 @@ if (isset($_POST['deletePostFromProfil'])) {
    $controler->post->postModel->delPost($_POST['idpost']);
    // ça sera toujours session pseudo car c'est le user connecté qui peut supprimer ses posts
    $user = $_SESSION['pseudo'];
+   header("Location: ../?page=profile&user=$user");
+}
+
+// formulaire pour l'ajout d'un ami
+if (isset($_POST['btn-form-friend'])) {
+   $controler->friend->friendModel->addFriends($_POST['iduser']);
+   $user = $_POST['pseudo'];
+   header("Location: ../?page=profile&user=$user");
+}
+
+
+// formulaire pour remove l'ami
+if (isset($_POST['btn-form-remove-friend'])) {
+   $controler->friend->friendModel->removeFriend($_POST['iduser']);
+   $user = $_POST['pseudo'];
    header("Location: ../?page=profile&user=$user");
 }

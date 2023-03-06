@@ -6,6 +6,7 @@ use Users\User;
 use Groupes\Groupe;
 use Games\Games;
 use Post\Post;
+use Friend\Friend;
 
 class Controler
 {
@@ -13,6 +14,7 @@ class Controler
    public $groupe;
    public $games;
    public $post;
+   public $friend;
 
    public function __construct()
    {
@@ -20,5 +22,6 @@ class Controler
       $this->groupe = new Groupe();
       $this->games = new Games();
       $this->post = new Post();
+      $this->friend = new Friend();
    }
 }

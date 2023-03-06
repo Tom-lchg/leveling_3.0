@@ -5,6 +5,7 @@ require_once('./mvc/controler/User.php');
 require_once('./mvc/controler/Groupe.php');
 require_once('./mvc/controler/Games.php');
 require_once('./mvc/controler/Post.php');
+require_once('./mvc/controler/Friend.php');
 
 // require model
 require_once('./mvc/model/User.php');
@@ -12,6 +13,7 @@ require_once('./mvc/model/Games.php');
 require_once('./mvc/model/Groupe.php');
 require_once('./mvc/model/Model.php');
 require_once('./mvc/model/Post.php');
+require_once('./mvc/model/Friend.php');
 
 use \mvc\controler\controler\Controler;
 

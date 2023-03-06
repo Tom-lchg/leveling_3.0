@@ -38,7 +38,6 @@ $groupes = $controler->user->userModel->getAllGroupe($user['idUser']);
    <div class='flex flex-wrap gap-4 pb-4'>
       <!-- Foreach pour afficher tous les groupes -->
       <?php foreach ($groupes as $unGroupe) : ?>
-         <!-- card pour un seul groupe -->
 
          <!-- Afficher les groupes uniquement les groupes publique si on est sur le profil d'un autre user -->
          <?php if ($user['idUser'] === $_SESSION['id']) : ?>
@@ -88,7 +87,6 @@ $groupes = $controler->user->userModel->getAllGroupe($user['idUser']);
          <?php endif; ?>
          <!-- Afficher les groupes uniquement les groupes publique si on est sur le profil d'un autre user -->
 
-         <!-- card pour un seul groupe -->
       <?php endforeach; ?>
       <!-- Foreach pour afficher tous les groupes -->
 
