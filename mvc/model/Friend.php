@@ -15,12 +15,12 @@ class Friend
         $this->model = new Model('tblFriends');
     }
 
-    public function getAll(): array | bool
+    public function getAll()
     {
         return $this->model->getAll();
     }
 
-    public function findById(int $id, string $target): array | bool
+    public function findById($id, $target)
     {
         return $this->model->findById($id, $target);
     }
