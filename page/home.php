@@ -98,18 +98,35 @@
          <h1 class='title'>JEUX À LA UNE</h1>
       </div>
 
-      <div class='p-6 col-start-1 h-48 col-end-7 flex flex-wrap items-center bg-[#2a2b2c] gap-0'>
+      <div class='col-start-1 col-end-7 items-center bg-[#2a2b2c]'>
 
-         <div class="swiper mySwiper h-48">
-            <div class="swiper-wrapper h-48">
-               <div class="swiper-slide text-white"><img src="../assets/games/pp/IMG-6277c1dd81fac1.30807447.png" alt="pp jeux" class='h-[23rem]'></div>
-               <div class="swiper-slide"><img src="../assets/games/pp/IMG-6277c1dd81fac1.30807447.png" alt="pp jeux" class='h-[23rem]'></div>
-               <div class="swiper-slide"><img src="../assets/games/pp/IMG-634d7675e0cf83.13415792.jpg" alt="pp jeux" class='h-[23rem]'></div>
-               <div class="swiper-slide"><img src="../assets/games/pp/IMG-627c1d61578b82.37357556.jpg" alt="pp jeux" class='h-[23rem]'></div>
-               <div class="swiper-slide"><img src="../assets/games/pp/IMG-6277a0b2c5b848.96970598.png" alt="pp jeux" class='h-[23rem]'></div>
-               <div class="swiper-slide"><img src="../assets/games/pp/IMG-6277a0b2c5b848.96970598.png" alt="pp jeux" class='h-[23rem]'></div>
+         <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+               <div class="swiper-slide">
+                  <img src="../assets/games/pp/IMG-6277c1dd81fac1.30807447.png" alt="pp jeux" class=" h-[23rem]">
+               </div>
+
+               <div class="swiper-slide">
+                  <img src="../assets/games/pp/IMG-6277c1dd81fac1.30807447.png" alt="pp jeux" class='h-[23rem]'>
+               </div>
+
+               <div class="swiper-slide">
+                  <img src="../assets/games/pp/IMG-634d7675e0cf83.13415792.jpg" alt="pp jeux" class='h-[23rem]'>
+               </div>
+
+               <div class="swiper-slide">
+                  <img src="../assets/games/pp/IMG-627c1d61578b82.37357556.jpg" alt="pp jeux" class='h-[23rem]'>
+               </div>
+
+               <div class="swiper-slide">
+                  <img src="../assets/games/pp/IMG-6277a0b2c5b848.96970598.png" alt="pp jeux" class='h-[23rem]'>
+               </div>
+
+               <div class="swiper-slide">
+                  <img src="../assets/games/pp/IMG-6277a0b2c5b848.96970598.png" alt="pp jeux" class='h-[23rem]'>
+               </div>
+
             </div>
-            <div class="swiper-pagination"></div>
          </div>
 
       </div>
