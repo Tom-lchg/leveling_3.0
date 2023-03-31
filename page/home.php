@@ -37,10 +37,21 @@
       </div>
 
       <div class='col-start-1 col-end-6 p-2 flex gap-4 flex-wrap container-home-no-bg'>
-         <img src="../assets/games/pp/IMG-6277c1dd81fac1.30807447.png" alt="pp jeux" class='h-96 rounded-lg'>
-         <img src="../assets/games/pp/IMG-634d7675e0cf83.13415792.jpg" alt="pp jeux" class='h-96 rounded-lg'>
-         <img src="../assets/games/pp/IMG-627c1d61578b82.37357556.jpg" alt="pp jeux" class='h-96 rounded-lg'>
-         <img src="../assets/games/pp/IMG-6277a0b2c5b848.96970598.png" alt="pp jeux" class='h-96 rounded-lg'>
+         <a href="/?page=games&game=farcry">
+            <img src="../assets/games/pp/IMG-6277c1dd81fac1.30807447.png" alt="pp jeux" class='h-96 rounded-lg'>
+         </a>
+
+         <a href="/?page=games&game=forhonor">
+            <img src="../assets/games/pp/IMG-634d7675e0cf83.13415792.jpg" alt="pp jeux" class='h-96 rounded-lg'>
+         </a>
+
+         <a href="/?page=games&game=RiderRepublic">
+            <img src="../assets/games/pp/IMG-627c1d61578b82.37357556.jpg" alt="pp jeux" class='h-96 rounded-lg'>
+         </a>
+
+         <a href="/?page=games&game=assassinscreed">
+            <img src="../assets/games/pp/IMG-6277a0b2c5b848.96970598.png" alt="pp jeux" class='h-96 rounded-lg'>
+         </a>
       </div>
       <!-- Top jeux -->
 

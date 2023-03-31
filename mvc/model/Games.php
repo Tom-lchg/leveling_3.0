@@ -12,7 +12,7 @@ class Games
    public function __construct()
    {
       $this->pdo = new PDO('mysql:host=localhost;dbname=leveling2', 'root', '');
-      $this->model = new Model('tblGames');
+      $this->model = new Model('tblgames');
    }
 
    public function getAll()
