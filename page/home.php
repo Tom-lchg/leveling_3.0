@@ -1,62 +1,125 @@
-<div class='h-auto p-8'>
+<div class='h-auto w-full'>
 
-   <!-- le petit message de bienvenu -->
-   <h1 class='title'>
-      <?= isset($_SESSION['id']) ? "Hello " . $_SESSION['pseudo'] : "Connectez-vous" ?>
-   </h1>
-   <!-- le petit message de bienvenu -->
 
-   <div class='mt-4 grid grid-cols-6 gap-6'>
 
-      <!-- Top trending -->
-      <div class='col-start-1 col-end-4 container-home'>
-         <h1 class='title'>Top Trending</h1>
+   <div class="w-full h-20 flex items-center">
+
+      <div class="w-1/2 flex">
+         <!-- le petit message de bienvenu -->
+         <h1 class='ml-6 title'>
+            <?= isset($_SESSION['id']) ? "Bienvenue " . $_SESSION['pseudo'] . " !" : "" ?>
+         </h1>
+         <!-- le petit message de bienvenu -->
       </div>
-      <!-- Top trending -->
 
-      <!-- Top user -->
-      <div class='col-start-4 col-end-6 container-home'>
-         <h1 class='title'>Top users</h1>
-
-         <!-- foreach pour afficher tous les users -->
-         <!-- un user -->
-         <div class='mt-4 flex gap-4 items-center'>
-            <h1 class='title text-yellow-300'>#1</h1>
-            <img src="../assets/pp.jpg" alt="pp" class='w-14 h-14 rounded-full'>
-            <h1 class='font-leger text-xl'>KiSEi</h1>
+      <div class="justify-end w-1/2 flex">
+         <!-- Barre de recherche -->
+         <div class="content-center flex m-4 items-center">
+            <i class="fa-solid fa-magnifying-glass text-2xl mr-4"></i>
+            <input type="text" placeholder="Recherche" class="input w-full max-w-xs" />
          </div>
-         <!-- un user -->
+         <!-- Barre de recherche -->
+      </div>
+
+   </div>
+
+   <div class='mt-4 grid grid-cols-4 gap-6'>
+
+      <!-- Top user -->
+      <div class='ml-6 col-start-1 col-end-3'>
+         <h1 class='title'>MEILLEURS UTILISATEURS</h1>
          <!-- foreach pour afficher tous les users -->
 
+         <div class='mt-4 gap-4 justify-center container-home p-4 flex flex-col'>
+            <!-- un user -->
+            <div class="flex gap-4 items-center">
+               <h1 class='title text-yellow-300'>#1</h1>
+               <img src="../assets/pp.jpg" alt="pp" class='w-14 h-14 rounded-full'>
+               <h1 class='font-leger text-xl'>KiSEi</h1>
+            </div>
+            <!-- un user -->
+
+            <!-- un user -->
+            <div class="flex gap-4 items-center">
+               <h1 class='title text-yellow-300'>#2</h1>
+               <img src="../assets/pp.jpg" alt="pp" class='w-14 h-14 rounded-full'>
+               <h1 class='font-leger text-xl'>KiSEi</h1>
+            </div>
+            <!-- un user -->
+
+            <!-- un user -->
+            <div class="flex gap-4 items-center">
+               <h1 class='title text-yellow-300'>#3</h1>
+               <img src="../assets/pp.jpg" alt="pp" class='w-14 h-14 rounded-full'>
+               <h1 class='font-leger text-xl'>KiSEi</h1>
+            </div>
+            <!-- un user -->
+         </div>
+
+
+         <!-- foreach pour afficher tous les users -->
       </div>
       <!-- Top user -->
+
+      <!-- Top groupe -->
+      <div class='ml-6 col-start-3 col-end-6'>
+
+         <h1 class='title'>MEILLEURES GROUPES</h1>
+
+         <!-- foreach pour afficher tous les groupes -->
+         <div class='mt-4 gap-4 justify-center container-home p-4 flex flex-col'>
+            <!-- un groupe -->
+            <div class="flex gap-4 items-center">
+               <h1 class='title text-yellow-300'>#1</h1>
+               <img src="../assets/pp.jpg" alt="pp" class='w-14 h-14 rounded-full'>
+               <h1 class='font-leger text-xl'>MaBite</h1>
+            </div>
+            <!-- un groupe -->
+
+            <!-- un groupe -->
+            <div class="flex gap-4 items-center">
+               <h1 class='title text-yellow-300'>#2</h1>
+               <img src="../assets/pp.jpg" alt="pp" class='w-14 h-14 rounded-full'>
+               <h1 class='font-leger text-xl'>MaBite</h1>
+            </div>
+            <!-- un groupe -->
+
+            <!-- un groupe -->
+            <div class="flex gap-4 items-center">
+               <h1 class='title text-yellow-300'>#3</h1>
+               <img src="../assets/pp.jpg" alt="pp" class='w-14 h-14 rounded-full'>
+               <h1 class='font-leger text-xl'>MaBite</h1>
+            </div>
+            <!-- un groupe -->
+            <!-- foreach pour afficher tous les groupes -->
+         </div>
+      </div>
+      <!-- Top groupe -->
 
       <!-- Top jeux -->
-      <div class='col-start-1 col-end-2 container-home-no-bg'>
-         <h1 class='title'>Top jeux</h1>
+      <div class='ml-6 col-start-1 col-end-3 container-home-no-bg'>
+         <h1 class='title'>JEUX À LA UNE</h1>
       </div>
 
-      <div class='col-start-1 col-end-6 p-2 flex gap-4 flex-wrap container-home-no-bg'>
-         <a href="/?page=games&game=farcry">
-            <img src="../assets/games/pp/IMG-6277c1dd81fac1.30807447.png" alt="pp jeux" class='h-96 rounded-lg'>
-         </a>
+      <div class='p-6 col-start-1 h-48 col-end-7 flex flex-wrap items-center bg-[#2a2b2c] gap-0'>
 
-         <a href="/?page=games&game=forhonor">
-            <img src="../assets/games/pp/IMG-634d7675e0cf83.13415792.jpg" alt="pp jeux" class='h-96 rounded-lg'>
-         </a>
+         <div class="swiper mySwiper h-48">
+            <div class="swiper-wrapper h-48">
+               <div class="swiper-slide text-white"><img src="../assets/games/pp/IMG-6277c1dd81fac1.30807447.png" alt="pp jeux" class='h-[23rem]'></div>
+               <div class="swiper-slide"><img src="../assets/games/pp/IMG-6277c1dd81fac1.30807447.png" alt="pp jeux" class='h-[23rem]'></div>
+               <div class="swiper-slide"><img src="../assets/games/pp/IMG-634d7675e0cf83.13415792.jpg" alt="pp jeux" class='h-[23rem]'></div>
+               <div class="swiper-slide"><img src="../assets/games/pp/IMG-627c1d61578b82.37357556.jpg" alt="pp jeux" class='h-[23rem]'></div>
+               <div class="swiper-slide"><img src="../assets/games/pp/IMG-6277a0b2c5b848.96970598.png" alt="pp jeux" class='h-[23rem]'></div>
+               <div class="swiper-slide"><img src="../assets/games/pp/IMG-6277a0b2c5b848.96970598.png" alt="pp jeux" class='h-[23rem]'></div>
+            </div>
+            <div class="swiper-pagination"></div>
+         </div>
 
-         <a href="/?page=games&game=RiderRepublic">
-            <img src="../assets/games/pp/IMG-627c1d61578b82.37357556.jpg" alt="pp jeux" class='h-96 rounded-lg'>
-         </a>
-
-         <a href="/?page=games&game=assassinscreed">
-            <img src="../assets/games/pp/IMG-6277a0b2c5b848.96970598.png" alt="pp jeux" class='h-96 rounded-lg'>
-         </a>
       </div>
       <!-- Top jeux -->
 
       <!-- Postes -->
-      <div class='col-start-1 col-end-6 container-home-no-bg'>
+      <div class='ml-6 col-start-1 col-end-6 container-home-no-bg'>
 
          <!-- récupération de tous les posts -->
          <?php
@@ -67,15 +130,9 @@
          <!-- Header -->
          <div class="flex justify-between items-center">
             <h1 class='title mb-6'>Postes</h1>
-
-            <!-- AFficher uniquement si l'utilisateur est connecté -->
-            <?php if (isset($_SESSION['id'])) : ?>
-               <label class="btn btn-sm" for="modal-create-post">
-                  <i class="fa-solid fa-plus"></i>
-               </label>
-            <?php endif; ?>
-            <!-- AFficher uniquement si l'utilisateur est connecté -->
-
+            <label class="btn btn-sm" for="modal-create-post">
+               <i class="fa-solid fa-plus"></i>
+            </label>
          </div>
          <!-- Header -->
 
@@ -159,7 +216,7 @@
             </div>
             <!-- Posts -->
          <?php else : ?>
-            <p>pas de post</p>
+            <p>Rien de nouveau pour le moment...</p>
          <?php endif; ?>
          <!-- controler si on a des posts -->
 
