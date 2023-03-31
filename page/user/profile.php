@@ -23,9 +23,7 @@ $isFriend = $controler->friend->friendModel->isFriend($_SESSION['id'], $user['id
    </div>
    <!-- Le menu en bas à gauche de la bannière -->
 
-   <!-- Photo de profil -->
-   <img src="data:<?= $user['userTypeImg'] ?>;base64,<?= base64_encode($user['userImg']) ?>" alt="pp user" class='w-60 h-60 rounded-full absolute top-24 left-10 shadow-lg' />
-   <!-- Photo de profil -->
+
 
 </div>
 
