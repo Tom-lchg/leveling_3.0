@@ -27,7 +27,7 @@ if (isset($_SESSION['id'])) {
 <input type="checkbox" id="modal-profil" class="modal-toggle" />
 <div class="modal bg-modal">
    <div class="modal-box bg-secondary max-w-3xl">
-      <h3 class='title mb-4'>Modifier votre profile</h3>
+      <h3 class='title mb-4'>Modifier votre profil</h3>
       <label for="modal-profil" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
       <form action="../handler_formulaire/handler.php" method="post">
          <div>
@@ -52,7 +52,7 @@ if (isset($_SESSION['id'])) {
 <div class="modal bg-modal">
    <div class="modal-box relative bg-secondary max-w-3xl">
       <label for="modal-create-groupe" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
-      <h3 class="text-lg font-bold">Créer votre nouveau groupe</h3>
+      <h3 class="text-lg font-bold">Créer un nouveau groupe</h3>
 
       <form action="../handler_formulaire/handler.php" method="POST" class='mt-4 w-full' enctype="multipart/form-data">
 
@@ -68,7 +68,7 @@ if (isset($_SESSION['id'])) {
                <option value='prive'>Privé</option>
             </select>
 
-            <label>Photo de profile du groupe</label>
+            <label>Photo de profil du groupe</label>
             <input type="file" name="pp" class="file-input w-full max-w-xs" />
 
             <label>Photo de bannière du groupe</label>
@@ -87,7 +87,7 @@ if (isset($_SESSION['id'])) {
 <div class="modal bg-modal">
    <div class="modal-box relative bg-secondary max-w-3xl">
       <label for="modal-create-post" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
-      <h3 class="text-lg font-bold">Créer votre nouveau poste</h3>
+      <h3 class="text-lg font-bold">Créer un nouveau post</h3>
 
       <form action="../handler_formulaire/handler.php" method="POST" class='mt-4 w-full' enctype="multipart/form-data">
 
@@ -108,7 +108,7 @@ if (isset($_SESSION['id'])) {
 <div class="modal bg-modal">
    <div class="modal-box relative bg-secondary max-w-3xl">
       <label for="modal-create-post-from-profil" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
-      <h3 class="text-lg font-bold">Créer votre nouveau poste</h3>
+      <h3 class="text-lg font-bold">Créer un nouveau post</h3>
 
       <form action="../handler_formulaire/handler.php" method="POST" class='mt-4 w-full' enctype="multipart/form-data">
 

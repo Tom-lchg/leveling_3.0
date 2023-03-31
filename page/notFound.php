@@ -1,1 +1,1 @@
-<h1>page non trouvé</h1>
+<h1>Page non trouvée</h1>
