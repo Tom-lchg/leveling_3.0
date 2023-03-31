@@ -4,6 +4,9 @@ $user = $controler->user->userModel->getUserProfil($_GET['user']);
 
 // posts du user
 $userPosts = $controler->post->postModel->getAllPostsFromUser($user['idUser']);
+
+// vérifie si on est ami
+$isFriend = $controler->friend->friendModel->isFriend($_SESSION['id'], $user['idUser']);
 ?>
 
 <div class='h-56 relative'>
@@ -42,9 +45,28 @@ $userPosts = $controler->post->postModel->getAllPostsFromUser($user['idUser']);
 
       <!-- Bouton ajouter en ami, visible uniquement si on est sur le profil d'un autre user -->
       <?php if ($user['idUser'] !== $_SESSION['id']) : ?>
-         <label for="modal-profil" class="btn">
-            <i class="fa-solid fa-user-plus"></i>
-         </label>
+         <form action="../../handler_formulaire/handler.php" method="post">
+            <!-- input invisible qui stock l'id de la personne-->
+            <input type="text" name='iduser' value="<?= $user['idUser'] ?>" hidden>
+            <!-- input invisible qui stock l'id de la personne -->
+
+            <!-- input invisible qui stock le pseudo de la personne -->
+            <input type="text" name='pseudo' value="<?= $user['userPseudo'] ?>" hidden>
+            <!-- input invisible qui stock le pseudo de la personne -->
+
+            <!-- On vérifie si on est ami avec le user -->
+            <?php if ($isFriend) : ?>
+               <button type="submit" class='btn btn-error' name='btn-form-remove-friend'>
+                  <i class="fa-sharp fa-solid fa-user-minus"></i>
+               </button>
+            <?php else : ?>
+               <button type="submit" class='btn btn-success' name='btn-form-friend'>
+                  <i class="fa-solid fa-user-plus"></i>
+               </button>
+            <?php endif; ?>
+            <!-- On vérifie si on est ami avec le user -->
+
+         </form>
       <?php endif; ?>
       <!-- Bouton ajouter en ami, visible uniquement si on est sur le profil d'un autre user -->
 

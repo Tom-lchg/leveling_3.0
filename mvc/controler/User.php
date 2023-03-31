@@ -18,7 +18,7 @@ class User
    }
 
    // register = inscription
-   public function register(array $data, array $img): void
+   public function register($data, $img)
    {
       // On parse notre tableau avec htmlspecialchars() pour vérifier toutes entrées utilisateur
       $prenom = htmlspecialchars($data['prenom']);
@@ -58,7 +58,7 @@ class User
       header('Location: .././?page=connexion');
    }
 
-   public function login(string $mail, string $mdp): void
+   public function login($mail, $mdp)
    {
       $users = $this->userModel->getAll();
       foreach ($users as $user) {
@@ -74,7 +74,7 @@ class User
       var_dump('pas ok');
    }
 
-   public function updateUser(array $data): void
+   public function updateUser($data)
    {
       // parse notre tableau
       $pseudo = htmlspecialchars($data['pseudo']);

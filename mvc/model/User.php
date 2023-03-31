@@ -15,17 +15,17 @@ class User
       $this->model = new Model('tblUsers');
    }
 
-   public function getAll(): array
+   public function getAll()
    {
       return $this->model->getAll();
    }
 
-   public function findById(int $id, string $target): array
+   public function findById($id, $target)
    {
       return $this->model->findById($id, $target);
    }
 
-   public function getUserProfil(string $pseudo)
+   public function getUserProfil($pseudo)
    {
       $sql = "SELECT * FROM tblUsers WHERE userPseudo = :psd";
       $stmt = $this->pdo->prepare($sql);
@@ -36,7 +36,7 @@ class User
       return $stmt->fetch();
    }
 
-   public function insertUser(object $data): void
+   public function insertUser($data)
    {
       $this->pdo->query("call insertUserSimple(
          'PC',
@@ -59,7 +59,7 @@ class User
       )");
    }
 
-   public function updateUser(string $pseudo, string $bio, int $id)
+   public function updateUser($pseudo, $bio, $id)
    {
       $sql = "UPDATE tblUsers SET userPseudo = :pseudo, userBio = :bio WHERE idUser = :iduser";
       $this->pdo->prepare($sql)->execute([
@@ -69,7 +69,7 @@ class User
       ]);
    }
 
-   public function getAllGroupe(int $iduser): array
+   public function getAllGroupe($iduser)
    {
       $sql = "SELECT * FROM tblGroups WHERE groupeFkIdUser = :iduser";
       $stmt = $this->pdo->prepare($sql);

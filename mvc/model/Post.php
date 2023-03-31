@@ -15,12 +15,12 @@ class Post
       $this->model = new Model('tblPosts');
    }
 
-   public function getAll(): array
+   public function getAll()
    {
       return $this->model->getAll();
    }
 
-   public function findById(int $id, string $target): array
+   public function findById($id, $target)
    {
       return $this->model->findById($id, $target);
    }
@@ -43,14 +43,14 @@ class Post
       return $stmt->fetchAll();
    }
 
-   public function delPost(int $idpost)
+   public function delPost($idpost)
    {
       $sql = "DELETE FROM tblposts WHERE idPost = :idpost and fkIdUser = :iduser";
-      $a = [":idpost" => $idpost, ":iduser" => $_SESSION['id']];
+      $a = [":idpost" => $idpost, ":iduser " => $_SESSION['id']];
       $this->pdo->prepare($sql)->execute($a);
    }
 
-   public function getAllPostsFromUser(string $iduser)
+   public function getAllPostsFromUser($iduser)
    {
       $sql = "SELECT * FROM tblPosts WHERE fkIdUser = :id";
       $stmt = $this->pdo->prepare($sql);

@@ -16,7 +16,7 @@ class Groupe
       $this->groupeModel = new GroupeModel();
    }
 
-   public function createGroupe(array $tab, array $img)
+   public function createGroupe($tab, $img)
    {
       // On parse notre tableau avec htmlspecialchars() pour vérifier toutes entrées utilisateur
       $nomGroupe = htmlspecialchars($tab['nomGroupe']);

@@ -15,12 +15,12 @@ class Games
       $this->model = new Model('tblGames');
    }
 
-   public function getAll(): array
+   public function getAll()
    {
       return $this->model->getAll();
    }
 
-   public function findById(int $id, string $target): array
+   public function findById($id, $target)
    {
       return $this->model->findById($id, $target);
    }

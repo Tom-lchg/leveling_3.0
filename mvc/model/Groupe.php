@@ -16,12 +16,12 @@ class Groupe
       $this->model = new Model('tblGroups');
    }
 
-   public function getAll(): array
+   public function getAll()
    {
       return $this->model->getAll();
    }
 
-   public function findById(int $id, string $target): array
+   public function findById($id, $target)
    {
       return $this->model->findById($id, $target);
    }
