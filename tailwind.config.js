@@ -30,10 +30,12 @@ module.exports = {
     themes: [
       {
         mytheme: {
-          primary: '#e6e7e6',
+          accent: '#1991FF',
+          neutral: '#2a2b2f',
+          primary: '#AFAFAF',
           secondary: 'white',
-          neutral: '#2a2b2f', // titre
-          accent: '#525259' // paragraphe
+
+
         }
       }
     ]

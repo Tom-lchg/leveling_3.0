@@ -1,63 +1,85 @@
 <?php require('./global/header.php') ?>
 
-<div class='grid grid-cols-layout h-auto w-full'>
+<?php
+$user = $controler->user->userModel->getUserProfil('kisei');
+?>
 
-   <div class='bg-secondary col-start-1 h-screen flex justify-between sticky top-0 flex-col p-8'>
-      <div class='flex flex-col gap-4'>
-         <div class='mb-8 flex'>
+<div class='grid grid-cols-layout h-auto w-full bg-white'>
+
+   <div class="col-start-1 col-end-6 flex justify-between px-[15em] bg-neutral">
+
+      <div class="flex">
+         <!-- Logo + titre -->
+         <div class='mb-8 flex h-full items-center pl-8'>
             <img src="./assets/logo.png" alt="" class="w-10">
-            <h1 class='title sticky top-0 ml-2'>LEVELING</h1>
+            <a href="./?page=home" class='item-nav'>
+               <h1 class='title ml-2 text-white'>LEVELING</h1>
+            </a>
          </div>
-         <div class='flex gap-4 items-center text-accent'>
-            <i class="fa-solid fa-house text-xl"></i>
-            <a href="./?page=home" class='item-nav'>Accueil</a>
-         </div>
-
-         <!-- SI le user n'est pas connecté alors il n'a pas accès à son profil -->
-         <!-- s'affiche uniquement si le user est connecté  -->
-         <?php if (isset($_SESSION['id'])) : ?>
-            <div class='flex gap-4 items-center text-accent'>
-               <i class="fa-regular fa-user text-xl"></i>
-               <a href="./?page=profile&user=<?= $_SESSION['pseudo'] ?>" class='item-nav'>Profil</a>
-            </div>
-         <?php endif; ?>
-         <!-- s'affiche uniquement si le user est connecté  -->
-         <!-- SI le user n'est pas connecté alors il n'a pas accès à son profil -->
-
-         <div class='flex gap-4 items-center text-accent'>
-            <i class="fa-solid fa-gamepad text-xl"></i>
-            <a href="./?page=games" class='item-nav'>Gallerie</a>
-         </div>
+         <!-- Logo + titre -->
       </div>
 
-      <div class='flex flex-col gap-4'>
-         <!-- Si on est pas connecté  -->
-         <?php if (!isset($_SESSION['id'])) : ?>
-            <div class='flex gap-4 items-center text-accent'>
-               <i class="fa-solid fa-user-plus"></i>
-               <a href="./?page=inscription" class='item-nav'>Inscription</a>
-            </div>
-            <div class='flex gap-4 items-center text-accent'>
-               <i class="fa-solid fa-right-to-bracket"></i>
-               <a href="./?page=connexion" class='item-nav'>Connexion</a>
-            </div>
-         <?php endif; ?>
-         <!-- Si on est pas connecté  -->
+      <div class="justify-end flex items-center">
+         <!-- Inscription + Connexion -->
+         <div class='flex flex-col gap-4'>
+            <!-- Si on est pas connecté  -->
+            <?php if (!isset($_SESSION['id'])) : ?>
+               <div class='flex gap-4 items-center'>
+                  <a href="./?page=connexion" class='item-nav text-white'>CONNEXION</a>
+                  <a href="./?page=inscription" class='item-nav'><button class="btn btn-accent">Inscription</button></a>
+               </div>
+            <?php endif; ?>
+            <!-- Si on est pas connecté  -->
 
-         <!-- Si on est connecté -->
-         <?php if (isset($_SESSION['id'])) : ?>
-            <div class='flex gap-4 items-center text-accent'>
-               <i class="fa-solid fa-right-from-bracket"></i>
-               <a href="./?page=deconnexion" class='item-nav'>Déconnexion</a>
-            </div>
-         <?php endif; ?>
-         <!-- Si on est connecté -->
+            <!-- Si on est connecté -->
+            <?php if (isset($_SESSION['id'])) : ?>
+               <div class='flex gap-4 items-center'>
+                  <div class="avatar">
+                     <div class="w-10 rounded-full">
+                     <img src="data:<?= $user['userTypeImg'] ?>;base64,<?= base64_encode($user['userImg']) ?>" alt="">
+                     </div>
+                  </div>
+                  <a href="./?page=profile&user=<?= $_SESSION['pseudo'] ?>" class='text-white'> <?= $_SESSION['pseudo'] ?> </a>
+                  <a href="./?page=deconnexion" class='item-nav'><button class="btn btn-error">Déconnexion</button></a>
+               </div>
+            <?php endif; ?>
+            <!-- Si on est connecté -->
+         </div>
+
+         <!-- Inscription + Connexion -->
       </div>
+
 
    </div>
 
-   <div class='col-start-2 h-auto w-full'>
-      <?php require_once('./page/router.php'); ?>
+   <div class="col-start-1 col-end-6 flex justify-between px-[15em] bg-accent drop-shadow-lg">
+
+      <div class="flex">
+         <!-- Menu -->
+         <div class='mb-8 flex h-full items-center pl-8'>
+            <div class='flex gap-4 items-center'>
+               <a href="./?page=games"><button class="btn btn-ghost text-white btn-sm">Jeux</button></a>
+               <a href="./?page=games"><button class="btn btn-ghost text-white btn-sm">Groupes</button></a>
+            </div>
+         </div>
+      </div>
+      <!-- Menu -->
+
+      <div class="justify-end  flex">
+         <!-- Barre de recherche -->
+         <div class="content-center flex items-center">
+            <i class="fa-solid fa-magnifying-glass text-2xl text-white mr-4"></i>
+            <input type="text" placeholder="Recherche" class="input input-sm w-full max-w-xs rounded-full" />
+         </div>
+         <!-- Barre de recherche -->
+      </div>
+
+
    </div>
-</div>
-<?php require('./global/header-close.php') ?>
+
+   <div class="col-start-1 col-end-6">
+   <?php require_once('./page/router.php'); ?>
+   </div>            
+   </div>
+
+   <?php require('./global/header-close.php') ?>
