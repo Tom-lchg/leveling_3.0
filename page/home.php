@@ -1,7 +1,4 @@
 <div class='h-auto w-full'>
-
-
-
    <div class="w-full h-20 flex items-center">
 
       <div class="w-1/2 flex">
@@ -129,7 +126,7 @@
 
          <!-- Header -->
          <div class="flex justify-between items-center">
-            <h1 class='title mb-6'>Postes</h1>
+            <h1 class='title mb-6'>ACTUALITÉS</h1>
             <label class="btn btn-sm" for="modal-create-post">
                <i class="fa-solid fa-plus"></i>
             </label>
@@ -171,7 +168,7 @@
                            <?php if (isset($_SESSION['id'])) : ?>
                               <!-- afficher uniquement si le post appartient au user connecté -->
                               <?php if ($post['fkIdUser'] === $_SESSION['id']) : ?>
-                                 <div class="dropdown absolute right-0 top-0 z-10">
+                                 <div class="dropdown absolute right-0 dropdown-end top-0 z-10">
                                     <label tabindex="0" class="btn btn-sm">
                                        <i class="fa-solid fa-ellipsis-vertical"></i>
                                     </label>

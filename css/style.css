@@ -2256,6 +2256,10 @@ html {
   right: 0.5rem;
 }
 
+.right-48 {
+  right: 12rem;
+}
+
 .z-10 {
   z-index: 10;
 }
@@ -2601,11 +2605,6 @@ html {
 
 .bg-modal {
   background-color: rgba(0, 0, 0, 0.5);
-}
-
-.bg-black {
-  --tw-bg-opacity: 1;
-  background-color: rgb(0 0 0 / var(--tw-bg-opacity));
 }
 
 .object-cover {
