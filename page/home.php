@@ -52,12 +52,19 @@
          $posts = $controler->post->postModel->getAllPosts();
          ?>
          <!-- récupération de tous les posts -->
+
          <!-- Header -->
          <div class="flex justify-between items-center">
             <h1 class='title mb-6'>Postes</h1>
-            <label class="btn btn-sm" for="modal-create-post">
-               <i class="fa-solid fa-plus"></i>
-            </label>
+
+            <!-- AFficher uniquement si l'utilisateur est connecté -->
+            <?php if (isset($_SESSION['id'])) : ?>
+               <label class="btn btn-sm" for="modal-create-post">
+                  <i class="fa-solid fa-plus"></i>
+               </label>
+            <?php endif; ?>
+            <!-- AFficher uniquement si l'utilisateur est connecté -->
+
          </div>
          <!-- Header -->
 
