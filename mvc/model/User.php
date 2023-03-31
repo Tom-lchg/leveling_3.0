@@ -25,7 +25,7 @@ class User
       return $this->model->findById($id, $target);
    }
 
-   public function getUserProfil(string $pseudo): array | bool
+   public function getUserProfil(string $pseudo)
    {
       $sql = "SELECT * FROM tblUsers WHERE userPseudo = :psd";
       $stmt = $this->pdo->prepare($sql);
