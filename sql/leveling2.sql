@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : ven. 31 mars 2023 à 12:25
+-- Généré le : ven. 31 mars 2023 à 12:37
 -- Version du serveur : 5.7.36
 -- Version de PHP : 7.4.26
 
@@ -199,6 +199,20 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `updateUserSimple` (IN `p_idUser` IN
 End$$
 
 DELIMITER ;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `tblfriends`
+--
+
+DROP TABLE IF EXISTS `tblfriends`;
+CREATE TABLE IF NOT EXISTS `tblfriends` (
+  `idFriends` int(11) NOT NULL AUTO_INCREMENT,
+  `userConnected` int(11) NOT NULL,
+  `userFriend` int(11) NOT NULL,
+  PRIMARY KEY (`idFriends`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -475,7 +489,7 @@ CREATE TABLE IF NOT EXISTS `tblusers` (
   `userBanner` longblob,
   `userTypeBanner` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`idUser`)
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `tblusers`
@@ -486,7 +500,8 @@ INSERT INTO `tblusers` (`idUser`, `userNom`, `userPrenom`, `userAge`, `userBio`,
 (19, 'LEVY', 'DanAAAA', '21', 'Fort à tous les jeux', 'Kase', 1, '21/12/2000', 'dlevy@gmail.com', '123', 'user', '11/02/2023', 0x4a415641496d67, NULL, 0x4a41564142616e6e6572, NULL),
 (20, 'DUGIMONT', 'THOMASS', '19', 'je sais pas quoi mettre', '07/03/2004', 1, 'GARANCE', 'gdugimont@gmail.com', '124', 'admin', '11/02/2023', 0x4a415641496d67, NULL, 0x4a41564142616e6e6572, NULL),
 (21, 'KARIA', 'OUI', '19', 'Valorant player kda', '12/43/23', 1, 'CLARA', 'kc@gmail.com', '123', 'user', '19/02/2023', 0x4a415641496d67, NULL, 0x4a41564142616e6e6572, NULL),
-(22, 'Abdiche', 'Shanna', '23', 'ooeoeoe', '21/04/2000', 1, 'Shanna', 'a@gmail.com', '456', 'user', '19/03/2023', 0x4a415641496d67, NULL, 0x4a41564142616e6e6572, NULL);
+(22, 'Abdiche', 'Shanna', '23', 'ooeoeoe', '21/04/2000', 1, 'Shanna', 'a@gmail.com', '456', 'user', '19/03/2023', 0x4a415641496d67, NULL, 0x4a41564142616e6e6572, NULL),
+(23, 'LAU', 'Tom', '22', 'Oui.', '2000-08-04', 1, 'KiSEi', 't@gmail.com', 't', 'user', 'dateInscription', 0x89504e470d0a1a0a0000000d49484452000000570000004008060000006f1beb4f000000017352474200aece1ce90000000467414d410000b18f0bfc6105000000097048597300000ec300000ec301c76fa864000000bf49444154785eeddcb10985401040c1d34634b2ff7a8cfeaf4445c406e465331c2c6cf8d8f8a6638ceb51989f49e0bddc75d9ee05dffdfefb3d5d6e48dc90b8217143e286c40d891b1237246e48dc90b8217143e286c40d891b1237246e48dc90b8217143e286c40d891b1237246e48dc90b8217143e286c40d891b1237246e48dc90b8217143e286c40d891b1237246e48dc90b8217143e286c40d891b1237246e48dc90b8217143e286c40d891b1237246e48dc90b821bf90860a668c139b500978cfbdd5710000000049454e44ae426082, 'image/png', 0x89504e470d0a1a0a0000000d49484452000000570000004008060000006f1beb4f000000017352474200aece1ce90000000467414d410000b18f0bfc6105000000097048597300000ec300000ec301c76fa864000000bf49444154785eeddcb10985401040c1d34634b2ff7a8cfeaf4445c406e465331c2c6cf8d8f8a6638ceb51989f49e0bddc75d9ee05dffdfefb3d5d6e48dc90b8217143e286c40d891b1237246e48dc90b8217143e286c40d891b1237246e48dc90b8217143e286c40d891b1237246e48dc90b8217143e286c40d891b1237246e48dc90b8217143e286c40d891b1237246e48dc90b8217143e286c40d891b1237246e48dc90b8217143e286c40d891b1237246e48dc90b821bf90860a668c139b500978cfbdd5710000000049454e44ae426082, 'image/png');
 
 -- --------------------------------------------------------
 
@@ -562,7 +577,8 @@ CREATE TABLE IF NOT EXISTS `tbluserssimple` (
 INSERT INTO `tbluserssimple` (`idUser`, `userSimplePlateforme`, `userSimpleCanModify`, `userNom`, `userPrenom`, `userAge`, `userBio`, `userNaissance`, `userLevel`, `userPseudo`, `userMail`, `userPassword`, `userRole`, `userDateInscription`, `userSimpleImg`, `userSimpleTypeImg`, `userSimpleBanner`, `userSimpleTypeBanner`) VALUES
 (19, 'Application', 0, 'LEVY', 'DanAAAA', '21', 'Fort à tous les jeux', 'Kase', 1, '21/12/2000', 'dlevy@gmail.com', '123', 'user', '11/02/2023', 0x4a415641496d67, NULL, 0x4a41564142616e6e6572, NULL),
 (21, 'Pc', 0, 'KARIA', 'OUI', '19', 'Valorant player kda', '12/43/23', 1, 'CLARA', 'kc@gmail.com', '123', 'user', '19/02/2023', 0x4a415641496d67, NULL, 0x4a41564142616e6e6572, NULL),
-(22, 'Application', 0, 'Abdiche', 'Shanna', '23', 'ooeoeoe', '21/04/2000', 1, 'Shanna', 'a@gmail.com', '456', 'user', '19/03/2023', 0x4a415641496d67, NULL, 0x4a41564142616e6e6572, NULL);
+(22, 'Application', 0, 'Abdiche', 'Shanna', '23', 'ooeoeoe', '21/04/2000', 1, 'Shanna', 'a@gmail.com', '456', 'user', '19/03/2023', 0x4a415641496d67, NULL, 0x4a41564142616e6e6572, NULL),
+(23, 'PC', 0, 'LAU', 'Tom', '22', 'ok', '2000-08-04', 1, 't', 't@gmail.com', 't', 'user', 'dateInscription', 0x89504e470d0a1a0a0000000d49484452000000570000004008060000006f1beb4f000000017352474200aece1ce90000000467414d410000b18f0bfc6105000000097048597300000ec300000ec301c76fa864000000bf49444154785eeddcb10985401040c1d34634b2ff7a8cfeaf4445c406e465331c2c6cf8d8f8a6638ceb51989f49e0bddc75d9ee05dffdfefb3d5d6e48dc90b8217143e286c40d891b1237246e48dc90b8217143e286c40d891b1237246e48dc90b8217143e286c40d891b1237246e48dc90b8217143e286c40d891b1237246e48dc90b8217143e286c40d891b1237246e48dc90b8217143e286c40d891b1237246e48dc90b8217143e286c40d891b1237246e48dc90b821bf90860a668c139b500978cfbdd5710000000049454e44ae426082, 'image/png', 0x89504e470d0a1a0a0000000d49484452000000570000004008060000006f1beb4f000000017352474200aece1ce90000000467414d410000b18f0bfc6105000000097048597300000ec300000ec301c76fa864000000bf49444154785eeddcb10985401040c1d34634b2ff7a8cfeaf4445c406e465331c2c6cf8d8f8a6638ceb51989f49e0bddc75d9ee05dffdfefb3d5d6e48dc90b8217143e286c40d891b1237246e48dc90b8217143e286c40d891b1237246e48dc90b8217143e286c40d891b1237246e48dc90b8217143e286c40d891b1237246e48dc90b8217143e286c40d891b1237246e48dc90b8217143e286c40d891b1237246e48dc90b8217143e286c40d891b1237246e48dc90b821bf90860a668c139b500978cfbdd5710000000049454e44ae426082, 'image/png');
 
 --
 -- Contraintes pour les tables déchargées
