@@ -1,4 +1,4 @@
-<div class='h-auto w-full px-[15em]'>
+<div class='h-auto w-full'>
 
    <div class="w-full mt-10 flex items-center">
 
