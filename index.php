@@ -77,7 +77,7 @@ $user = $controler->user->userModel->getUserProfil('kisei');
 
    </div>
 
-   <div class="col-start-1 col-end-6">
+   <div class="col-start-1 col-end-6 px-[15em]">
    <?php require_once('./page/router.php'); ?>
    </div>            
    </div>

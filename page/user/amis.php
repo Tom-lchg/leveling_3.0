@@ -3,7 +3,9 @@ $user = $controler->user->userModel->getUserProfil($_GET['user']);
 $friends = $controler->friend->friendModel->getFriends($user['idUser']);
 ?>
 
-<h1 class='title mb-4'>Amis</h1>
+<div class="container-home p-6">
+
+<div class="font-bold w-full flex justify-center items-center h-14 bg-neutral text-primary rounded-md"><p>AMIS</p></div>
 
 
 <!-- On vérifie que l'utilisateur possède des amis -->
@@ -29,6 +31,8 @@ $friends = $controler->friend->friendModel->getFriends($user['idUser']);
    <?php endforeach; ?>
    <!-- foreach pour afficher tous les amis -->
 <?php else : ?>
-   <p>pas d'amis</p>
+   <p>Aucun amis pour le moment...</p>
 <?php endif; ?>
 <!-- On vérifie que l'utilisateur possède des amis -->
+
+</div>
