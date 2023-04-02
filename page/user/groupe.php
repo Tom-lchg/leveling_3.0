@@ -3,8 +3,12 @@ $user = $controler->user->userModel->getUserProfil($_GET['user']);
 $groupes = $controler->user->userModel->getAllGroupe($user['idUser']);
 ?>
 
-<div class="flex justify-between">
-   <h1 class='title mb-4'>Groupe</h1>
+   
+<div class="container-home p-6">
+
+<div class="font-bold w-full flex justify-center items-center h-14 bg-neutral text-primary rounded-md"><p>GROUPES</p></div>
+
+<div class="mt-2 text-justify">
 
    <!-- afficher uniquement si c'est le user connecté qui est sur son profil -->
    <?php if ($user['idUser'] === $_SESSION['id']) : ?>

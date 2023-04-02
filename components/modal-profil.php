@@ -102,24 +102,3 @@ if (isset($_SESSION['id'])) {
    </div>
 </div>
 <!-- Modal créer un post -->
-
-<!-- Modal créer un post from profil -->
-<input type="checkbox" id="modal-create-post-from-profil" class="modal-toggle" />
-<div class="modal bg-modal">
-   <div class="modal-box relative bg-secondary max-w-3xl">
-      <label for="modal-create-post-from-profil" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
-      <h3 class="text-lg font-bold">Créer un nouveau post</h3>
-
-      <form action="../handler_formulaire/handler.php" method="POST" class='mt-4 w-full' enctype="multipart/form-data">
-
-         <div class='flex flex-col gap-4 w-full '>
-
-            <textarea class='textarea bg-primary block w-full h-44 resize-none' placeholder='Que voulez-vous partager ?' name='content'></textarea>
-
-            <button type='submit' name='btn-add-post-from-profil' class='btn'>Créer</button>
-         </div>
-
-      </form>
-   </div>
-</div>
-<!-- Modal créer un post from profil -->
