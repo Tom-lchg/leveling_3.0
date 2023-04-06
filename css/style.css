@@ -2735,8 +2735,12 @@ html {
   left: 2.5rem;
 }
 
-.left-\[50em\] {
-  left: 50em;
+.left-40 {
+  left: 10rem;
+}
+
+.top-\[14\.9rem\] {
+  top: 14.9rem;
 }
 
 .top-24 {
@@ -2745,66 +2749,6 @@ html {
 
 .right-2 {
   right: 0.5rem;
-}
-
-.left-40 {
-  left: 10rem;
-}
-
-.top-72 {
-  top: 18rem;
-}
-
-.top-60 {
-  top: 15rem;
-}
-
-.top-56 {
-  top: 14rem;
-}
-
-.left-\[40\] {
-  left: 40;
-}
-
-.left-\[9em\] {
-  left: 9em;
-}
-
-.left-\[9rem\] {
-  left: 9rem;
-}
-
-.top-\[60\] {
-  top: 60;
-}
-
-.top-\[14rem\] {
-  top: 14rem;
-}
-
-.top-\[16rem\] {
-  top: 16rem;
-}
-
-.top-\[15rem\] {
-  top: 15rem;
-}
-
-.top-\[14\.5rem\] {
-  top: 14.5rem;
-}
-
-.top-\[14\.7rem\] {
-  top: 14.7rem;
-}
-
-.top-\[14\.8rem\] {
-  top: 14.8rem;
-}
-
-.top-\[14\.9rem\] {
-  top: 14.9rem;
 }
 
 .z-10 {
@@ -2853,6 +2797,11 @@ html {
   margin-bottom: 1rem;
 }
 
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .mb-8 {
   margin-bottom: 2rem;
 }
@@ -2897,8 +2846,8 @@ html {
   margin-left: 14rem;
 }
 
-.ml-\[17em\] {
-  margin-left: 17em;
+.ml-\[13em\] {
+  margin-left: 13em;
 }
 
 .mt-24 {
@@ -2907,30 +2856,6 @@ html {
 
 .mb-4 {
   margin-bottom: 1rem;
-}
-
-.ml-\[15em\] {
-  margin-left: 15em;
-}
-
-.ml-\[14em\] {
-  margin-left: 14em;
-}
-
-.ml-\[12em\] {
-  margin-left: 12em;
-}
-
-.ml-\[13em\] {
-  margin-left: 13em;
-}
-
-.ml-\[56\] {
-  margin-left: 56;
-}
-
-.ml-\[15rem\] {
-  margin-left: 15rem;
 }
 
 .block {
@@ -2975,10 +2900,6 @@ html {
 
 .h-96 {
   height: 24rem;
-}
-
-.h-full {
-  height: 100%;
 }
 
 .h-32 {
@@ -3049,8 +2970,16 @@ html {
   max-width: 42rem;
 }
 
+.max-w-7xl {
+  max-width: 80rem;
+}
+
 .max-w-3xl {
   max-width: 48rem;
+}
+
+.max-w-5xl {
+  max-width: 64rem;
 }
 
 .resize-none {
@@ -3067,6 +2996,10 @@ html {
 
 .grid-cols-post {
   grid-template-columns: 90px 1fr;
+}
+
+.grid-cols-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .flex-col {
@@ -3115,6 +3048,10 @@ html {
 
 .gap-1 {
   gap: 0.25rem;
+}
+
+.gap-2 {
+  gap: 0.5rem;
 }
 
 .self-center {
@@ -3195,6 +3132,11 @@ html {
   background-color: rgba(0, 0, 0, 0.5);
 }
 
+.bg-black {
+  --tw-bg-opacity: 1;
+  background-color: rgb(0 0 0 / var(--tw-bg-opacity));
+}
+
 .object-cover {
   -o-object-fit: cover;
      object-fit: cover;
@@ -3228,14 +3170,6 @@ html {
 .px-10 {
   padding-left: 2.5rem;
   padding-right: 2.5rem;
-}
-
-.p-2 {
-  padding: 0.5rem;
-}
-
-.p-3 {
-  padding: 0.75rem;
 }
 
 .px-4 {

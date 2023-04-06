@@ -2,16 +2,16 @@
 
    <div class="w-full mt-10 flex items-center">
 
-   <!-- Jeu à la une (aléatoire dans la gallerie) -->
-   <div class="w-full flex items-center">
-      <img src="../assets/games/pp/IMG-6277c1dd81fac1.30807447.png" alt="pp jeux" class='h-[9rem] drop-shadow-md'>
-      <div class="mx-6">
-         <p class="font-bold text-4xl drop-shadow-md text-accent">FAR CRY 6</p>
-         <p class="text-lg drop-shadow-sm text-primary">Far Cry 6 emmène les joueurs sur l'île de Yara, qui ressemble à s'y méprendre à Cuba, tout comme l'environnement de Far Cry 4 était calqué sur le Tibet et le Népal. L'île est dans un état de chaos total, supervisé par le dictateur local Antón Castillo. Il est interprété avec par l'excellent Giancarlo Esposito...</p>
-         <button class="btn btn-sm mt-4 btn-accent">Voir plus</button>
+      <!-- Jeu à la une (aléatoire dans la gallerie) -->
+      <div class="w-full flex items-center">
+         <img src="../assets/games/pp/IMG-6277c1dd81fac1.30807447.png" alt="pp jeux" class='h-[9rem] drop-shadow-md'>
+         <div class="mx-6">
+            <p class="font-bold text-4xl drop-shadow-md text-accent">FAR CRY 6</p>
+            <p class="text-lg drop-shadow-sm text-primary">Far Cry 6 emmène les joueurs sur l'île de Yara, qui ressemble à s'y méprendre à Cuba, tout comme l'environnement de Far Cry 4 était calqué sur le Tibet et le Népal. L'île est dans un état de chaos total, supervisé par le dictateur local Antón Castillo. Il est interprété avec par l'excellent Giancarlo Esposito...</p>
+            <button class="btn btn-sm mt-4 btn-accent">Voir plus</button>
+         </div>
       </div>
-   </div>
-   <!-- Jeu à la une (aléatoire dans la gallerie) -->
+      <!-- Jeu à la une (aléatoire dans la gallerie) -->
 
    </div>
 
@@ -24,7 +24,7 @@
 
       <div class='p-6 col-start-1 h-auto col-end-7 flex items-center bg-neutral rounded-md'>
 
-      <!-- Carousel (12 jeux aléatoires) -->
+         <!-- Carousel (12 jeux aléatoires) -->
          <div class="swiper mySwiper">
             <div class="swiper-wrapper">
                <div class="swiper-slide"><img src="../assets/games/pp/IMG-6277c1dd81fac1.30807447.png" alt="pp jeux" class='h-[15rem]'></div>
@@ -42,13 +42,13 @@
             </div>
             <div class="swiper-pagination"></div>
          </div>
-      <!-- Carousel (12 jeux aléatoires) -->
+         <!-- Carousel (12 jeux aléatoires) -->
       </div>
       <!-- Top jeux -->
 
-            <!-- Top user -->
-            <div class='col-start-1 col-end-6'>
-            
+      <!-- Top user -->
+      <div class='col-start-1 col-end-6'>
+
          <h1 class='font-bold text-xl text-accent'><i class="fa-solid fa-trophy"></i> MEILLEURS UTILISATEURS</h1>
          <!-- foreach pour afficher tous les users -->
 
@@ -56,8 +56,8 @@
             <!-- un user -->
             <div class="card w-80 bg-base-100 shadow-xl indicator ">
 
-            <span class="indicator-item indicator-top indicator-start"><img src="./assets/goldmedal.png" alt="" width="60em"></span>
-            
+               <span class="indicator-item indicator-top indicator-start"><img src="./assets/goldmedal.png" alt="" width="60em"></span>
+
                <figure class="px-10 pt-10">
                   <img src="./assets/pp.jpg" alt="pp" class="rounded-xl" width="124em" />
                </figure>
@@ -65,61 +65,61 @@
                <div class="card-body flex items-center justify-center text-center">
                   <h2 class="text-2xl font-semibold text-accent">KiSEi</h2>
                   <div class="flex flex-col w-full border-opacity-50">
-                  <div class="divider"></div>
-                  <div class="flex space place-content-evenly">
-                     <div>
-                        <p class="text-lg font-bold">EXP</p>
-                        <p><i class="fa-solid fa-stars"></i>127</p>
+                     <div class="divider"></div>
+                     <div class="flex space place-content-evenly">
+                        <div>
+                           <p class="text-lg font-bold">EXP</p>
+                           <p><i class="fa-solid fa-stars"></i>127</p>
+                        </div>
+                        <div>
+                           <p class="text-lg font-bold">POSTS</p>
+                           <p>3431</p>
+                        </div>
                      </div>
-                     <div>
-                        <p class="text-lg font-bold">POSTS</p>
-                        <p>3431</p>
+                     <div class="card-actions mt-4 self-center">
+                        <button class="btn btn-accent">Son profil</button>
                      </div>
-                  </div>
-                  <div class="card-actions mt-4 self-center">
-                     <button class="btn btn-accent">Son profil</button>
-                  </div>
                   </div>
                </div>
             </div>
             <!-- un user -->
-
-            <!-- un user -->
-          <div class="card w-80 bg-base-100 shadow-xl indicator ">
-
-      <span class="indicator-item indicator-top indicator-start"><img src="./assets/silvermedal.png" alt="" width="60em"></span>
-
-         <figure class="px-10 pt-10">
-            <img src="./assets/pp3.jpg" alt="pp" class="rounded-xl" width="124em" />
-         </figure>
-
-         <div class="card-body flex items-center justify-center text-center">
-            <h2 class="text-2xl font-semibold text-accent">Mirinae</h2>
-            <div class="flex flex-col w-full border-opacity-50">
-            <div class="divider"></div>
-            <div class="flex space place-content-evenly">
-               <div>
-                  <p class="text-lg font-bold">EXP</p>
-                  <p><i class="fa-solid fa-stars"></i>114</p>
-               </div>
-               <div>
-                  <p class="text-lg font-bold">POSTS</p>
-                  <p>3335</p>
-               </div>
-            </div>
-            <div class="card-actions mt-4 self-center">
-               <button class="btn btn-accent">Son profil</button>
-            </div>
-            </div>
-         </div>
-      </div>
-      <!-- un user -->
 
             <!-- un user -->
             <div class="card w-80 bg-base-100 shadow-xl indicator ">
 
-            <span class="indicator-item indicator-top indicator-start"><img src="./assets/bronzemedal.png" alt="" width="60em"></span>
-            
+               <span class="indicator-item indicator-top indicator-start"><img src="./assets/silvermedal.png" alt="" width="60em"></span>
+
+               <figure class="px-10 pt-10">
+                  <img src="./assets/pp3.jpg" alt="pp" class="rounded-xl" width="124em" />
+               </figure>
+
+               <div class="card-body flex items-center justify-center text-center">
+                  <h2 class="text-2xl font-semibold text-accent">Mirinae</h2>
+                  <div class="flex flex-col w-full border-opacity-50">
+                     <div class="divider"></div>
+                     <div class="flex space place-content-evenly">
+                        <div>
+                           <p class="text-lg font-bold">EXP</p>
+                           <p><i class="fa-solid fa-stars"></i>114</p>
+                        </div>
+                        <div>
+                           <p class="text-lg font-bold">POSTS</p>
+                           <p>3335</p>
+                        </div>
+                     </div>
+                     <div class="card-actions mt-4 self-center">
+                        <button class="btn btn-accent">Son profil</button>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <!-- un user -->
+
+            <!-- un user -->
+            <div class="card w-80 bg-base-100 shadow-xl indicator ">
+
+               <span class="indicator-item indicator-top indicator-start"><img src="./assets/bronzemedal.png" alt="" width="60em"></span>
+
                <figure class="px-10 pt-10">
                   <img src="./assets/pp2.jpg" alt="pp" class="rounded-xl" width="124em" />
                </figure>
@@ -127,54 +127,54 @@
                <div class="card-body flex items-center justify-center text-center">
                   <h2 class="text-2xl font-semibold text-accent">Skeim</h2>
                   <div class="flex flex-col w-full border-opacity-50">
-                  <div class="divider"></div>
-                  <div class="flex space place-content-evenly">
-                     <div>
-                        <p class="text-lg font-bold">EXP</p>
-                        <p><i class="fa-solid fa-stars"></i>127</p>
+                     <div class="divider"></div>
+                     <div class="flex space place-content-evenly">
+                        <div>
+                           <p class="text-lg font-bold">EXP</p>
+                           <p><i class="fa-solid fa-stars"></i>127</p>
+                        </div>
+                        <div>
+                           <p class="text-lg font-bold">POSTS</p>
+                           <p>3431</p>
+                        </div>
                      </div>
-                     <div>
-                        <p class="text-lg font-bold">POSTS</p>
-                        <p>3431</p>
+                     <div class="card-actions mt-4 self-center">
+                        <button class="btn btn-accent">Son profil</button>
                      </div>
-                  </div>
-                  <div class="card-actions mt-4 self-center">
-                     <button class="btn btn-accent">Son profil</button>
-                  </div>
                   </div>
                </div>
             </div>
             <!-- un user -->
 
-                        <!-- un user -->
-                        <div class="card w-80 bg-base-100 shadow-xl">
+            <!-- un user -->
+            <div class="card w-80 bg-base-100 shadow-xl">
 
 
-   <figure class="px-10 pt-10">
-      <img src="./assets/pp4.jpg" alt="pp" class="rounded-xl" width="124em" />
-   </figure>
+               <figure class="px-10 pt-10">
+                  <img src="./assets/pp4.jpg" alt="pp" class="rounded-xl" width="124em" />
+               </figure>
 
-   <div class="card-body flex items-center justify-center text-center">
-      <h2 class="text-2xl font-semibold text-accent">Nostradamus</h2>
-      <div class="flex flex-col w-full border-opacity-50">
-      <div class="divider"></div>
-      <div class="flex space place-content-evenly">
-         <div>
-            <p class="text-lg font-bold">EXP</p>
-            <p><i class="fa-solid fa-stars"></i>127</p>
-         </div>
-         <div>
-            <p class="text-lg font-bold">POSTS</p>
-            <p>3431</p>
-         </div>
-      </div>
-      <div class="card-actions mt-4 self-center">
-         <button class="btn btn btn-accent">Son profil</button>
-      </div>
-      </div>
-   </div>
-</div>
-<!-- un user -->
+               <div class="card-body flex items-center justify-center text-center">
+                  <h2 class="text-2xl font-semibold text-accent">Nostradamus</h2>
+                  <div class="flex flex-col w-full border-opacity-50">
+                     <div class="divider"></div>
+                     <div class="flex space place-content-evenly">
+                        <div>
+                           <p class="text-lg font-bold">EXP</p>
+                           <p><i class="fa-solid fa-stars"></i>127</p>
+                        </div>
+                        <div>
+                           <p class="text-lg font-bold">POSTS</p>
+                           <p>3431</p>
+                        </div>
+                     </div>
+                     <div class="card-actions mt-4 self-center">
+                        <button class="btn btn-accent">Son profil</button>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <!-- un user -->
 
          </div>
 

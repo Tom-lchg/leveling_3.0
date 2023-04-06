@@ -36,7 +36,7 @@ $user = $controler->user->userModel->getUserProfil('kisei');
                <div class='flex gap-4 items-center'>
                   <div class="avatar">
                      <div class="w-10 rounded-full">
-                     <img src="data:<?= $user['userTypeImg'] ?>;base64,<?= base64_encode($user['userImg']) ?>" alt="">
+                        <img src="data:<?= $user['userTypeImg'] ?>;base64,<?= base64_encode($user['userImg']) ?>" alt="">
                      </div>
                   </div>
                   <a href="./?page=profile&user=<?= $_SESSION['pseudo'] ?>" class='text-white'> <?= $_SESSION['pseudo'] ?> </a>
@@ -78,8 +78,8 @@ $user = $controler->user->userModel->getUserProfil('kisei');
    </div>
 
    <div class="col-start-1 col-end-6 px-[15em]">
-   <?php require_once('./page/router.php'); ?>
-   </div>            
+      <?php require_once('./page/router.php'); ?>
    </div>
+</div>
 
-   <?php require('./global/header-close.php') ?>
+<?php require('./global/header-close.php') ?>
