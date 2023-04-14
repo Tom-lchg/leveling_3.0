@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : ven. 31 mars 2023 à 14:56
--- Version du serveur : 5.7.36
--- Version de PHP : 7.4.26
+-- Généré le : ven. 14 avr. 2023 à 11:50
+-- Version du serveur :  5.7.31
+-- Version de PHP : 7.3.21
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -240,18 +240,18 @@ CREATE TABLE IF NOT EXISTS `tblgames` (
 --
 
 INSERT INTO `tblgames` (`idGame`, `gameName`, `gameDescription`, `gameGenre`, `gameAvis`, `gameClassification`, `gameMode`, `gameImg`, `gameTrailer`, `gameImgOther`) VALUES
-(21, 'Assassin s Creed : Valhalla', 'Assassins Creed Valhalla est un RPG en monde ouvert se déroulant pendant l âge des vikings. Vous incarnez Eivor, un viking du sexe de votre choix qui a quitté la Norvège pour trouver la fortune et la gloire en Angleterre.', 'Open World | Action RPG | Infiltration', '18', '18', 'Jouable en solo', 'IMG-6277a0b2c5b848.96970598.png', 'AppJeuPc', 'IMG-6277a0b2c60264.74180432.jpg'),
-(22, 'Far Cry 5', 'Far Cry 5 est un jeu d action / aventure jouable en solo. Bienvenue Ã  Hope County dans le Montana, terre de libertÃ© et de bravoure qui abrite un culte fanatique prÃªchant la fin du monde : Edenâ€™s Gate.', 'Infiltration | Action | FPS', '14', '18', 'Jouable en solo | Multi en ligne', 'IMG-634fc658e8f505.99867825.jpg', 'AppJeuPc', 'IMG-6277c1dd824bc4.76072935.jpg'),
-(23, 'Far Cry 6', 'Far Cry 6 est un FPS qui se déroule sur l île tropicale fictive de Yara. Vous incarnez Dani Rojas, un membre de la guérilla locale qui lutte contre le régime oppressif du dictateur du pays.', 'Open World | FPS', '16', '18', 'Jouable en solo | Multi en ligne', 'IMG-6277c1dd81fac1.30807447.png', 'AppJeuPc', 'IMG-6277c1dd824bc4.76072935.jpg'),
-(24, 'FOR HONOR', 'For Honor est un TPS à l ère médiévale, où les joueurs peuvent incarner un chevalier, un viking ou un samouraï et affronter leurs adversaires dans un mode solo ou un multijoueur compétitif. ', 'Action', '15', '18', 'Jouable en solo | Multi en ligne | Multi en coopÃ©ratif | Multi en compÃ©titif', 'IMG-634d764b7150e7.77061213.jpg', 'AppJeuConsole', 'IMG-634d75c243ae64.57433881.jpg'),
-(25, 'Ghost Recon : Wildlands', 'Ghost Recon Wildlands, sur PC, PS4 et One est un jeu d action Ã  la troisiÃ¨me personne, jouable en solo ou en multi. Le joueur y incarne diffÃ©rents membres d une Ã©quipe de soldats avec comme objectif d exÃ©cuter plusieurs missions concernant le trafic de drogue et dÃ©manteler le cartel de Santa Blanca en Bolivie.', 'TPS | Infiltration', '17', '18', 'Jouable en solo | Multi en local | Multi en ligne | Multi en coopÃ©ratif | Multi en compÃ©titif', 'IMG-6352a39cf05449.12183155.jpg', 'AppJeuConsole', 'IMG-6352a39cf09d87.45088050.jpg'),
-(26, 'Just Dance 2022', 'Le nouvel opus de la licence rythmée d Ubisoft propose pas moins de 40 nouveaux titres, parmi lesquels on retrouve notamment, Todrick Hall, avec son nouveau titre Nails, Hair, Hips, Heels, Imagine Dragons ou encore Ciara.', 'Danse ', '15', '12', 'Jouable en solo | Multi en ligne', 'IMG-6277cbba06bf30.27950667.jpg', 'AppJeuConsole', 'IMG-6277cbba070b55.21555159.png'),
-(27, 'Riders Republic', 'Nouveau jeu du studio du jeu de sports extrêmes Steep, Riders Republic nous embarque dans un univers déjanté où les biens nommés Riders règnent en maître.', 'Compilation | Sport', '14', '3', 'Multi en ligne | Multi en compétitif', 'IMG-627c1d61578b82.37357556.jpg', 'AppJeuConsole', 'IMG-627c1d6157dad5.88750114.jpg'),
-(28, 'Rayman Mini', 'Rayman Mini exÃ©cute Ã  la lettre prÃ¨s les mÃ©caniques de jeu de Rayman Jungle Run, cependant, ici, votre personnage est de taille rÃ©duite. Bien Ã©videmment, votre objectif est toujours de courir de gauche Ã  droite pour Ã©viter les nombreux obstacles qui se dressent sur votre chemin.', 'Runner | Plate-Forme', '16', '3', 'Jouable en solo', 'IMG-634fc2bd054a67.66216490.png', 'AppJeuConsole', 'IMG-634fc1d4bcb9b0.40113215.png'),
-(29, 'Tom Clancys Rainbow Six Siege', 'Tom Clancys Rainbow Six Siege est un jeu d action tactique appartenant à la fameuse série du même nom. Cet épisode est principalement axé sur le multijoueur et l importance du jeu en équipe, avec des environnements facilement destructibles.', 'Action | FPS | Tactique | Shooter', '19', '18', 'Jouable en solo | Multi en ligne | Multi en coopératif', 'IMG-6277c4d6a07249.43984088.png', 'AppJeuPc', 'IMG-6277c4d6a0cbc4.07722543.jpg'),
-(30, 'Tom Clancys The Division 2', 'Tom Clancys The Division est un jeu d action en ligne où le joueur est au cœur d un univers post-apocalyptique. Ce dernier doit jongler entre coopération, stratégie et technologie pour survivre dans un environnement hostile. Partez en compagnie de la Division pour sauver Washington D.C. de l effondrement.', 'Action | TPS | MMO', '15', '18', 'Jouable en solo | Multi en ligne', 'IMG-6277c6a22b28e2.44535644.jpg', 'AppJeuPc', 'IMG-6277c6a22b6de6.00832467.jpg'),
-(31, 'Trackmania', 'Trackmania Nations Remake est un jeu particulièrement populaire en ligne, notamment de par son aspect sandbox et compétitif. Dans ce nouvel opus on pourra compter sur un remaniement graphique et encore plus de libertés sur la création de circuits personnalisés avec de nouveaux éléments de décors et de piste.', 'Course', '17', '8', 'Jouable en solo | Multi en ligne', 'IMG-627c1d61578b82.37357550.jpg', 'AppJeuPc', 'IMG-6277cd24928972.77357145.jpg'),
-(32, 'Watch Dogs 2', 'Watch Dogs 2 est un jeu d aventure en monde ouvert faisant suite aux événements du premier épisode. Ce nouvel opus de la franchise nous entraîne au cœur de la ville de San Francisco dans la peau du nouveau héros Marcus Holloway, un jeune hacker surdoué victime des algorithmes prédictifs du ctOS 2.0 qui l’accusent d’un crime qu’il n’a pas commis.', 'Aventure | Infiltration | Action', '17', '18', 'Jouable en solo', 'IMG-6277c834d664b1.00746124.jpg', 'AppJeuPc', 'IMG-6277c834d6a5d1.31294186.jpg');
+(21, 'Assassin s Creed : Valhalla', 'Assassins Creed Valhalla est un RPG en monde ouvert se déroulant pendant l âge des vikings. Vous incarnez Eivor, un viking du sexe de votre choix qui a quitté la Norvège pour trouver la fortune et la gloire en Angleterre.', 'Open World | Action RPG | Infiltration', '18', '18', 'Jouable en solo', 'IMG-6277a0b2c5b848.96970598.png', 'https://www.youtube.com/embed/DiqaG1TWdgM', 'IMG-6277a0b2c60264.74180432.jpg'),
+(22, 'Far Cry 5', 'Far Cry 5 est un jeu d action / aventure jouable en solo. Bienvenue Ã  Hope County dans le Montana, terre de libertÃ© et de bravoure qui abrite un culte fanatique prÃªchant la fin du monde : Edenâ€™s Gate.', 'Infiltration | Action | FPS', '14', '18', 'Jouable en solo | Multi en ligne', 'IMG-634fc658e8f505.99867825.jpg', 'https://www.youtube.com/embed/dMdLoVt235Y', 'IMG-6277c1dd824bc4.76072935.jpg'),
+(23, 'Far Cry 6', 'Far Cry 6 est un FPS qui se déroule sur l île tropicale fictive de Yara. Vous incarnez Dani Rojas, un membre de la guérilla locale qui lutte contre le régime oppressif du dictateur du pays.', 'Open World | FPS', '16', '18', 'Jouable en solo | Multi en ligne', 'IMG-6277c1dd81fac1.30807447.png', 'https://www.youtube.com/embed/hliXO-ZNhIY', 'IMG-6277c1dd824bc4.76072935.jpg'),
+(24, 'FOR HONOR', 'For Honor est un TPS à l ère médiévale, où les joueurs peuvent incarner un chevalier, un viking ou un samouraï et affronter leurs adversaires dans un mode solo ou un multijoueur compétitif. ', 'Action', '15', '18', 'Jouable en solo | Multi en ligne | Multi en coopÃ©ratif | Multi en compÃ©titif', 'IMG-634d764b7150e7.77061213.jpg', 'https://www.youtube.com/embed/T_23XmPTfRo', 'IMG-634d75c243ae64.57433881.jpg'),
+(25, 'Ghost Recon : Wildlands', 'Ghost Recon Wildlands, sur PC, PS4 et One est un jeu d action Ã  la troisiÃ¨me personne, jouable en solo ou en multi. Le joueur y incarne diffÃ©rents membres d une Ã©quipe de soldats avec comme objectif d exÃ©cuter plusieurs missions concernant le trafic de drogue et dÃ©manteler le cartel de Santa Blanca en Bolivie.', 'TPS | Infiltration', '17', '18', 'Jouable en solo | Multi en local | Multi en ligne | Multi en coopÃ©ratif | Multi en compÃ©titif', 'IMG-6352a39cf05449.12183155.jpg', 'https://www.youtube.com/embed/kJMWzIUPqhk', 'IMG-6352a39cf09d87.45088050.jpg'),
+(26, 'Just Dance 2022', 'Le nouvel opus de la licence rythmée d Ubisoft propose pas moins de 40 nouveaux titres, parmi lesquels on retrouve notamment, Todrick Hall, avec son nouveau titre Nails, Hair, Hips, Heels, Imagine Dragons ou encore Ciara.', 'Danse ', '15', '12', 'Jouable en solo | Multi en ligne', 'IMG-6277cbba06bf30.27950667.jpg', 'https://www.youtube.com/embed/ielBKEQ3p9U', 'IMG-6277cbba070b55.21555159.png'),
+(27, 'Riders Republic', 'Nouveau jeu du studio du jeu de sports extrêmes Steep, Riders Republic nous embarque dans un univers déjanté où les biens nommés Riders règnent en maître.', 'Compilation | Sport', '14', '3', 'Multi en ligne | Multi en compétitif', 'IMG-627c1d61578b82.37357556.jpg', 'https://www.youtube.com/embed/cP3a45jqTqo', 'IMG-627c1d6157dad5.88750114.jpg'),
+(28, 'Rayman Mini', 'Rayman Mini exÃ©cute Ã  la lettre prÃ¨s les mÃ©caniques de jeu de Rayman Jungle Run, cependant, ici, votre personnage est de taille rÃ©duite. Bien Ã©videmment, votre objectif est toujours de courir de gauche Ã  droite pour Ã©viter les nombreux obstacles qui se dressent sur votre chemin.', 'Runner | Plate-Forme', '16', '3', 'Jouable en solo', 'IMG-634fc2bd054a67.66216490.png', 'https://www.youtube.com/embed/wDa4LbcN4d4', 'IMG-634fc1d4bcb9b0.40113215.png'),
+(29, 'Tom Clancys Rainbow Six Siege', 'Tom Clancys Rainbow Six Siege est un jeu d action tactique appartenant à la fameuse série du même nom. Cet épisode est principalement axé sur le multijoueur et l importance du jeu en équipe, avec des environnements facilement destructibles.', 'Action | FPS | Tactique | Shooter', '19', '18', 'Jouable en solo | Multi en ligne | Multi en coopératif', 'IMG-6277c4d6a07249.43984088.png', 'https://www.youtube.com/embed/CSB_LTDL5eU', 'IMG-6277c4d6a0cbc4.07722543.jpg'),
+(30, 'Tom Clancys The Division 2', 'Tom Clancys The Division est un jeu d action en ligne où le joueur est au cœur d un univers post-apocalyptique. Ce dernier doit jongler entre coopération, stratégie et technologie pour survivre dans un environnement hostile. Partez en compagnie de la Division pour sauver Washington D.C. de l effondrement.', 'Action | TPS | MMO', '15', '18', 'Jouable en solo | Multi en ligne', 'IMG-6277c6a22b28e2.44535644.jpg', 'https://www.youtube.com/embed/Y08cTv1JDIA', 'IMG-6277c6a22b6de6.00832467.jpg'),
+(31, 'Trackmania', 'Trackmania Nations Remake est un jeu particulièrement populaire en ligne, notamment de par son aspect sandbox et compétitif. Dans ce nouvel opus on pourra compter sur un remaniement graphique et encore plus de libertés sur la création de circuits personnalisés avec de nouveaux éléments de décors et de piste.', 'Course', '17', '8', 'Jouable en solo | Multi en ligne', 'IMG-627c1d61578b82.37357550.jpg', 'https://www.youtube.com/embed/BxublGcdCb4', 'IMG-6277cd24928972.77357145.jpg'),
+(32, 'Watch Dogs 2', 'Watch Dogs 2 est un jeu d aventure en monde ouvert faisant suite aux événements du premier épisode. Ce nouvel opus de la franchise nous entraîne au cœur de la ville de San Francisco dans la peau du nouveau héros Marcus Holloway, un jeune hacker surdoué victime des algorithmes prédictifs du ctOS 2.0 qui l’accusent d’un crime qu’il n’a pas commis.', 'Aventure | Infiltration | Action', '17', '18', 'Jouable en solo', 'IMG-6277c834d664b1.00746124.jpg', 'https://www.youtube.com/embed/_CJHiMnGHSI', 'IMG-6277c834d6a5d1.31294186.jpg');
 
 -- --------------------------------------------------------
 
@@ -371,8 +371,8 @@ INSERT INTO `tblgroups` (`idGroupe`, `groupeName`, `groupeDescription`, `groupeF
 
 DROP TABLE IF EXISTS `tblgroupsprivate`;
 CREATE TABLE IF NOT EXISTS `tblgroupsprivate` (
-  `idGroupe` int(3) NOT NULL,
-  `groupeMasquer` int(1) NOT NULL,
+  `idGroupe` int(11) NOT NULL,
+  `groupeMasquer` int(11) NOT NULL,
   `groupePrivateNbUsers` int(11) NOT NULL,
   `groupePrivateIdUser` int(11) NOT NULL,
   `groupeName` varchar(50) NOT NULL,
@@ -401,8 +401,8 @@ INSERT INTO `tblgroupsprivate` (`idGroupe`, `groupeMasquer`, `groupePrivateNbUse
 
 DROP TABLE IF EXISTS `tblgroupspublic`;
 CREATE TABLE IF NOT EXISTS `tblgroupspublic` (
-  `idGroupe` int(3) NOT NULL,
-  `groupeMasquer` int(1) NOT NULL,
+  `idGroupe` int(11) NOT NULL,
+  `groupeMasquer` int(11) NOT NULL,
   `groupePublicNbUsers` int(11) NOT NULL,
   `groupePublicidUser` int(11) NOT NULL,
   `groupeName` varchar(50) NOT NULL,
@@ -431,9 +431,9 @@ INSERT INTO `tblgroupspublic` (`idGroupe`, `groupeMasquer`, `groupePublicNbUsers
 
 DROP TABLE IF EXISTS `tblgroupsuser`;
 CREATE TABLE IF NOT EXISTS `tblgroupsuser` (
-  `idgroupsuser` int(3) NOT NULL AUTO_INCREMENT,
-  `idgroupe` int(4) DEFAULT NULL,
-  `iduser` int(4) DEFAULT NULL,
+  `idgroupsuser` int(11) NOT NULL AUTO_INCREMENT,
+  `idgroupe` int(11) DEFAULT NULL,
+  `iduser` int(11) DEFAULT NULL,
   PRIMARY KEY (`idgroupsuser`)
 ) ENGINE=MyISAM AUTO_INCREMENT=23 DEFAULT CHARSET=latin1;
 
@@ -462,7 +462,17 @@ CREATE TABLE IF NOT EXISTS `tblposts` (
   `nblikes` int(11) NOT NULL,
   `nbcommentaires` int(11) NOT NULL,
   PRIMARY KEY (`idPost`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `tblposts`
+--
+
+INSERT INTO `tblposts` (`idPost`, `fkIdUser`, `postContent`, `nblikes`, `nbcommentaires`) VALUES
+(1, 23, 'r', 0, 0),
+(2, 14, 'xxxx', 0, 0),
+(3, 14, '', 0, 0),
+(4, 14, '', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -514,7 +524,7 @@ CREATE TABLE IF NOT EXISTS `tblusersadmin` (
   `idUser` int(11) NOT NULL,
   `userAdminGrade` varchar(50) NOT NULL,
   `userAdminFonction` varchar(50) NOT NULL,
-  `userCanModify` int(1) NOT NULL,
+  `userCanModify` int(11) NOT NULL,
   `userNom` varchar(50) NOT NULL,
   `userPrenom` varchar(50) NOT NULL,
   `userAge` varchar(50) NOT NULL,
@@ -551,7 +561,7 @@ DROP TABLE IF EXISTS `tbluserssimple`;
 CREATE TABLE IF NOT EXISTS `tbluserssimple` (
   `idUser` int(11) NOT NULL,
   `userSimplePlateforme` varchar(50) NOT NULL,
-  `userSimpleCanModify` int(1) NOT NULL,
+  `userSimpleCanModify` int(11) NOT NULL,
   `userNom` varchar(50) NOT NULL,
   `userPrenom` varchar(50) NOT NULL,
   `userAge` varchar(50) NOT NULL,

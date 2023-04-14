@@ -34,8 +34,6 @@ module.exports = {
           neutral: '#2a2b2f',
           primary: '#AFAFAF',
           secondary: 'white',
-
-
         }
       }
     ]
