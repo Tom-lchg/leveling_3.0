@@ -78,7 +78,7 @@ $isFriend = $controler->friend->friendModel->isFriend($_SESSION['id'], $user['id
 
       <div class="col-start-1 col-end-2 container-home p-6">
 
-         <div class="font-bold w-full flex justify-center items-center h-14 bg-neutral text-primary  rounded-md">
+         <div class="font-bold w-full flex justify-center items-center h-9 bg-neutral text-primary  rounded-md">
             <p>À PROPOS</p>
          </div>
 
@@ -125,7 +125,7 @@ $isFriend = $controler->friend->friendModel->isFriend($_SESSION['id'], $user['id
                <!-- Block de l'activité -->
                <div class="container-home p-6">
 
-                  <div class="font-bold w-full flex justify-center items-center h-14 bg-neutral text-primary rounded-md">
+                  <div class="font-bold w-full flex justify-center items-center h-9 bg-neutral text-primary rounded-md">
                      <p>ACTIVITÉ</p>
                   </div>
 
