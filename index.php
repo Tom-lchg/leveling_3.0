@@ -13,7 +13,7 @@ $user = $controler->user->userModel->getUserProfil('kisei');
          <div class='mb-8 flex h-full items-center pl-8'>
             <img src="./assets/logo.png" alt="" class="w-10">
             <a href="./?page=home" class='item-nav'>
-               <h1 class='title ml-2 text-white'>LEVELING</h1>
+               <h1 class='title ml-2 text-white font-toxigenesis'>LEVELING</h1>
             </a>
          </div>
          <!-- Logo + titre -->
@@ -39,7 +39,7 @@ $user = $controler->user->userModel->getUserProfil('kisei');
                         <img src="data:<?= $user['userTypeImg'] ?>;base64,<?= base64_encode($user['userImg']) ?>" alt="">
                      </div>
                   </div>
-                  <a href="./?page=profile&user=<?= $_SESSION['pseudo'] ?>" class='text-white'> <?= $_SESSION['pseudo'] ?> </a>
+                  <a href="./?page=profile&user=<?= $_SESSION['pseudo'] ?>" class='text-white font-toxigenesis'> <?= $_SESSION['pseudo'] ?> </a>
                   <a href="./?page=deconnexion" class='item-nav'><button class="btn btn-error">Déconnexion</button></a>
                </div>
             <?php endif; ?>
@@ -58,6 +58,7 @@ $user = $controler->user->userModel->getUserProfil('kisei');
          <!-- Menu -->
          <div class='mb-8 flex h-full items-center pl-8'>
             <div class='flex gap-4 items-center'>
+               <a href="./?page=home"><button class="btn btn-ghost text-white btn-sm">Accueil</button></a>
                <a href="./?page=games"><button class="btn btn-ghost text-white btn-sm">Jeux</button></a>
                <a href="./?page=groupes"><button class="btn btn-ghost text-white btn-sm">Groupes</button></a>
             </div>
@@ -73,6 +74,7 @@ $user = $controler->user->userModel->getUserProfil('kisei');
          </div>
          <!-- Barre de recherche -->
       </div>
+      
 
 
    </div>
@@ -80,6 +82,10 @@ $user = $controler->user->userModel->getUserProfil('kisei');
    <div class="col-start-1 col-end-6 px-[15em]">
       <?php require_once('./page/router.php'); ?>
    </div>
+
 </div>
+
+
+
 
 <?php require('./global/header-close.php') ?>

@@ -12,7 +12,7 @@ $game = $controler->games->gameModel->findById($_GET['game'], 'idGame');
 
         <!-- Pseudo + Settings -->
         <div class='ml-[12em] top-60 absolute z-10 justify-between flex text-2xl h-auto text-white font-leger'>
-            <p class='drop-shadow-2xl border-accent font-bold text-3xl'><?= $game['gameName'] ?></p>
+            <p class='drop-shadow-2xl border-accent font-bold text-3xl font-toxigenesis'><?= $game['gameName'] ?></p>
         </div>
         <!-- Pseudo + Settings -->
 

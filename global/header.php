@@ -35,6 +35,7 @@ $controler = new Controler();
    <title>Leveling</title>
 </head>
 
-<body class='bg-primary'>
+<body class='bg-white'>
    <!-- require modal modification du profil -->
    <?php require('./components/modal-profil.php'); ?>
+   

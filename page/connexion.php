@@ -1,4 +1,4 @@
-<div class='p-8'>
+<div class='p-8 h-screen'>
    <h1 class='text-3xl font-leger'>Connexion</h1>
 
    <form action="../handler_formulaire/handler.php" class="max-w-2xl" method="POST">
