@@ -59,7 +59,7 @@ $user = $controler->user->userModel->getUserProfil('kisei');
          <div class='mb-8 flex h-full items-center pl-8'>
             <div class='flex gap-4 items-center'>
                <a href="./?page=games"><button class="btn btn-ghost text-white btn-sm">Jeux</button></a>
-               <a href="./?page=games"><button class="btn btn-ghost text-white btn-sm">Groupes</button></a>
+               <a href="./?page=groupes"><button class="btn btn-ghost text-white btn-sm">Groupes</button></a>
             </div>
          </div>
       </div>

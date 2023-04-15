@@ -7,7 +7,7 @@
          <input type="password" placeholder="Mot de passe" name='mdp' required class="inputForm" />
       </div>
       <div class='mt-4 flex gap-4'>
-         <button class="btn button" type='submit' name='btn-connexion'>Button</button>
+         <button class="btn button" type='submit' name='btn-connexion'>Connexion</button>
       </div>
    </form>
 </div>
