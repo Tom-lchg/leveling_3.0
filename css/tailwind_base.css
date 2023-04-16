@@ -13,6 +13,11 @@
    src: url("../assets/fonts/Poppins-Medium.ttf");
 }
 
+@font-face {
+   font-family: "Toxigenesis";
+   src: url("../assets/fonts/toxigenesis.otf");
+}
+
 /* classe réutilisable */
 @layer components {
    .title {

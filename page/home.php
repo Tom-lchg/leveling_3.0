@@ -1,6 +1,6 @@
 <div class='h-auto w-full'>
 
-   <h1 class='text-2xl text-black font-korium'>Bonjour a tous</h1>
+   <h1 class='text-2xl text-black'>Leveling</h1>
 
    <div class="w-full mt-10 flex items-center">
       <!-- Jeu à la une (aléatoire dans la gallerie) -->

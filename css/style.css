@@ -3262,6 +3262,10 @@ html {
   font-family: T1 Korium;
 }
 
+.font-toxi {
+  font-family: Toxigenesis;
+}
+
 .text-2xl {
   font-size: 1.5rem;
   line-height: 2rem;
@@ -3394,6 +3398,12 @@ html {
   font-family: "Poppins";
 
   src: url("../assets/fonts/Poppins-Medium.ttf");
+}
+
+@font-face {
+  font-family: "Toxigenesis";
+
+  src: url("../assets/fonts/toxigenesis.otf");
 }
 
 /* classe réutilisable */

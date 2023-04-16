@@ -11,7 +11,8 @@ module.exports = {
     extend: {
       fontFamily: {
         'korium': ['T1 Korium'],
-        'poppins': ['Poppins']
+        'poppins': ['Poppins'],
+        'toxi': ['Toxigenesis'],
       },
       gridTemplateColumns: {
         // custom grille
