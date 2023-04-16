@@ -6,7 +6,7 @@ $groupes = $controler->user->userModel->getAllGroupe($user['idUser']);
    
 <div class="container-home p-6">
 
-<div class="font-bold w-full flex justify-center items-center h-14 bg-neutral text-primary rounded-md"><p>GROUPES</p></div>
+<div class="font-bold w-full flex justify-center items-center h-9 bg-neutral text-primary rounded-md"><p>GROUPES</p></div>
 
 <div class="mt-2 text-justify">
 
@@ -29,7 +29,7 @@ $groupes = $controler->user->userModel->getAllGroupe($user['idUser']);
    <?php if (count($groupes) === 0) : ?>
       <div>
          <!-- ce bouton renvoie sur la modal qui est définit dans le fichier modal-profil -->
-         <label class='btn' for="modal-create-groupe">Créer un nouveau groupe</label>
+         <label class='btn bg-accent text-white border-accent hover:bg-[#1991FF] hover:text-white hover:border-[#1991FF] my-2' for="modal-create-groupe">Créer un nouveau groupe</label>
          <!-- ce bouton renvoie sur la modal qui est définit dans le fichier modal-profil -->
       </div>
    <?php endif; ?>

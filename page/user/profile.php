@@ -21,7 +21,7 @@ $isFriend = $controler->friend->friendModel->isFriend($_SESSION['id'], $user['id
       <!-- Pseudo + Settings -->
       <div class='ml-56 pr-2 relative z-10 justify-between flex gap-1 text-2xl h-full pb-1 items-end text-white font-leger'>
 
-         <p class='drop-shadow-sm border-accent font-bold text-3xl'><?= $user['userPseudo'] ?></p>
+         <p class='drop-shadow-sm border-accent font-bold text-3xl font-toxigenesis'><?= $user['userPseudo'] ?></p>
 
          <!-- Button setting (uniquement afficher pour l'utilisateur connecté) -->
          <?php if (isset($_SESSION) && $_SESSION['id'] === $user['idUser']) : ?>
@@ -142,7 +142,7 @@ $isFriend = $controler->friend->friendModel->isFriend($_SESSION['id'], $user['id
 
                               <textarea class='textarea block w-full h-24 resize-none textarea-bordered ' placeholder='Que souhaitez-vous partager ?' name='content'></textarea>
 
-                              <button type='submit' name='btn-add-post' class='btn border-accent text-accent bg-white hover:bg-[#1991FF] hover:text-white hover:border-[#1991FF]'>Publier</button>
+                              <button type='submit' name='btn-add-post' class='btn bg-accent text-white border-accent hover:bg-[#1991FF] hover:text-white hover:border-[#1991FF]'>Publier</button>
                            </div>
 
                         </form>
@@ -166,7 +166,7 @@ $isFriend = $controler->friend->friendModel->isFriend($_SESSION['id'], $user['id
                                  <!-- Pseudo et @ -->
                                  <div class='flex gap-4 w-full'>
                                     <div>
-                                       <h3 class='font-leger text-accent'>
+                                       <h3 class='font-leger text-accent font-toxigenesis'>
                                           <a href="#">
                                              <?= $user['userPseudo'] ?>
                                           </a>

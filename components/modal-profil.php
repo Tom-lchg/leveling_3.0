@@ -58,10 +58,9 @@ if (isset($_SESSION['id'])) {
 
          <div class='flex flex-col gap-4 w-full '>
 
+            <input class='input input-bordered input-info w-full max-w-xs' type="text" placeholder="Nom de votre groupe" name='nomGroupe'>
 
-            <input class='inputForm bg-primary' type="text" placeholder="Nom de votre groupe" name='nomGroupe'>
-
-            <textarea class='textarea bg-primary block w-full h-44 resize-none' placeholder='Description de votre groupe' name='descGroupe'></textarea>
+            <textarea class='textarea textarea-accent' placeholder='Description de votre groupe' name='descGroupe'></textarea>
 
             <select class="select select-bordered w-full max-w-xs bg-primary" name='privacy'>
                <option value='publique'>Publique</option>

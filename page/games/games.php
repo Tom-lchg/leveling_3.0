@@ -5,7 +5,7 @@ $games = $controler->games->gameModel->getAll();
 <div class='h-auto p-8'>
 
    <?php if (!isset($_GET['game'])) : ?>
-      <h1 class='title'>GALLERIE DES JEUX</h1>
+      <h1 class='title font-toxigenesis'>GALLERIE DES JEUX</h1>
       <div class='flex gap-4 mt-4 flex-wrap'>
          <!-- foreach pour afficher tous les jeux -->
          <?php foreach ($games as $game) : ?>

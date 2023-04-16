@@ -27,6 +27,9 @@ module.exports = {
       },
       maxWidth: {
         web: '1920px'
+      },
+      fontFamily: {
+        'toxigenesis' :['toxigenesis', 'sans-serif']
       }
     },
   },

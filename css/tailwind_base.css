@@ -2,21 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Custom font */
 @font-face {
-   font-family: "T1 Korium";
-   src: url("../assets/fonts/T1Korium.ttf");
-}
-
-@font-face {
-   font-family: "Poppins";
-   src: url("../assets/fonts/Poppins-Medium.ttf");
-}
-
-@font-face {
-   font-family: "Toxigenesis";
+   font-family: "toxigenesis";
    src: url("../assets/fonts/toxigenesis.otf");
-}
+ }
 
 /* classe réutilisable */
 @layer components {
