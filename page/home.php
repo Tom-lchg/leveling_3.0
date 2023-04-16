@@ -1,7 +1,5 @@
 <div class='h-auto w-full'>
 
-   <h1 class='text-2xl text-black'>Leveling</h1>
-
    <div class="w-full mt-10 flex items-center">
       <!-- Jeu à la une (aléatoire dans la gallerie) -->
       <div class="w-full flex items-center">
