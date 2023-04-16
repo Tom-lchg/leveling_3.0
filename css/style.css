@@ -2978,10 +2978,6 @@ html {
   height: 2.5rem;
 }
 
-.h-4 {
-  height: 1rem;
-}
-
 .w-full {
   width: 100%;
 }
@@ -3262,6 +3258,10 @@ html {
   text-align: justify;
 }
 
+.font-korium {
+  font-family: T1 Korium;
+}
+
 .text-2xl {
   font-size: 1.5rem;
   line-height: 2rem;
@@ -3302,6 +3302,11 @@ html {
 .text-white {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+.text-black {
+  --tw-text-opacity: 1;
+  color: rgb(0 0 0 / var(--tw-text-opacity));
 }
 
 .text-accent {
@@ -3375,6 +3380,20 @@ html {
   transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
+}
+
+/* Custom font */
+
+@font-face {
+  font-family: "T1 Korium";
+
+  src: url("../assets/fonts/T1Korium.ttf");
+}
+
+@font-face {
+  font-family: "Poppins";
+
+  src: url("../assets/fonts/Poppins-Medium.ttf");
 }
 
 /* classe réutilisable */

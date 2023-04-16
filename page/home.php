@@ -1,7 +1,8 @@
 <div class='h-auto w-full'>
 
-   <div class="w-full mt-10 flex items-center">
+   <h1 class='text-2xl text-black font-korium'>Bonjour a tous</h1>
 
+   <div class="w-full mt-10 flex items-center">
       <!-- Jeu à la une (aléatoire dans la gallerie) -->
       <div class="w-full flex items-center">
          <img src="../assets/games/pp/IMG-6277c1dd81fac1.30807447.png" alt="pp jeux" class='h-[9rem] drop-shadow-md'>

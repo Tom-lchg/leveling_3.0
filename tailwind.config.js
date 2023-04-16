@@ -9,6 +9,10 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        'korium': ['T1 Korium'],
+        'poppins': ['Poppins']
+      },
       gridTemplateColumns: {
         // custom grille
         'layout': '300px 1fr',
