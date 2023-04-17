@@ -1,10 +1,9 @@
 <div class='h-auto w-full'>
 
    <div class="w-full mt-10 flex items-center">
-
       <!-- Jeu à la une (aléatoire dans la gallerie) -->
       <div class="w-full flex items-center">
-         <img src="../assets/games/pp/IMG-6277c1dd81fac1.30807447.png" alt="pp jeux" class='h-[9rem] drop-shadow-md'>
+         <img src="../assets/games/pp/IMG-6277c1dd81fac1.30807447.png" alt="pp jeux" class='h-48 drop-shadow-md'>
          <div class="mx-6">
             <p class="font-bold text-4xl drop-shadow-md text-accent">FAR CRY 65</p>
             <p class="text-lg drop-shadow-sm text-primary">Far Cry 6 emmène les joueurs sur l'île de Yara, qui ressemble à s'y méprendre à Cuba, tout comme l'environnement de Far Cry 4 était calqué sur le Tibet et le Népal. L'île est dans un état de chaos total, supervisé par le dictateur local Antón Castillo. Il est interprété avec par l'excellent Giancarlo Esposito...</p>
@@ -63,7 +62,7 @@
                </figure>
 
                <div class="card-body flex items-center justify-center text-center">
-                  <h2 class="text-2xl font-semibold text-accent">KiSEi</h2>
+                  <h2 class="text-2xl font-semibold text-accent font-toxigenesis">KiSEi</h2>
                   <div class="flex flex-col w-full border-opacity-50">
                      <div class="divider"></div>
                      <div class="flex space place-content-evenly">
@@ -94,7 +93,7 @@
                </figure>
 
                <div class="card-body flex items-center justify-center text-center">
-                  <h2 class="text-2xl font-semibold text-accent">Mirinae</h2>
+                  <h2 class="text-2xl font-semibold text-accent font-toxigenesis">Mirinae</h2>
                   <div class="flex flex-col w-full border-opacity-50">
                      <div class="divider"></div>
                      <div class="flex space place-content-evenly">
@@ -125,7 +124,7 @@
                </figure>
 
                <div class="card-body flex items-center justify-center text-center">
-                  <h2 class="text-2xl font-semibold text-accent">Skeim</h2>
+                  <h2 class="text-2xl font-semibold text-accent font-toxigenesis">Skeim</h2>
                   <div class="flex flex-col w-full border-opacity-50">
                      <div class="divider"></div>
                      <div class="flex space place-content-evenly">
@@ -155,7 +154,7 @@
                </figure>
 
                <div class="card-body flex items-center justify-center text-center">
-                  <h2 class="text-2xl font-semibold text-accent">Nostradamus</h2>
+                  <h2 class="text-2xl font-semibold text-accent font-toxigenesis">Nostradamus</h2>
                   <div class="flex flex-col w-full border-opacity-50">
                      <div class="divider"></div>
                      <div class="flex space place-content-evenly">
@@ -219,17 +218,17 @@
                         </div>
                         <div class="col-start-2 col-end-3 relative">
 
-                           <!-- Pseudo et @ -->
+                           <!-- Pseudo -->
                            <div class='flex gap-4 w-full'>
                               <div>
-                                 <h3 class='font-semibold text-accent font-xl'>
+                                 <h3 class='font-semibold text-accent font-xl font-toxigenesis'>
                                     <a href="#">
                                        <?= $post['userPseudo'] ?>
                                     </a>
                                  </h3>
                               </div>
                            </div>
-                           <!-- Pseudo et @ -->
+                           <!-- Pseudo -->
 
                            <!-- Afficher uniquement si on a un user connecté -->
                            <?php if (isset($_SESSION['id'])) : ?>

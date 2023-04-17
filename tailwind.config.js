@@ -9,6 +9,11 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        'korium': ['T1 Korium'],
+        'poppins': ['Poppins'],
+        'toxi': ['Toxigenesis'],
+      },
       gridTemplateColumns: {
         // custom grille
         'layout': '300px 1fr',
@@ -22,6 +27,9 @@ module.exports = {
       },
       maxWidth: {
         web: '1920px'
+      },
+      fontFamily: {
+        'toxigenesis' :['toxigenesis', 'sans-serif']
       }
     },
   },
@@ -34,8 +42,6 @@ module.exports = {
           neutral: '#2a2b2f',
           primary: '#AFAFAF',
           secondary: 'white',
-
-
         }
       }
     ]
