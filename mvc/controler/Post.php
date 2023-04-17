@@ -21,4 +21,5 @@ class Post
       $content = htmlspecialchars($data['content']);
       $this->postModel->createPost($content);
    }
+   
 }

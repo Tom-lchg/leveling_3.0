@@ -43,10 +43,10 @@ class Post
       return $stmt->fetchAll();
    }
 
-   public function delPost($idpost)
+   public function delPost($idpost, $iduser)
    {
       $sql = "DELETE FROM tblposts WHERE idPost = :idpost and fkIdUser = :iduser";
-      $a = [":idpost" => $idpost, ":iduser " => $_SESSION['id']];
+      $a = [":idpost" => $idpost, ":iduser" => $iduser];
       $this->pdo->prepare($sql)->execute($a);
    }
 
@@ -56,5 +56,13 @@ class Post
       $stmt = $this->pdo->prepare($sql);
       $stmt->execute([":id" => $iduser]);
       return $stmt->fetchAll();
+   }
+
+   
+   public function getMessage($idpost){
+      $sql ="SELECT postContent from tblPosts WHERE idPost = :idpost";
+      $stmt = $this->pdo->prepare($sql);
+      $stmt->execute([":id" => $iduser]);
+      return $stmt->fetch();
    }
 }

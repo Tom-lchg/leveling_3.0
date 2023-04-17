@@ -239,7 +239,13 @@
                                        <i class="fa-solid fa-ellipsis-vertical"></i>
                                     </label>
                                     <ul tabindex="0" class="dropdown-content menu p-2 shadow rounded-box w-52">
-                                       <li><button class="btn btn-success mb-2 text-white">Modifier</button></li>
+
+                                       <input type="text" hidden name="idpost" value="<?= $post['idPost'] ?>">
+                                       
+                                       <label for="modal-edit-post">
+                                          <li><button class="btn btn-success mb-2 text-white">Modifier</button></li>
+                                       </label>
+                                    
                                        <form action="../handler_formulaire/handler.php" method="post">
                                           <input type="text" hidden name="idpost" value="<?= $post['idPost'] ?>">
                                           <li><button type='submit' name="deletePost" class="btn btn-error text-white">Supprimer</button></li>
