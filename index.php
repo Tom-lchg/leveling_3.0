@@ -13,7 +13,7 @@ $user = $controler->user->userModel->getUserProfil('kisei');
          <div class='mb-8 flex h-full items-center pl-8'>
             <img src="./assets/logo.png" alt="" class="w-10">
             <a href="./?page=home" class='item-nav'>
-               <h1 class='title ml-2 text-white font-toxigenesis'>LEVELING</h1>
+               <h1 class='title ml-2 text-white font-toxigenesis'>LEVELISNG</h1>
             </a>
          </div>
          <!-- Logo + titre -->
