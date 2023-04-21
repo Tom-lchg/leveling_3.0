@@ -58,11 +58,12 @@ class Post
       return $stmt->fetchAll();
    }
 
-   
-   public function getMessage($idpost){
-      $sql ="SELECT postContent from tblPosts WHERE idPost = :idpost";
+
+   public function getMessage($idpost)
+   {
+      $sql = "SELECT postContent from tblPosts WHERE idPost = :idpost";
       $stmt = $this->pdo->prepare($sql);
-      $stmt->execute([":id" => $iduser]);
+      // $stmt->execute([":id" => $iduser]);
       return $stmt->fetch();
    }
 }
