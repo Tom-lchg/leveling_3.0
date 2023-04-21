@@ -71,10 +71,17 @@ if (isset($_POST['btn-add-post-from-profil'])) {
 }
 
 
+//modif un post
+if (isset($_POST['editPost'])) {
+   $controler->post->postModel->getMessage($_POST['idpost']);
+}
+
 // delete un post
 if (isset($_POST['deletePost'])) {
-   $controler->post->postModel->delPost($_POST['idpost']);
-   header('Location: ../?page=home');
+   $controler->post->postModel->delPost($_POST['idpost'], $_SESSION['id']);
+   header("Location: ../?page=home");
+   
+   
 }
 
 // delete un post from profil
