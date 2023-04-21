@@ -48,7 +48,7 @@
       <!-- Top user -->
       <div class='col-start-1 col-end-6'>
 
-         <h1 class='font-bold text-xl text-accent'><i class="fa-solid fa-trophy"></i> MEILLEURS UTILISATEURS</h1>
+         <h1 class='font-bold text-xl text-accent'><i class="fa-solid fa-trophy"></i>MEILLEURS UTILISATEURS</h1>
          <!-- foreach pour afficher tous les users -->
 
          <div class='mt-8 gap-4 justify-center container-home-no-bg p-4 flex'>
@@ -239,7 +239,9 @@
                                        <i class="fa-solid fa-ellipsis-vertical"></i>
                                     </label>
                                     <ul tabindex="0" class="dropdown-content menu p-2 shadow rounded-box w-52">
-                                       <li><button class="btn btn-success mb-2 text-white">Modifier</button></li>
+                                       <label for="modal-create-post" class="btn text-white btn-success mb-2">
+                                          Modifier
+                                       </label>
                                        <form action="../handler_formulaire/handler.php" method="post">
                                           <input type="text" hidden name="idpost" value="<?= $post['idPost'] ?>">
                                           <li><button type='submit' name="deletePost" class="btn btn-error text-white">Supprimer</button></li>
