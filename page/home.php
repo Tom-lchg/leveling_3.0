@@ -3,7 +3,7 @@
    <div class="w-full mt-10 flex items-center">
       <!-- Jeu à la une (aléatoire dans la gallerie) -->
       <div class="w-full flex items-center">
-         <img src="../assets/games/pp/IMG-6277c1dd81fac1.30807447.png" alt="pp jeux" class='h-48 drop-shadow-md'>
+         <img src="../assets/games/pp/IMG-6277c1dd81fac1.30807447.png" alt="pp jeux" class='h-48 drop-shadow-md rounded-md'>
          <div class="mx-6">
             <p class="font-bold text-4xl text-accent font-toxigenesis">FAR CRY 6</p>
             <p class="text-lg drop-shadow-sm text-primary">Far Cry 6 emmène les joueurs sur l'île de Yara, qui ressemble à s'y méprendre à Cuba, tout comme l'environnement de Far Cry 4 était calqué sur le Tibet et le Népal. L'île est dans un état de chaos total, supervisé par le dictateur local Antón Castillo. Il est interprété avec par l'excellent Giancarlo Esposito...</p>
