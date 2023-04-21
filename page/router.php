@@ -10,6 +10,9 @@ if (isset($_GET['page'])) {
       case 'games':
          require('./page/games/games.php');
          break;
+      case 'groupes':
+         require('./page/groupes/groupes.php');
+         break;
       case 'inscription':
          require('inscription.php');
          break;

@@ -125,9 +125,11 @@ if (isset($_GET['updatePost'])) {
 
          <div class='flex flex-col gap-4 w-full '>
 
-            <textarea class='textarea block w-full h-44 resize-none' placeholder='Que voulez-vous partager ?' name='content'></textarea>
+            <input class='input input-bordered border-accent w-full placeholder:text-md' type="text" placeholder="Intitulé du sujet" name='nomSujet'>
 
-            <button type='submit' name='btn-add-post' class='btn btn-accent'>Créer</button>
+            <textarea class='textarea textarea-accent text-md textarea-xl' placeholder='Corp du sujet' name='descSujet'></textarea>
+
+            <button type='submit' name='btn-add-sujet' class='btn'>Publier</button>
          </div>
 
       </form>
