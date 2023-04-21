@@ -205,10 +205,6 @@
             <!-- Posts -->
             <div class="flex flex-col gap-6">
                <!-- foreach pour afficher tous les posts -->
-               <ul class="steps steps-vertical">
-
-                  </li>
-               </ul>
                <?php foreach ($posts as $post) : ?>
                   <!-- one post -->
                   <div class='bg-secondary h-auto relative p-2 rounded-lg shadow-lg'>
@@ -235,15 +231,15 @@
                               <!-- afficher uniquement si le post appartient au user connecté -->
                               <?php if ($post['fkIdUser'] === $_SESSION['id']) : ?>
                                  <div class="dropdown absolute right-0 top-0 z-10">
-                                    <label tabindex="0" class="btn-link btn-sm">
+                                    <label tabindex="<?= $post['idPost'] ?>" class="btn-link btn-sm">
                                        <i class="fa-solid fa-ellipsis-vertical"></i>
                                     </label>
-                                    <ul tabindex="0" class="dropdown-content menu p-2 shadow rounded-box w-52">
-                                       <label for="modal-edit-post" class="btn text-white btn-success mb-2">
+                                    <ul tabindex="<?= $post['idPost'] ?>" class="dropdown-content menu p-2 shadow rounded-box w-52">
+                                       <label for="modal-edit-post" id="modalEditPost" class="btn text-white btn-success mb-2">
                                           Modifier
                                        </label>
                                        <form action="../handler_formulaire/handler.php" method="post">
-                                          <input type="text" hidden name="idpost" value="<?= $post['idPost'] ?>">
+                                          <input type="text" hidden id="currentPostId" name="idpost" value="<?= $post['idPost'] ?>">
                                           <li><button type='submit' name="deletePost" class="btn btn-error text-white">Supprimer</button></li>
                                        </form>
                                     </ul>

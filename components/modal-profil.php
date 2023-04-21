@@ -104,11 +104,22 @@ if (isset($_SESSION['id'])) {
 
 
 <!-- Modal modifier un post -->
+
+<!-- Si on modifie un post alors on doit récupéré le content et l'id du post -->
+<?php
+$test = "c pas bon";
+if (isset($_GET['updatePost'])) {
+   $test = "c bon";
+}
+?>
+<!-- Si on modifie un post alors on doit récupéré le content et l'id du post -->
+
+
 <input type="checkbox" id="modal-edit-post" class="modal-toggle" />
 <div class="modal bg-modal">
    <div class="modal-box relative bg-secondary max-w-3xl">
-      <label for="modal-edit-post" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
-      <h3 class="text-lg font-bold">Modifier votre post</h3>
+      <label for="modal-edit-post" id="closeModalEditPost" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+      <h3 class="text-lg font-bold"><?= $test ?></h3>
 
       <form action="../handler_formulaire/handler.php" method="POST" class='mt-4 w-full' enctype="multipart/form-data">
 
