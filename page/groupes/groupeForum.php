@@ -116,7 +116,7 @@
                      <div>
                         <div class="flex justify-between">
                            <div>
-                              <button class="btn btn-accent">Nouveau sujet</button>
+                           <label class='btn bg-accent text-white border-accent hover:bg-[#1991FF] hover:text-white hover:border-[#1991FF] my-2' for="modal-create-sujet">NOUVEAU SUJET</label>
                               <button class="btn btn-accent"><i class="fa-solid fa-arrows-rotate"></i></button>
                            </div>
                            <div class="content-center flex items-center">
