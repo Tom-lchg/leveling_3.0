@@ -13,8 +13,8 @@
          <p class='drop-shadow-sm border-accent font-bold text-3xl font-toxigenesis'>Yu-Gi-Oh! Fans</p>
 
          <!-- Button setting (uniquement afficher pour le modo du groupe) -->
-            <label for="modal-profil" class="btn btn-ghost btn-sm">
-               <i class="fa-solid fa-gear"></i>
+            <label for="" class="btn btn-ghost btn-sm">
+               <i class="fa-solid fa-circle-plus"></i>
             </label>
          <!-- Button setting -->
 
@@ -128,6 +128,8 @@
 
                   </div>
 
+                  <?php if(!isset($_GET['sujet'])){ ?>
+
                   <div class="overflow-x-auto rounded-md border border-[#E9E9E9]">
                      <table class="w-full">
                         <!-- head -->
@@ -142,7 +144,7 @@
 
                            <!-- row 1 -->
                            <tr class="hover:text-accent cursor-pointer">
-                           <td><p class="m-4">Yu-Gi-Oh! Power of Chaos</p></td>
+                           <td><a href="./?page=groupes&groupe=yugioh&sujet=0"><p class="m-4">Yu-Gi-Oh! Power of Chaos</p></a></td>
                            <td>
                               <div class="flex items-center">
                                  <img src="../assets/pp.jpg" alt="" class="rounded-full w-10">
@@ -178,6 +180,12 @@
                         </tbody>
                      </table>
                      </div>
+                     
+                     <?php }else{ 
+
+                        require('groupeForumSujet.php');
+
+                     } ?>
 
                   </div>
                   
@@ -189,6 +197,17 @@
                   switch ($_GET['req']) {
                      case 'membres':
                         require('groupeMembres.php');
+                        break;
+                     default:
+                        header('location: ./?page=azrazr');
+                        break;
+                  }
+               };
+
+               if (isset($_GET['sujet'])) {
+                  switch ($_GET['sujet']) {
+                     case 'sujet':
+                        require('groupeForumSujet.php');
                         break;
                      default:
                         header('location: ./?page=azrazr');

@@ -11,7 +11,7 @@ $games = $controler->games->gameModel->getAll();
          <?php foreach ($games as $game) : ?>
             <div>
                <a href="./?page=games&game=<?= $game['idGame'] ?>">
-                  <img src="../assets/games/pp/<?= $game['gameImg'] ?>" alt="game" class='rounded-lg h-64'>
+                  <img src="../assets/games/pp/<?= $game['gameImg'] ?>" alt="game" class='rounded-lg h-56'>
                </a>
             </div>
          <?php endforeach; ?>
