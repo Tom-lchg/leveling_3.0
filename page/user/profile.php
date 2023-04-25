@@ -23,6 +23,34 @@ $isFriend = $controler->friend->friendModel->isFriend($_SESSION['id'], $user['id
 
          <p class='drop-shadow-sm border-accent font-bold text-3xl font-toxigenesis'><?= $user['userPseudo'] ?></p>
 
+
+      <!-- Bouton ajouter en ami, visible uniquement si on est sur le profil d'un autre user -->
+      <?php if ($user['idUser'] !== $_SESSION['id']) : ?>
+         <form action="../../handler_formulaire/handler.php" method="post">
+            <!-- input invisible qui stock l'id de la personne-->
+            <input type="text" name='iduser' value="<?= $user['idUser'] ?>" hidden>
+            <!-- input invisible qui stock l'id de la personne -->
+
+            <!-- input invisible qui stock le pseudo de la personne -->
+            <input type="text" name='pseudo' value="<?= $user['userPseudo'] ?>" hidden>
+            <!-- input invisible qui stock le pseudo de la personne -->
+
+            <!-- On vérifie si on est ami avec le user -->
+            <?php if ($isFriend) : ?>
+               <button type="submit" class="btn btn-ghost btn-sm" name='btn-form-remove-friend'>
+                  <i class="fa-sharp fa-solid fa-user-minus"></i>
+               </button>
+            <?php else : ?>
+               <button type="submit" class="btn btn-ghost btn-sm" name='btn-form-friend'>
+                  <i class="fa-solid fa-user-plus"></i>
+               </button>
+            <?php endif; ?>
+            <!-- On vérifie si on est ami avec le user -->
+
+         </form>
+      <?php endif; ?>
+      <!-- Bouton ajouter en ami, visible uniquement si on est sur le profil d'un autre user -->
+
          <!-- Button setting (uniquement afficher pour l'utilisateur connecté) -->
          <?php if (isset($_SESSION) && $_SESSION['id'] === $user['idUser']) : ?>
             <label for="modal-profil" class="btn btn-ghost btn-sm">
@@ -154,6 +182,10 @@ $isFriend = $controler->friend->friendModel->isFriend($_SESSION['id'], $user['id
 
                   <div class='flex w-full gap-4 flex-col mt-4'>
 
+                     <!-- Si aucun post -->
+                        <p>Aucune activité pour le moment...</p>
+                     <!-- Si aucun post -->
+
                      <!-- foreach pour afficher tous les posts -->
                      <?php foreach ($userPosts as $post) : ?>
                         <div class='bg-secondary h-auto relative p-2 rounded-lg shadow-lg'>
@@ -243,33 +275,6 @@ $isFriend = $controler->friend->friendModel->isFriend($_SESSION['id'], $user['id
    </div>
 
 
-   <div class='flex items-center'>
-      <!-- Bouton ajouter en ami, visible uniquement si on est sur le profil d'un autre user -->
-      <?php if ($user['idUser'] !== $_SESSION['id']) : ?>
-         <form action="../../handler_formulaire/handler.php" method="post">
-            <!-- input invisible qui stock l'id de la personne-->
-            <input type="text" name='iduser' value="<?= $user['idUser'] ?>" hidden>
-            <!-- input invisible qui stock l'id de la personne -->
-
-            <!-- input invisible qui stock le pseudo de la personne -->
-            <input type="text" name='pseudo' value="<?= $user['userPseudo'] ?>" hidden>
-            <!-- input invisible qui stock le pseudo de la personne -->
-
-            <!-- On vérifie si on est ami avec le user -->
-            <?php if ($isFriend) : ?>
-               <button type="submit" class='btn btn-error' name='btn-form-remove-friend'>
-                  <i class="fa-sharp fa-solid fa-user-minus"></i>
-               </button>
-            <?php else : ?>
-               <button type="submit" class='btn btn-success' name='btn-form-friend'>
-                  <i class="fa-solid fa-user-plus"></i>
-               </button>
-            <?php endif; ?>
-            <!-- On vérifie si on est ami avec le user -->
-
-         </form>
-      <?php endif; ?>
-      <!-- Bouton ajouter en ami, visible uniquement si on est sur le profil d'un autre user -->
 
    </div>
 </div>

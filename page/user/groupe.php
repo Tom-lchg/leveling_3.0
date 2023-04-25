@@ -37,6 +37,10 @@ $groupes = $controler->user->userModel->getAllGroupe($user['idUser']);
 <?php endif; ?>
 <!-- afficher uniquement si c'est le user connecté -->
 
+<!-- Si aucun groupe -->
+   <p>Aucun groupe pour le moment...</p>
+<!-- Si aucun groupe -->
+
 <!-- Si l'utilisateur possède des groupes alors on affiche -->
 <?php if (count($groupes) !== 0) : ?>
    <div class='flex flex-wrap gap-4 pb-4'>
