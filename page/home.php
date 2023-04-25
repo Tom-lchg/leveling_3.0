@@ -1,3 +1,7 @@
+
+
+
+
 <div class='h-auto w-full'>
 
    <div class="w-full mt-10 flex items-center">
@@ -210,6 +214,8 @@
                   </li>
                </ul>
                <?php foreach ($posts as $post) : ?>
+                  
+
                   <!-- one post -->
                   <div class='bg-secondary h-auto relative p-2 rounded-lg shadow-lg'>
                      <div class="grid grid-cols-post">
@@ -230,6 +236,28 @@
                            </div>
                            <!-- Pseudo -->
 
+                           <?php 
+                              $postcontent = $controler->post->postModel->getMessage($post['idPost']);
+                           ?>
+
+                        <!-- Modal modifier un post car on peut pas faire autrement-->
+                        <input type="checkbox" id="modal-edit-post" class="modal-toggle" />
+                        <div class="modal bg-modal">
+                           <div class="modal-box relative bg-secondary max-w-3xl">
+                              <label for="modal-edit-post" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+                              <h3 class="text-lg font-bold">Modifier votre post <?= $post['idPost'] ?></h3>
+                              
+                              <form action="../handler_formulaire/handler.php" method="POST" class='mt-4 w-full' enctype="multipart/form-data">
+                                 
+                                 <div class='flex flex-col gap-4 w-full '>
+
+                                    <textarea class='textarea block w-full h-44 resize-none' name='content'><?= $postcontent ?><?= $post['idPost'] ?></textarea>
+                                    <button type='submit' name='btn-add-post' class='btn btn-accent'>Modifier</button>
+                                 </div>
+                              </form>
+                           </div>
+                        </div>
+
                            <!-- Afficher uniquement si on a un user connecté -->
                            <?php if (isset($_SESSION['id'])) : ?>
                               <!-- afficher uniquement si le post appartient au user connecté -->
@@ -239,15 +267,24 @@
                                        <i class="fa-solid fa-ellipsis-vertical"></i>
                                     </label>
                                     <ul tabindex="0" class="dropdown-content menu p-2 shadow rounded-box w-52">
-
-                                       <input type="text" hidden name="idpost" value="<?= $post['idPost'] ?>">
                                        
-                                       <label for="modal-edit-post">
-                                          <li><button class="btn btn-success mb-2 text-white">Modifier</button></li>
+                                       
+                                       
+                                       
+                                       <label class="btn btn-success" for="modal-edit-post">
+                                       
+                                          
+                                          <input type="text" hidden name="idpost" value="<?= $post['idPost'] ?>">
+                                             <li><button type="submit" name="editPost" class="text-base text-white">MODIFIER</button></li>
                                        </label>
                                     
+
+
+
+
+
                                        <form action="../handler_formulaire/handler.php" method="post">
-                                          <input type="text" hidden name="idpost" value="<?= $post['idPost'] ?>">
+                                          <input type="text" hidden name="postoui" value="<?= $post['idPost'] ?>">
                                           <li><button type='submit' name="deletePost" class="btn btn-error text-white">Supprimer</button></li>
                                        </form>
                                     </ul>

@@ -74,6 +74,7 @@ if (isset($_POST['btn-add-post-from-profil'])) {
 //modif un post
 if (isset($_POST['editPost'])) {
    $controler->post->postModel->getMessage($_POST['idpost']);
+   header('Location: ../?page=home');
 }
 
 // delete un post

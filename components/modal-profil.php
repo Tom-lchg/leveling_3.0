@@ -21,6 +21,7 @@ $controler = new Controler();
 if (isset($_SESSION['id'])) {
    $user = $controler->user->userModel->findById($_SESSION['id'], 'idUser');
 }
+
 ?>
 
 <!-- Modal pour update un user -->
@@ -103,23 +104,3 @@ if (isset($_SESSION['id'])) {
 <!-- Modal créer un post -->
 
 
-<!-- Modal modifier un post -->
-<input type="checkbox" id="modal-edit-post" class="modal-toggle" />
-<div class="modal bg-modal">
-   <div class="modal-box relative bg-secondary max-w-3xl">
-      <label for="modal-edit-post" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
-      <h3 class="text-lg font-bold">Modifier votre post</h3>
-
-      <form action="../handler_formulaire/handler.php" method="POST" class='mt-4 w-full' enctype="multipart/form-data">
-
-         <div class='flex flex-col gap-4 w-full '>
-
-            <textarea class='textarea block w-full h-44 resize-none' placeholder='Que voulez-vous partager ?' name='content'></textarea>
-
-            <button type='submit' name='btn-add-post' class='btn btn-accent'>Créer</button>
-         </div>
-
-      </form>
-   </div>
-</div>
-<!-- Modal modifier un post -->

@@ -62,7 +62,12 @@ class Post
    public function getMessage($idpost){
       $sql ="SELECT postContent from tblPosts WHERE idPost = :idpost";
       $stmt = $this->pdo->prepare($sql);
-      $stmt->execute([":id" => $iduser]);
-      return $stmt->fetch();
+      $stmt->execute([":idpost" => $idpost]);
+      $result = $stmt->fetch();
+      if($result) {
+         return $result['postContent'];
+      } else {
+         return null;
+      }
    }
 }
