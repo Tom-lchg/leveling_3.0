@@ -104,3 +104,39 @@ if (isset($_SESSION['id'])) {
 <!-- Modal créer un post -->
 
 
+<<<<<<< HEAD
+=======
+<!-- Modal modifier un post -->
+
+<!-- Si on modifie un post alors on doit récupéré le content et l'id du post -->
+<?php
+$test = "c pas bon";
+if (isset($_GET['updatePost'])) {
+   $test = "c bon";
+}
+?>
+<!-- Si on modifie un post alors on doit récupéré le content et l'id du post -->
+
+
+<input type="checkbox" id="modal-edit-post" class="modal-toggle" />
+<div class="modal bg-modal">
+   <div class="modal-box relative bg-secondary max-w-3xl">
+      <label for="modal-edit-post" id="closeModalEditPost" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+      <h3 class="text-lg font-bold"><?= $test ?></h3>
+
+      <form action="../handler_formulaire/handler.php" method="POST" class='mt-4 w-full' enctype="multipart/form-data">
+
+         <div class='flex flex-col gap-4 w-full '>
+
+            <input class='input input-bordered border-accent w-full placeholder:text-md' type="text" placeholder="Intitulé du sujet" name='nomSujet'>
+
+            <textarea class='textarea textarea-accent text-md textarea-xl' placeholder='Corp du sujet' name='descSujet'></textarea>
+
+            <button type='submit' name='btn-add-sujet' class='btn'>Publier</button>
+         </div>
+
+      </form>
+   </div>
+</div>
+<!-- Modal modifier un post -->
+>>>>>>> 853eb34a2a800bf946e549396ef6228719b443c8

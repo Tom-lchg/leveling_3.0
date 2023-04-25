@@ -1,17 +1,25 @@
+<<<<<<< HEAD
 
 
 
+=======
+<?php
+// https://www.php.net/manual/en/function.random-int.php
+$random_game = $controler->games->gameModel->findById(random_int(21, 32), 'idGame');
+$all_games = $controler->games->gameModel->getALl();
+?>
+>>>>>>> 853eb34a2a800bf946e549396ef6228719b443c8
 
 <div class='h-auto w-full'>
 
    <div class="w-full mt-10 flex items-center">
       <!-- Jeu à la une (aléatoire dans la gallerie) -->
       <div class="w-full flex items-center">
-         <img src="../assets/games/pp/IMG-6277c1dd81fac1.30807447.png" alt="pp jeux" class='h-48 drop-shadow-md'>
+         <img src="../assets/games/pp/<?= $random_game['gameImg'] ?>" alt="pp jeux" class='h-48 drop-shadow-md'>
          <div class="mx-6">
-            <p class="font-bold text-4xl drop-shadow-md text-accent">FAR CRY 65</p>
-            <p class="text-lg drop-shadow-sm text-primary">Far Cry 6 emmène les joueurs sur l'île de Yara, qui ressemble à s'y méprendre à Cuba, tout comme l'environnement de Far Cry 4 était calqué sur le Tibet et le Népal. L'île est dans un état de chaos total, supervisé par le dictateur local Antón Castillo. Il est interprété avec par l'excellent Giancarlo Esposito...</p>
-            <button class="btn btn-sm mt-4 btn-accent">Voir plus</button>
+            <p class="font-bold text-4xl drop-shadow-md text-accent"><?= $random_game['gameName'] ?></p>
+            <p class="text-lg drop-shadow-sm text-primary"><?= $random_game['gameDescription'] ?></p>
+            <a class="btn btn-sm mt-4 btn-accent" href="?page=games&game=<?= $random_game['idGame'] ?>">Voir plus</a>
          </div>
       </div>
       <!-- Jeu à la une (aléatoire dans la gallerie) -->
@@ -26,22 +34,14 @@
       </div>
 
       <div class='p-6 col-start-1 h-auto col-end-7 flex items-center bg-neutral rounded-md'>
-
          <!-- Carousel (12 jeux aléatoires) -->
          <div class="swiper mySwiper">
             <div class="swiper-wrapper">
-               <div class="swiper-slide"><img src="../assets/games/pp/IMG-6277c1dd81fac1.30807447.png" alt="pp jeux" class='h-[15rem]'></div>
-               <div class="swiper-slide"><img src="../assets/games/pp/IMG-6277c1dd81fac1.30807447.png" alt="pp jeux" class='h-[15rem]'></div>
-               <div class="swiper-slide"><img src="../assets/games/pp/IMG-634d7675e0cf83.13415792.jpg" alt="pp jeux" class='h-[15rem]'></div>
-               <div class="swiper-slide"><img src="../assets/games/pp/IMG-627c1d61578b82.37357556.jpg" alt="pp jeux" class='h-[15rem]'></div>
-               <div class="swiper-slide"><img src="../assets/games/pp/IMG-6277a0b2c5b848.96970598.png" alt="pp jeux" class='h-[15rem]'></div>
-               <div class="swiper-slide"><img src="../assets/games/pp/IMG-6277a0b2c5b848.96970598.png" alt="pp jeux" class='h-[15rem]'></div>
-               <div class="swiper-slide"><img src="../assets/games/pp/IMG-6277c1dd81fac1.30807447.png" alt="pp jeux" class='h-[15rem]'></div>
-               <div class="swiper-slide"><img src="../assets/games/pp/IMG-6277c1dd81fac1.30807447.png" alt="pp jeux" class='h-[15rem]'></div>
-               <div class="swiper-slide"><img src="../assets/games/pp/IMG-634d7675e0cf83.13415792.jpg" alt="pp jeux" class='h-[15rem]'></div>
-               <div class="swiper-slide"><img src="../assets/games/pp/IMG-627c1d61578b82.37357556.jpg" alt="pp jeux" class='h-[15rem]'></div>
-               <div class="swiper-slide"><img src="../assets/games/pp/IMG-6277a0b2c5b848.96970598.png" alt="pp jeux" class='h-[15rem]'></div>
-               <div class="swiper-slide"><img src="../assets/games/pp/IMG-6277a0b2c5b848.96970598.png" alt="pp jeux" class='h-[15rem]'></div>
+               <!-- foreach de tous les jeux -->
+               <?php foreach ($all_games as $game) : ?>
+                  <div class="swiper-slide"><img src="../assets/games/pp/<?= $game['gameImg'] ?>" alt="pp jeux" class='h-[15rem]'></div>
+               <?php endforeach; ?>
+               <!-- foreach de tous les jeux -->
             </div>
             <div class="swiper-pagination"></div>
          </div>
@@ -56,132 +56,45 @@
          <!-- foreach pour afficher tous les users -->
 
          <div class='mt-8 gap-4 justify-center container-home-no-bg p-4 flex'>
-            <!-- un user -->
-            <div class="card w-80 bg-base-100 shadow-xl indicator ">
 
-               <span class="indicator-item indicator-top indicator-start"><img src="./assets/goldmedal.png" alt="" width="60em"></span>
+            <?php $users = $controler->user->userModel->getAll(); ?>
 
-               <figure class="px-10 pt-10">
-                  <img src="./assets/pp.jpg" alt="pp" class="rounded-xl" width="124em" />
-               </figure>
+            <?php foreach ($users as $user) : ?>
+               <!-- un user -->
+               <div class="card w-80 bg-base-100 shadow-xl indicator ">
 
-               <div class="card-body flex items-center justify-center text-center">
-                  <h2 class="text-2xl font-semibold text-accent font-toxigenesis">KiSEi</h2>
-                  <div class="flex flex-col w-full border-opacity-50">
-                     <div class="divider"></div>
-                     <div class="flex space place-content-evenly">
-                        <div>
-                           <p class="text-lg font-bold">EXP</p>
-                           <p><i class="fa-solid fa-stars"></i>127</p>
+                  <span class="indicator-item indicator-top indicator-start"><img src="./assets/goldmedal.png" alt="" width="60em"></span>
+
+                  <figure class="px-10 pt-10">
+                     <img src="./assets/pp.jpg" alt="pp" class="rounded-xl" width="124em" />
+                  </figure>
+
+                  <div class="card-body flex items-center justify-center text-center">
+                     <h2 class="text-2xl font-semibold text-accent font-toxigenesis"><?= $user['userPseudo'] ?></h2>
+                     <div class="flex flex-col w-full border-opacity-50">
+                        <div class="divider"></div>
+                        <div class="flex space place-content-evenly">
+                           <div>
+                              <p class="text-lg font-bold">EXP</p>
+                              <p><i class="fa-solid fa-stars"></i>127</p>
+                           </div>
+                           <div>
+                              <p class="text-lg font-bold">POSTS</p>
+                              <p>3431</p>
+                           </div>
                         </div>
-                        <div>
-                           <p class="text-lg font-bold">POSTS</p>
-                           <p>3431</p>
+                        <div class="card-actions mt-4 self-center">
+                           <a href="?page=profile&user=<?= $user['userPseudo'] ?>" class="btn btn-accent">
+                              Son profil
+                           </a>
                         </div>
-                     </div>
-                     <div class="card-actions mt-4 self-center">
-                        <button class="btn btn-accent">Son profil</button>
                      </div>
                   </div>
                </div>
-            </div>
-            <!-- un user -->
-
-            <!-- un user -->
-            <div class="card w-80 bg-base-100 shadow-xl indicator ">
-
-               <span class="indicator-item indicator-top indicator-start"><img src="./assets/silvermedal.png" alt="" width="60em"></span>
-
-               <figure class="px-10 pt-10">
-                  <img src="./assets/pp3.jpg" alt="pp" class="rounded-xl" width="124em" />
-               </figure>
-
-               <div class="card-body flex items-center justify-center text-center">
-                  <h2 class="text-2xl font-semibold text-accent font-toxigenesis">Mirinae</h2>
-                  <div class="flex flex-col w-full border-opacity-50">
-                     <div class="divider"></div>
-                     <div class="flex space place-content-evenly">
-                        <div>
-                           <p class="text-lg font-bold">EXP</p>
-                           <p><i class="fa-solid fa-stars"></i>114</p>
-                        </div>
-                        <div>
-                           <p class="text-lg font-bold">POSTS</p>
-                           <p>3335</p>
-                        </div>
-                     </div>
-                     <div class="card-actions mt-4 self-center">
-                        <button class="btn btn-accent">Son profil</button>
-                     </div>
-                  </div>
-               </div>
-            </div>
-            <!-- un user -->
-
-            <!-- un user -->
-            <div class="card w-80 bg-base-100 shadow-xl indicator ">
-
-               <span class="indicator-item indicator-top indicator-start"><img src="./assets/bronzemedal.png" alt="" width="60em"></span>
-
-               <figure class="px-10 pt-10">
-                  <img src="./assets/pp2.jpg" alt="pp" class="rounded-xl" width="124em" />
-               </figure>
-
-               <div class="card-body flex items-center justify-center text-center">
-                  <h2 class="text-2xl font-semibold text-accent font-toxigenesis">Skeim</h2>
-                  <div class="flex flex-col w-full border-opacity-50">
-                     <div class="divider"></div>
-                     <div class="flex space place-content-evenly">
-                        <div>
-                           <p class="text-lg font-bold">EXP</p>
-                           <p><i class="fa-solid fa-stars"></i>127</p>
-                        </div>
-                        <div>
-                           <p class="text-lg font-bold">POSTS</p>
-                           <p>3431</p>
-                        </div>
-                     </div>
-                     <div class="card-actions mt-4 self-center">
-                        <button class="btn btn-accent">Son profil</button>
-                     </div>
-                  </div>
-               </div>
-            </div>
-            <!-- un user -->
-
-            <!-- un user -->
-            <div class="card w-80 bg-base-100 shadow-xl">
-
-
-               <figure class="px-10 pt-10">
-                  <img src="./assets/pp4.jpg" alt="pp" class="rounded-xl" width="124em" />
-               </figure>
-
-               <div class="card-body flex items-center justify-center text-center">
-                  <h2 class="text-2xl font-semibold text-accent font-toxigenesis">Nostradamus</h2>
-                  <div class="flex flex-col w-full border-opacity-50">
-                     <div class="divider"></div>
-                     <div class="flex space place-content-evenly">
-                        <div>
-                           <p class="text-lg font-bold">EXP</p>
-                           <p><i class="fa-solid fa-stars"></i>127</p>
-                        </div>
-                        <div>
-                           <p class="text-lg font-bold">POSTS</p>
-                           <p>3431</p>
-                        </div>
-                     </div>
-                     <div class="card-actions mt-4 self-center">
-                        <button class="btn btn-accent">Son profil</button>
-                     </div>
-                  </div>
-               </div>
-            </div>
-            <!-- un user -->
+               <!-- un user -->
+            <?php endforeach; ?>
 
          </div>
-
-
          <!-- foreach pour afficher tous les users -->
       </div>
 
@@ -209,10 +122,6 @@
             <!-- Posts -->
             <div class="flex flex-col gap-6">
                <!-- foreach pour afficher tous les posts -->
-               <ul class="steps steps-vertical">
-
-                  </li>
-               </ul>
                <?php foreach ($posts as $post) : ?>
                   
 
@@ -263,9 +172,10 @@
                               <!-- afficher uniquement si le post appartient au user connecté -->
                               <?php if ($post['fkIdUser'] === $_SESSION['id']) : ?>
                                  <div class="dropdown absolute right-0 top-0 z-10">
-                                    <label tabindex="0" class="btn-link btn-sm">
+                                    <label tabindex="<?= $post['idPost'] ?>" class="btn-link btn-sm">
                                        <i class="fa-solid fa-ellipsis-vertical"></i>
                                     </label>
+<<<<<<< HEAD
                                     <ul tabindex="0" class="dropdown-content menu p-2 shadow rounded-box w-52">
                                        
                                        
@@ -285,6 +195,14 @@
 
                                        <form action="../handler_formulaire/handler.php" method="post">
                                           <input type="text" hidden name="postoui" value="<?= $post['idPost'] ?>">
+=======
+                                    <ul tabindex="<?= $post['idPost'] ?>" class="dropdown-content menu p-2 shadow rounded-box w-52">
+                                       <label for="modal-edit-post" id="modalEditPost" class="btn text-white btn-success mb-2">
+                                          Modifier
+                                       </label>
+                                       <form action="../handler_formulaire/handler.php" method="post">
+                                          <input type="text" hidden id="currentPostId" name="idpost" value="<?= $post['idPost'] ?>">
+>>>>>>> 853eb34a2a800bf946e549396ef6228719b443c8
                                           <li><button type='submit' name="deletePost" class="btn btn-error text-white">Supprimer</button></li>
                                        </form>
                                     </ul>
