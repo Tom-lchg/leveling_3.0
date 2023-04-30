@@ -2,7 +2,21 @@
 <div class='h-auto p-8'>
 
    <?php if (!isset($_GET['groupe'])) : ?>
-      <h1 class='title font-toxigenesis'>GROUPES</h1>
+      <div class="flex justify-between">
+      <div class='basis-1/2 title font-toxigenesis'>GROUPES</div>
+      <?php if (isset($_SESSION['id'])){ ?>
+         <div class='basis-1/2 title font-toxigenesis'>
+            <div>
+               <!-- ce bouton renvoie sur la modal qui est définit dans le fichier modal-profil -->
+               <label class='btn bg-accent text-white border-accent hover:bg-[#1991FF] hover:text-white hover:border-[#1991FF] my-2' for="modal-create-groupe">Créer un nouveau groupe</label>
+               <!-- ce bouton renvoie sur la modal qui est définit dans le fichier modal-profil -->
+            </div>
+         </div>   
+         <?php }else{  ?>
+            <button class="btn btn-info">CONNECTEZ-VOUS POUR CREER UN GROUPE !</button>
+         <?php }  ?>
+      </div>
+      
       <div class='flex gap-4 mt-4 flex-wrap'>
          <!-- foreach pour afficher tous les groupes -->
          

@@ -50,9 +50,14 @@ if (isset($_POST['btn-edit-profile'])) {
 // formulaire pour ajouter un nouveau groupe
 if (isset($_POST['btn-add-groupe'])) {
    $controler->groupe->createGroupe($_POST, $_FILES);
-   // ça sera toujours session pseudo car c'est le user connecté qui peut supprimer ses posts
-   $user = $_SESSION['pseudo'];
-   header("Location: ../?page=profile&req=groupe&user=$user");
+   // ça sera toujours session pseudo car c'est le user connecté qui peut supprimer son groupe
+   if(isset($_GET['groupes'])){
+      header("Location:./page/groupes/groupes.php&oui");
+   }else{
+      $user = $_SESSION['pseudo'];
+      header("Location: ../?page=profile&req=groupe&user=$user"); 
+   }
+   
 }
 
 

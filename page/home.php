@@ -1,14 +1,8 @@
-<<<<<<< HEAD
-
-
-
-=======
 <?php
 // https://www.php.net/manual/en/function.random-int.php
 $random_game = $controler->games->gameModel->findById(random_int(21, 32), 'idGame');
 $all_games = $controler->games->gameModel->getALl();
 ?>
->>>>>>> 853eb34a2a800bf946e549396ef6228719b443c8
 
 <div class='h-auto w-full'>
 
@@ -175,34 +169,12 @@ $all_games = $controler->games->gameModel->getALl();
                                     <label tabindex="<?= $post['idPost'] ?>" class="btn-link btn-sm">
                                        <i class="fa-solid fa-ellipsis-vertical"></i>
                                     </label>
-<<<<<<< HEAD
-                                    <ul tabindex="0" class="dropdown-content menu p-2 shadow rounded-box w-52">
-                                       
-                                       
-                                       
-                                       
-                                       <label class="btn btn-success" for="modal-edit-post">
-                                       
-                                          
-                                          <input type="text" hidden name="idpost" value="<?= $post['idPost'] ?>">
-                                             <li><button type="submit" name="editPost" class="text-base text-white">MODIFIER</button></li>
-                                       </label>
-                                    
-
-
-
-
-
-                                       <form action="../handler_formulaire/handler.php" method="post">
-                                          <input type="text" hidden name="postoui" value="<?= $post['idPost'] ?>">
-=======
                                     <ul tabindex="<?= $post['idPost'] ?>" class="dropdown-content menu p-2 shadow rounded-box w-52">
                                        <label for="modal-edit-post" id="modalEditPost" class="btn text-white btn-success mb-2">
                                           Modifier
                                        </label>
                                        <form action="../handler_formulaire/handler.php" method="post">
                                           <input type="text" hidden id="currentPostId" name="idpost" value="<?= $post['idPost'] ?>">
->>>>>>> 853eb34a2a800bf946e549396ef6228719b443c8
                                           <li><button type='submit' name="deletePost" class="btn btn-error text-white">Supprimer</button></li>
                                        </form>
                                     </ul>

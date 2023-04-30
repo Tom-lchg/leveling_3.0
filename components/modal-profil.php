@@ -104,8 +104,6 @@ if (isset($_SESSION['id'])) {
 <!-- Modal créer un post -->
 
 
-<<<<<<< HEAD
-=======
 <!-- Modal modifier un post -->
 
 <!-- Si on modifie un post alors on doit récupéré le content et l'id du post -->
@@ -139,4 +137,3 @@ if (isset($_GET['updatePost'])) {
    </div>
 </div>
 <!-- Modal modifier un post -->
->>>>>>> 853eb34a2a800bf946e549396ef6228719b443c8
