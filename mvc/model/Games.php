@@ -30,4 +30,10 @@ class Games
    {
       return $this->model->findByIdPc($id, $target);
    }
+
+   public function findByIdCs($id, $target)
+   {
+      return $this->model->findByIdCs($id, $target);
+   }
+
 }
