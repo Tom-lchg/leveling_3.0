@@ -9,10 +9,12 @@
       <div class="flex justify-between">
       <div class='basis-1/2 title font-toxigenesis'>GROUPES</div>
       <?php if (isset($_SESSION['id'])){ ?>
-         <div class='basis-1/2 title font-toxigenesis'>
+         <div>
             <div>
                <!-- ce bouton renvoie sur la modal qui est définit dans le fichier modal-profil -->
-               <label class='btn bg-accent text-white border-accent hover:bg-[#1991FF] hover:text-white hover:border-[#1991FF] my-2' for="modal-create-groupe">Créer votre propre groupe</label>
+               <label class='btn bg-accent text-white border-accent hover:bg-[#1991FF] hover:text-white hover:border-[#1991FF] my-2' for="modal-create-groupe">
+                  <i class="fa-solid fa-plus"></i>
+               </label>
                <!-- ce bouton renvoie sur la modal qui est définit dans le fichier modal-profil -->
             </div>
          </div>   
@@ -25,7 +27,7 @@
          <!-- foreach pour afficher tous les groupes 
          C'est ici qu'on fera un foreach de tous les groupes publics-->
       <?php foreach($AllGroupsPublics as $oneGroupe) : ?>
-         <div class="container-home flex items-center">
+         <div class="container-home flex items-center w-full">
             <div class="shrink-0">
                <a href="./?page=groupes&groupe=<?= $oneGroupe['idGroupe'] ?>&privacy=<?=$oneGroupe['groupePrivacy'] ?>">    
                   <!-- <img class="object-cover rounded-md h-[150px] w-[150px]" src="../assets/pp5.jpg" alt=""> -->

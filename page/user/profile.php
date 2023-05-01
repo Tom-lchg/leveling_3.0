@@ -14,8 +14,7 @@ $isFriend = $controler->friend->friendModel->isFriend($_SESSION['id'], $user['id
 
    <div class='h-56 relative mt-4'>
       <!-- bannière de user -->
-      <!-- <img src="data:<?= $user['userTypeBanner'] ?>;base64,<?= base64_encode($user['userBanner']) ?>" alt="banner" class='h-full block w-full object-cover absolute' /> -->
-      <img src="./assets/banner.jpg" alt="" alt="banner" class='rounded-t-lg h-full block w-full object-cover absolute'>
+      <img src="data:<?= $user['userTypeBanner'] ?>;base64,<?= base64_encode($user['userBanner']) ?>" alt="" alt="banner" class='rounded-t-lg h-full block w-full object-cover absolute'>
       <!-- bannière de user -->
 
       <!-- Pseudo + Settings -->
@@ -63,9 +62,8 @@ $isFriend = $controler->friend->friendModel->isFriend($_SESSION['id'], $user['id
       <!-- Pseudo + Settings -->
 
       <!-- Photo de profil -->
-      <img src="./assets/pp3.jpg" alt="" class='w-40 h-40 rounded-full absolute z-20 top-32 left-10 shadow-lg'>
+      <img src="data:<?= $user['userTypeImg'] ?>;base64,<?= base64_encode($user['userImg']) ?>" alt="" class='w-40 h-40 rounded-full absolute z-20 top-32 left-10 shadow-lg'>
       <img src="./assets/ranks/master/icon.png" alt="" width="50em" class="absolute z-20 left-40 top-[14.9rem] shadow-lg">
-      <!-- <img src="data:<?= $user['userTypeImg'] ?>;base64,<?= base64_encode($user['userImg']) ?>" alt="pp user" class='w-60 h-60 rounded-full absolute top-24 left-10 shadow-lg' /> -->
       <!-- Photo de profil -->
 
       <div class="flex justify-between bg-neutral drop-shadow-lg rounded-b-lg">
@@ -147,7 +145,7 @@ $isFriend = $controler->friend->friendModel->isFriend($_SESSION['id'], $user['id
          </div>
          <!-- Tabs -->
 
-         <div class='mt-4 mb-4'>
+         <div class='mt-4'>
             <?php if (!isset($_GET['req'])) : ?>
 
                <!-- Block de l'activité -->
@@ -182,9 +180,11 @@ $isFriend = $controler->friend->friendModel->isFriend($_SESSION['id'], $user['id
 
                   <div class='flex w-full gap-4 flex-col mt-4'>
 
-                     <!-- Si aucun post -->
+                  <?php if (count($userPosts) === 0) : ?>    
+                     <div class="m-6 flex justify-center items-center">
                         <p>Aucune activité pour le moment...</p>
-                     <!-- Si aucun post -->
+                     </div>
+                  <?php endif; ?>
 
                      <!-- foreach pour afficher tous les posts -->
                      <?php foreach ($userPosts as $post) : ?>

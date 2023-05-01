@@ -29,17 +29,17 @@ $groupes = $controler->user->userModel->getAllGroupe($user['idUser']);
    <?php if (count($groupes) === 0) : ?>
       <div>
          <!-- ce bouton renvoie sur la modal qui est définit dans le fichier modal-profil -->
-         <label class='btn bg-accent text-white border-accent hover:bg-[#1991FF] hover:text-white hover:border-[#1991FF] my-2' for="modal-create-groupe">Créer un nouveau groupe</label>
+         <label class='btn w-full bg-accent text-white border-accent hover:bg-[#1991FF] hover:text-white hover:border-[#1991FF] my-2' for="modal-create-groupe">Créer un nouveau groupe</label>
          <!-- ce bouton renvoie sur la modal qui est définit dans le fichier modal-profil -->
+      </div>
+      <div class="m-6 flex justify-center items-center">
+         <p>Aucun groupe pour le moment...</p>
       </div>
    <?php endif; ?>
    <!-- Si l'utilisateur n'as pas de groupe -->
 <?php endif; ?>
 <!-- afficher uniquement si c'est le user connecté -->
 
-<!-- Si aucun groupe -->
-   <p>Aucun groupe pour le moment...</p>
-<!-- Si aucun groupe -->
 
 <!-- Si l'utilisateur possède des groupes alors on affiche -->
 <?php if (count($groupes) !== 0) : ?>

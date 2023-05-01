@@ -93,19 +93,10 @@ $gamecs = $controler->games->gameModel->findByIdCs($_GET['game'], 'idGame');
                 <p>INFORMATIONS</p>
             </div>
 
-            <div class="w-full flex justify-center mt-2">
-                    <a href="./?page=games&game=<?= $game['idGame'] ?>&pc">
-                        <button class="btn"><i class="fa-solid fa-computer-mouse"></i></button>
-                    </a>
-                    <a href="./?page=games&game=<?= $game['idGame'] ?>&cs">
-                    <button class="btn ml-2"><i class="fa-solid fa-gamepad"></i></button>
-                    </a>
-            </div>
-
             <ul class="mt-4">
-                
 
-                <?php if(isset($_GET['pc'])){ ?>
+
+                <?php if(!$gamepc==false){ ?>
 
                 <li>• Système d'exploitation requis : </li>
                 <li class="ml-[10px] font-semibold text-accent"><?= $gamepc['gamePcOs']?></li>
@@ -124,9 +115,9 @@ $gamecs = $controler->games->gameModel->findByIdCs($_GET['game'], 'idGame');
 
                 <?php } ?>
 
-                <?php if(isset($_GET['cs'])){ ?>
+                <?php if(!$gamecs==false){ ?>
 
-                <li>• Consoles : </li>
+                <li>• Plateforme(s) : </li>
                 <li class="ml-[10px] font-semibold text-accent"><?= $gamecs['gameCsSupport'] ?></li>
                 <li>• Espace requis : </li>
                 <li class="ml-[10px] font-semibold text-accent"><?= $gamecs['gameCsTaille']?> Go</li>
