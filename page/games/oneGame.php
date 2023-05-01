@@ -1,5 +1,8 @@
 <?php
+
 $game = $controler->games->gameModel->findById($_GET['game'], 'idGame');
+$gamepc = $controler->games->gameModel->findByIdPc($_GET['game'], 'idGame');
+
 ?>
 
 <div class="max-w-7xl mx-auto">
@@ -91,11 +94,15 @@ $game = $controler->games->gameModel->findById($_GET['game'], 'idGame');
 
             <ul class="mt-4">
                 <li>• Plateformes : </li>
-                <li class="ml-[10px] font-semibold text-accent">Bite</li>
+                <li class="ml-[10px] font-semibold text-accent">
+                    <i class="fa-solid fa-computer-mouse"></i>
+                    <i class="fa-brands fa-xbox"></i>
+                    <i class="fa-brands fa-playstation"></i>
+                </li>
                 <li>• Prix : </li>
-                <li class="ml-[10px] font-semibold text-accent">Bite</li>
+                <li class="ml-[10px] font-semibold text-accent"><?= $gamepc['gamePcPrix'] ?> €</li>
                 <li>• Date de sortie : </li>
-                <li class="ml-[10px] font-semibold text-accent">Bite</li>
+                <li class="ml-[10px] font-semibold text-accent"><?= $gamepc['gamePCDateSortie'] ?></li>
                 <li>• Modèle économique : </li>
                 <li class="ml-[10px] font-semibold text-accent">Bite</li>
                 <li>• Genre : </li>

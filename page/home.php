@@ -12,7 +12,7 @@ $all_games = $controler->games->gameModel->getALl();
          <img src="../assets/games/pp/<?= $random_game['gameImg'] ?>" alt="pp jeux" class='h-48 drop-shadow-md'>
          <div class="mx-6">
             <p class="font-bold text-4xl drop-shadow-md text-accent"><?= $random_game['gameName'] ?></p>
-            <p class="text-lg drop-shadow-sm text-primary"><?= $random_game['gameDescription'] ?></p>
+            <p class="text-lg drop-shadow-sm break-normal text-primary h-24 w-full text-ellipsis overflow-hidden"><?= $random_game['gameDescription'] ?></p>
             <a class="btn btn-sm mt-4 btn-accent" href="?page=games&game=<?= $random_game['idGame'] ?>">Voir plus</a>
          </div>
       </div>

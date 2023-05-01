@@ -24,4 +24,9 @@ class Model
    {
       return $this->pdo->query("SELECT * FROM $this->table WHERE $target = $id")->fetch();
    }
+
+   public function findByIdPc($id, $target)
+   {
+      return $this->pdo->query("SELECT * FROM tblGamesPc WHERE $target = $id")->fetch();
+   }
 }

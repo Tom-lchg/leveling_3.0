@@ -13,6 +13,7 @@ class Games
    {
       $this->pdo = new PDO('mysql:host=localhost;dbname=leveling2', 'root', '');
       $this->model = new Model('tblgames');
+      $this->modelpc = new Model('tblgamespc');
    }
 
    public function getAll()
@@ -23,5 +24,10 @@ class Games
    public function findById($id, $target)
    {
       return $this->model->findById($id, $target);
+   }
+
+   public function findByIdPc($id, $target)
+   {
+      return $this->model->findByIdPc($id, $target);
    }
 }
