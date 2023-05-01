@@ -76,4 +76,12 @@ class User
       $stmt->execute(array(":iduser" => $iduser));
       return $stmt->fetchAll();
    }
+
+   public function getNumberOfPosts($iduser)
+   {
+      $sql = "SELECT COUNT(*) FROM tblPosts WHERE fkIdUser = :iduser";
+      $stmt = $this->pdo->prepare($sql);
+      $stmt->execute(["iduser" => $iduser]);
+      return $stmt->fetchColumn();
+   }
 }
