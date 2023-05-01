@@ -65,4 +65,33 @@ class Groupe
    }
 }
 
+public function getAllGroupsPublic(){
+   $sql = "SELECT * FROM tblgroupspublic";
+   $stmt = $this->pdo->query($sql);
+   return $stmt->fetchAll();
+}
+public function getAllGroups(){
+   $sql = "SELECT * FROM tblgroups";
+   $stmt = $this->pdo->query($sql);
+   return $stmt->fetchAll();
+}
+
+public function getOneGroupPublic($idgroupe){
+   $sql = "SELECT * FROM tblgroupspublic WHERE idGroupe = :idgroupe";
+   $stmt = $this->pdo->prepare($sql);
+   $stmt->execute([":idgroupe" => $idgroupe]);
+   return $stmt->fetch();
+}
+
+public function getOneGroupPrive($idgroupe){
+   $sql = "SELECT * FROM tblgroupsprivate WHERE idGroupe = :idgroupe";
+   $stmt = $this->pdo->prepare($sql);
+   $stmt->execute([":idgroupe" => $idgroupe]);
+   return $stmt->fetch();
+}
+
+
+
+
+
 }

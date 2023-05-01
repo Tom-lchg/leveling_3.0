@@ -55,7 +55,7 @@ if (isset($_POST['btn-add-groupe'])) {
       header("Location:./page/groupes/groupes.php&oui");
    }else{
       $user = $_SESSION['pseudo'];
-      header("Location: ../?page=profile&req=groupe&user=$user"); 
+      header("Location: ./page/groupes/groupes.php"); 
    }
    
 }

@@ -1,16 +1,30 @@
+<?php  $allGroups = $controler->groupe->groupeModel->getAll(); ?>
+<?php  
+   $oneGroupePublic = null;
+   $oneGroupePrive = null;
+
+   if($_GET['privacy'] == "publique"){
+      $oneGroupePublic = $controler->groupe->groupeModel->getOneGroupPublic($_GET["groupe"]);
+   }else if($_GET['privacy'] == "prive"){
+      $oneGroupePrive = $controler->groupe->groupeModel->getOneGroupPrive($_GET["groupe"]);
+
+   }
+
+         
+?>
 
 <!-- Container global -->
 <div class="max-w-7xl mx-auto">
 
    <div class='h-56 relative mt-4'>
       <!-- bannière de groupe -->
-      <img src="./assets/banner2.jpg" alt="" alt="banner" class='rounded-t-lg h-full block w-full object-cover absolute'>
+      <img src="data:<?= $oneGroupePrive===null ? $oneGroupePublic['groupeTypeBanner'] : $oneGroupePrive['groupeTypeBanner'] ?>;base64,<?= $oneGroupePrive===null ? base64_encode($oneGroupePublic['groupeBanner']) :  base64_encode($oneGroupePrive['groupeBanner'])?>" alt="banner" class='rounded-t-lg h-full block w-full object-cover absolute'>
       <!-- bannière de user -->
 
       <!-- Nom du groupe + Settings -->
       <div class='ml-56 pr-2 relative z-10 justify-between flex gap-1 text-2xl h-full pb-1 items-end text-white font-leger'>
 
-         <p class='drop-shadow-sm border-accent font-bold text-3xl font-toxigenesis'>Yu-Gi-Oh! Fans</p>
+         <p class='drop-shadow-sm border-accent font-bold text-3xl font-toxigenesis'><?= $oneGroupePrive==null ? $oneGroupePublic['groupeName'] : $oneGroupePrive['groupeName'] ?> </p>
 
          <!-- Button setting (uniquement afficher pour le modo du groupe) -->
             <label for="" class="btn btn-ghost btn-sm">
@@ -22,9 +36,10 @@
       <!-- Nom du groupe + Settings -->
 
       <!-- Photo de profil -->
-      <img src="./assets/pp5.jpg" alt="" class='w-40 h-40 rounded-md absolute z-20 top-32 left-10 shadow-lg'>
+      <img src="data:<?= $oneGroupePrive===null ? $oneGroupePublic['groupeTypeImg'] : $oneGroupePrive['groupeTypeImg'] ?>;base64,<?= $oneGroupePrive===null ? base64_encode($oneGroupePublic['groupeImg']) :  base64_encode($oneGroupePrive['groupeImg'])?>"
+      class='w-40 h-40 rounded-md absolute z-20 top-32 left-10 shadow-lg' alt="">
       <!-- Photo de profil -->
-
+    
       <div class="flex justify-between bg-neutral drop-shadow-lg rounded-b-lg">
          <div class="flex">
             <!-- Menu du groupe-->
@@ -33,7 +48,7 @@
                   <div>
                      <!-- Nombre de posts -->
                      <p class="font-bold">MEMBRES</p>
-                     <p>13045</p>
+                     <p><?= $oneGroupePrive===null ? $oneGroupePublic['groupePublicNbUsers'] : $oneGroupePrive['groupePrivateNbUsers']?></p>
                      <!-- Nombre de posts -->
                   </div>
                   <div class="divider divider-horizontal text-neutral"></div>
@@ -47,7 +62,7 @@
                   <div>
                      <!-- La date d'anniversaire du user -->
                      <p class="font-bold">TYPE</p>
-                     <p>Public</p>
+                     <p><?= $oneGroupePrive===null ? $oneGroupePublic['groupePrivacy'] : $oneGroupePrive['groupePrivacy'] ?></p>
                      <!-- La date d'anniversaire du user -->
                   </div>
                </div>
@@ -70,7 +85,7 @@
          <div class="mt-2 text-justify">
             <!-- La bio -->
             <div class='mt-4 text-justify'>
-               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc lacinia arcu sed diam suscipit, id pulvinar lacus sagittis. In odio tortor, facilisis euismod leo ac, cursus interdum diam. Morbi vel ullamcorper felis, ut finibus dui. Pellentesque felis dui, congue ut ex sit amet, auctor ullamcorper eros. Curabitur eget diam sed mi imperdiet ultrices. Cras aliquet diam malesuada diam porttitor, et convallis sem lobortis. Nulla neque dolor, condimentum in bibendum in, venenatis id nulla.</p>
+               <p><?= $oneGroupePrive===null ? $oneGroupePublic['groupeDescription'] : $oneGroupePrive['groupeDescription'] ?></p>
             </div>
             <!-- La bio -->
          </div>
@@ -83,9 +98,9 @@
 
             <!-- Si onglets actif ou non -->
             <?php if (!isset($_GET['req'])) : ?>
-               <a class="tab bg-white rounded-md text-accent" href="./?page=groupes&groupe=yugioh">DISCUSSIONS</a>
+               <a class="tab bg-white rounded-md text-accent" href="./?page=groupes&groupe=<?= $_GET['groupe']?>&privacy=<?= $oneGroupePrive===null ? $oneGroupePublic['groupePrivacy'] : $oneGroupePrive['groupePrivacy'] ?>">DISCUSSIONS</a>
             <?php else : ?>
-               <a class="tab text-white" href="./?page=groupes&groupe=yugioh">DISCUSSIONS</a>
+               <a class="tab text-white" href="./?page=groupes&groupe=<?= $_GET['groupe']?>&privacy=<?= $oneGroupePrive===null ? $oneGroupePublic['groupePrivacy'] : $oneGroupePrive['groupePrivacy'] ?>">DISCUSSIONS</a>
             <?php endif; ?>
 
             <?php if (isset($_GET['req']) == 'groupe') : ?>
