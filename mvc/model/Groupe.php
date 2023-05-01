@@ -33,7 +33,7 @@ class Groupe
          $sql = "call insertGroupePublic(:groupeMasquer,:nbUserGroupe,:fkIdUser,:groupeName,:groupeDescription,:fkIdUser,:privacy,:pp,:tpp,:banner,:tbanner)";
          $data = array(
             ":groupeMasquer" => 0,
-            ":nbUserGroupe" => 0,
+            ":nbUserGroupe" => 1,
             ":groupeName" => htmlspecialchars($tab['nomGroupe']),
             ":groupeDescription" => htmlspecialchars($tab['descGroupe']),
             ":fkIdUser" => $_SESSION['id'],
@@ -41,7 +41,7 @@ class Groupe
             ":pp" => file_get_contents($tabimg['pp']['tmp_name']),
             ":tpp" => $tabimg['pp']['type'],
             ":banner" => file_get_contents($tabimg['banner']['tmp_name']),
-            ":tbanner" => $tabimg['pp']['type']
+            ":tbanner" => $tabimg['banner']['type']
          );
          $prepare = $this->pdo->prepare($sql);
          $prepare->execute($data);
@@ -49,7 +49,7 @@ class Groupe
          $sql = "call insertGroupePrivate(:groupeMasquer,:nbUserGroupe,:fkIdUser,:groupeName,:groupeDescription,:fkIdUser,:privacy,:pp,:tpp,:banner,:tbanner)";
          $data = array(
             ":groupeMasquer" => 1,
-            ":nbUserGroupe" => 0,
+            ":nbUserGroupe" => 1,
             ":groupeName" => htmlspecialchars($tab['nomGroupe']),
             ":groupeDescription" => htmlspecialchars($tab['descGroupe']),
             ":fkIdUser" => $_SESSION['id'],

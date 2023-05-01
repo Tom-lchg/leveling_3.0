@@ -104,9 +104,9 @@
             <?php endif; ?>
 
             <?php if (isset($_GET['req']) == 'groupe') : ?>
-               <a class="tab bg-white rounded-md text-accent" href="./?page=groupes&groupe=yugioh&req=membres">MEMBRES</a>
+               <a class="tab bg-white rounded-md text-accent" href="./?page=groupes&groupe=<?= $_GET['groupe']?>&privacy=<?= $_GET['privacy']?>&req=membres">MEMBRES</a>
             <?php else : ?>
-               <a class="tab text-white " href="./?page=groupes&groupe=yugioh&req=membres">MEMBRES</a>
+               <a class="tab text-white " href="./?page=groupes&groupe=<?= $_GET['groupe']?>&privacy=<?= $_GET['privacy']?>&req=membres">MEMBRES</a>
             <?php endif; ?>
 
             <!-- Si onglets actif ou non -->

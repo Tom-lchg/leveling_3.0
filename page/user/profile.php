@@ -14,8 +14,7 @@ $isFriend = $controler->friend->friendModel->isFriend($_SESSION['id'], $user['id
 
    <div class='h-56 relative mt-4'>
       <!-- bannière de user -->
-      <!-- <img src="data:<?= $user['userTypeBanner'] ?>;base64,<?= base64_encode($user['userBanner']) ?>" alt="banner" class='h-full block w-full object-cover absolute' /> -->
-      <img src="./assets/banner.jpg" alt="" alt="banner" class='rounded-t-lg h-full block w-full object-cover absolute'>
+      <img src="data:<?= $user['userTypeBanner'] ?>;base64,<?= base64_encode($user['userBanner']) ?>" alt="" alt="banner" class='rounded-t-lg h-full block w-full object-cover absolute'>
       <!-- bannière de user -->
 
       <!-- Pseudo + Settings -->
@@ -63,9 +62,10 @@ $isFriend = $controler->friend->friendModel->isFriend($_SESSION['id'], $user['id
       <!-- Pseudo + Settings -->
 
       <!-- Photo de profil -->
-      <img src="./assets/pp3.jpg" alt="" class='w-40 h-40 rounded-full absolute z-20 top-32 left-10 shadow-lg'>
+      
+      <img src="data:<?= $user['userTypeImg'] ?>;base64,<?= base64_encode($user['userImg']) ?>" alt="" class='w-40 h-40 rounded-full absolute z-20 top-32 left-10 shadow-lg'>
       <img src="./assets/ranks/master/icon.png" alt="" width="50em" class="absolute z-20 left-40 top-[14.9rem] shadow-lg">
-      <!-- <img src="data:<?= $user['userTypeImg'] ?>;base64,<?= base64_encode($user['userImg']) ?>" alt="pp user" class='w-60 h-60 rounded-full absolute top-24 left-10 shadow-lg' /> -->
+      
       <!-- Photo de profil -->
 
       <div class="flex justify-between bg-neutral drop-shadow-lg rounded-b-lg">
@@ -83,7 +83,7 @@ $isFriend = $controler->friend->friendModel->isFriend($_SESSION['id'], $user['id
                   <div>
                      <!-- La date de l'inscription du user -->
                      <p class="font-bold">INSCRIPTION</p>
-                     <p>14 Octobre 2022</p>
+                     <p><?= $user['userDateInscription'] ?></p>
                      <!-- La date de l'inscription du user -->
                   </div>
                   <div class="divider divider-horizontal text-neutral"></div>

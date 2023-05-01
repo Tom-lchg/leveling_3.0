@@ -1,7 +1,10 @@
 <?php require('./global/header.php') ?>
 
 <?php
-$user = $controler->user->userModel->getUserProfil('kisei');
+if (isset($_SESSION['id'])){
+   $user = $controler->user->userModel->getUserProfil($_SESSION['pseudo']);
+}
+
 ?>
 
 <div class='grid grid-cols-layout h-auto w-full bg-white'>
@@ -34,11 +37,13 @@ $user = $controler->user->userModel->getUserProfil('kisei');
             <!-- Si on est connecté -->
             <?php if (isset($_SESSION['id'])) : ?>
                <div class='flex gap-4 items-center'>
-                  <div class="avatar">
+                  <?php if(isset($_SESSION['id'])) :?>
+                     <div class="avatar">
                      <div class="w-10 rounded-full">
                         <img src="data:<?= $user['userTypeImg'] ?>;base64,<?= base64_encode($user['userImg']) ?>" alt="">
                      </div>
                   </div>
+                  <?php endif ;?>
                   <a href="./?page=profile&user=<?= $_SESSION['pseudo'] ?>" class='text-white font-toxigenesis'> <?= $_SESSION['pseudo'] ?> </a>
                   <a href="./?page=deconnexion" class='item-nav'><button class="btn btn-error">Déconnexion</button></a>
                </div>

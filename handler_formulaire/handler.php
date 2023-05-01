@@ -29,6 +29,7 @@ $controler = new Controler();
 // formulaire d'inscription
 if (isset($_POST['btn-inscription'])) {
    $controler->user->register($_POST, $_FILES);
+   header("Location: ../?page=connexion");
 }
 
 
@@ -51,13 +52,9 @@ if (isset($_POST['btn-edit-profile'])) {
 if (isset($_POST['btn-add-groupe'])) {
    $controler->groupe->createGroupe($_POST, $_FILES);
    // ça sera toujours session pseudo car c'est le user connecté qui peut supprimer son groupe
-   if(isset($_GET['groupes'])){
-      header("Location:./page/groupes/groupes.php&oui");
-   }else{
-      $user = $_SESSION['pseudo'];
-      header("Location: ./page/groupes/groupes.php"); 
-   }
    
+   $user = $_SESSION['pseudo'];
+   header("Location: ../?page=profile&req=groupe&user=$user");
 }
 
 
