@@ -10,6 +10,9 @@ $isFriend = $controler->friend->friendModel->isFriend($_SESSION['id'], $user['id
 
 // récupéré le nombre de post d'un user
 $nbPostsUser = $controler->user->userModel->getNumberOfPosts($_SESSION['id']);
+
+// on récup notre level
+$lvl = $controler->user->userModel->setLvlUser();
 ?>
 
 <!-- Container global -->
@@ -67,7 +70,7 @@ $nbPostsUser = $controler->user->userModel->getNumberOfPosts($_SESSION['id']);
 
       <!-- Photo de profil -->
       <img src="./assets/pp3.jpg" alt="" class='w-40 h-40 rounded-full absolute z-20 top-32 left-10 shadow-lg'>
-      <img src="./assets/ranks/master/icon.png" alt="" width="50em" class="absolute z-20 left-40 top-[14.9rem] shadow-lg">
+      <img src="./assets/ranks/<?= $lvl ?>/icon.png" alt="" width="50em" class="absolute z-20 left-40 top-[14.9rem] shadow-lg">
       <!-- <img src="data:<?= $user['userTypeImg'] ?>;base64,<?= base64_encode($user['userImg']) ?>" alt="pp user" class='w-60 h-60 rounded-full absolute top-24 left-10 shadow-lg' /> -->
       <!-- Photo de profil -->
 

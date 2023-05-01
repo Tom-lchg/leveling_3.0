@@ -59,8 +59,4 @@ class Model
       $stmt = $this->pdo->prepare($sql);
       $stmt->execute([":id" => $_SESSION['id']]);
    }
-
-   public function lvlUp()
-   {
-   }
 }

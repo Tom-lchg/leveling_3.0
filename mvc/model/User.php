@@ -84,4 +84,40 @@ class User
       $stmt->execute(["iduser" => $iduser]);
       return $stmt->fetchColumn();
    }
+
+   public function setLvlUser()
+   {
+      // id du user
+      $iduser = $_SESSION['id'];
+      // on récup l'xp
+      $sql_xp = "SELECT userXP from tblUsers WHERE idUser = $iduser";
+      $stmt_xp = $this->pdo->query($sql_xp);
+      $xpArray = $stmt_xp->fetch();
+      $currentXP = $xpArray['userXP'];
+
+      // if pour savoir notre lvl
+      if ($currentXP === 0) {
+         $lvl = "novice";
+      } else if ($currentXP < 300) {
+         $lvl = "apprentice";
+      } else if ($currentXP < 600) {
+         $lvl = "adept";
+      } else if ($currentXP < 900) {
+         $lvl = "veteran";
+      } else if ($currentXP < 1200) {
+         $lvl = "pro";
+      } else if ($currentXP < 1500) {
+         $lvl = "expert";
+      } else if ($currentXP < 1800) {
+         $lvl = "champion";
+      } else if ($currentXP < 2100) {
+         $lvl = "master";
+      } else if ($currentXP < 2400) {
+         $lvl = "grand_master";
+      } else if ($currentXP < 2700) {
+         $lvl = "legend";
+      }
+
+      return $lvl;
+   }
 }
