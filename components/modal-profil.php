@@ -21,6 +21,7 @@ $controler = new Controler();
 if (isset($_SESSION['id'])) {
    $user = $controler->user->userModel->findById($_SESSION['id'], 'idUser');
 }
+
 ?>
 
 <!-- Modal pour update un user -->
