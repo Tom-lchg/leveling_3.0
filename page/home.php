@@ -117,7 +117,7 @@ $all_games = $controler->games->gameModel->getALl();
             <div class="flex flex-col gap-6">
                <!-- foreach pour afficher tous les posts -->
                <?php foreach ($posts as $post) : ?>
-                  
+
 
                   <!-- one post -->
                   <div class='bg-secondary h-auto relative p-2 rounded-lg shadow-lg'>
@@ -139,27 +139,27 @@ $all_games = $controler->games->gameModel->getALl();
                            </div>
                            <!-- Pseudo -->
 
-                           <?php 
-                              $postcontent = $controler->post->postModel->getMessage($post['idPost']);
+                           <?php
+                           $postcontent = $controler->post->postModel->getMessage($post['idPost']);
                            ?>
 
-                        <!-- Modal modifier un post car on peut pas faire autrement-->
-                        <input type="checkbox" id="modal-edit-post" class="modal-toggle" />
-                        <div class="modal bg-modal">
-                           <div class="modal-box relative bg-secondary max-w-3xl">
-                              <label for="modal-edit-post" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
-                              <h3 class="text-lg font-bold">Modifier votre post <?= $post['idPost'] ?></h3>
-                              
-                              <form action="../handler_formulaire/handler.php" method="POST" class='mt-4 w-full' enctype="multipart/form-data">
-                                 
-                                 <div class='flex flex-col gap-4 w-full '>
+                           <!-- Modal modifier un post car on peut pas faire autrement-->
+                           <input type="checkbox" id="modal-edit-post" class="modal-toggle" />
+                           <div class="modal bg-modal">
+                              <div class="modal-box relative bg-secondary max-w-3xl">
+                                 <label for="modal-edit-post" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+                                 <h3 class="text-lg font-bold">Modifier votre post <?= $post['idPost'] ?></h3>
 
-                                    <textarea class='textarea block w-full h-44 resize-none' name='content'><?= $postcontent ?><?= $post['idPost'] ?></textarea>
-                                    <button type='submit' name='btn-add-post' class='btn btn-accent'>Modifier</button>
-                                 </div>
-                              </form>
+                                 <form action="../handler_formulaire/handler.php" method="POST" class='mt-4 w-full' enctype="multipart/form-data">
+
+                                    <div class='flex flex-col gap-4 w-full '>
+
+                                       <textarea class='textarea block w-full h-44 resize-none' name='content'><?= $postcontent ?><?= $post['idPost'] ?></textarea>
+                                       <button type='submit' name='btn-add-post' class='btn btn-accent'>Modifier</button>
+                                    </div>
+                                 </form>
+                              </div>
                            </div>
-                        </div>
 
                            <!-- Afficher uniquement si on a un user connecté -->
                            <?php if (isset($_SESSION['id'])) : ?>
