@@ -79,4 +79,6 @@ class User
       $stmt->execute(array(":iduser" => $iduser));
       return $stmt->fetchAll();
    }
+
+   
 }

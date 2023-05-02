@@ -52,9 +52,24 @@ if (isset($_POST['btn-edit-profile'])) {
 if (isset($_POST['btn-add-groupe'])) {
    $controler->groupe->createGroupe($_POST, $_FILES);
    // ça sera toujours session pseudo car c'est le user connecté qui peut supprimer son groupe
-   
    $user = $_SESSION['pseudo'];
    header("Location: ../?page=profile&req=groupe&user=$user");
+}
+
+//formulaire pour ajouter une personne dans une groupe
+if(isset($_POST['btn-join-group'])){
+   $iduser = $_POST['idUser'];
+   $idgroupe = $_POST['idGroupe'];
+   
+   $non= $controler->groupe->groupeModel->addUserOnGroup($idgroupe, $iduser);
+
+   if($non==false){
+      //faudrait changer ca
+      header("Location: ../?page=home&feur");
+   }else{
+      header("Location: ../?page=home&quoicou");
+   }
+   
 }
 
 

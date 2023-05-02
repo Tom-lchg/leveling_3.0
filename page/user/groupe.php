@@ -1,7 +1,13 @@
 <?php
 $user = $controler->user->userModel->getUserProfil($_GET['user']);
-$groupes = $controler->user->userModel->getAllGroupe($user['idUser']);
+$groupes = $controler->groupe->groupeModel->getGroupbyUser($user['idUser']);
+
+
 ?>
+   
+
+
+
 
    
 <div class="container-home p-6">
@@ -35,6 +41,27 @@ $groupes = $controler->user->userModel->getAllGroupe($user['idUser']);
    <?php endif; ?>
    <!-- Si l'utilisateur n'as pas de groupe -->
 <?php endif; ?>
+<br>
 <!-- afficher uniquement si c'est le user connecté -->
 
 <!--- Faire le code pour afficher tous les groupes où le user y est-->
+<?php foreach($groupes as $groupe){
+   $allGroupes = $controler->groupe->groupeModel->findbyIdGroupe($groupe['idgroupe']);
+   foreach($allGroupes as $oneGroupe) : ?>
+   <a href="./?page=groupes&groupe=<?= $oneGroupe['idGroupe'] ?>&privacy=<?=$oneGroupe['groupePrivacy'] ?>" class="hover:scale-105 transition">
+      <div class="card w-96 shadow-xl image-full relative">
+         <figure><img src="data:<?= $oneGroupe['groupeTypeBanner'] ?>;base64,<?= base64_encode($oneGroupe['groupeBanner']) ?>" alt="Shoes" /></figure>
+            <div class="card-body">
+               <h2 class="card-title"><?= $oneGroupe['groupeName'] ?></h2>
+               <p><?= $oneGroupe['groupeDescription'] ?></p>
+            </div>
+            <br>
+      </div>
+   <?php endforeach ; }?>
+
+
+
+
+
+
+

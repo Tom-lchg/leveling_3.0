@@ -10,6 +10,8 @@
 
    }
 
+   
+
          
 ?>
 
@@ -65,6 +67,18 @@
                      <p><?= $oneGroupePrive===null ? $oneGroupePublic['groupePrivacy'] : $oneGroupePrive['groupePrivacy'] ?></p>
                      <!-- La date d'anniversaire du user -->
                   </div>
+                  <?php if(isset($_SESSION['id'])) : ?>
+                  <div class="divider divider-horizontal text-neutral"></div>
+                  <div>
+                     <!-- Bouton qui permet de rejoindre le groupe-->
+                     <form action="../handler_formulaire/handler.php" method="post" class='max-w-2xl' enctype="multipart/form-data">
+                     <input type="hidden" name="idGroupe" value="<?= $_GET['groupe']?>">
+                     <input type="hidden" name="idUser" value="<?= $_SESSION['id']?>">
+                     <input type="submit" class='btn bg-accent text-white border-accent hover:bg-[#1991FF] hover:text-white hover:border-[#1991FF] my-2' name="btn-join-group" value="REJOINDRE CE GROUPE">
+                     </form>
+                     <!-- Bouton qui permet de rejoindre le groupe -->
+                  </div>
+                  <?php  endif; ?>
                </div>
             </div>
                <!-- Menu du groupe-->
@@ -72,7 +86,7 @@
       </div>
 
    </div>
-
+<br>
 
    <div class='h-auto grid grid-cols-4 mt-24 gap-6'>
 
