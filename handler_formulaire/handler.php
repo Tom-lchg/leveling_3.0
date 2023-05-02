@@ -72,6 +72,15 @@ if(isset($_POST['btn-join-group'])){
    
 }
 
+//formulaire pour se retirer d'un groupe
+if(isset($_POST['btn-leave-group'])){
+   $iduser = $_POST['idUser'];
+   $idgroupe = $_POST['idGroupe'];
+
+   $non= $controler->groupe->groupeModel->dropUserOnGroup($idgroupe, $iduser);
+   header("Location: ../?page=home");
+}
+
 
 // formulaire créer un post
 if (isset($_POST['btn-add-post'])) {

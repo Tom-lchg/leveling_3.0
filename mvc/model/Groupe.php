@@ -148,8 +148,8 @@ public function findbyIdGroupe($idgroupe){
 public function insertInGroupUser($idgroupe , $iduser){
    $sql = "INSERT INTO tblgroupsuser(null,:idgroupe,:iduser)";
    $data = array(
-      ":idgroupe" => $idGroupe,
-      ":iduser" => $idUser
+      ":idgroupe" => $idgroupe,
+      ":iduser" => $iduser
       );
    $prepare = $this->pdo->prepare($sql);
    $prepare->execute($data);
@@ -163,6 +163,16 @@ public function getGroupbyUser($iduser){
    $stmt = $this->pdo->prepare($sql);
    $stmt->execute([":iduser" => $iduser]);
    return $stmt->fetchAll();
+}
+
+public function dropUserOnGroup($idGroupe, $idUser){
+   $sql = "DELETE FROM tblgroupsuser WHERE idgroupe=:idgroupe AND iduser=:iduser";
+   $data = array(
+      ":idgroupe" => $idGroupe,
+      ":iduser" => $idUser
+      );
+   $prepare = $this->pdo->prepare($sql);
+   $prepare->execute($data);
 }
 
 
