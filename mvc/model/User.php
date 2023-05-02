@@ -80,5 +80,12 @@ class User
       return $stmt->fetchAll();
    }
 
-   
+   public function findByIdUser($iduser){
+      $sql = "SELECT * FROM tblusers WHERE idUser = :iduser";
+      $stmt = $this->pdo->prepare($sql);
+      $stmt->execute(array(":iduser" => $iduser));
+      return $stmt->fetchAll();
+   }
+
+
 }

@@ -165,6 +165,13 @@ public function getGroupbyUser($iduser){
    return $stmt->fetchAll();
 }
 
+public function getGroupbyIdGroupe($idgroupe){
+   $sql = "SELECT * FROM tblgroupsuser WHERE idgroupe=:idgroupe";
+   $stmt = $this->pdo->prepare($sql);
+   $stmt->execute([":idgroupe" => $idgroupe]);
+   return $stmt->fetchAll();
+}
+
 public function dropUserOnGroup($idGroupe, $idUser){
    $sql = "DELETE FROM tblgroupsuser WHERE idgroupe=:idgroupe AND iduser=:iduser";
    $data = array(
