@@ -34,6 +34,9 @@ class Post
       ];
 
       $this->pdo->prepare($sql)->execute($array);
+
+      // ajoute l'XP
+      $this->model->addXP('post');
    }
 
    public function getAllPosts()
@@ -65,7 +68,7 @@ class Post
       $stmt = $this->pdo->prepare($sql);
       // $stmt->execute([":idpost" => $idpost]);
       $result = $stmt->fetch();
-      if($result) {
+      if ($result) {
          return $result['postContent'];
       } else {
          return null;
