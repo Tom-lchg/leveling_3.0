@@ -27,7 +27,7 @@ class Post
 
    public function createPost($content)
    {
-      $sql = "INSERT INTO tblPosts VALUES(null, :iduser, :content, 0, 0)";
+      $sql = "INSERT INTO tblposts VALUES(null, :iduser, :content, 0, 0)";
       $array = [
          ":iduser" => $_SESSION['id'],
          ":content" => $content
@@ -38,7 +38,7 @@ class Post
 
    public function getAllPosts()
    {
-      $sql = "SELECT * FROM tblPosts INNER JOIN tblUsers WHERE fkIdUser = tblusers.iduser";
+      $sql = "SELECT * FROM tblposts INNER JOIN tblusers WHERE fkIdUser = tblusers.iduser";
       $stmt = $this->pdo->query($sql);
       return $stmt->fetchAll();
    }
@@ -52,7 +52,7 @@ class Post
 
    public function getAllPostsFromUser($iduser)
    {
-      $sql = "SELECT * FROM tblPosts WHERE fkIdUser = :id";
+      $sql = "SELECT * FROM tblposts WHERE fkIdUser = :id";
       $stmt = $this->pdo->prepare($sql);
       $stmt->execute([":id" => $iduser]);
       return $stmt->fetchAll();
@@ -61,7 +61,7 @@ class Post
 
    public function getMessage($idpost)
    {
-      $sql = "SELECT postContent from tblPosts WHERE idPost = :idpost";
+      $sql = "SELECT postContent from tblposts WHERE idPost = :idpost";
       $stmt = $this->pdo->prepare($sql);
       // $stmt->execute([":idpost" => $idpost]);
       $result = $stmt->fetch();
