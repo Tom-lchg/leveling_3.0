@@ -57,19 +57,18 @@ if (isset($_POST['btn-add-groupe'])) {
 }
 
 //formulaire pour ajouter une personne dans une groupe
-if(isset($_POST['btn-join-group'])){
+if (isset($_POST['btn-join-group'])) {
    $iduser = $_POST['idUser'];
    $idgroupe = $_POST['idGroupe'];
-   
-   $non= $controler->groupe->groupeModel->addUserOnGroup($idgroupe, $iduser);
 
-   if($non==false){
+   $non = $controler->groupe->groupeModel->addUserOnGroup($idgroupe, $iduser);
+
+   if ($non == false) {
       //faudrait changer ca
       header("Location: ../?page=home&feur");
-   }else{
+   } else {
       header("Location: ../?page=home&quoicou");
    }
-   
 }
 
 
@@ -98,13 +97,11 @@ if (isset($_POST['editPost'])) {
 if (isset($_POST['deletePost'])) {
    $controler->post->postModel->delPost($_POST['idpost'], $_SESSION['id']);
    header("Location: ../?page=home");
-   
-   
 }
 
 // delete un post from profil
 if (isset($_POST['deletePostFromProfil'])) {
-   $controler->post->postModel->delPost($_POST['idpost']);
+   $controler->post->postModel->delPost($_POST['idpost'], $_SESSION['id']);
    // ça sera toujours session pseudo car c'est le user connecté qui peut supprimer ses posts
    $user = $_SESSION['pseudo'];
    header("Location: ../?page=profile&user=$user");
@@ -123,4 +120,11 @@ if (isset($_POST['btn-form-remove-friend'])) {
    $controler->friend->friendModel->removeFriend($_POST['iduser']);
    $user = $_POST['pseudo'];
    header("Location: ../?page=profile&user=$user");
+}
+
+
+// delete un ami
+if (isset($_POST['delFriend'])) {
+   $controler->user->userModel->deleteFriend($_POST['idfriend']);
+   header("Location: ../?page=home");
 }

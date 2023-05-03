@@ -115,9 +115,36 @@ $friends = $controler->user->userModel->getFriends($_SESSION['id']);
          <!-- Liste des amis -->
          <div class="flex flex-col gap-6 mt-6">
             <?php foreach ($friends as $f) : ?>
-               <div class="flex items-center gap-4">
-                  <img src="data:<?= $user['userTypeImg'] ?>;base64,<?= base64_encode($user['userImg']) ?>" alt="user img" class="rounded-full w-10 h-10">
-                  <h3 class="font-leger"><?= $f['userPseudo'] ?></h3>
+               <div class="flex justify-between">
+
+                  <!-- PP + image -->
+                  <div class="flex items-center gap-4">
+                     <img src="data:<?= $user['userTypeImg'] ?>;base64,<?= base64_encode($user['userImg']) ?>" alt="user img" class="rounded-full w-10 h-10">
+                     <h3 class="font-leger haa">
+                        <a href="?page=profile&user=<?= $f['userPseudo'] ?>" class="cursor-pointer">
+                           <?= $f['userPseudo'] ?>
+                        </a>
+                     </h3>
+                  </div>
+                  <!-- PP + image -->
+
+                  <!-- settings -->
+                  <div class="flex gap-2">
+                     <button class="btn btn-sm btn-accent text-white block">
+                        <i class="fa-solid fa-message"></i>
+                     </button>
+
+                     <form action="./handler_formulaire/handler.php" method="POST">
+                        <!-- input invisible -->
+                        <input type="text" hidden name="idfriend" value="<?= $f['idUser'] ?>">
+                        <!-- input invisible -->
+                        <button class="btn btn-sm btn-error text-white" type="submit" name="delFriend">
+                           <i class="fa-solid fa-user-minus"></i>
+                        </button>
+                     </form>
+                  </div>
+                  <!-- settings -->
+
                </div>
             <?php endforeach; ?>
          </div>
