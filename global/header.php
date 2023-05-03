@@ -38,4 +38,3 @@ $controler = new Controler();
 <body class='bg-white'>
    <!-- require modal modification du profil -->
    <?php require('./components/modal-profil.php'); ?>
-   

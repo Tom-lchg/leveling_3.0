@@ -123,4 +123,12 @@ class User
 
       return $lvl;
    }
+
+   public function getFriends($idUserConnected)
+   {
+      $sql = "SELECT userPseudo, userImg FROM tblUsers INNER JOIN tblFriends ON userFriend = idUser and userConnected = $idUserConnected";
+
+      $stmt = $this->pdo->query($sql);
+      return $stmt->fetchAll();
+   }
 }
