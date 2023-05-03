@@ -12,7 +12,7 @@ class User
    public function __construct()
    {
       $this->pdo = new PDO('mysql:host=localhost;dbname=leveling2', 'root', '');
-      $this->model = new Model('tblUsers');
+      $this->model = new Model('tblusers');
    }
 
    public function getAll()
@@ -27,7 +27,7 @@ class User
 
    public function getUserProfil($pseudo)
    {
-      $sql = "SELECT * FROM tblUsers WHERE userPseudo = :psd";
+      $sql = "SELECT * FROM tblusers WHERE userPseudo = :psd";
       $stmt = $this->pdo->prepare($sql);
       $stmt->execute([
          ":psd" => $pseudo
@@ -64,7 +64,7 @@ class User
 
    public function updateUser($pseudo, $bio, $id)
    {
-      $sql = "UPDATE tblUsers SET userPseudo = :pseudo, userBio = :bio WHERE idUser = :iduser";
+      $sql = "UPDATE tblusers SET userPseudo = :pseudo, userBio = :bio WHERE idUser = :iduser";
       $this->pdo->prepare($sql)->execute([
          ":pseudo" => $pseudo,
          ":bio" => $bio,
@@ -74,7 +74,7 @@ class User
 
    public function getAllGroupe($iduser)
    {
-      $sql = "SELECT * FROM tblGroups WHERE groupeFkIdUser = :iduser";
+      $sql = "SELECT * FROM tblgroups WHERE groupeFkIdUser = :iduser";
       $stmt = $this->pdo->prepare($sql);
       $stmt->execute(array(":iduser" => $iduser));
       return $stmt->fetchAll();
