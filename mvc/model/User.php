@@ -36,27 +36,30 @@ class User
       return $stmt->fetch();
    }
 
-   public function insertUser($data)
+   public function insertUser($tab, $tabimg)
    {
-      $this->pdo->query("call insertUserSimple(
-         'PC',
-         0,
-         '$data->nom',
-         '$data->prenom',
-         $data->age,
-         '$data->bio',
-         '$data->dateNaissance',
-         1,
-         '$data->pseudo',
-         '$data->email',
-         '$data->mdp',
-         'user',
-         'dateInscription',
-         '$data->pp',
-         '$data->pptype',
-         '$data->banniere',
-         '$data->bannieretype'
-      )");
+      $dateInscription = date('Y-m-d');
+      $sql = "CALL insertUserSimple(:plat,:canModify,:nom,:prenom,:age,:bio,:naissance,:level,:pseudo,:mail,:password,:role,sysdate(),:img,:timg,:banner,:tbanner)";
+      $data = array(
+         ":plat" => "PC",
+         ":canModify" => 0,
+         ":nom" => htmlspecialchars($tab['nom']),
+         ":prenom" => htmlspecialchars($tab['prenom']),
+         ":age" => htmlspecialchars($tab['age']),
+         ":bio" => htmlspecialchars($tab['bio']),
+         ":naissance" => htmlspecialchars($tab['dateNaissance']),
+         ":level" => 1,
+         ":pseudo" => htmlspecialchars($tab['pseudo']),
+         ":mail" => htmlspecialchars($tab['email']),
+         ":password" => htmlspecialchars($tab['mdp']),
+         ":role" => "user",
+         ":img" => file_get_contents($tabimg['pp']['tmp_name']),
+         ":timg" => $tabimg['pp']['type'],
+         ":banner" => file_get_contents($tabimg['banniere']['tmp_name']),
+         ":tbanner" => $tabimg['banniere']['type']
+      );
+      $prepare = $this->pdo->prepare($sql);
+      $prepare->execute($data);
    }
 
    public function updateUser($pseudo, $bio, $id)
@@ -75,5 +78,63 @@ class User
       $stmt = $this->pdo->prepare($sql);
       $stmt->execute(array(":iduser" => $iduser));
       return $stmt->fetchAll();
+   }
+
+   public function getNumberOfPosts($iduser)
+   {
+      $sql = "SELECT COUNT(*) FROM tblPosts WHERE fkIdUser = :iduser";
+      $stmt = $this->pdo->prepare($sql);
+      $stmt->execute(["iduser" => $iduser]);
+      return $stmt->fetchColumn();
+   }
+
+   public function setLvlUser()
+   {
+      // id du user
+      $iduser = $_SESSION['id'];
+      // on récup l'xp
+      $sql_xp = "SELECT userXP from tblUsers WHERE idUser = $iduser";
+      $stmt_xp = $this->pdo->query($sql_xp);
+      $xpArray = $stmt_xp->fetch();
+      $currentXP = $xpArray['userXP'];
+
+      // if pour savoir notre lvl
+      if ($currentXP === 0) {
+         $lvl = "novice";
+      } else if ($currentXP < 300) {
+         $lvl = "apprentice";
+      } else if ($currentXP < 600) {
+         $lvl = "adept";
+      } else if ($currentXP < 900) {
+         $lvl = "veteran";
+      } else if ($currentXP < 1200) {
+         $lvl = "pro";
+      } else if ($currentXP < 1500) {
+         $lvl = "expert";
+      } else if ($currentXP < 1800) {
+         $lvl = "champion";
+      } else if ($currentXP < 2100) {
+         $lvl = "master";
+      } else if ($currentXP < 2400) {
+         $lvl = "grand_master";
+      } else if ($currentXP < 2700) {
+         $lvl = "legend";
+      }
+
+      return $lvl;
+   }
+
+   public function getFriends($idUserConnected)
+   {
+      $sql = "SELECT userPseudo, userImg, idUser FROM tblUsers INNER JOIN tblFriends ON userFriend = idUser and userConnected = $idUserConnected";
+
+      $stmt = $this->pdo->query($sql);
+      return $stmt->fetchAll();
+   }
+
+   public function deleteFriend($idFriend)
+   {
+      $sql = "DELETE from tblFriends WHERE userFriend = $idFriend";
+      $this->pdo->query($sql);
    }
 }

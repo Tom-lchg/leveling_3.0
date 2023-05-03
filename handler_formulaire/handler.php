@@ -29,6 +29,7 @@ $controler = new Controler();
 // formulaire d'inscription
 if (isset($_POST['btn-inscription'])) {
    $controler->user->register($_POST, $_FILES);
+   header("Location: ../?page=connexion");
 }
 
 
@@ -51,13 +52,23 @@ if (isset($_POST['btn-edit-profile'])) {
 if (isset($_POST['btn-add-groupe'])) {
    $controler->groupe->createGroupe($_POST, $_FILES);
    // ça sera toujours session pseudo car c'est le user connecté qui peut supprimer son groupe
-   if(isset($_GET['groupes'])){
-      header("Location:./page/groupes/groupes.php&oui");
-   }else{
-      $user = $_SESSION['pseudo'];
-      header("Location: ./page/groupes/groupes.php"); 
+   $user = $_SESSION['pseudo'];
+   header("Location: ../?page=profile&req=groupe&user=$user");
+}
+
+//formulaire pour ajouter une personne dans une groupe
+if (isset($_POST['btn-join-group'])) {
+   $iduser = $_POST['idUser'];
+   $idgroupe = $_POST['idGroupe'];
+
+   $non = $controler->groupe->groupeModel->addUserOnGroup($idgroupe, $iduser);
+
+   if ($non == false) {
+      //faudrait changer ca
+      header("Location: ../?page=home&feur");
+   } else {
+      header("Location: ../?page=home&quoicou");
    }
-   
 }
 
 
@@ -86,13 +97,11 @@ if (isset($_POST['editPost'])) {
 if (isset($_POST['deletePost'])) {
    $controler->post->postModel->delPost($_POST['idpost'], $_SESSION['id']);
    header("Location: ../?page=home");
-   
-   
 }
 
 // delete un post from profil
 if (isset($_POST['deletePostFromProfil'])) {
-   $controler->post->postModel->delPost($_POST['idpost']);
+   $controler->post->postModel->delPost($_POST['idpost'], $_SESSION['id']);
    // ça sera toujours session pseudo car c'est le user connecté qui peut supprimer ses posts
    $user = $_SESSION['pseudo'];
    header("Location: ../?page=profile&user=$user");
@@ -111,4 +120,11 @@ if (isset($_POST['btn-form-remove-friend'])) {
    $controler->friend->friendModel->removeFriend($_POST['iduser']);
    $user = $_POST['pseudo'];
    header("Location: ../?page=profile&user=$user");
+}
+
+
+// delete un ami
+if (isset($_POST['delFriend'])) {
+   $controler->user->userModel->deleteFriend($_POST['idfriend']);
+   header("Location: ../?page=home");
 }

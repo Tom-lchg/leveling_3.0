@@ -6,8 +6,8 @@ $all_games = $controler->games->gameModel->getALl();
 
 <div class='h-auto w-full'>
 
-   <div class="w-full mt-10 flex items-center">
-      <!-- Jeu à la une (aléatoire dans la gallerie) -->
+   <!-- Jeu à la une (aléatoire dans la gallerie) -->
+   <div class="w-full mt-10 flex items-center relative z-0">
       <div class="w-full flex items-center">
          <img src="../assets/games/pp/<?= $random_game['gameImg'] ?>" alt="pp jeux" class='h-48 drop-shadow-md'>
          <div class="mx-6">
@@ -16,9 +16,8 @@ $all_games = $controler->games->gameModel->getALl();
             <a class="btn btn-sm mt-4 btn-accent" href="?page=games&game=<?= $random_game['idGame'] ?>">Voir plus</a>
          </div>
       </div>
-      <!-- Jeu à la une (aléatoire dans la gallerie) -->
-
    </div>
+   <!-- Jeu à la une (aléatoire dans la gallerie) -->
 
    <div class='mt-4 grid grid-cols-4 gap-6'>
 

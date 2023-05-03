@@ -30,10 +30,11 @@ class Groupe
    {
       // on vérifie si le groupe est en publique ou en privé
       if ($tab['privacy'] === 'publique') {
+
          $sql = "call insertGroupePublic(:groupeMasquer,:nbUserGroupe,:fkIdUser,:groupeName,:groupeDescription,:fkIdUser,:privacy,:pp,:tpp,:banner,:tbanner)";
          $data = array(
             ":groupeMasquer" => 0,
-            ":nbUserGroupe" => 0,
+            ":nbUserGroupe" => 1,
             ":groupeName" => htmlspecialchars($tab['nomGroupe']),
             ":groupeDescription" => htmlspecialchars($tab['descGroupe']),
             ":fkIdUser" => $_SESSION['id'],
@@ -41,7 +42,7 @@ class Groupe
             ":pp" => file_get_contents($tabimg['pp']['tmp_name']),
             ":tpp" => $tabimg['pp']['type'],
             ":banner" => file_get_contents($tabimg['banner']['tmp_name']),
-            ":tbanner" => $tabimg['pp']['type']
+            ":tbanner" => $tabimg['banner']['type']
          );
          $prepare = $this->pdo->prepare($sql);
          $prepare->execute($data);
@@ -49,7 +50,7 @@ class Groupe
          $sql = "call insertGroupePrivate(:groupeMasquer,:nbUserGroupe,:fkIdUser,:groupeName,:groupeDescription,:fkIdUser,:privacy,:pp,:tpp,:banner,:tbanner)";
          $data = array(
             ":groupeMasquer" => 1,
-            ":nbUserGroupe" => 0,
+            ":nbUserGroupe" => 1,
             ":groupeName" => htmlspecialchars($tab['nomGroupe']),
             ":groupeDescription" => htmlspecialchars($tab['descGroupe']),
             ":fkIdUser" => $_SESSION['id'],
@@ -61,37 +62,113 @@ class Groupe
          );
          $prepare = $this->pdo->prepare($sql);
          $prepare->execute($data);
-      
+      }
    }
-}
 
-public function getAllGroupsPublic(){
-   $sql = "SELECT * FROM tblgroupspublic";
-   $stmt = $this->pdo->query($sql);
-   return $stmt->fetchAll();
-}
-public function getAllGroups(){
-   $sql = "SELECT * FROM tblgroups";
-   $stmt = $this->pdo->query($sql);
-   return $stmt->fetchAll();
-}
+   public function getAllGroupsPublic()
+   {
+      $sql = "SELECT * FROM tblgroupspublic";
+      $stmt = $this->pdo->query($sql);
+      return $stmt->fetchAll();
+   }
+   public function getAllGroups()
+   {
+      $sql = "SELECT * FROM tblgroups";
+      $stmt = $this->pdo->query($sql);
+      return $stmt->fetchAll();
+   }
 
-public function getOneGroupPublic($idgroupe){
-   $sql = "SELECT * FROM tblgroupspublic WHERE idGroupe = :idgroupe";
-   $stmt = $this->pdo->prepare($sql);
-   $stmt->execute([":idgroupe" => $idgroupe]);
-   return $stmt->fetch();
-}
+   public function getOneGroupPublic($idgroupe)
+   {
+      $sql = "SELECT * FROM tblgroupspublic WHERE idGroupe = :idgroupe";
+      $stmt = $this->pdo->prepare($sql);
+      $stmt->execute([":idgroupe" => $idgroupe]);
+      return $stmt->fetch();
+   }
 
-public function getOneGroupPrive($idgroupe){
-   $sql = "SELECT * FROM tblgroupsprivate WHERE idGroupe = :idgroupe";
-   $stmt = $this->pdo->prepare($sql);
-   $stmt->execute([":idgroupe" => $idgroupe]);
-   return $stmt->fetch();
-}
+   public function getOneGroupPrive($idgroupe)
+   {
+      $sql = "SELECT * FROM tblgroupsprivate WHERE idGroupe = :idgroupe";
+      $stmt = $this->pdo->prepare($sql);
+      $stmt->execute([":idgroupe" => $idgroupe]);
+      return $stmt->fetch();
+   }
+
+   public function verifCreateGroup($idGroupe, $idUser)
+   {
+      $sql = "SELECT idGroupe, groupeFkIdUser from tblgroups WHERE idGroupe =:idgroupe AND groupeFkIdUser= :iduser";
+      $data = array(
+         ":idgroupe" => $idGroupe,
+         ":iduser" => $idUser
+      );
+      $prepare = $this->pdo->prepare($sql);
+      $prepare->execute($data);
+      return $prepare->fetchAll();
+   }
+
+   public function verifUserGroupeAlready($idGroupe, $idUser)
+   {
+      $sql = "SELECT * FROM tblgroupsuser WHERE idgroupe=:idgroupe AND iduser=:iduser";
+      $data = array(
+         ":idgroupe" => $idGroupe,
+         ":iduser" => $idUser
+      );
+
+      $prepare = $this->pdo->prepare($sql);
+      $prepare->execute($data);
+      return $prepare->fetchAll();
+   }
+
+
+   public function addUserOnGroup($idGroupe, $idUser)
+   {
+      $validation = null;
+      $verifCreateGroup = $this->verifCreateGroup($idGroupe, $idUser);
+      $verifUserGroupeAlready = $this->verifUserGroupeAlready($idGroupe, $idUser);
+      if ($verifUserGroupeAlready) {
+         $validation = false;
+      } else {
+
+         $validation = true;
+         $sql = "INSERT INTO tblgroupsuser VALUES(null,:idgroupe,:iduser)";
+         $data = array(
+            ":idgroupe" => $idGroupe,
+            ":iduser" => $idUser
+         );
+         $prepare = $this->pdo->prepare($sql);
+         $prepare->execute($data);
+      }
+
+      return $validation;
+   }
+   public function findbyIdGroupe($idgroupe)
+   {
+      $sql = "SELECT * FROM tblgroups WHERE idGroupe=:idgroupe";
+      $stmt = $this->pdo->prepare($sql);
+      $stmt->execute([":idgroupe" => $idgroupe]);
+      return $stmt->fetchAll();
+   }
 
 
 
+   public function insertInGroupUser($idgroupe, $iduser)
+   {
+      $sql = "INSERT INTO tblgroupsuser(null,:idgroupe,:iduser)";
+      $data = array(
+         ":idgroupe" => $idgroupe,
+         ":iduser" => $iduser
+      );
+      $prepare = $this->pdo->prepare($sql);
+      $prepare->execute($data);
+   }
 
 
+
+   public function getGroupbyUser($iduser)
+   {
+      $sql = "SELECT * FROM tblgroupsuser WHERE iduser=:iduser";
+      $stmt = $this->pdo->prepare($sql);
+      $stmt->execute([":iduser" => $iduser]);
+      return $stmt->fetchAll();
+   }
 }
