@@ -1,19 +1,19 @@
 <?php
 
-namespace Post;
+namespace GamePost;
 
 use \Models\Model;
-use \Models\Posts\Post as PostModel;
+use \Models\GamePost\GamePost as GamePostModel;
 
-class Post
+class GamePost
 {
    private $model;
-   public $postModel;
+   public $GamePostModel;
 
    public function __construct()
    {
-      $this->model = new Model('tblPosts');
-      $this->postModel = new PostModel();
+      $this->model = new Model('tblgameposts');
+      $this->GamePostModel = new GamePostModel();
    }
 
    public function createPost(array $data)
@@ -23,7 +23,3 @@ class Post
    }
    
 }
-
-
-
-

@@ -56,7 +56,7 @@ $gamecs = $controler->games->gameModel->findByIdCs($_GET['game'], 'idGame');
 </div>
 
 
-<div class='grid grid-cols-4 gap-6 mt-4 pb-4 h-auto max-w-7xl mx-auto'>
+<div class='grid grid-rows-2 grid-cols-4 gap-6 mt-4 pb-4 h-auto max-w-7xl mx-auto'>
 
     <div class="col-start-1 col-end-4 container-home p-6 h-full">
 
@@ -83,7 +83,7 @@ $gamecs = $controler->games->gameModel->findByIdCs($_GET['game'], 'idGame');
     </div>
 
 
-    <div class="col-start-4 col-end-5 ">
+    <div class="col-start-4 col-end-5">
 
 
         <!-- Block des info -->
@@ -141,4 +141,63 @@ $gamecs = $controler->games->gameModel->findByIdCs($_GET['game'], 'idGame');
         <!-- Block des info -->
 
     </div>
+
+    <!-- Block des commentaires utilisateurs -->
+
+    <div class="col-start-1 col-end-5 row-start-2">
+
+    <?php 
+    $allGamePost = $controler->gamepost->GamePostModel->getAllPostsFromGame($_GET['game']); 
+    ?>
+
+    <div class="font-bold w-full flex justify-center items-center h-9 bg-neutral text-primary rounded-md mb-4">
+            <p>NOTES ET AVIS DES UTILISATEURS</p>
+        </div>
+    
+    <!-- foreach pour afficher tous les posts -->
+    <?php foreach ($allGamePost as $GamePost) : ?>
+                    
+
+        <div class="h-auto container-home py-5 pr-6 grid grid-cols-8 mb-4">
+
+            <!-- Image + note de l'utilisateur -->
+            <div class="col-start-1 col-end-1">
+                <div class="flex justify-center w-full">
+                    <img class="rounded-full mb-4" width="80px" src="data:<?= $GamePost['userTypeImg'] ?>;base64,<?= base64_encode($GamePost['userImg']) ?>" alt="">
+                </div>
+
+
+                <div class="flex justify-center">
+                    <div class="bg-info rounded-full h-14 w-14 flex text-white font-bold justify-center items-center">
+                        <p><?= $GamePost['postGrade'] ?>/20</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Image + note de l'utilisateur -->
+        
+
+    
+
+        <div class="col-start-2 col-end-9">
+            <!-- Pseudo + level de l'utilisateur -->
+            <div class="flex h-16 items-center">
+            <h3 class='font-semibold text-accent text-2xl font-toxigenesis ml-6 mr-4'><?= $GamePost['userPseudo'] ?></h3>
+            <div>
+            <img src="./assets/ranks/<?= $GamePost['userLevel'] ?>/icon.png" alt="" width="24em">
+            </div>
+            </div>
+            <!-- Pseudo + level de l'utilisateur -->
+            <div class="divider"></div>
+            <p class="text-justify"><?= $GamePost['postContent'] ?></p>
+            </div>
+
+        </div>
+
+    <?php endforeach; ?>
+     <!-- foreach pour afficher tous les posts -->
+
+     </div>
+
+
+
 </div>
