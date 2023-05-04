@@ -32,11 +32,19 @@ $gamecs = $controler->games->gameModel->findByIdCs($_GET['game'], 'idGame');
                     <div class='flex gap-4 items-center ml-[17em]'>
                         <div class="flex justify-center items-center">
                             <!-- Note des users -->
+
+                            <?php
+                            $allGamePost = $controler->gamepost->GamePostModel->getAllPostsFromGame($_GET['game']);
+                            $gradeMoy = $controler->gamepost->GamePostModel->gradeMoy($_GET['game']);
+                            ?>
+
                             <div class="bg-info rounded-full h-14 w-14 flex justify-center items-center text-white font-bold">
-                                <p><?= $game['gameAvis'] ?>/20</p>
+                                <p><?= $gradeMoy ?>/20</p>
                             </div>
                             <p class="ml-4">Note des utilisateurs</p>
                         </div>
+
+
                         <!-- Note des users -->
 
                         <div class="divider divider-horizontal text-neutral"></div>
@@ -146,13 +154,12 @@ $gamecs = $controler->games->gameModel->findByIdCs($_GET['game'], 'idGame');
 
     <div class="col-start-1 col-end-5 row-start-2">
 
-        <?php
-        $allGamePost = $controler->gamepost->GamePostModel->getAllPostsFromGame($_GET['game']);
-        ?>
-
         <div class="font-bold w-full flex justify-center items-center h-9 bg-neutral text-primary rounded-md mb-4">
             <p>NOTES ET AVIS DES UTILISATEURS</p>
         </div>
+
+
+         <label class='btn w-full bg-accent text-white border-accent hover:bg-[#1991FF] hover:text-white hover:border-[#1991FF] my-2' for="modal-create-post-game">AJOUTER UN AVIS</label>
 
         <!-- foreach pour afficher tous les posts -->
         <?php foreach ($allGamePost as $GamePost) : ?>

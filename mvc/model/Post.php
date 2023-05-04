@@ -13,6 +13,7 @@ class Post
    {
       $this->pdo = new PDO('mysql:host=localhost;dbname=leveling2', 'root', '');
       $this->model = new Model('tblPosts');
+      $this->model = new Model('tblgameposts');
    }
 
    public function getAll()
@@ -38,6 +39,24 @@ class Post
       // ajoute l'XP
       $this->model->addXP('post');
    }
+
+   public function createGamePost($gamepostgrade, $gamepostcontent, $gameid)
+   {
+      $sql = "INSERT INTO tblgameposts VALUES(null, :postContent, :postGrade, :iduser, :gameid)";
+      $array = [
+         ":postContent" => $gamepostcontent,
+         ":postGrade" => $gamepostgrade,
+         ":gameid" => $gameid,
+         ":iduser" => $_SESSION['id'],
+         ":gameid" => $gameid
+      ];
+
+      $this->pdo->prepare($sql)->execute($array);
+
+      // ajoute l'XP
+      $this->model->addXP('post');
+   }
+
 
    public function getAllPosts()
    {

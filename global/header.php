@@ -40,3 +40,6 @@ $controler = new Controler();
 <body class='bg-white'>
    <!-- require modal modification du profil -->
    <?php require('./components/modal-profil.php'); ?>
+
+   <!-- require modal ajout avis jeu -->
+   <?php require('./components/modal-game.php'); ?>

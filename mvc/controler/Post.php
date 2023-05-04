@@ -21,6 +21,13 @@ class Post
       $content = htmlspecialchars($data['content']);
       $this->postModel->createPost($content);
    }
+
+   public function createGamePost(array $data, $gameid)
+   {
+      $gamepostgrade = htmlspecialchars($data['gamepostgrade']);
+      $gamepostcontent = htmlspecialchars($data['gamepostcontent']);
+      $this->postModel->createGamePost($gamepostgrade, $gamepostcontent, $gameid);
+   }
    
 }
 

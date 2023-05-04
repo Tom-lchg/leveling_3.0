@@ -57,5 +57,33 @@ class GamePost
       return $stmt->fetchAll();
    }
 
+   // fonction qui calcule la moyenne des notes pour un jeu
+
+   public function gradeMoy($idgame)
+   {
+      $sql1 = "SELECT COUNT(*) FROM tblgameposts  WHERE fkIdGame =" .$idgame. "";
+      $sql2 = "SELECT postGrade FROM tblgameposts WHERE fkIdGame =" .$idgame. "";
+
+      $nbGrade = $this->pdo->query($sql1)->fetch();
+      $allGrades = $this->pdo->query($sql2)->fetchAll();
+
+      $totalArrayGrades = array();
+
+      foreach ($allGrades as $oneGrade){
+         array_push($totalArrayGrades, $oneGrade['postGrade']);
+      }
+
+      // additionne toutes les valeurs du tableau des notes
+      $totalGrades = array_sum($totalArrayGrades);
+
+      // intval pour convertir de string à int
+      $gradeMoy = $totalGrades / intval($nbGrade['COUNT(*)']);
+
+      // arrondit la moyenne à la dizaine
+      return round($gradeMoy);
+
+   }
+
+
 
 }

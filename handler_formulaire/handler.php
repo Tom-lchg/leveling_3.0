@@ -16,7 +16,7 @@ require_once('../mvc/model/Games.php');
 require_once('../mvc/model/Groupe.php');
 require_once('../mvc/model/Model.php');
 require_once('../mvc/model/Post.php');
-require_once('../mvc/controler/GamePost.php');
+require_once('../mvc/model/GamePost.php');
 require_once('../mvc/model/Friend.php');
 
 use \mvc\controler\controler\Controler;
@@ -79,6 +79,13 @@ if (isset($_POST['btn-add-post'])) {
    $controler->post->createPost($_POST);
    header('Location: ../?page=home');
 }
+
+// formulaire créer un post
+if (isset($_POST['btn-add-post-game'])) {
+   $controler->post->createGamePost($_POST, $_GET['game']);
+   header('Location: ../?page=games');
+}
+
 
 // formulaire créer un post depuis le profil
 if (isset($_POST['btn-add-post-from-profil'])) {
