@@ -31,7 +31,11 @@ $friends = $controler->friend->friendModel->getFriends($user['idUser']);
    <?php endforeach; ?>
    <!-- foreach pour afficher tous les amis -->
 <?php else : ?>
-   <p class="my-4">Aucun amis pour le moment...</p>
+   
+   <div class="m-6 flex justify-center items-center">
+      <p class="my-4">Aucun amis pour le moment...</p>
+   </div>
+   
 <?php endif; ?>
 <!-- On vérifie que l'utilisateur possède des amis -->
 

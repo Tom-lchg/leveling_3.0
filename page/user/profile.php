@@ -165,7 +165,7 @@ $lvl = $controler->user->userModel->setLvlUser();
          </div>
          <!-- Tabs -->
 
-         <div class='mt-4 mb-4'>
+         <div class='mt-4'>
             <?php if (!isset($_GET['req'])) : ?>
 
                <!-- Block de l'activité -->

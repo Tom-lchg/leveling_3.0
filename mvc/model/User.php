@@ -100,25 +100,25 @@ class User
 
       // if pour savoir notre lvl
       if ($currentXP === 0) {
-         $lvl = "novice";
+         $lvl = "1";
       } else if ($currentXP < 300) {
-         $lvl = "apprentice";
+         $lvl = "2";
       } else if ($currentXP < 600) {
-         $lvl = "adept";
+         $lvl = "3";
       } else if ($currentXP < 900) {
-         $lvl = "veteran";
+         $lvl = "4";
       } else if ($currentXP < 1200) {
-         $lvl = "pro";
+         $lvl = "5";
       } else if ($currentXP < 1500) {
-         $lvl = "expert";
+         $lvl = "6";
       } else if ($currentXP < 1800) {
-         $lvl = "champion";
+         $lvl = "7";
       } else if ($currentXP < 2100) {
-         $lvl = "master";
+         $lvl = "8";
       } else if ($currentXP < 2400) {
-         $lvl = "grand_master";
+         $lvl = "9";
       } else if ($currentXP < 2700) {
-         $lvl = "legend";
+         $lvl = "10";
       }
 
       return $lvl;
