@@ -96,39 +96,39 @@ $gamecs = $controler->games->gameModel->findByIdCs($_GET['game'], 'idGame');
             <ul class="mt-4">
 
 
-                <?php if(!$gamepc==false){ ?>
+                <?php if (!$gamepc == false) : ?>
 
-                <li>• Système d'exploitation requis : </li>
-                <li class="ml-[10px] font-semibold text-accent"><?= $gamepc['gamePcOs']?></li>
-                <li>• Processeur requis : </li>
-                <li class="ml-[10px] font-semibold text-accent"><?= $gamepc['gamePcProc']?></li>
-                <li>• Carte graphique requise : </li>
-                <li class="ml-[10px] font-semibold text-accent"><?= $gamepc['gamePcCg']?></li>
-                <li>• Espace requis : </li>
-                <li class="ml-[10px] font-semibold text-accent"><?= $gamepc['gamePcTaille']?> Go</li>
-                <li>• Prix : </li>
-                <li class="ml-[10px] font-semibold text-accent"><?= $gamepc['gamePcPrix']?> €</li>
-                <li>• Date de sortie : </li>
-                <li class="ml-[10px] font-semibold text-accent"><?= $gamepc['gamePCDateSortie']?></li>
-                <li>• Modèle économique : </li>
-                <li class="ml-[10px] font-semibold text-accent"><?= $gamepc['gamePcModeleEco']?></li>
+                    <li>• Système d'exploitation requis : </li>
+                    <li class="ml-[10px] font-semibold text-accent"><?= $gamepc['gamePcOs'] ?></li>
+                    <li>• Processeur requis : </li>
+                    <li class="ml-[10px] font-semibold text-accent"><?= $gamepc['gamePcProc'] ?></li>
+                    <li>• Carte graphique requise : </li>
+                    <li class="ml-[10px] font-semibold text-accent"><?= $gamepc['gamePcCg'] ?></li>
+                    <li>• Espace requis : </li>
+                    <li class="ml-[10px] font-semibold text-accent"><?= $gamepc['gamePcTaille'] ?> Go</li>
+                    <li>• Prix : </li>
+                    <li class="ml-[10px] font-semibold text-accent"><?= $gamepc['gamePcPrix'] ?> €</li>
+                    <li>• Date de sortie : </li>
+                    <li class="ml-[10px] font-semibold text-accent"><?= $gamepc['gamePCDateSortie'] ?></li>
+                    <li>• Modèle économique : </li>
+                    <li class="ml-[10px] font-semibold text-accent"><?= $gamepc['gamePcModeleEco'] ?></li>
 
-                <?php } ?>
+                <?php endif; ?>
 
-                <?php if(!$gamecs==false){ ?>
+                <?php if (!$gamecs == false) : ?>
 
-                <li>• Plateforme(s) : </li>
-                <li class="ml-[10px] font-semibold text-accent"><?= $gamecs['gameCsSupport'] ?></li>
-                <li>• Espace requis : </li>
-                <li class="ml-[10px] font-semibold text-accent"><?= $gamecs['gameCsTaille']?> Go</li>
-                <li>• Prix : </li>
-                <li class="ml-[10px] font-semibold text-accent"><?= $gamecs['gameCsPrix'] ?> €</li>
-                <li>• Date de sortie : </li>
-                <li class="ml-[10px] font-semibold text-accent"><?= $gamecs['gameCsDateSortie'] ?></li>
-                <li>• Modèle économique : </li>
-                <li class="ml-[10px] font-semibold text-accent"><?= $gamecs['gameCsModeleEco'] ?></li>
+                    <li>• Plateforme(s) : </li>
+                    <li class="ml-[10px] font-semibold text-accent"><?= $gamecs['gameCsSupport'] ?></li>
+                    <li>• Espace requis : </li>
+                    <li class="ml-[10px] font-semibold text-accent"><?= $gamecs['gameCsTaille'] ?> Go</li>
+                    <li>• Prix : </li>
+                    <li class="ml-[10px] font-semibold text-accent"><?= $gamecs['gameCsPrix'] ?> €</li>
+                    <li>• Date de sortie : </li>
+                    <li class="ml-[10px] font-semibold text-accent"><?= $gamecs['gameCsDateSortie'] ?></li>
+                    <li>• Modèle économique : </li>
+                    <li class="ml-[10px] font-semibold text-accent"><?= $gamecs['gameCsModeleEco'] ?></li>
 
-                <?php } ?>
+                <?php endif; ?>
 
                 <li>• Genre : </li>
                 <li class="ml-[10px] font-semibold text-accent"><?= $game['gameGenre'] ?></li>
@@ -146,58 +146,54 @@ $gamecs = $controler->games->gameModel->findByIdCs($_GET['game'], 'idGame');
 
     <div class="col-start-1 col-end-5 row-start-2">
 
-    <?php 
-    $allGamePost = $controler->gamepost->GamePostModel->getAllPostsFromGame($_GET['game']); 
-    ?>
+        <?php
+        $allGamePost = $controler->gamepost->GamePostModel->getAllPostsFromGame($_GET['game']);
+        ?>
 
-    <div class="font-bold w-full flex justify-center items-center h-9 bg-neutral text-primary rounded-md mb-4">
+        <div class="font-bold w-full flex justify-center items-center h-9 bg-neutral text-primary rounded-md mb-4">
             <p>NOTES ET AVIS DES UTILISATEURS</p>
         </div>
-    
-    <!-- foreach pour afficher tous les posts -->
-    <?php foreach ($allGamePost as $GamePost) : ?>
-                    
 
-        <div class="h-auto container-home py-5 pr-6 grid grid-cols-8 mb-4">
-
-            <!-- Image + note de l'utilisateur -->
-            <div class="col-start-1 col-end-1">
-                <div class="flex justify-center w-full">
-                    <img class="rounded-full mb-4" width="80px" src="data:<?= $GamePost['userTypeImg'] ?>;base64,<?= base64_encode($GamePost['userImg']) ?>" alt="">
-                </div>
+        <!-- foreach pour afficher tous les posts -->
+        <?php foreach ($allGamePost as $GamePost) : ?>
 
 
-                <div class="flex justify-center">
-                    <div class="bg-info rounded-full h-14 w-14 flex text-white font-bold justify-center items-center">
-                        <p><?= $GamePost['postGrade'] ?>/20</p>
+            <div class="h-auto container-home py-5 pr-6 grid grid-cols-8 mb-4">
+
+                <!-- Image + note de l'utilisateur -->
+                <div class="col-start-1 col-end-1">
+                    <div class="flex justify-center w-full">
+                        <img class="rounded-full mb-4" width="80px" src="data:<?= $GamePost['userTypeImg'] ?>;base64,<?= base64_encode($GamePost['userImg']) ?>" alt="">
+                    </div>
+
+
+                    <div class="flex justify-center">
+                        <div class="bg-info rounded-full h-14 w-14 flex text-white font-bold justify-center items-center">
+                            <p><?= $GamePost['postGrade'] ?>/20</p>
+                        </div>
                     </div>
                 </div>
+                <!-- Image + note de l'utilisateur -->
+
+
+                <div class="col-start-2 col-end-9">
+                    <!-- Pseudo + level de l'utilisateur -->
+                    <div class="flex h-16 items-center">
+                        <h3 class='font-semibold text-accent text-2xl font-toxigenesis ml-6 mr-4'><?= $GamePost['userPseudo'] ?></h3>
+                        <div>
+                            <img src="./assets/ranks/<?= $GamePost['userLevel'] ?>/icon.png" alt="" width="24em">
+                        </div>
+                    </div>
+                    <!-- Pseudo + level de l'utilisateur -->
+                    <div class="divider"></div>
+                    <p class="text-justify"><?= $GamePost['postContent'] ?></p>
+                </div>
+
             </div>
-            <!-- Image + note de l'utilisateur -->
-        
 
-    
+        <?php endforeach; ?>
+        <!-- foreach pour afficher tous les posts -->
 
-        <div class="col-start-2 col-end-9">
-            <!-- Pseudo + level de l'utilisateur -->
-            <div class="flex h-16 items-center">
-            <h3 class='font-semibold text-accent text-2xl font-toxigenesis ml-6 mr-4'><?= $GamePost['userPseudo'] ?></h3>
-            <div>
-            <img src="./assets/ranks/<?= $GamePost['userLevel'] ?>/icon.png" alt="" width="24em">
-            </div>
-            </div>
-            <!-- Pseudo + level de l'utilisateur -->
-            <div class="divider"></div>
-            <p class="text-justify"><?= $GamePost['postContent'] ?></p>
-            </div>
-
-        </div>
-
-    <?php endforeach; ?>
-     <!-- foreach pour afficher tous les posts -->
-
-     </div>
-
-
+    </div>
 
 </div>
