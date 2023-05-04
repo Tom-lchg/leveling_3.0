@@ -3,10 +3,10 @@
 <?php
 if (isset($_SESSION['id'])) {
    $user = $controler->user->userModel->getUserProfil($_SESSION['pseudo']);
+   // récupéré tous les Amis
+   $friends = $controler->user->userModel->getFriends($_SESSION['id']);
 }
 
-// récupéré tous les Amis
-$friends = $controler->user->userModel->getFriends($_SESSION['id']);
 ?>
 
 
