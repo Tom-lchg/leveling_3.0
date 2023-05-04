@@ -29,10 +29,10 @@ class GamePost
    {
       $sql = "INSERT INTO tblgameposts VALUES(null, :postcontent, :postgrade, :iduser, :idgame)";
       $array = [
-        ":postcontent" => $content,
-        ":postgrade" => $grade,
-        ":iduser" => $_SESSION['id'],
-        ":idgame" => $idgame
+         ":postcontent" => $content,
+         ":postgrade" => $grade,
+         ":iduser" => $_SESSION['id'],
+         ":idgame" => $idgame
       ];
 
       $this->pdo->prepare($sql)->execute($array);
@@ -56,6 +56,4 @@ class GamePost
       $stmt->execute([":idgame" => $idgame]);
       return $stmt->fetchAll();
    }
-
-
 }
