@@ -83,7 +83,9 @@ if (isset($_POST['btn-add-post'])) {
 
 // formulaire créer un post depuis un jeu
 if (isset($_POST['btn-add-post-game'])) {
-   $controler->post->createGamePost($_POST, $_POST['idgame']);
+   $idgame = $_POST['idgame'];
+   $controler->post->createGamePost($_POST, $idgame);
+   header("Location: ../?page=games&game=$idgame");
 }
 
 
