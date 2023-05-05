@@ -8,6 +8,8 @@ require_once('../mvc/controler/Groupe.php');
 require_once('../mvc/controler/Games.php');
 require_once('../mvc/controler/Post.php');
 require_once('../mvc/controler/Friend.php');
+require_once('../mvc/controler/GamePost.php');
+
 
 // require model
 require_once('../mvc/model/User.php');
@@ -16,12 +18,13 @@ require_once('../mvc/model/Groupe.php');
 require_once('../mvc/model/Model.php');
 require_once('../mvc/model/Post.php');
 require_once('../mvc/model/Friend.php');
+require_once('../mvc/model/GamePost.php');
 
 use \mvc\controler\controler\Controler;
 
 $controler = new Controler();
 /*
-   1. le fichier handler.php sert uniquement à traitier les formulaires.
+   1. le fichier handler.php sert uniquement à traiter les formulaires.
    2. l'action des formulaires pointera à chaque fois sur ce fichier.
    3. Le fichier handler.php lancera les fonctions des controlers
 */
@@ -57,19 +60,18 @@ if (isset($_POST['btn-add-groupe'])) {
 }
 
 //formulaire pour ajouter une personne dans une groupe
-if(isset($_POST['btn-join-group'])){
+if (isset($_POST['btn-join-group'])) {
    $iduser = $_POST['idUser'];
    $idgroupe = $_POST['idGroupe'];
-   
-   $non= $controler->groupe->groupeModel->addUserOnGroup($idgroupe, $iduser);
 
-   if($non==false){
+   $non = $controler->groupe->groupeModel->addUserOnGroup($idgroupe, $iduser);
+
+   if ($non == false) {
       //faudrait changer ca
       header("Location: ../?page=home&feur");
-   }else{
+   } else {
       header("Location: ../?page=home&quoicou");
    }
-   
 }
 
 //formulaire pour se retirer d'un groupe
@@ -87,6 +89,13 @@ if (isset($_POST['btn-add-post'])) {
    $controler->post->createPost($_POST);
    header('Location: ../?page=home');
 }
+
+// formulaire créer un post
+if (isset($_POST['btn-add-post-game'])) {
+   $controler->post->createGamePost($_POST, $_GET['game']);
+   header('Location: ../?page=games');
+}
+
 
 // formulaire créer un post depuis le profil
 if (isset($_POST['btn-add-post-from-profil'])) {
@@ -107,13 +116,11 @@ if (isset($_POST['editPost'])) {
 if (isset($_POST['deletePost'])) {
    $controler->post->postModel->delPost($_POST['idpost'], $_SESSION['id']);
    header("Location: ../?page=home");
-   
-   
 }
 
 // delete un post from profil
 if (isset($_POST['deletePostFromProfil'])) {
-   $controler->post->postModel->delPost($_POST['idpost']);
+   $controler->post->postModel->delPost($_POST['idpost'], $_SESSION['id']);
    // ça sera toujours session pseudo car c'est le user connecté qui peut supprimer ses posts
    $user = $_SESSION['pseudo'];
    header("Location: ../?page=profile&user=$user");
@@ -132,4 +139,11 @@ if (isset($_POST['btn-form-remove-friend'])) {
    $controler->friend->friendModel->removeFriend($_POST['iduser']);
    $user = $_POST['pseudo'];
    header("Location: ../?page=profile&user=$user");
+}
+
+
+// delete un ami
+if (isset($_POST['delFriend'])) {
+   $controler->user->userModel->deleteFriend($_POST['idfriend']);
+   header("Location: ../?page=home");
 }

@@ -9,6 +9,7 @@ class Games
 {
    private $pdo;
    private $model;
+   private $modelpc;
    public function __construct()
    {
       $this->pdo = new PDO('mysql:host=localhost;dbname=leveling2', 'root', '');
@@ -36,5 +37,4 @@ class Games
    {
       return $this->model->findByIdCs($id, $target);
    }
-
 }

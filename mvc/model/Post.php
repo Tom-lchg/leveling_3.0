@@ -14,6 +14,7 @@ class Post
       $this->pdo = new PDO('mysql:host=localhost;dbname=leveling2', 'root', '');
       //$this->pdo = new PDO('mysql:host=172.20.0.161;dbname=leveling2', 'root', 'btssio2023');
       $this->model = new Model('tblPosts');
+      $this->model = new Model('tblgameposts');
    }
 
    public function getAll()
@@ -35,7 +36,28 @@ class Post
       ];
 
       $this->pdo->prepare($sql)->execute($array);
+
+      // ajoute l'XP
+      $this->model->addXP('post');
    }
+
+   public function createGamePost($gamepostgrade, $gamepostcontent, $gameid)
+   {
+      $sql = "INSERT INTO tblgameposts VALUES(null, :postContent, :postGrade, :iduser, :gameid)";
+      $array = [
+         ":postContent" => $gamepostcontent,
+         ":postGrade" => $gamepostgrade,
+         ":gameid" => $gameid,
+         ":iduser" => $_SESSION['id'],
+         ":gameid" => $gameid
+      ];
+
+      $this->pdo->prepare($sql)->execute($array);
+
+      // ajoute l'XP
+      $this->model->addXP('post');
+   }
+
 
    public function getAllPosts()
    {
@@ -66,7 +88,7 @@ class Post
       $stmt = $this->pdo->prepare($sql);
       // $stmt->execute([":idpost" => $idpost]);
       $result = $stmt->fetch();
-      if($result) {
+      if ($result) {
          return $result['postContent'];
       } else {
          return null;
