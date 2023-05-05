@@ -21,7 +21,6 @@ class User
    public function register($data, $img)
    {
       $this->userModel->insertUser($data, $img);
-      
    }
 
    public function login($mail, $mdp)
@@ -37,7 +36,6 @@ class User
             }
          }
       }
-      var_dump('pas ok');
    }
 
    public function updateUser($data)
