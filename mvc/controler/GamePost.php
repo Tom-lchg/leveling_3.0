@@ -19,7 +19,6 @@ class GamePost
    public function createPost(array $data)
    {
       $content = htmlspecialchars($data['content']);
-      $this->postModel->createPost($content);
+      // $this->GamePostModel->createPost($content);
    }
-   
 }

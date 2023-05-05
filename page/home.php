@@ -50,16 +50,16 @@ $all_games = $controler->games->gameModel->getALl();
 
          <div class='mt-8 gap-4 justify-center container-home-no-bg p-4 flex'>
 
-            <?php $users = $controler->user->userModel->getAll(); ?>
+            <?php $topUsers = $controler->user->userModel->topUsers(); ?>
 
-            <?php foreach ($users as $user) : ?>
+            <?php foreach ($topUsers as $user) : ?>
                <!-- un user -->
                <div class="card w-80 bg-base-100 shadow-xl indicator ">
 
                   <span class="indicator-item indicator-top indicator-start"><img src="./assets/goldmedal.png" alt="" width="60em"></span>
 
                   <figure class="px-10 pt-10">
-                     <img src="./assets/pp.jpg" alt="pp" class="rounded-xl" width="124em" />
+                     <img src="data:<?= $user['userTypeImg'] ?>;base64,<?= base64_encode($user['userImg']) ?>" alt="" class='rounded-xl'>
                   </figure>
 
                   <div class="card-body flex items-center justify-center text-center">
@@ -69,7 +69,7 @@ $all_games = $controler->games->gameModel->getALl();
                         <div class="flex space place-content-evenly">
                            <div>
                               <p class="text-lg font-bold">EXP</p>
-                              <p><i class="fa-solid fa-stars"></i>127</p>
+                              <p><i class="fa-solid fa-stars"></i><?= $user['userXP'] ?></p>
                            </div>
                            <div>
                               <p class="text-lg font-bold">POSTS</p>

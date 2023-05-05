@@ -39,7 +39,7 @@ class User
    public function insertUser($tab, $tabimg)
    {
       $dateInscription = date('Y-m-d');
-      $sql = "CALL insertUserSimple(:plat,:canModify,:nom,:prenom,:age,:bio,:naissance,:level,:pseudo,:mail,:password,:role,sysdate(),:img,:timg,:banner,:tbanner)";
+      $sql = "CALL insertUserSimple(:plat,:canModify,:nom,:prenom,:age,:bio,:naissance,:level,:pseudo,:mail,:password,:role, :date,:img,:timg,:banner,:tbanner, 0)";
       $data = array(
          ":plat" => "PC",
          ":canModify" => 0,
@@ -49,6 +49,7 @@ class User
          ":bio" => htmlspecialchars($tab['bio']),
          ":naissance" => htmlspecialchars($tab['dateNaissance']),
          ":level" => 1,
+         ":date" => $dateInscription,
          ":pseudo" => htmlspecialchars($tab['pseudo']),
          ":mail" => htmlspecialchars($tab['email']),
          ":password" => htmlspecialchars($tab['mdp']),
@@ -99,7 +100,7 @@ class User
       $currentXP = $xpArray['userXP'];
 
       // if pour savoir notre lvl
-      if ($currentXP === 0) {
+      if ($currentXP == 0 || $currentXP < 200) {
          $lvl = "1";
       } else if ($currentXP < 300) {
          $lvl = "2";
@@ -136,5 +137,11 @@ class User
    {
       $sql = "DELETE from tblFriends WHERE userFriend = $idFriend";
       $this->pdo->query($sql);
+   }
+
+   public function topUsers()
+   {
+      $sql = "SELECT * from tblUsers ORDER BY userXP DESC LIMIT 3";
+      return $this->pdo->query($sql)->fetchAll();
    }
 }
