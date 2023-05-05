@@ -29,10 +29,10 @@ class GamePost
    {
       $sql = "INSERT INTO tblgameposts VALUES(null, :postcontent, :postgrade, :iduser, :idgame)";
       $array = [
-        ":postcontent" => $content,
-        ":postgrade" => $grade,
-        ":iduser" => $_SESSION['id'],
-        ":idgame" => $idgame
+         ":postcontent" => $content,
+         ":postgrade" => $grade,
+         ":iduser" => $_SESSION['id'],
+         ":idgame" => $idgame
       ];
 
       $this->pdo->prepare($sql)->execute($array);
@@ -61,15 +61,15 @@ class GamePost
 
    public function gradeMoy($idgame)
    {
-      $sql1 = "SELECT COUNT(*) FROM tblgameposts  WHERE fkIdGame =" .$idgame. "";
-      $sql2 = "SELECT postGrade FROM tblgameposts WHERE fkIdGame =" .$idgame. "";
+      $sql1 = "SELECT COUNT(*) FROM tblgameposts  WHERE fkIdGame =" . $idgame . "";
+      $sql2 = "SELECT postGrade FROM tblgameposts WHERE fkIdGame =" . $idgame . "";
 
       $nbGrade = $this->pdo->query($sql1)->fetch();
       $allGrades = $this->pdo->query($sql2)->fetchAll();
 
       $totalArrayGrades = array();
 
-      foreach ($allGrades as $oneGrade){
+      foreach ($allGrades as $oneGrade) {
          array_push($totalArrayGrades, $oneGrade['postGrade']);
       }
 
@@ -81,9 +81,5 @@ class GamePost
 
       // arrondit la moyenne à la dizaine
       return round($gradeMoy);
-
    }
-
-
-
 }
