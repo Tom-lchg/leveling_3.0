@@ -11,9 +11,8 @@ class User
    private $model;
    public function __construct()
    {
-      $this->pdo = new PDO('mysql:host=localhost;dbname=testleveling', 'root', '');
-      //$this->pdo = new PDO('mysql:host=172.20.0.161;dbname=leveling2', 'root', 'btssio2023');
-      $this->model = new Model('tblusers');
+      $this->pdo = new PDO('mysql:host=localhost;dbname=leveling2', 'root', '');
+      $this->model = new Model('tblUsers');
    }
 
    public function getAll()
@@ -28,7 +27,7 @@ class User
 
    public function getUserProfil($pseudo)
    {
-      $sql = "SELECT * FROM tblusers WHERE userPseudo = :psd";
+      $sql = "SELECT * FROM tblUsers WHERE userPseudo = :psd";
       $stmt = $this->pdo->prepare($sql);
       $stmt->execute([
          ":psd" => $pseudo
@@ -37,10 +36,10 @@ class User
       return $stmt->fetch();
    }
 
-   public function insertUser($tab , $tabimg)
+   public function insertUser($tab, $tabimg)
    {
       $dateInscription = date('Y-m-d');
-      $sql = "CALL insertUserSimple(:plat,:canModify,:nom,:prenom,:age,:bio,:naissance,:level,:pseudo,:mail,:password,:role,sysdate(),:img,:timg,:banner,:tbanner)";
+      $sql = "CALL insertUserSimple(:plat,:canModify,:nom,:prenom,:age,:bio,:naissance,:level,:pseudo,:mail,:password,:role, :date,:img,:timg,:banner,:tbanner, 0)";
       $data = array(
          ":plat" => "PC",
          ":canModify" => 0,
@@ -50,6 +49,7 @@ class User
          ":bio" => htmlspecialchars($tab['bio']),
          ":naissance" => htmlspecialchars($tab['dateNaissance']),
          ":level" => 1,
+         ":date" => $dateInscription,
          ":pseudo" => htmlspecialchars($tab['pseudo']),
          ":mail" => htmlspecialchars($tab['email']),
          ":password" => htmlspecialchars($tab['mdp']),
@@ -65,7 +65,7 @@ class User
 
    public function updateUser($pseudo, $bio, $id)
    {
-      $sql = "UPDATE tblusers SET userPseudo = :pseudo, userBio = :bio WHERE idUser = :iduser";
+      $sql = "UPDATE tblUsers SET userPseudo = :pseudo, userBio = :bio WHERE idUser = :iduser";
       $this->pdo->prepare($sql)->execute([
          ":pseudo" => $pseudo,
          ":bio" => $bio,
@@ -75,16 +75,74 @@ class User
 
    public function getAllGroupe($iduser)
    {
-      $sql = "SELECT * FROM tblgroups WHERE groupeFkIdUser = :iduser";
+      $sql = "SELECT * FROM tblGroups WHERE groupeFkIdUser = :iduser";
       $stmt = $this->pdo->prepare($sql);
       $stmt->execute(array(":iduser" => $iduser));
       return $stmt->fetchAll();
    }
-   public function findByIdUser($iduser){
-      $sql = "SELECT * FROM tblusers WHERE idUser = :iduser";
+
+   public function getNumberOfPosts($iduser)
+   {
+      $sql = "SELECT COUNT(*) FROM tblPosts WHERE fkIdUser = :iduser";
       $stmt = $this->pdo->prepare($sql);
-      $stmt->execute(array(":iduser" => $iduser));
+      $stmt->execute(["iduser" => $iduser]);
+      return $stmt->fetchColumn();
+   }
+
+   public function setLvlUser()
+   {
+      // id du user
+      $iduser = $_SESSION['id'];
+      // on récup l'xp
+      $sql_xp = "SELECT userXP from tblUsers WHERE idUser = $iduser";
+      $stmt_xp = $this->pdo->query($sql_xp);
+      $xpArray = $stmt_xp->fetch();
+      $currentXP = $xpArray['userXP'];
+
+      // if pour savoir notre lvl
+      if ($currentXP == 0 || $currentXP < 200) {
+         $lvl = "1";
+      } else if ($currentXP < 300) {
+         $lvl = "2";
+      } else if ($currentXP < 600) {
+         $lvl = "3";
+      } else if ($currentXP < 900) {
+         $lvl = "4";
+      } else if ($currentXP < 1200) {
+         $lvl = "5";
+      } else if ($currentXP < 1500) {
+         $lvl = "6";
+      } else if ($currentXP < 1800) {
+         $lvl = "7";
+      } else if ($currentXP < 2100) {
+         $lvl = "8";
+      } else if ($currentXP < 2400) {
+         $lvl = "9";
+      } else if ($currentXP < 2700) {
+         $lvl = "10";
+      }
+
+      return $lvl;
+   }
+
+   public function getFriends($idUserConnected)
+   {
+      $sql = "SELECT userPseudo, userImg, idUser FROM tblUsers INNER JOIN tblFriends ON userFriend = idUser and userConnected = $idUserConnected";
+
+      $stmt = $this->pdo->query($sql);
       return $stmt->fetchAll();
+   }
+
+   public function deleteFriend($idFriend)
+   {
+      $sql = "DELETE from tblFriends WHERE userFriend = $idFriend";
+      $this->pdo->query($sql);
+   }
+
+   public function topUsers()
+   {
+      $sql = "SELECT * from tblUsers ORDER BY userXP DESC LIMIT 3";
+      return $this->pdo->query($sql)->fetchAll();
    }
 
    public function findByIdUser($iduser){
@@ -93,6 +151,4 @@ class User
       $stmt->execute(array(":iduser" => $iduser));
       return $stmt->fetchAll();
    }
-
-
 }
