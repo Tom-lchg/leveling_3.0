@@ -12,7 +12,8 @@ class Model
    public function __construct($table)
    {
       $this->table = $table;
-      $this->pdo = new PDO('mysql:host=172.20.0.161;dbname=leveling2', 'root', 'btssio2023');
+      $this->pdo = new PDO('mysql:host=localhost;dbname=leveling2', 'root', '');
+      //$this->pdo = new PDO('mysql:host=172.20.0.161;dbname=leveling2', 'root', 'btssio2023');
    }
 
    public function getAll()
