@@ -80,10 +80,9 @@ if (isset($_POST['btn-add-post'])) {
    header('Location: ../?page=home');
 }
 
-// formulaire créer un post
+// formulaire créer un post depuis un jeu
 if (isset($_POST['btn-add-post-game'])) {
-   $controler->post->createGamePost($_POST, $_GET['game']);
-   header('Location: ../?page=games');
+   $controler->post->createGamePost($_POST, $_POST['idgame']);
 }
 
 

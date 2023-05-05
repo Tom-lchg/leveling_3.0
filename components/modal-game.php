@@ -27,17 +27,27 @@ if (isset($_SESSION['id'])) {
 <input type="checkbox" id="modal-create-post-game" class="modal-toggle" />
 <div class="modal bg-modal">
    <div class="modal-box relative bg-secondary max-w-3xl">
-      <label for="modal-create-post" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
-      <h3 class="text-lg font-bold">AJOUTER VOTRE AVIS</h3>
+      <label for="modal-create-post-game" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+      <h3 class="text-xl text-neutral font-bold"><i class="fa-solid fa-marker"></i> AJOUTER VOTRE AVIS</h3>
 
       <form action="../handler_formulaire/handler.php" method="POST" class='mt-4 w-full' enctype="multipart/form-data">
 
-         <div class='flex flex-col gap-4 w-full '>
 
-            <input name="gamepostgrade" max="2" type="number" placeholder="Donnez une note sur 20" class="input input-bordered w-full max-w-xs" />
-            <textarea name='gamepostcontent' class='textarea block w-full h-44 resize-none' placeholder="Qu'avez vous pensez du jeu ?"></textarea>
+         <div class=''>
+               
+            <div class="flex items-center">
+               <input required="required" name="gamepostgrade" max="20" maxlength="2" type="number" class="input input-bordered w-xs" />
+               <p class="ml-6 text-lg font-semibold">/ 20</p>
+            </div>
+            
+            
+            <textarea required="required" name='gamepostcontent' class='my-4 textarea textarea-bordered block w-full h-44 resize-none placeholder:text-[#E9E9E9]' placeholder="Qu'avez vous pensez du jeu ?"></textarea>
 
-            <button type='submit' name='btn-add-post-game' class='btn btn-accent'>POSTER</button>
+            <div class="flex justify-end">
+               <input hidden name="idgame" value="<?= $_GET['game'] ?>" type="text">
+               <button type='submit' name='btn-add-post-game' class='btn btn-accent'>PUBLIER</button>
+            </div>
+            
          </div>
 
       </form>

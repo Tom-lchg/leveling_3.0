@@ -158,7 +158,6 @@ $gamecs = $controler->games->gameModel->findByIdCs($_GET['game'], 'idGame');
             <p>NOTES ET AVIS DES UTILISATEURS</p>
         </div>
 
-
          <label class='btn w-full bg-accent text-white border-accent hover:bg-[#1991FF] hover:text-white hover:border-[#1991FF] my-2' for="modal-create-post-game">AJOUTER UN AVIS</label>
 
         <!-- foreach pour afficher tous les posts -->
