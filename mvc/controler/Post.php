@@ -28,9 +28,4 @@ class Post
       $gamepostcontent = htmlspecialchars($data['gamepostcontent']);
       $this->postModel->createGamePost($gamepostgrade, $gamepostcontent, $gameid);
    }
-   
 }
-
-
-
-

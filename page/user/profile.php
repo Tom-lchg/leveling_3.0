@@ -21,10 +21,8 @@ $lvl = $controler->user->userModel->setLvlUser();
    <div class='h-56 relative mt-4'>
       <!-- bannière de user -->
 
-      <img src="../../assets/banner.jpg" alt="" class="rounded-t-lg h-full block w-full object-cover absolute">
-
-      <!-- <img src="data:<?= $user['userTypeBanner'] ?>;base64,<?= base64_encode($user['userBanner']) ?>" alt="" alt="banner" class='rounded-t-lg h-full block w-full object-cover absolute'> -->
-      <!-- bannière de user -->
+      <img src="data:<?= $user['userTypeBanner'] ?>;base64,<?= base64_encode($user['userBanner']) ?>" alt="" alt="banner" class='rounded-t-lg h-full block w-full object-cover absolute'>
+      <!-- bannière de user
 
       <!-- Pseudo + Settings -->
       <div class='ml-56 pr-2 relative z-10 justify-between flex gap-1 text-2xl h-full pb-1 items-end text-white font-leger'>
@@ -71,13 +69,12 @@ $lvl = $controler->user->userModel->setLvlUser();
       <!-- Pseudo + Settings -->
 
       <!-- Photo de profil -->
-
-      <img src="../../assets/pp.jpg" alt="" class="w-40 h-40 rounded-full absolute z-20 top-32 left-10 shadow-lg">
-      <!-- 
-      <img src="data:<?= $user['userTypeImg'] ?>;base64,<?= base64_encode($user['userImg']) ?>" alt="" class='w-40 h-40 rounded-full absolute z-20 top-32 left-10 shadow-lg'> -->
-      <img src="./assets/ranks/<?= $lvl ?>/icon.png" alt="" width="50em" class="absolute z-20 left-40 top-[14.9rem] shadow-lg">
-
+      <img src="data:<?= $user['userTypeImg'] ?>;base64,<?= base64_encode($user['userImg']) ?>" alt="" class='w-40 h-40 rounded-full absolute z-20 top-32 left-10 shadow-lg'>
       <!-- Photo de profil -->
+
+      <!-- Rank -->
+      <img src="./assets/ranks/<?= $lvl ?>/icon.png" alt="" width="50em" class="absolute z-20 left-40 top-[14.9rem] shadow-lg">
+      <!-- Rank -->
 
       <div class="flex justify-between bg-neutral drop-shadow-lg rounded-b-lg">
          <div class="flex">
