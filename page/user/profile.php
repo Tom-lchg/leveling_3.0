@@ -60,7 +60,7 @@ $lvl = $controler->user->userModel->setLvlUser();
          <!-- Button setting (uniquement afficher pour l'utilisateur connecté) -->
          <?php if (isset($_SESSION) && $_SESSION['id'] === $user['idUser']) : ?>
             <label for="modal-profil" class="btn btn-ghost btn-sm">
-               <i class="fa-solid fa-gear"></i>
+               <i class="fa-solid fa-paintbrush"></i>
             </label>
          <?php endif; ?>
          <!-- Button setting -->
@@ -153,7 +153,7 @@ $lvl = $controler->user->userModel->setLvlUser();
             <?php endif; ?>
 
             <?php if (isset($_GET['amis'])) : ?>
-               <a class="tab bg-white rounded-md text-accent" href="./?page=profile&ramis&user=<?= $_GET['user'] ?>">AMIS</a>
+               <a class="tab bg-white rounded-md text-accent" href="./?page=profile&amis&user=<?= $_GET['user'] ?>">AMIS</a>
             <?php else : ?>
                <a class="tab text-white" href="./?page=profile&amis&user=<?= $_GET['user'] ?>">AMIS</a>
             <?php endif; ?>

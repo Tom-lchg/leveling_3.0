@@ -1,67 +1,45 @@
 <?php
 $user = $controler->user->userModel->getUserProfil($_GET['user']);
-$groupes = $controler->groupe->groupeModel->getGroupbyUser($user['idUser']);
-
-
+$friends = $controler->friend->friendModel->getFriends($user['idUser']);
 ?>
-   
 
-
-
-
-   
 <div class="container-home p-6">
 
-<div class="font-bold w-full flex justify-center items-center h-9 bg-neutral text-primary rounded-md"><p>GROUPES</p></div>
+<div class="font-bold w-full flex justify-center items-center h-9 bg-neutral text-primary rounded-md"><p>AMIS</p></div>
 
-<div class="mt-2 text-justify">
 
-   <!-- afficher uniquement si c'est le user connecté qui est sur son profil -->
-   <?php if ($user['idUser'] === $_SESSION['id']) : ?>
-      <!-- afficher uniquement si l'utilisateur possède déjà des groupes -->
-      <?php if (count($groupes) > 0) : ?>
-         <label class="btn" for="modal-create-groupe">
-            <i class="fa-solid fa-plus"></i>
-         </label>
-         <!-- afficher uniquement si l'utilisateur possède déjà des groupes -->
-      <?php endif; ?>
-   <?php endif; ?>
-   <!-- afficher uniquement si c'est le user connecté qui est sur son profil -->
-</div>
+<!-- On vérifie que l'utilisateur possède des amis -->
+<?php if (count($friends) !== 0) : ?>
 
-<!-- afficher uniquement si c'est le user connecté -->
-<?php if ($user['idUser'] === $_SESSION['id']) : ?>
-   <!-- Si l'utilisateur n'as pas de groupe -->
-   <?php if (count($groupes) === 0) : ?>
-      <div>
-         <!-- ce bouton renvoie sur la modal qui est définit dans le fichier modal-profil -->
-         <label class='btn w-full bg-accent text-white border-accent hover:bg-[#1991FF] hover:text-white hover:border-[#1991FF] my-2' for="modal-create-groupe">Créer un nouveau groupe</label>
-         <!-- ce bouton renvoie sur la modal qui est définit dans le fichier modal-profil -->
-      </div>
-      <div class="m-6 flex justify-center items-center">
-         <p>Aucun groupe pour le moment...</p>
-      </div>
-   <?php endif; ?>
-   <!-- Si l'utilisateur n'as pas de groupe -->
-<?php endif; ?>
-<br>
-<!-- afficher uniquement si c'est le user connecté -->
+   <!-- foreach pour afficher tous les amis -->
+   <?php foreach ($friends as $f) : ?>
 
-<!--- Faire le code pour afficher tous les groupes où le user y est-->
-<?php foreach($groupes as $groupe){
-   $allGroupes = $controler->groupe->groupeModel->findbyIdGroupe($groupe['idgroupe']);
-   foreach($allGroupes as $oneGroupe) : ?>
-   <a href="./?page=groupes&groupe=<?= $oneGroupe['idGroupe'] ?>&privacy=<?=$oneGroupe['groupePrivacy'] ?>" class="hover:scale-105 transition">
-      <div class="card w-96 shadow-xl image-full relative">
-         <figure><img src="data:<?= $oneGroupe['groupeTypeBanner'] ?>;base64,<?= base64_encode($oneGroupe['groupeBanner']) ?>" alt="Shoes" /></figure>
-            <div class="card-body">
-               <h2 class="card-title"><?= $oneGroupe['groupeName'] ?></h2>
-               <p><?= $oneGroupe['groupeDescription'] ?></p>
+      <!-- Code pour un ami -->
+      <div class='flex gap-4 flex-wrap'>
+         <div class='w-96 h-auto pb-4 bg-secondary rounded-lg relative shadow-md'>
+            <img src="data:<?= $f['userTypeBanner'] ?>;base64,<?= base64_encode($f['userBanner']) ?>" alt="banniere user" class='h-32 w-full object-cover rounded-t-lg'>
+            <img src="data:<?= $f['userTypeImg'] ?>;base64,<?= base64_encode($f['userImg']) ?>" alt="banniere user" class='rounded-full w-24 absolute h-24 top-16 left-4 object-cover shadow-lg'>
+            <div class='mt-10 px-4'>
+               <a href="../?page=profile&user=<?= $f['userPseudo'] ?>">
+                  <h2 class='text-xl font-leger'><?= $f['userPseudo'] ?></h2>
+               </a>
             </div>
-            <br>
+         </div>
       </div>
-   <?php endforeach ; }?>
+      <!-- Code pour un ami -->
 
+   <?php endforeach; ?>
+   <!-- foreach pour afficher tous les amis -->
+<?php else : ?>
+
+   <div class="m-6 flex justify-center items-center">
+      <p class="my-4">Aucun amis pour le moment...</p>
+   </div>
+
+<?php endif; ?>
+<!-- On vérifie que l'utilisateur possède des amis -->
+
+</div>
 
 
 

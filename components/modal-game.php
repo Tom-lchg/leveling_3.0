@@ -36,16 +36,16 @@ if (isset($_SESSION['id'])) {
          <div class=''>
                
             <div class="flex items-center">
-               <input required="required" name="gamepostgrade" max="20" maxlength="2" type="number" class="input input-bordered w-xs" />
+               <input required="required" name="gamepostgrade" max="20" maxlength="2" type="number" class="input input-bordered w-xs  placeholder-[#CCCCCF] placeholder:text-sm" placeholder="Note"/>
                <p class="ml-6 text-lg font-semibold">/ 20</p>
             </div>
             
             
-            <textarea required="required" name='gamepostcontent' class='my-4 textarea textarea-bordered block w-full h-44 resize-none placeholder:text-[#E9E9E9]' placeholder="Qu'avez vous pensez du jeu ?"></textarea>
+            <textarea required="required" name='gamepostcontent' class='my-4 textarea textarea-bordered block w-full h-44 resize-none  placeholder-[#CCCCCF] placeholder:text-sm' placeholder="Qu'avez-vous pensé du jeu ?"></textarea>
 
             <div class="flex justify-end">
                <input hidden name="idgame" value="<?= $_GET['game'] ?>" type="text">
-               <button type='submit' name='btn-add-post-game' class='btn btn-accent'>PUBLIER</button>
+               <button type='submit' name='btn-add-post-game' class='btn w-full'>PUBLIER</button>
             </div>
             
          </div>

@@ -15,16 +15,9 @@ $groupes = $controler->groupe->groupeModel->getGroupbyUser($user['idUser']);
 <div class="font-bold w-full flex justify-center items-center h-9 bg-neutral text-primary rounded-md"><p>GROUPES</p></div>
 
 <div class="mt-2 text-justify">
-
    <!-- afficher uniquement si c'est le user connecté qui est sur son profil -->
    <?php if ($user['idUser'] === $_SESSION['id']) : ?>
-      <!-- afficher uniquement si l'utilisateur possède déjà des groupes -->
-      <?php if (count($groupes) > 0) : ?>
-         <label class="btn" for="modal-create-groupe">
-            <i class="fa-solid fa-plus"></i>
-         </label>
-         <!-- afficher uniquement si l'utilisateur possède déjà des groupes -->
-      <?php endif; ?>
+         <label class='btn w-full bg-accent text-white border-accent hover:bg-[#1991FF] hover:text-white hover:border-[#1991FF] mt-2' for="modal-create-groupe">Créer un nouveau groupe</label>
    <?php endif; ?>
    <!-- afficher uniquement si c'est le user connecté qui est sur son profil -->
 </div>
@@ -33,11 +26,6 @@ $groupes = $controler->groupe->groupeModel->getGroupbyUser($user['idUser']);
 <?php if ($user['idUser'] === $_SESSION['id']) : ?>
    <!-- Si l'utilisateur n'as pas de groupe -->
    <?php if (count($groupes) === 0) : ?>
-      <div>
-         <!-- ce bouton renvoie sur la modal qui est définit dans le fichier modal-profil -->
-         <label class='btn w-full bg-accent text-white border-accent hover:bg-[#1991FF] hover:text-white hover:border-[#1991FF] my-2' for="modal-create-groupe">Créer un nouveau groupe</label>
-         <!-- ce bouton renvoie sur la modal qui est définit dans le fichier modal-profil -->
-      </div>
       <div class="m-6 flex justify-center items-center">
          <p>Aucun groupe pour le moment...</p>
       </div>
@@ -51,15 +39,18 @@ $groupes = $controler->groupe->groupeModel->getGroupbyUser($user['idUser']);
 <?php foreach($groupes as $groupe){
    $allGroupes = $controler->groupe->groupeModel->findbyIdGroupe($groupe['idgroupe']);
    foreach($allGroupes as $oneGroupe) : ?>
-   <a href="./?page=groupes&groupe=<?= $oneGroupe['idGroupe'] ?>&privacy=<?=$oneGroupe['groupePrivacy'] ?>" class="hover:scale-105 transition">
-      <div class="card w-96 shadow-xl image-full relative">
-         <figure><img src="data:<?= $oneGroupe['groupeTypeBanner'] ?>;base64,<?= base64_encode($oneGroupe['groupeBanner']) ?>" alt="Shoes" /></figure>
-            <div class="card-body">
-               <h2 class="card-title"><?= $oneGroupe['groupeName'] ?></h2>
-               <p><?= $oneGroupe['groupeDescription'] ?></p>
+      <div class="container-home rounded-md flex items-center w-full mb-4">
+            <div class="shrink-0">
+               <a href="./?page=groupes&groupe=<?= $oneGroupe['idGroupe'] ?>&privacy=<?=$oneGroupe['groupePrivacy'] ?>">    
+                 <img class="object-cover rounded-md h-[80px] w-[80px]" src="data:<?= $oneGroupe['groupeTypeImg'] ?>;base64,<?= base64_encode($oneGroupe['groupeImg']) ?>" alt="">
+               </a>
             </div>
-            <br>
-      </div>
+            <div class="ml-2 h-[80px] w-full p-2">
+               <p class='drop-shadow-sm font-bold text-accent text-3xl font-toxigenesis'><?= $oneGroupe['groupeName'] ?></p>
+               <p><?= $oneGroupe['groupeDescription']?></p>
+            </div>
+         </div>
+
    <?php endforeach ; }?>
 
 
