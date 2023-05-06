@@ -185,7 +185,7 @@ $lvl = $controler->user->userModel->setLvlUser();
 
                               <textarea class='textarea block w-full h-24 resize-none textarea-bordered ' placeholder='Que souhaitez-vous partager ?' name='content'></textarea>
 
-                              <button type='submit' name='btn-add-post' class='btn bg-accent text-white border-accent hover:bg-[#1991FF] hover:text-white hover:border-[#1991FF]'>Publier</button>
+                              <button type='submit' name='btn-add-post-from-profil' class='btn bg-accent text-white border-accent hover:bg-[#1991FF] hover:text-white hover:border-[#1991FF]'>Publier</button>
                            </div>
 
                         </form>

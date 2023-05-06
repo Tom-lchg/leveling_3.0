@@ -94,7 +94,7 @@ if (isset($_POST['btn-add-post-from-profil'])) {
    $controler->post->createPost($_POST);
    // ça sera toujours session pseudo car c'est le user connecté qui peut supprimer ses posts
    $user = $_SESSION['pseudo'];
-   header("Location: ../?page=profile&user=$user");
+   header("Location: ../?page=profile&activite&user=$user");
 }
 
 

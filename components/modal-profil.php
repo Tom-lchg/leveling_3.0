@@ -82,6 +82,7 @@ if (isset($_SESSION['id'])) {
 </div>
 <!-- Modal pour créer un groupe -->
 
+
 <!-- Modal créer un post -->
 <input type="checkbox" id="modal-create-post" class="modal-toggle" />
 <div class="modal bg-modal">
@@ -102,6 +103,7 @@ if (isset($_SESSION['id'])) {
    </div>
 </div>
 <!-- Modal créer un post -->
+
 
 
 <!-- Modal modifier un post -->
