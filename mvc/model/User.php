@@ -144,4 +144,11 @@ class User
       $sql = "SELECT * from tblUsers ORDER BY userXP DESC LIMIT 3";
       return $this->pdo->query($sql)->fetchAll();
    }
+
+   public function findByIdUser($iduser){
+      $sql = "SELECT * FROM tblusers WHERE idUser = :iduser";
+      $stmt = $this->pdo->prepare($sql);
+      $stmt->execute(array(":iduser" => $iduser));
+      return $stmt->fetchAll();
+   }
 }
