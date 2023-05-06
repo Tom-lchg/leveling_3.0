@@ -22,7 +22,7 @@ $lvl = $controler->user->userModel->setLvlUser();
       <!-- bannière de user -->
 
       <img src="data:<?= $user['userTypeBanner'] ?>;base64,<?= base64_encode($user['userBanner']) ?>" alt="" alt="banner" class='rounded-t-lg h-full block w-full object-cover absolute'>
-      <!-- bannière de user
+      <!-- bannière de user -->
 
       <!-- Pseudo + Settings -->
       <div class='ml-56 pr-2 relative z-10 justify-between flex gap-1 text-2xl h-full pb-1 items-end text-white font-leger'>
@@ -140,22 +140,22 @@ $lvl = $controler->user->userModel->setLvlUser();
          <div class="col-start-2 col-end-5 tabs gap-2 tabs-boxed mb-4 h-10 bg-accent font-semibold">
 
             <!-- Si onglets actif ou non -->
-            <?php if (!isset($_GET['req'])) : ?>
-               <a class="tab bg-white rounded-md text-accent" href="./?page=profile&user=<?= $_GET['user'] ?>">PROFIL</a>
+            <?php if (isset($_GET['activite'])) : ?>
+               <a class="tab bg-white rounded-md text-accent" href="./?page=profile&activite&user=<?= $_GET['user'] ?>">ACTIVITÉ</a>
             <?php else : ?>
-               <a class="tab text-white" href="./?page=profile&user=<?= $_GET['user'] ?>">PROFIL</a>
+               <a class="tab text-white" href="./?page=profile&activite&user=<?= $_GET['user'] ?>">ACTIVITÉ</a>
             <?php endif; ?>
 
-            <?php if (isset($_GET['req']) == 'groupe') : ?>
-               <a class="tab bg-white rounded-md text-accent" href="./?page=profile&req=groupe&user=<?= $_GET['user'] ?>">GROUPES</a>
+            <?php if (isset($_GET['groupes']) == 'groupe') : ?>
+               <a class="tab bg-white rounded-md text-accent" href="./?page=profile&groupes&user=<?= $_GET['user'] ?>">GROUPES</a>
             <?php else : ?>
-               <a class="tab text-white " href="./?page=profile&req=groupe&user=<?= $_GET['user'] ?>">GROUPES</a>
+               <a class="tab text-white " href="./?page=profile&groupes&user=<?= $_GET['user'] ?>">GROUPES</a>
             <?php endif; ?>
 
-            <?php if (isset($_GET['req']) == 'amis') : ?>
-               <a class="tab bg-white rounded-md text-accent" href="./?page=profile&req=amis&user=<?= $_GET['user'] ?>">AMIS</a>
+            <?php if (isset($_GET['amis'])) : ?>
+               <a class="tab bg-white rounded-md text-accent" href="./?page=profile&ramis&user=<?= $_GET['user'] ?>">AMIS</a>
             <?php else : ?>
-               <a class="tab text-white" href="./?page=profile&req=amis&user=<?= $_GET['user'] ?>">AMIS</a>
+               <a class="tab text-white" href="./?page=profile&amis&user=<?= $_GET['user'] ?>">AMIS</a>
             <?php endif; ?>
             <!-- Si onglets actif ou non -->
 
@@ -163,7 +163,7 @@ $lvl = $controler->user->userModel->setLvlUser();
          <!-- Tabs -->
 
          <div class='mt-4'>
-            <?php if (!isset($_GET['req'])) : ?>
+            <?php if (isset($_GET['activite'])) : ?>
 
                <!-- Block de l'activité -->
                <div class="container-home p-6">
@@ -197,9 +197,13 @@ $lvl = $controler->user->userModel->setLvlUser();
 
                   <div class='flex w-full gap-4 flex-col mt-4'>
 
-                     <!-- Si aucun post -->
-                     <p>Aucune activité pour le moment...</p>
-                     <!-- Si aucun post -->
+                     <!-- Si l'utilisateur n'as pas de posts -->
+                     <?php if (count($userPosts) === 0) : ?>
+                        <p>Aucune activité pour le moment...</p>
+                     <?php endif; ?>
+                     <!-- Si l'utilisateur n'as pas de posts -->
+
+
 
                      <!-- foreach pour afficher tous les posts -->
                      <?php foreach ($userPosts as $post) : ?>
@@ -267,18 +271,10 @@ $lvl = $controler->user->userModel->setLvlUser();
                <?php endif; ?>
 
                <?php
-               if (isset($_GET['req'])) {
-                  switch ($_GET['req']) {
-                     case 'amis':
-                        require('amis.php');
-                        break;
-                     case 'groupe':
-                        require('groupe.php');
-                        break;
-                     default:
-                        header('location: ./?page=azrazr');
-                        break;
-                  }
+               if (isset($_GET['amis'])) {
+                     require('amis.php'); 
+               } elseif (isset($_GET['groupes'])){
+                     require('groupe.php');
                }
                ?>
                </div>

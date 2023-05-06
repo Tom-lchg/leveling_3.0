@@ -118,7 +118,7 @@ class User
          $lvl = "8";
       } else if ($currentXP < 2400) {
          $lvl = "9";
-      } else if ($currentXP < 2700) {
+      } else if ($currentXP >= 2400) {
          $lvl = "10";
       }
 
