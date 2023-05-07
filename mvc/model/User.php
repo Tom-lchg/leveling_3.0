@@ -118,7 +118,7 @@ class User
          $lvl = "8";
       } else if ($currentXP < 2400) {
          $lvl = "9";
-      } else if ($currentXP >= 2400) {
+      } else if ($currentXP < 2700 || $currentXP > 2700) {
          $lvl = "10";
       }
 
@@ -145,7 +145,8 @@ class User
       return $this->pdo->query($sql)->fetchAll();
    }
 
-   public function findByIdUser($iduser){
+   public function findByIdUser($iduser)
+   {
       $sql = "SELECT * FROM tblusers WHERE idUser = :iduser";
       $stmt = $this->pdo->prepare($sql);
       $stmt->execute(array(":iduser" => $iduser));

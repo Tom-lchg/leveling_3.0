@@ -59,7 +59,7 @@ $all_games = $controler->games->gameModel->getALl();
                   <span class="indicator-item indicator-top indicator-start"><img src="./assets/goldmedal.png" alt="" width="60em"></span>
 
                   <figure class="px-10 pt-10">
-                     <img src="data:<?= $user['userTypeImg'] ?>;base64,<?= base64_encode($user['userImg']) ?>" alt="" class='rounded-xl'>
+                     <img src="data:<?= $user['userTypeImg'] ?>;base64,<?= base64_encode($user['userImg']) ?>" alt="" class='rounded-xl w-48 h-48'>
                   </figure>
 
                   <div class="card-body flex items-center justify-center text-center">

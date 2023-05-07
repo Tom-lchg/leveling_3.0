@@ -8,8 +8,8 @@ $friends = $controler->friend->friendModel->getFriends($user['idUser']);
 <div class="font-bold mb-6 w-full flex justify-center items-center h-9 bg-neutral text-primary rounded-md"><p>AMIS</p></div>
 
 
-<!-- On vérifie que l'utilisateur possède des amis -->
-<?php if (count($friends) !== 0) : ?>
+   <!-- On vérifie que l'utilisateur possède des amis -->
+   <?php if (count($friends) !== 0) : ?>
 
    <div class="flex gap-4 justify-center">
 
@@ -50,6 +50,15 @@ $friends = $controler->friend->friendModel->getFriends($user['idUser']);
 
 
 
+      <?php endforeach; ?>
+      <!-- foreach pour afficher tous les amis -->
+   <?php else : ?>
 
+      <div class="m-6 flex justify-center items-center">
+         <p class="my-4">Aucun amis pour le moment...</p>
+      </div>
 
+   <?php endif; ?>
+   <!-- On vérifie que l'utilisateur possède des amis -->
 
+</div>

@@ -4,16 +4,18 @@ namespace Models\Friend;
 
 use PDO;
 use \Models\Model;
+use Conversation\Conversation;
 
 class Friend
 {
     private $pdo;
     private $model;
+    private $conversationControler;
     public function __construct()
     {
         $this->pdo = new PDO('mysql:host=localhost;dbname=leveling2', 'root', '');
-        //$this->pdo = new PDO('mysql:host=172.20.0.161;dbname=leveling2', 'root', 'btssio2023');
-        $this->model = new Model('tblfriends');
+        $this->model = new Model('tblFriends');
+        $this->conversationControler = new Conversation();
     }
 
     public function getAll()
@@ -31,6 +33,9 @@ class Friend
         $sql = "INSERT INTO tblfriends VALUES(null, ?, ?)";
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute([$_SESSION['id'], $idFriend]);
+
+        // on créer la conversation
+        $this->conversationControler->checkConvIfExist($idFriend);
     }
 
     public function getFriends($idUser)
