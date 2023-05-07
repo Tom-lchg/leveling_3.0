@@ -2,12 +2,13 @@
 $conversations = $controler->conv->conversationModel->getConversation($_SESSION['id']);
 
 if (isset($_GET['conversationId'])) {
-    $userConnectedMessage = $controler->message->messageModel->getMessage($_SESSION['id'], $_GET['conversationId']);
-
     // la conv sur avec la personne quand on a cliquer
+    // c'est pour récup l'id de l'ami
     $currentConv = $controler->conv->conversationModel->findById($_GET['conversationId'], 'idConversation');
 
-    $userFriendMessage = $controler->message->messageModel->getMessage($currentConv['idFriend'], $_GET['conversationId']);
+    $messages = $controler->message->messageModel->getMessage($_SESSION['id'], 2, $currentConv['idFriend']);
+
+    var_dump($messages);
 }
 ?>
 
@@ -33,19 +34,11 @@ if (isset($_GET['conversationId'])) {
                 <div class="w-full flex-col">
                     <!-- message user connecté -->
                     <div>
-                        <?php foreach ($userConnectedMessage as $m) : ?>
+                        <?php foreach ($messages as $m) : ?>
                             <p><?= $m['message'] ?></p>
                         <?php endforeach; ?>
                     </div>
                     <!-- message user connecté -->
-
-                    <!-- message de l'ami -->
-                    <div>
-                        <?php foreach ($userFriendMessage as $m) : ?>
-                            <p><?= $m['message'] ?></p>
-                        <?php endforeach; ?>
-                    </div>
-                    <!-- message de l'ami -->
                 </div>
                 <!-- Message des utilisateurs -->
 

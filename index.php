@@ -82,6 +82,7 @@ if (isset($_SESSION['id'])) {
                      <!-- trigger chat drawer -->
                      <label for="my-drawer-4" class="btn btn-ghost text-white btn-sm">Amis</label>
                      <!-- trigger chat drawer -->
+                     <a href="./?page=chat" target="_blank"><button class="btn btn-ghost text-white btn-sm">Chat</button></a>
                   </div>
                </div>
                <!-- Menu -->
