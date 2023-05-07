@@ -9,6 +9,8 @@ require_once('../mvc/controler/Games.php');
 require_once('../mvc/controler/Post.php');
 require_once('../mvc/controler/Friend.php');
 require_once('../mvc/controler/GamePost.php');
+require_once('../mvc/controler/Conversation.php');
+require_once('../mvc/controler/Message.php');
 
 
 // require model
@@ -19,6 +21,8 @@ require_once('../mvc/model/Model.php');
 require_once('../mvc/model/Post.php');
 require_once('../mvc/model/Friend.php');
 require_once('../mvc/model/GamePost.php');
+require_once('../mvc/model/Conversation.php');
+require_once('../mvc/model/Message.php');
 
 use \mvc\controler\controler\Controler;
 
@@ -147,4 +151,10 @@ if (isset($_POST['btn-form-remove-friend'])) {
 if (isset($_POST['delFriend'])) {
    $controler->user->userModel->deleteFriend($_POST['idfriend']);
    header("Location: ../?page=home");
+}
+
+// envoyer un message
+if (isset($_POST['btn_msg'])) {
+   $controler->message->checkMessage($_POST['message'], $_SESSION['id'], $_POST['convid']);
+   header('Location: ../?page=chat&conversationId=2');
 }

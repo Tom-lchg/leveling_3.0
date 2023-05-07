@@ -18,82 +18,89 @@ if (isset($_SESSION['id'])) {
       <!-- Contenu des pages -->
       <div class='grid grid-cols-layout h-auto w-full bg-white'>
 
-         <!-- Menu en noir -->
-         <div class="col-start-1 col-end-6 flex justify-between px-[15em] bg-neutral">
+         <!-- On affiche pas les menu quand on est dans le chat -->
+         <?php if ($_GET['page'] != 'chat') : ?>
+            <!-- Menu en noir -->
 
-            <div class="flex">
-               <!-- Logo + titre -->
-               <div class='mb-8 flex h-full items-center pl-8'>
-                  <img src="./assets/logo.png" alt="" class="w-10">
-                  <a href="./?page=home" class='item-nav'>
-                     <h1 class='title ml-2 text-white font-toxigenesis'>LEVELING</h1>
-                  </a>
+            <div class="col-start-1 col-end-6 flex justify-between px-[15em] bg-neutral">
+
+               <div class="flex">
+                  <!-- Logo + titre -->
+                  <div class='mb-8 flex h-full items-center pl-8'>
+                     <img src="./assets/logo.png" alt="" class="w-10">
+                     <a href="./?page=home" class='item-nav'>
+                        <h1 class='title ml-2 text-white font-toxigenesis'>LEVELING</h1>
+                     </a>
+                  </div>
+                  <!-- Logo + titre -->
                </div>
-               <!-- Logo + titre -->
-            </div>
 
-            <div class="justify-end flex items-center">
-               <!-- Inscription + Connexion -->
-               <div class='flex flex-col gap-4'>
-                  <!-- Si on est pas connecté  -->
-                  <?php if (!isset($_SESSION['id'])) : ?>
-                     <div class='flex gap-4 items-center'>
-                        <a href="./?page=connexion" class='item-nav text-white'>CONNEXION</a>
-                        <a href="./?page=inscription" class='item-nav'><button class="btn btn-accent">Inscription</button></a>
-                     </div>
-                  <?php endif; ?>
-                  <!-- Si on est pas connecté  -->
+               <div class="justify-end flex items-center">
+                  <!-- Inscription + Connexion -->
+                  <div class='flex flex-col gap-4'>
+                     <!-- Si on est pas connecté  -->
+                     <?php if (!isset($_SESSION['id'])) : ?>
+                        <div class='flex gap-4 items-center'>
+                           <a href="./?page=connexion" class='item-nav text-white'>CONNEXION</a>
+                           <a href="./?page=inscription" class='item-nav'><button class="btn btn-accent">Inscription</button></a>
+                        </div>
+                     <?php endif; ?>
+                     <!-- Si on est pas connecté  -->
 
-                  <!-- Si on est connecté -->
-                  <?php if (isset($_SESSION['id'])) : ?>
-                     <div class='flex gap-4 items-center'>
-                        <?php if (isset($_SESSION['id'])) : ?>
-                           <div class="avatar">
-                              <div class="w-10 rounded-full">
-                                 <img src="data:<?= $user['userTypeImg'] ?>;base64,<?= base64_encode($user['userImg']) ?>" alt="">
+                     <!-- Si on est connecté -->
+                     <?php if (isset($_SESSION['id'])) : ?>
+                        <div class='flex gap-4 items-center'>
+                           <?php if (isset($_SESSION['id'])) : ?>
+                              <div class="avatar">
+                                 <div class="w-10 rounded-full">
+                                    <img src="data:<?= $user['userTypeImg'] ?>;base64,<?= base64_encode($user['userImg']) ?>" alt="">
+                                 </div>
                               </div>
-                           </div>
-                        <?php endif; ?>
-                        <a href="./?page=profile&activite&user=<?= $_SESSION['pseudo'] ?>" class='text-white font-toxigenesis'> <?= $_SESSION['pseudo'] ?> </a>
-                        <a href="./?page=deconnexion" class='item-nav'><button class="btn btn-error">Déconnexion</button></a>
-                     </div>
-                  <?php endif; ?>
-                  <!-- Si on est connecté -->
+                           <?php endif; ?>
+                           <a href="./?page=profile&user=<?= $_SESSION['pseudo'] ?>" class='text-white font-toxigenesis'> <?= $_SESSION['pseudo'] ?> </a>
+                           <a href="./?page=deconnexion" class='item-nav'><button class="btn btn-error">Déconnexion</button></a>
+                        </div>
+                     <?php endif; ?>
+                     <!-- Si on est connecté -->
+                  </div>
+
+                  <!-- Inscription + Connexion -->
                </div>
 
-               <!-- Inscription + Connexion -->
             </div>
+            <!-- Menu en noir -->
 
-         </div>
-         <!-- Menu en noir -->
+            <!-- Menu en bleu -->
+            <div class="col-start-1 col-end-6 flex justify-between px-[15em] bg-accent drop-shadow-lg sticky top-0 z-50">
 
-         <!-- Menu en bleu -->
-         <div class="col-start-1 col-end-6 flex justify-between px-[15em] bg-accent drop-shadow-lg sticky top-0 z-50">
-
-            <!-- Menu -->
-            <div class='mb-8 flex h-full items-center pl-8'>
-               <div class='flex gap-4 items-center'>
-                  <a href="./?page=home"><button class="btn btn-ghost text-white btn-sm">Accueil</button></a>
-                  <a href="./?page=games"><button class="btn btn-ghost text-white btn-sm">Jeux</button></a>
-                  <a href="./?page=groupes"><button class="btn btn-ghost text-white btn-sm">Groupes</button></a>
-                  <!-- trigger chat drawer -->
-                  <label for="my-drawer-4" class="btn btn-ghost text-white btn-sm">Amis</label>
-                  <!-- trigger chat drawer -->
+               <!-- Menu -->
+               <div class='mb-8 flex h-full items-center pl-8'>
+                  <div class='flex gap-4 items-center'>
+                     <a href="./?page=home"><button class="btn btn-ghost text-white btn-sm">Accueil</button></a>
+                     <a href="./?page=games"><button class="btn btn-ghost text-white btn-sm">Jeux</button></a>
+                     <a href="./?page=groupes"><button class="btn btn-ghost text-white btn-sm">Groupes</button></a>
+                     <!-- trigger chat drawer -->
+                     <label for="my-drawer-4" class="btn btn-ghost text-white btn-sm">Amis</label>
+                     <!-- trigger chat drawer -->
+                     <a href="./?page=chat" target="_blank"><button class="btn btn-ghost text-white btn-sm">Chat</button></a>
+                  </div>
                </div>
-            </div>
-            <!-- Menu -->
+               <!-- Menu -->
 
-            <!-- Barre de recherche -->
-            <div class="justify-end flex">
-               <div class="content-center flex items-center">
-                  <i class="fa-solid fa-magnifying-glass text-2xl text-white mr-4"></i>
-                  <input type="text" placeholder="Recherche" class="input input-sm w-full max-w-xs rounded-full" />
+               <!-- Barre de recherche -->
+               <div class="justify-end flex">
+                  <div class="content-center flex items-center">
+                     <i class="fa-solid fa-magnifying-glass text-2xl text-white mr-4"></i>
+                     <input type="text" placeholder="Recherche" class="input input-sm w-full max-w-xs rounded-full" />
+                  </div>
                </div>
-            </div>
-            <!-- Barre de recherche -->
+               <!-- Barre de recherche -->
 
-         </div>
-         <!-- Menu en bleu -->
+            </div>
+            <!-- Menu en bleu -->
+
+         <?php endif; ?>
+         <!-- On affiche pas les menu quand on est dans le chat -->
 
          <!-- Router -->
          <div class="col-start-1 col-end-6 px-[15em]">
@@ -130,9 +137,11 @@ if (isset($_SESSION['id'])) {
 
                   <!-- settings -->
                   <div class="flex gap-2">
-                     <button class="btn btn-sm btn-accent text-white block">
-                        <i class="fa-solid fa-message"></i>
-                     </button>
+                     <a href="?page=chat" target="_blank">
+                        <button class="btn btn-sm btn-accent text-white block">
+                           <i class="fa-solid fa-message"></i>
+                        </button>
+                     </a>
 
                      <form action="./handler_formulaire/handler.php" method="POST">
                         <!-- input invisible -->
