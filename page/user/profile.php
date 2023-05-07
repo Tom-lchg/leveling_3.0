@@ -195,11 +195,13 @@ $lvl = $controler->user->userModel->setLvlUser();
                   </div>
 
 
-                  <div class='flex w-full gap-4 flex-col mt-4'>
+                  <div class='flex w-full gap-4 flex-col'>
 
                      <!-- Si l'utilisateur n'as pas de posts -->
                      <?php if (count($userPosts) === 0) : ?>
-                        <p>Aucune activité pour le moment...</p>
+                        <div class="m-6 flex justify-center items-center">
+                              <p>Aucune activité pour le moment...</p>
+                        </div>
                      <?php endif; ?>
                      <!-- Si l'utilisateur n'as pas de posts -->
 

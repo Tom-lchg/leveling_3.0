@@ -131,7 +131,7 @@ if (isset($_POST['deletePostFromProfil'])) {
 if (isset($_POST['btn-form-friend'])) {
    $controler->friend->friendModel->addFriends($_POST['iduser']);
    $user = $_POST['pseudo'];
-   header("Location: ../?page=profile&user=$user");
+   header("Location: ../?page=profile&activite&user=$user");
 }
 
 
@@ -139,7 +139,7 @@ if (isset($_POST['btn-form-friend'])) {
 if (isset($_POST['btn-form-remove-friend'])) {
    $controler->friend->friendModel->removeFriend($_POST['iduser']);
    $user = $_POST['pseudo'];
-   header("Location: ../?page=profile&user=$user");
+   header("Location: ../?page=profile&activite&user=$user");
 }
 
 
