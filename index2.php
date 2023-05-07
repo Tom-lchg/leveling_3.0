@@ -2,7 +2,7 @@
 
 <div class="grid grid-cols-7">
 
-    <div class="col-start-1 col-end-5 bg-[url('/assets/bg.jpg')] bg-contain h-screen flex justify-center items-center drop-shadow-lg">
+    <div class="col-start-1 col-end-5 bg-[url('/assets/bg-3.png')] bg-cover h-screen flex justify-center items-center drop-shadow-lg">
 
     </div>
 
