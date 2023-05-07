@@ -1,4 +1,6 @@
-<?php require('./global/header.php') ?>
+<?php require('./global/header.php'); ?>
+
+
 
 <?php
 if (isset($_SESSION['id'])) {

@@ -15,6 +15,7 @@ $nbPostsUser = $controler->user->userModel->getNumberOfPosts($_SESSION['id']);
 $lvl = $controler->user->userModel->setLvlUser();
 ?>
 
+
 <!-- Container global -->
 <div class="max-w-7xl mx-auto">
 
