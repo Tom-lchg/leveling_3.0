@@ -39,7 +39,7 @@ class Message
 
     public function getMessage($iduser, $convid, $idFriend)
     {
-        $sql = "SELECT u.userPseudo, m.message FROM tblConversation c INNER JOIN tblUsers u INNER JOIN tblMessages m WHERE c.idConversation = :convid AND u.idUser = :iduser and c.idFriend = :idf AND m.fkIdUser = :iduser";
+        $sql = "SELECT u.userPseudo, m.message FROM tblConversation c INNER JOIN tblUsers u INNER JOIN tblMessages m WHERE c.idConversation = :convid AND u.idUser = :iduser AND m.fkIdUser = :iduser AND c.idFriend = :idf";
 
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute([
