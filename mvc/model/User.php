@@ -127,7 +127,7 @@ class User
 
    public function getFriends($idUserConnected)
    {
-      $sql = "SELECT userPseudo, userImg, idUser FROM tblUsers INNER JOIN tblFriends ON userFriend = idUser and userConnected = $idUserConnected";
+      $sql = "SELECT userPseudo, userImg, idUser, userTypeImg FROM tblUsers INNER JOIN tblFriends ON userFriend = idUser and userConnected = $idUserConnected";
 
       $stmt = $this->pdo->query($sql);
       return $stmt->fetchAll();
