@@ -47,6 +47,7 @@ if (isset($_POST['btn-connexion'])) {
    $controler->user->login($email, $mdp);
 }
 
+
 // formulaire de modification d'un utilisateur
 if (isset($_POST['btn-edit-profile'])) {
    $controler->user->updateUser($_POST);

@@ -23,6 +23,9 @@ if (isset($_GET['page'])) {
       case 'deconnexion':
          require('deconnexion.php');
          break;
+         case 'apropos':
+         require('apropos.php');
+         break;
       case 'chat':
          require('chat.php');
          break;
