@@ -126,7 +126,7 @@ if (isset($_SESSION['id'])) {
 
                   <!-- PP + image -->
                   <div class="flex items-center gap-4">
-                     <img src="data:<?= $user['userTypeImg'] ?>;base64,<?= base64_encode($user['userImg']) ?>" alt="user img" class="rounded-full w-10 h-10">
+                     <img src="data:<?= $f['userTypeImg'] ?>;base64,<?= base64_encode($f['userImg']) ?>" alt="user img" class="rounded-full w-10 h-10">
                      <h3 class="font-leger haa">
                         <a href="?page=profile&user=<?= $f['userPseudo'] ?>" class="cursor-pointer">
                            <?= $f['userPseudo'] ?>
