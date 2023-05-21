@@ -30,7 +30,7 @@ class Friend
 
     public function addFriends($idFriend)
     {
-        $sql = "INSERT INTO tblFriends VALUES(null, ?, ?)";
+        $sql = "INSERT INTO tblfriends VALUES(null, ?, ?)";
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute([$_SESSION['id'], $idFriend]);
 
@@ -40,7 +40,7 @@ class Friend
 
     public function getFriends($idUser)
     {
-        $sql = "SELECT * FROM tblFriends INNER JOIN tblusers ON userFriend = idUser WHERE userConnected = $idUser";
+        $sql = "SELECT * FROM tblfriends INNER JOIN tblusers ON userFriend = idUser WHERE userConnected = $idUser";
         $stmt = $this->pdo->query($sql);
         $stmt->execute();
         return $stmt->fetchAll();
@@ -48,7 +48,7 @@ class Friend
 
     public function isFriend($idUserConnected, $idUserFriend)
     {
-        $sql = "SELECT * FROM tblFriends WHERE userConnected = :userCo";
+        $sql = "SELECT * FROM tblfriends WHERE userConnected = :userCo";
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute([":userCo" => $idUserConnected]);
 
@@ -68,7 +68,7 @@ class Friend
 
     public function removeFriend($userFriend)
     {
-        $sql = "DELETE FROM tblFriends WHERE userFriend = ?";
+        $sql = "DELETE FROM tblfriends WHERE userFriend = ?";
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute([$userFriend]);
     }

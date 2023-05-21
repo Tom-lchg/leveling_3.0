@@ -51,7 +51,7 @@ if (isset($_POST['btn-connexion'])) {
 if (isset($_POST['btn-edit-profile'])) {
    $controler->user->updateUser($_POST);
    $user = $_SESSION['pseudo'];
-   header("Location: ../?page=profile&user=$user");
+   header("Location: ../?page=profile&activite&user=$user");
 }
 
 
@@ -60,10 +60,10 @@ if (isset($_POST['btn-add-groupe'])) {
    $controler->groupe->createGroupe($_POST, $_FILES);
    // ça sera toujours session pseudo car c'est le user connecté qui peut supprimer son groupe
    $user = $_SESSION['pseudo'];
-   header("Location: ../?page=profile&req=groupe&user=$user");
+   header("Location: ../?page=profile&groupes&user=$user");
 }
 
-//formulaire pour ajouter une personne dans une groupe
+//formulaire pour ajouter une personne dans un groupe
 if (isset($_POST['btn-join-group'])) {
    $iduser = $_POST['idUser'];
    $idgroupe = $_POST['idGroupe'];
@@ -78,6 +78,15 @@ if (isset($_POST['btn-join-group'])) {
    }
 }
 
+//formulaire pour se retirer d'un groupe
+if(isset($_POST['btn-leave-group'])){
+   $iduser = $_POST['idUser'];
+   $idgroupe = $_POST['idGroupe'];
+
+   $non= $controler->groupe->groupeModel->dropUserOnGroup($idgroupe, $iduser);
+   header("Location: ../?page=home");
+}
+
 
 // formulaire créer un post
 if (isset($_POST['btn-add-post'])) {
@@ -85,10 +94,11 @@ if (isset($_POST['btn-add-post'])) {
    header('Location: ../?page=home');
 }
 
-// formulaire créer un post
+// formulaire créer un post depuis un jeu
 if (isset($_POST['btn-add-post-game'])) {
-   $controler->post->createGamePost($_POST, $_GET['game']);
-   header('Location: ../?page=games');
+   $idgame = $_POST['idgame'];
+   $controler->post->createGamePost($_POST, $idgame);
+   header("Location: ../?page=games&game=$idgame");
 }
 
 
@@ -97,7 +107,7 @@ if (isset($_POST['btn-add-post-from-profil'])) {
    $controler->post->createPost($_POST);
    // ça sera toujours session pseudo car c'est le user connecté qui peut supprimer ses posts
    $user = $_SESSION['pseudo'];
-   header("Location: ../?page=profile&user=$user");
+   header("Location: ../?page=profile&activite&user=$user");
 }
 
 

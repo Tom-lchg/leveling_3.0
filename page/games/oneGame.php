@@ -38,9 +38,37 @@ $gamecs = $controler->games->gameModel->findByIdCs($_GET['game'], 'idGame');
                             $gradeMoy = $controler->gamepost->GamePostModel->gradeMoy($_GET['game']);
                             ?>
 
-                            <div class="bg-info rounded-full h-14 w-14 flex justify-center items-center text-white font-bold">
-                                <p><?= $gradeMoy ?>/20</p>
-                            </div>
+
+                            <!-- Switch pour la couleur associée à la note -->
+                            <?php switch ($gradeMoy){
+                                case ($gradeMoy < 5) : ?>
+                                    <div class="bg-red-600 rounded-full h-14 w-14 flex justify-center items-center text-white font-bold">
+                                        <p><?= $gradeMoy ?></p>
+                                    </div>
+                                <?php break; ?>
+
+                                <?php case ($gradeMoy > 5 && $gradeMoy < 10) : ?>
+                                    <div class="bg-orange-500 rounded-full h-14 w-14 flex justify-center items-center text-white font-bold">
+                                        <p><?= $gradeMoy ?></p>
+                                    </div>
+                                <?php break; ?>
+
+                                <?php case ($gradeMoy > 10 && $gradeMoy < 15) : ?>
+                                    <div class="bg-amber-400 rounded-full h-14 w-14 flex justify-center items-center text-white font-bold">
+                                        <p><?= $gradeMoy ?></p>
+                                    </div>
+                                <?php break; ?>
+
+                                <?php case ($gradeMoy > 15 && $gradeMoy < 20) : ?>
+                                    <div class="bg-lime-500 rounded-full h-14 w-14 flex justify-center items-center text-white font-bold">
+                                        <p><?= $gradeMoy ?></p>
+                                    </div>
+                                <?php break; ?>
+
+                            <?php } ?>
+
+                            <!-- Switch pour la couleur associée à la note -->
+
                             <p class="ml-4">Note des utilisateurs</p>
                         </div>
 
@@ -49,9 +77,34 @@ $gamecs = $controler->games->gameModel->findByIdCs($_GET['game'], 'idGame');
 
                         <div class="divider divider-horizontal text-neutral"></div>
                         <!-- Classification -->
-                        <div class="bg-error rounded-full h-14 w-14 flex justify-center items-center text-white font-bold">
-                            <p>+<?= $game['gameClassification'] ?></p>
-                        </div>
+
+                        <!-- Switch pour la couleur associée à la classification -->
+                        <?php 
+                        $gameClass = $game['gameClassification'];
+                        switch ($gameClass){
+
+                                case ($gameClass == 3 || $gameClass == 7) : ?>
+                                    <div class="bg-lime-500 rounded-full h-14 w-14 flex justify-center items-center text-white font-bold">
+                                        <p>+<?= $game['gameClassification'] ?></p>
+                                    </div>
+                                <?php break; ?>
+
+                                <?php case ($gameClass == 12 || $gameClass == 16) : ?>
+                                    <div class="bg-orange-500 rounded-full h-14 w-14 flex justify-center items-center text-white font-bold">
+                                        <p>+<?= $game['gameClassification'] ?></p>
+                                    </div>
+                                <?php break; ?>
+
+                                <?php case ($gameClass == 18) : ?>
+                                    <div class="bg-red-600 rounded-full h-14 w-14 flex justify-center items-center text-white font-bold">
+                                        <p>+<?= $game['gameClassification'] ?></p>
+                                    </div>
+                                <?php break; ?>
+
+                            <?php } ?>
+
+                        <!-- Switch pour la couleur associée à la classification -->
+
                         <p>Classification</p>
                     </div>
                     <!-- Classification -->
@@ -158,7 +211,6 @@ $gamecs = $controler->games->gameModel->findByIdCs($_GET['game'], 'idGame');
             <p>NOTES ET AVIS DES UTILISATEURS</p>
         </div>
 
-
          <label class='btn w-full bg-accent text-white border-accent hover:bg-[#1991FF] hover:text-white hover:border-[#1991FF] my-2' for="modal-create-post-game">AJOUTER UN AVIS</label>
 
         <!-- foreach pour afficher tous les posts -->
@@ -173,11 +225,37 @@ $gamecs = $controler->games->gameModel->findByIdCs($_GET['game'], 'idGame');
                         <img class="rounded-full mb-4" width="80px" src="data:<?= $GamePost['userTypeImg'] ?>;base64,<?= base64_encode($GamePost['userImg']) ?>" alt="">
                     </div>
 
-
                     <div class="flex justify-center">
-                        <div class="bg-info rounded-full h-14 w-14 flex text-white font-bold justify-center items-center">
-                            <p><?= $GamePost['postGrade'] ?>/20</p>
-                        </div>
+
+                    <!-- Switch pour la couleur associée à la note -->
+                    <?php switch ($GamePost['postGrade']){
+                                case ($GamePost['postGrade'] < 5) : ?>
+                                    <div class="bg-red-600 rounded-full h-14 w-14 flex justify-center items-center text-white font-bold">
+                                        <p><?= $GamePost['postGrade'] ?></p>
+                                    </div>
+                                <?php break; ?>
+
+                                <?php case ($GamePost['postGrade'] > 5 && $GamePost['postGrade'] < 10) : ?>
+                                    <div class="bg-orange-500 rounded-full h-14 w-14 flex justify-center items-center text-white font-bold">
+                                        <p><?= $GamePost['postGrade'] ?></p>
+                                    </div>
+                                <?php break; ?>
+
+                                <?php case ($GamePost['postGrade'] >= 10 && $GamePost['postGrade'] <= 15) : ?>
+                                    <div class="bg-amber-400 rounded-full h-14 w-14 flex justify-center items-center text-white font-bold">
+                                        <p><?= $GamePost['postGrade'] ?></p>
+                                    </div>
+                                <?php break; ?>
+
+                                <?php case ($GamePost['postGrade'] > 15 && $GamePost['postGrade'] < 20) : ?>
+                                    <div class="bg-lime-500 rounded-full h-14 w-14 flex justify-center items-center text-white font-bold">
+                                        <p><?= $GamePost['postGrade'] ?></p>
+                                    </div>
+                                <?php break; ?>
+
+                            <?php } ?>
+
+                            <!-- Switch pour la couleur associée à la note -->
                     </div>
                 </div>
                 <!-- Image + note de l'utilisateur -->
