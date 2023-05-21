@@ -21,7 +21,7 @@ if (isset($_GET['conversationId'])) {
     <div class="w-full flex-1 bg-white h-screen p-4 relative">
         <!-- On vérifie si on a selectionner une conv -->
         <?php if (!isset($_GET['conversationId'])) : ?>
-            <h1>Aucunes conversation selectionner</h1>
+            <h1>Aucune conversation selectionner</h1>
         <?php else : ?>
             <div class="relative h-full">
 
