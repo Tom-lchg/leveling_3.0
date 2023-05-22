@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : lun. 22 mai 2023 à 00:06
+-- Généré le : lun. 22 mai 2023 à 17:57
 -- Version du serveur :  5.7.36
 -- Version de PHP : 5.6.40
 
@@ -213,7 +213,14 @@ CREATE TABLE IF NOT EXISTS `tblconversation` (
   `idUserConnected` int(11) NOT NULL,
   `idFriend` int(11) NOT NULL,
   PRIMARY KEY (`idConversation`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Déchargement des données de la table `tblconversation`
+--
+
+INSERT INTO `tblconversation` (`idConversation`, `idUserConnected`, `idFriend`) VALUES
+(1, 35, 33);
 
 -- --------------------------------------------------------
 
@@ -227,14 +234,15 @@ CREATE TABLE IF NOT EXISTS `tblfriends` (
   `userConnected` int(11) NOT NULL,
   `userFriend` int(11) NOT NULL,
   PRIMARY KEY (`idFriends`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Déchargement des données de la table `tblfriends`
 --
 
 INSERT INTO `tblfriends` (`idFriends`, `userConnected`, `userFriend`) VALUES
-(1, 23, 19);
+(1, 23, 19),
+(4, 35, 33);
 
 -- --------------------------------------------------------
 
@@ -524,7 +532,15 @@ CREATE TABLE IF NOT EXISTS `tblmessages` (
   `fkIdConversation` int(11) NOT NULL,
   `message` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`idMessage`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Déchargement des données de la table `tblmessages`
+--
+
+INSERT INTO `tblmessages` (`idMessage`, `fkIdUser`, `fkIdConversation`, `message`) VALUES
+(1, 35, 1, 'dede'),
+(2, 35, 2, '');
 
 -- --------------------------------------------------------
 
@@ -573,9 +589,35 @@ CREATE TABLE IF NOT EXISTS `tbltopics` (
 --
 
 INSERT INTO `tbltopics` (`idsujet`, `idgroupe`, `idauteur`, `datesujet`, `titre`, `content`, `nbReponse`) VALUES
-(1, 50, 33, '2023-05-22 00:38:35', 'PARLONS DES JOEURS ODIN', 'Ils sont trop nullls', 0),
+(1, 50, 33, '2023-05-22 00:38:35', 'PARLONS DES JOEURS ODIN', 'Ils sont trop nullls', 3),
 (2, 50, 33, '2023-05-22 00:39:54', 'YUMII', 'Ils sont trop FORTS', 0),
 (3, 50, 35, '2023-05-22 01:39:17', 'la team iphone', 'j\'ai un problÃ¨mes les manzzz', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `tbltopicsanswers`
+--
+
+DROP TABLE IF EXISTS `tbltopicsanswers`;
+CREATE TABLE IF NOT EXISTS `tbltopicsanswers` (
+  `idtopicanswers` int(5) NOT NULL AUTO_INCREMENT,
+  `idgroupe` int(4) NOT NULL,
+  `idtopic` int(4) NOT NULL,
+  `idUserAnswer` int(4) NOT NULL,
+  `dateAnswer` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `content` varchar(1000) COLLATE utf8mb4_unicode_ci NOT NULL,
+  PRIMARY KEY (`idtopicanswers`)
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Déchargement des données de la table `tbltopicsanswers`
+--
+
+INSERT INTO `tbltopicsanswers` (`idtopicanswers`, `idgroupe`, `idtopic`, `idUserAnswer`, `dateAnswer`, `content`) VALUES
+(1, 50, 1, 35, '2023-05-22 18:48:39', 'ouiii'),
+(2, 50, 1, 35, '2023-05-22 18:53:32', 'oui c\'est joueur sont vraiment nul , ils ont une vie de merde'),
+(3, 50, 1, 33, '2023-05-22 19:20:06', 'oui ils sont nulls');
 
 -- --------------------------------------------------------
 

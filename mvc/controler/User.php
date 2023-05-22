@@ -33,7 +33,12 @@ class User
                $_SESSION['id'] = $user['idUser'];
                $_SESSION['pseudo'] = $user['userPseudo'];
                header('Location: .././?page=home');
+               return true;
+            }else{
+               return false;
             }
+         }else{
+            return false;
          }
       }
    }

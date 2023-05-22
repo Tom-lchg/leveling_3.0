@@ -7,7 +7,7 @@
 <div class="border border-[#E9E9E9] rounded-md w-full">
 
 <div class="w-full rounded-t-md bg-accent text-white p-2 font-semibold ">
-    <a href="javascript:history.back()"><i class="fa-solid fa-arrow-left"></i></a>
+    <a href="./?page=groupes&groupe=<?= $_GET['groupe']?>&privacy=<?= $_GET['privacy'] ?>"><i class="fa-solid fa-arrow-left"></i></a>
     <?= $oneTopic['titre'] ?>
 </div>
 
@@ -16,11 +16,13 @@
 <div class="p-4 border border-[#1991FF] rounded-md mx-4 mt-4">
 
 <div class="flex items-center mb-4">
-     <img src="data:<?= $oneDetailsUser['userTypeImg'] ?>;base64,<?= base64_encode($oneDetailsUser['userImg']) ?>" alt="" class="rounded-full w-10">
-     <div class="ml-2">
-        <p class="font-toxigenesis hover:text-accent cursor-pointer"><?= $oneDetailsUser['userPseudo']?></p>
-        <p class="text-xs"><?= $oneTopic['datesujet'] ?></p>
-     </div>
+<img src="data:<?= $oneDetailsUser['userTypeImg'] ?>;base64,<?= base64_encode($oneDetailsUser['userImg']) ?>" alt="" class="rounded-full w-10">
+    <a href="./?page=profile&user=<?= $oneDetailsUser['userPseudo'] ?>"> 
+        <div class="ml-2">
+            <p class="font-toxigenesis hover:text-accent cursor-pointer"><?= $oneDetailsUser['userPseudo']?></p>
+            <p class="text-xs"><?= $oneTopic['datesujet'] ?></p>
+        </div>
+    </a>
 </div>
 
 <p> <?= $oneTopic['content']?></p>
@@ -33,31 +35,34 @@
 
 <!-- un message-->
 
-<div class="p-4 border border-[#E9E9E9] rounded-md mx-4 mt-4">
 
+<!-------METTRE LES FOREACH------->
+<?php $allAnswers = $controler->groupe->groupeModel->findTopicById($_GET['sujet']);?>
+<?php foreach($allAnswers as $oneAnswer) : ?>
+<?php $allUsers = $controler->user->userModel->findByIdUser($oneAnswer['idUserAnswer']);?>
+<?php foreach($allUsers as $oneUser) : ?>
+<div class="p-4 border border-[#E9E9E9] rounded-md mx-4 mt-4">
 <div class="flex items-center mb-4">
-     <img src="../assets/pp4.jpg" alt="" class="rounded-full w-10">
+     <img src="data:<?= $oneUser['userTypeImg'] ?>;base64,<?= base64_encode($oneUser['userImg']) ?>" alt="" class="rounded-full w-10">
      <div class="ml-2">
-        <p class="font-toxigenesis hover:text-accent cursor-pointer">B0ltek</p>
-        <p class="text-xs">Le 23/04/2023 à 18:21</p>
+        <p class="font-toxigenesis hover:text-accent cursor-pointer"><?= $oneUser['userPseudo'] ?></p>
+        <p class="text-xs">Le <?= $oneAnswer['dateAnswer']?></p>
      </div>
 </div>
 
-<p>
-    Légal non. 
-    Mais c'pas la question, juste sur le point des ventes tu as raison, et puis les emus son qd même tres présents.
-    Sinon bon boulot, envoie ptete un MP à un modo pour demander de sticker, c'est vraiment bien un topic comme ça
-
-    Edit : c'est fait dans tout les cas je devais MP pour demander autre chose
-</p>
+<p><?= $oneAnswer['content']?></p>
 </div>
 
 <!-- un message-->
-
+<?php endforeach ; ?>
+<?php endforeach ; ?>
+<!-------METTRE LES FOREACH------->
 <!-- bouton pour répondre -->
 <div class="w-full flex items-center p-4">
-    <button name='btn-add-reponse' class='btn bg-accent w-full text-white border-accent hover:bg-[#1991FF] hover:text-white hover:border-[#1991FF]'>RÉPONDRE</button>
+    <label class='btn bg-accent w-full text-white border-accent hover:bg-[#1991FF] hover:text-white hover:border-[#1991FF]' for="modal-topic-answers">RÉPONDRE </label>
 </div>
+
+    
 <!-- bouton pour répondre -->
 
 </div>

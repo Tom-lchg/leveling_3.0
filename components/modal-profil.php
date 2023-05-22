@@ -159,6 +159,7 @@ if (isset($_GET['updatePost'])) {
 <!-- Modal modifier un post -->
 
 
+
 <!-- Modal pour crée un sujet d'un groupe-->
 <input type="checkbox" id="modal-create-sujet" class="modal-toggle" />
 <div class="modal bg-modal">
@@ -179,12 +180,30 @@ if (isset($_GET['updatePost'])) {
       </form>
    </div>
 </div>
-
-
-
-
-
-
 <!-- Modal pour crée un sujet d'un groupe-->
+
+
+<!-- Modal pour répondre à un sujet d'un groupe-->
+<input type="checkbox" id="modal-topic-answers" class="modal-toggle" />
+<div class="modal bg-modal">
+   <div class="modal-box relative bg-secondary max-w-3xl">
+      <label for="" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+      <h3 class="text-lg font-bold">Répondre</h3>
+
+      <form action="../handler_formulaire/handler.php" method="POST" class='mt-4 w-full' enctype="multipart/form-data">
+         <div class='flex flex-col gap-4 w-full '>
+            <input type="hidden" name="idsujet" value="<?= $_GET['sujet']?>">
+            <input type="hidden" name="idauteur" value="<?= $_SESSION['id']?>">
+            <input type="hidden" name="idgroupe" value="<?= $_GET['groupe']?>">
+            <input type="hidden" name="privacy" value="<?= $_GET['privacy']?>">
+            <textarea class='textarea textarea-accent text-md textarea-xl' placeholder='Corp de la réponse' name='descAnswers'></textarea>
+            <button type='submit' name='btn-answer-topic' class='btn btn-accent'>Publier votre réponse</button>
+         </div>
+
+      </form>
+   </div>
+</div>
+
+<!-- Modal pour répondre à un un sujet d'un groupe-->
 
 

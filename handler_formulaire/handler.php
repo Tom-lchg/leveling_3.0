@@ -44,7 +44,11 @@ if (isset($_POST['btn-inscription'])) {
 if (isset($_POST['btn-connexion'])) {
    $email = $_POST['email'];
    $mdp = $_POST['mdp'];
-   $controler->user->login($email, $mdp);
+   $test = $controler->user->login($email, $mdp);
+   if(!$test){
+      header("Location: ../?page=connexion&state=false");
+   }
+   
 }
 
 // formulaire de modification d'un utilisateur
@@ -160,11 +164,23 @@ if (isset($_POST['btn_msg'])) {
 }
 
 
-// envoyer un message
+// ajouter un sujet
 if (isset($_POST['btn-add-topic'])) {
 
    $controler->groupe->groupeModel->addTopics($_POST);
    header("Location:../?page=groupes&groupe=".$_POST['idgroupe']."&privacy=".$_POST['privacy']."");
+   
+}
+
+// repondre à un sujet
+if (isset($_POST['btn-answer-topic'])) {
+
+   $controler->groupe->groupeModel->addAnswerbyTopic($_POST);
+   $controler->groupe->groupeModel->updateNbReponseForTopic($_POST['idsujet']);
+   header("Location:../?page=groupes&groupe=".$_POST['idgroupe']."&privacy=".$_POST['privacy']."&sujet=".$_POST['idsujet']."");
+
+   // il faut aussi rajouter + 1 dans le nombre de réponse
+
    
 }
 

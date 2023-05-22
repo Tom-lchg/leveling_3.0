@@ -159,7 +159,7 @@
                      <div>
                         <div class="flex justify-between">
                            <div>
-                           <label class='btn bg-accent text-white border-accent hover:bg-[#1991FF] hover:text-white hover:border-[#1991FF] my-2' for="modal-create-sujet">NOUVEAU SUJET</label>
+                           <label class='btn bg-accent text-white border-accent hover:bg-[#1991FF] hover:text-white hover:border-[#1991FF] my-2' for="modal-create-sujets">NOUVEAU SUJET</label>
                               <button class="btn btn-accent"><i class="fa-solid fa-arrows-rotate"></i></button>
                            </div>
                            <div class="content-center flex items-center">
@@ -201,7 +201,7 @@
                            <td>
                               <div class="flex items-center">
                                  <img src="data:<?= $oneDetailsUser['userTypeImg'] ?>;base64,<?= base64_encode($oneDetailsUser['userImg']) ?>" alt="" class="rounded-full w-10">
-                                 <p class="ml-2 font-toxigenesis"><?= $oneDetailsUser['userPseudo'] ?></p>
+                                 <a href="./?page=profile&user=<?= $oneDetailsUser['userPseudo'] ?>"><p class="ml-2 font-toxigenesis"><?= $oneDetailsUser['userPseudo'] ?></p></a>
                               </div>
                            </td>
                            <td><?=$oneTopic['nbReponse']?></td>
@@ -224,29 +224,7 @@
 
                <?php endif; ?>
 
-               <?php
-               if (isset($_GET['req'])) {
-                  switch ($_GET['req']) {
-                     case 'membres':
-                        require('groupeMembres.php');
-                        break;
-                     default:
-                        header('location: ./?page=azrazr');
-                        break;
-                  }
-               };
-
-               if (isset($_GET['sujet'])) {
-                  switch ($_GET['sujet']) {
-                     case 'sujet':
-                        require('groupeForumSujet.php');
-                        break;
-                     default:
-                        header('location: ./?page=azrazr');
-                        break;
-                  }
-               }
-               ?>
+               
                </div>
                <!-- Block de l'activité -->
          </div>
@@ -256,4 +234,4 @@
    </div>
 
 </div>
-<!-- Container global -->
+<!-- Container global -->  

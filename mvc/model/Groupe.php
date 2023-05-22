@@ -186,10 +186,10 @@ public function dropUserOnGroup($idGroupe, $idUser){
 public function addTopics($tab){
    $sql="INSERT INTO tbltopics VALUES(null, :idgroupe, :idauteur, sysdate(),:titre, :content, 0)";
    $data= array(
-      ":idgroupe" => $tab['idgroupe'],
-      ":idauteur" => $tab['idauteur'],
-      ":titre" => $tab['titreSujet'],
-      ":content" => $tab['descSujet']
+      ":idgroupe" => htmlspecialchars($tab['idgroupe']),
+      ":idauteur" =>  htmlspecialchars($tab['idauteur']),
+      ":titre" =>  htmlspecialchars($tab['titreSujet']),
+      ":content" =>  htmlspecialchars($tab['descSujet'])
    );
    $prepare = $this->pdo->prepare($sql);
    $prepare->execute($data);
@@ -207,6 +207,40 @@ public function getTopicById($idtopic){
    $stmt = $this->pdo->prepare($sql);
    $stmt->execute([":idtopic" => $idtopic]);
    return $stmt->fetchAll();
+}
+
+
+public function addAnswerbyTopic($tab){
+   $sql="INSERT INTO tbltopicsanswers VALUES(null, :idgroupe, :idsujet, :idUserAnswer, sysdate(), :content)";
+   $data = array(
+      ":idgroupe" => htmlspecialchars($tab['idgroupe']),
+      ":idsujet" => htmlspecialchars($tab['idsujet']),
+      ":idUserAnswer" => htmlspecialchars($tab['idauteur']),
+      ":content"=> htmlspecialchars($tab['descAnswers'])
+   );
+   $prepare = $this->pdo->prepare($sql);
+   $prepare->execute($data);
+
+}
+
+public function updateNbReponseForTopic($idsujet){
+   $sql = "UPDATE tbltopics SET nbReponse= nbReponse + 1 WHERE idsujet = :idsujet";
+   $data = array(
+      ":idsujet" => htmlspecialchars($idsujet)
+   );
+   $prepare = $this->pdo->prepare($sql);
+   $prepare->execute($data);
+
+   
+}
+
+public function findTopicById($idsujet){
+   $sql = "SELECT * from tbltopicsanswers WHERE idtopic = :idtopic";
+   $stmt = $this->pdo->prepare($sql);
+   $stmt->execute([":idtopic" => $idsujet]);
+   return $stmt->fetchAll();
+
+
 }
 
 }
