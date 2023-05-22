@@ -158,3 +158,15 @@ if (isset($_POST['btn_msg'])) {
    $controler->message->checkMessage($_POST['message'], $_SESSION['id'], $_POST['convid']);
    header('Location: ../?page=chat&conversationId=2');
 }
+
+
+// envoyer un message
+if (isset($_POST['btn-add-topic'])) {
+
+   $controler->groupe->groupeModel->addTopics($_POST);
+   header("Location:../?page=groupes&groupe=".$_POST['idgroupe']."&privacy=".$_POST['privacy']."");
+   
+}
+
+
+

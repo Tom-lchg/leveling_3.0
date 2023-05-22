@@ -157,3 +157,34 @@ if (isset($_GET['updatePost'])) {
    </div>
 </div>
 <!-- Modal modifier un post -->
+
+
+<!-- Modal pour crée un sujet d'un groupe-->
+<input type="checkbox" id="modal-create-sujet" class="modal-toggle" />
+<div class="modal bg-modal">
+   <div class="modal-box relative bg-secondary max-w-3xl">
+      <label for="" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+      <h3 class="text-lg font-bold">Publier un sujet</h3>
+
+      <form action="../handler_formulaire/handler.php" method="POST" class='mt-4 w-full' enctype="multipart/form-data">
+         <div class='flex flex-col gap-4 w-full '>
+            <input type="hidden" name="idgroupe" value="<?= $_GET['groupe']?>">
+            <input type="hidden" name="idauteur" value="<?= $_SESSION['id']?>">
+            <input type="hidden" name="privacy" value="<?= $_GET['privacy']?>">
+            <input required="required" maxlength="100" class='input input-bordered w-xs placeholder-[#CCCCCF] placeholder:text-sm' type="text" placeholder="Titre du sujet" name='titreSujet'>
+            <textarea class='textarea textarea-accent text-md textarea-xl' placeholder='Corp du sujet' name='descSujet'></textarea>
+            <button type='submit' name='btn-add-topic' class='btn btn-accent'>Créer votre sujet</button>
+         </div>
+
+      </form>
+   </div>
+</div>
+
+
+
+
+
+
+<!-- Modal pour crée un sujet d'un groupe-->
+
+

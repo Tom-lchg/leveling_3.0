@@ -183,10 +183,37 @@ public function dropUserOnGroup($idGroupe, $idUser){
    $prepare->execute($data);
 }
 
+public function addTopics($tab){
+   $sql="INSERT INTO tbltopics VALUES(null, :idgroupe, :idauteur, sysdate(),:titre, :content, 0)";
+   $data= array(
+      ":idgroupe" => $tab['idgroupe'],
+      ":idauteur" => $tab['idauteur'],
+      ":titre" => $tab['titreSujet'],
+      ":content" => $tab['descSujet']
+   );
+   $prepare = $this->pdo->prepare($sql);
+   $prepare->execute($data);
+}
 
+public function topicByGroup($idgroupe){
+   $sql="SELECT * FROM tbltopics WHERE idgroupe = :idgroupe";
+   $stmt = $this->pdo->prepare($sql);
+   $stmt->execute([":idgroupe" => $idgroupe]);
+   return $stmt->fetchAll();
+}
 
-
-
-
+public function getTopicById($idtopic){
+   $sql = "SELECT * FROM tbltopics WHERE idsujet= :idtopic";
+   $stmt = $this->pdo->prepare($sql);
+   $stmt->execute([":idtopic" => $idtopic]);
+   return $stmt->fetchAll();
+}
 
 }
+
+
+
+
+
+
+

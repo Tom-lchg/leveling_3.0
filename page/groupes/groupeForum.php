@@ -185,45 +185,34 @@
                         </thead>
                         <tbody>
 
+                        <!------------ A MODIFFFF ------------->
+                        <!------------ A ICI IL FAUDRA FAIRE UN FOR  POUR CHAQUE SUJET et ducoup ------------->
+                        <?php $topicbyGroups = $controler->groupe->groupeModel->topicByGroup($_GET['groupe']);?>
+                        <?php foreach($topicbyGroups as $oneTopic) :?>
+                        <?php $detailsUser = $controler->user->userModel->findByIdUser($oneTopic['idauteur']); ?>
+                        <?php foreach($detailsUser as $oneDetailsUser) :?>
+                  
+                        
                            <!-- row 1 -->
                            <tr class="hover:text-accent cursor-pointer">
-                           <td><a href="./?page=groupes&groupe=yugioh&sujet=0"><p class="m-4">Yu-Gi-Oh! Power of Chaos</p></a></td>
+                           
+                           
+                           <td><a href="./?page=groupes&groupe=<?= $_GET['groupe']?>&privacy=<?= $_GET['privacy']?>&sujet=<?= $oneTopic['idsujet'] ?>"><p class="m-4"><?=$oneTopic['titre']?></p></a></td>
                            <td>
                               <div class="flex items-center">
-                                 <img src="../assets/pp.jpg" alt="" class="rounded-full w-10">
-                                 <p class="ml-2 font-toxigenesis">KiSEi</p>
+                                 <img src="data:<?= $oneDetailsUser['userTypeImg'] ?>;base64,<?= base64_encode($oneDetailsUser['userImg']) ?>" alt="" class="rounded-full w-10">
+                                 <p class="ml-2 font-toxigenesis"><?= $oneDetailsUser['userPseudo'] ?></p>
                               </div>
                            </td>
-                           <td>24</td>
+                           <td><?=$oneTopic['nbReponse']?></td>
                            </tr>
-
-                           <!-- row 2 -->
-                           <tr class="hover:text-accent cursor-pointer">
-                           <td><p class="m-4">Les Youtubers jeux vidéos sont-ils corrompus par l'argent ?</p></td>
-                           <td>
-                              <div class="flex items-center">
-                                 <img src="../assets/pp2.jpg" alt="" class="rounded-full w-10">
-                                 <p class="ml-2 font-toxigenesis">Skeim</p>
-                              </div>
-                           </td>
-                           <td>15</td>
-                           </tr>
-
-                           <!-- row 3 -->
-                           <tr class="hover:text-accent cursor-pointer">
-                           <td><p class="m-4">[Retro ou pas] Vos trouvailles & bonnes affaires</p></td>
-                           <td>
-                              <div class="flex items-center">
-                                 <img src="../assets/pp3.jpg" alt="" class="rounded-full w-10">
-                                 <p class="ml-2 font-toxigenesis">Mirinae</p>
-                              </div>
-                           </td>
-                           <td>10</td>
-                           </tr>
-                        </tbody>
+                           <?php endforeach; ?>
+                           <?php endforeach; ?>
+                           
+                     </tbody>
                      </table>
                      </div>
-                     
+                     <!------------ A MODIFFFF ------------->
                      <?php }else{ 
 
                         require('groupeForumSujet.php');
