@@ -3,7 +3,7 @@ $conversations = $controler->conv->conversationModel->getConversation($_SESSION[
 
 if (isset($_GET['conversationId'])) {
     $currentConv = $controler->conv->conversationModel->findById($_GET['conversationId'], 'idConversation');
-    $messages = $controler->message->messageModel->getMessage($_SESSION['id'], 2, $currentConv['idFriend']);
+    $messages = $controler->message->messageModel->getMessage($_SESSION['id'], $_GET['conversationId'], $currentConv['idFriend']);
 }
 ?>
 
