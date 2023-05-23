@@ -243,10 +243,148 @@ public function findTopicById($idsujet){
 
 }
 
+public function verifCreateUserbyGroupe($idgroupe,$iduser){
+   $sql = "SELECT * FROM tblgroups WHERE groupeFkIdUser = :iduser AND idGroupe = :idgroupe";
+
+   $stmt = $this->pdo->prepare($sql);
+   $stmt->execute([":iduser" => $iduser, ":idgroupe" => $idgroupe]);
+   return $stmt->fetchAll();
+   
+}
+
+
+public function updateGroupePublicNameAndDesc($tab){
+   $sql= "UPDATE tblgroups SET  groupeName = :newGroupeName, groupeDescription = :newGroupeDesc WHERE idGroupe = :idGroupe";
+   $data = array(
+      ":newGroupeName" => $tab['update-title'],
+      ":newGroupeDesc" => $tab['update-desc'],
+      ":idGroupe" => $tab['idgroupe']
+   );
+   $prepare = $this->pdo->prepare($sql);
+   $prepare->execute($data);
+
+   $sql= "UPDATE tblgroupspublic SET  groupeName = :newGroupeName , groupeDescription = :newGroupeDesc WHERE idGroupe = :idGroupe";
+   $data = array(
+      ":newGroupeName" => $tab['update-title'],
+      ":newGroupeDesc" => $tab['update-desc'],
+      ":idGroupe" => $tab['idgroupe']
+   );
+   $prepare = $this->pdo->prepare($sql);
+   $prepare->execute($data);
+
+   
+
+}
+
+public function updateGroupPublicPdp($tab, $tabimg){
+   $sql= "UPDATE tblgroups SET  groupeImg = :pp , groupeTypeImg = :pptype WHERE idGroupe =:idgroupe";
+   $data = array(
+      ":pp" => file_get_contents($tabimg['update-group-profil']['tmp_name']),
+      ":pptype" => $tabimg['update-group-profil']['type'],
+      ":idgroupe" => $tab['idgroupe']
+   );
+   $prepare = $this->pdo->prepare($sql);
+   $prepare->execute($data);
+
+   $sql= "UPDATE tblgroupspublic SET  groupeImg = :pp , groupeTypeImg = :pptype WHERE idGroupe =:idgroupe";
+   $data = array(
+      ":pp" => file_get_contents($tabimg['update-group-profil']['tmp_name']),
+      ":pptype" => $tabimg['update-group-profil']['type'],
+      ":idgroupe" => $tab['idgroupe']
+   );
+   $prepare = $this->pdo->prepare($sql);
+   $prepare->execute($data);
+}
+
+public function updateGroupePublicBanner($tab, $tabimg){
+   $sql= "UPDATE tblgroups SET  groupeBanner = :banner , groupeTypeBanner = :bannertype WHERE idGroupe =:idgroupe";
+   $data = array(
+      ":banner" => file_get_contents($tabimg['update-group-banner']['tmp_name']),
+      ":bannertype" => $tabimg['update-group-banner']['type'],
+      ":idgroupe" => $tab['idgroupe']
+   );
+   $prepare = $this->pdo->prepare($sql);
+   $prepare->execute($data);
+
+   $sql= "UPDATE tblgroupspublic SET  groupeBanner = :banner , groupeTypeBanner = :bannertype WHERE idGroupe =:idgroupe";
+   $data = array(
+      ":banner" => file_get_contents($tabimg['update-group-banner']['tmp_name']),
+      ":bannertype" => $tabimg['update-group-banner']['type'],
+      ":idgroupe" => $tab['idgroupe']
+   );
+   $prepare = $this->pdo->prepare($sql);
+   $prepare->execute($data);
 }
 
 
 
+
+
+public function updateGroupePriveNameAndDesc($tab){
+   $sql= "UPDATE tblgroups SET  groupeName = :newGroupeName , groupeDescription = :newGroupeDesc WHERE idGroupe = :idGroupe";
+   $data = array(
+      ":newGroupeName" => $tab['update-title'],
+      ":newGroupeDesc" => $tab['update-desc'],
+      ":idGroupe" => $tab['idgroupe']
+   );
+   $prepare = $this->pdo->prepare($sql);
+   $prepare->execute($data);
+
+   $sql= "UPDATE tblgroupsprivate SET  groupeName = :newGroupeName , groupeDescription = :newGroupeDesc WHERE idGroupe = :idGroupe";
+   $data = array(
+      ":newGroupeName" => $tab['update-title'],
+      ":newGroupeDesc" => $tab['update-desc'],
+      ":idGroupe" => $tab['idgroupe']
+   );
+   $prepare = $this->pdo->prepare($sql);
+   $prepare->execute($data);
+
+}
+
+public function updateGroupPrivePdp($tab, $tabimg){
+   $sql= "UPDATE tblgroups SET  groupeImg = :pp , groupeTypeImg = :pptype WHERE idGroupe =:idgroupe";
+   $data = array(
+      ":pp" => file_get_contents($tabimg['update-group-profil']['tmp_name']),
+      ":pptype" => $tabimg['update-group-profil']['type'],
+      ":idgroupe" => $tab['idgroupe']
+   );
+   $prepare = $this->pdo->prepare($sql);
+   $prepare->execute($data);
+
+   $sql= "UPDATE tblgroupsprivate SET  groupeImg = :pp , groupeTypeImg = :pptype WHERE idGroupe =:idgroupe";
+   $data = array(
+      ":pp" => file_get_contents($tabimg['update-group-profil']['tmp_name']),
+      ":pptype" => $tabimg['update-group-profil']['type'],
+      ":idgroupe" => $tab['idgroupe']
+   );
+   $prepare = $this->pdo->prepare($sql);
+   $prepare->execute($data);
+}
+
+public function updateGroupePriveBanner($tab, $tabimg){
+   $sql= "UPDATE tblgroups SET  groupeBanner = :banner , groupeTypeBanner = :bannertype WHERE idGroupe =:idgroupe";
+   $data = array(
+      ":banner" => file_get_contents($tabimg['update-group-banner']['tmp_name']),
+      ":bannertype" => $tabimg['update-group-banner']['type'],
+      ":idgroupe" => $tab['idgroupe']
+   );
+   $prepare = $this->pdo->prepare($sql);
+   $prepare->execute($data);
+
+   $sql= "UPDATE tblgroupsprivate SET  groupeBanner = :banner , groupeTypeBanner = :bannertype WHERE idGroupe =:idgroupe";
+   $data = array(
+      ":banner" => file_get_contents($tabimg['update-group-banner']['tmp_name']),
+      ":bannertype" => $tabimg['update-group-banner']['type'],
+      ":idgroupe" => $tab['idgroupe']
+   );
+   $prepare = $this->pdo->prepare($sql);
+   $prepare->execute($data);
+}
+
+
+
+
+}
 
 
 

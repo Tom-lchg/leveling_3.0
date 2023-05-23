@@ -1,5 +1,5 @@
 <?php $results = $controler->groupe->groupeModel->getGroupbyIdGroupe($_GET['groupe']);
-        
+       
 
 ?>
 

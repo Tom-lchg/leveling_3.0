@@ -179,10 +179,56 @@ if (isset($_POST['btn-answer-topic'])) {
    $controler->groupe->groupeModel->updateNbReponseForTopic($_POST['idsujet']);
    header("Location:../?page=groupes&groupe=".$_POST['idgroupe']."&privacy=".$_POST['privacy']."&sujet=".$_POST['idsujet']."");
 
-   // il faut aussi rajouter + 1 dans le nombre de réponse
 
    
 }
+
+// Modification d'un groupe
+
+//Modification du nom et de la description d'un groupe public
+if(isset($_POST['btn-update-group-text'])){
+   if($_POST['privacy'] == "publique"){
+      $controler->groupe->groupeModel->updateGroupePublicNameAndDesc($_POST);
+      header("Location: ../?page=groupes&groupe=".$_POST['idgroupe']."&privacy=".$_POST['privacy']."");
+   }else if($_POST['privacy'] == "prive"){
+      $controler->groupe->groupeModel->updateGroupePriveNameAndDesc($_POST);
+      header("Location: ../?page=groupes&groupe=".$_POST['idgroupe']."&privacy=".$_POST['privacy']."");
+   }
+   
+}
+//Modification du nom et de la description d'un groupe public
+
+// Mofification de la photo de profil d'un groupe
+if(isset($_POST['btn-update-group-pdp'])){
+   if($_POST['privacy'] == "publique"){
+      $controler->groupe->groupeModel->updateGroupPublicPdp($_POST,$_FILES);
+      header("Location: ../?page=groupes&groupe=".$_POST['idgroupe']."&privacy=".$_POST['privacy']."");
+   }else if($_POST['privacy'] == "prive"){
+      $controler->groupe->groupeModel->updateGroupPrivePdp($_POST,$_FILES);
+      header("Location: ../?page=groupes&groupe=".$_POST['idgroupe']."&privacy=".$_POST['privacy']."");
+
+   }
+}
+// Mofification de la photo de profil d'un groupe
+
+// Mofification de la bannière d'un groupe
+
+   if(isset($_POST['btn-update-group-banner'])){
+      if($_POST['privacy'] == "publique"){
+         $controler->groupe->groupeModel->updateGroupePublicBanner($_POST,$_FILES);
+         header("Location: ../?page=groupes&groupe=".$_POST['idgroupe']."&privacy=".$_POST['privacy']."");
+      }else if($_POST['privacy'] == "prive"){
+         $controler->groupe->groupeModel->updateGroupePriveBanner($_POST,$_FILES);
+      header("Location: ../?page=groupes&groupe=".$_POST['idgroupe']."&privacy=".$_POST['privacy']."");
+      }
+   }
+
+// Mofification de la bannière d'un groupe
+
+
+// Modification d'un groupe
+
+
 
 
 

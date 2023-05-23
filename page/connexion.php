@@ -1,9 +1,6 @@
 <div class='p-8 h-screen'>
    <h1 class='text-3xl font-leger'>Connexion</h1><br>
-   <?php  if($_GET['state']) :?>
-      <p class="text-2xl text-orange-600">Identifiants incorrects, vérifier votre mail ou mot de passe</p>
-
-    <?php endif ;?>  
+   
 <br>
    <form action="../handler_formulaire/handler.php" class="max-w-2xl" method="POST">
       <div class='mt-4 flex gap-4'>

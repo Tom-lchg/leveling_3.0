@@ -42,7 +42,7 @@ $groupes = $controler->groupe->groupeModel->getGroupbyUser($user['idUser']);
       <div class="container-home rounded-md flex items-center w-full mb-4">
             <div class="shrink-0">
                <a href="./?page=groupes&groupe=<?= $oneGroupe['idGroupe'] ?>&privacy=<?=$oneGroupe['groupePrivacy'] ?>">    
-                 <img class="object-cover rounded-md h-[80px] w-[80px]" src="data:<?= $oneGroupe['groupeTypeImg'] ?>;base64,<?= base64_encode($oneGroupe['groupeImg']) ?>" alt="">
+                  <img class="object-cover rounded-md h-[80px] w-[80px]" src="data:<?= $oneGroupe['groupeTypeImg'] ?>;base64,<?= base64_encode($oneGroupe['groupeImg']) ?>" alt="">
                </a>
             </div>
             <div class="ml-2 h-[80px] w-full p-2">

@@ -11,6 +11,7 @@
    }
    $verifAlready = $controler->groupe->groupeModel->verifUserGroupeAlready($_GET['groupe'], $_SESSION['id']);
 
+   $verifCreator = $controler->groupe->groupeModel->verifCreateUserbyGroupe($_GET['groupe'], $_SESSION['id']);
    
 
          
@@ -29,18 +30,24 @@
 
          <p class='drop-shadow-sm border-accent font-bold text-3xl font-toxigenesis'><?= $oneGroupePrive==null ? $oneGroupePublic['groupeName'] : $oneGroupePrive['groupeName'] ?> </p>
 
-         <!-- Button setting (uniquement afficher pour le modo du groupe) -->
-            <label for="" class="btn btn-ghost btn-sm">
-               <i class="fa-solid fa-circle-plus"></i>
-            </label>
-         <!-- Button setting -->
 
+         <!-- Button setting (uniquement afficher pour le modo du groupe) -->
+         <?php  if($verifCreator) { ?>
+            <label for="modal-update-group" class="">
+            <i class="fa-sharp fa-regular fa-gear"></i>
+            </label>
+         <?php } else {?>
+            
+         <?php }?>
+
+
+         <!-- Button setting -->
       </div>
       <!-- Nom du groupe + Settings -->
 
       <!-- Photo de profil -->
-      <img src="data:<?= $oneGroupePrive===null ? $oneGroupePublic['groupeTypeImg'] : $oneGroupePrive['groupeTypeImg'] ?>;base64,<?= $oneGroupePrive===null ? base64_encode($oneGroupePublic['groupeImg']) :  base64_encode($oneGroupePrive['groupeImg'])?>"
-      class='w-40 h-40 rounded-md absolute z-20 top-32 left-10 shadow-lg' alt="">
+         <img src="data:<?= $oneGroupePrive===null ? $oneGroupePublic['groupeTypeImg'] : $oneGroupePrive['groupeTypeImg'] ?>;base64,<?= $oneGroupePrive===null ? base64_encode($oneGroupePublic['groupeImg']) :  base64_encode($oneGroupePrive['groupeImg'])?>"
+         class='w-40 h-40 rounded-md absolute z-20 top-32 left-10 shadow-lg' alt="">
       <!-- Photo de profil -->
       <div class="flex justify-between bg-neutral drop-shadow-lg rounded-b-lg">
          <div class="flex">
@@ -56,7 +63,7 @@
                   <div class="divider divider-horizontal text-neutral"></div>
                   <div>
                      <!-- La date de l'inscription du user -->
-                     <p class="font-bold">CRÉATION</p>
+                     <p class="font-bold">CRÉATION</p
                      <p>21 Avril 2022</p>
                      <!-- La date de l'inscription du user -->
                   </div>
@@ -71,13 +78,13 @@
                   <?php if(isset($_SESSION['id'])) : ?>
                      <?php if($verifAlready){?>
                         <div>
-                           <!-- Bouton qui permet de rejoindre le groupe-->
+                           <!-- Bouton qui permet de quitter le groupe-->
                            <form action="../handler_formulaire/handler.php" method="post" class='max-w-2xl' enctype="multipart/form-data">
                               <input type="hidden" name="idGroupe" value="<?= $_GET['groupe']?>">
                               <input type="hidden" name="idUser" value="<?= $_SESSION['id']?>">
                               <input type="submit" class='btn btn-error text-white my-2' name="btn-leave-group" value="QUITTER CE GROUPE">
                            </form>
-                        <!-- Bouton qui permet de rejoindre le groupe -->
+                        <!-- Bouton qui permet de quitter le groupe -->
                         </div>
                      <?php  }else{ ?>
                         <div>
@@ -94,14 +101,14 @@
                   </div>
             </div>
                <!-- Menu du groupe-->
-
                <!--- -->
          </div>
       </div>
 
    </div>
 <br>
-
+<br>
+<br>
    <div class='h-auto grid grid-cols-4 mt-24 gap-6'>
 
       <div class="col-start-1 col-end-2 container-home p-6">
@@ -159,7 +166,7 @@
                      <div>
                         <div class="flex justify-between">
                            <div>
-                           <label class='btn bg-accent text-white border-accent hover:bg-[#1991FF] hover:text-white hover:border-[#1991FF] my-2' for="modal-create-sujets">NOUVEAU SUJET</label>
+                           <label class='btn bg-accent text-white border-accent hover:bg-[#1991FF] hover:text-white hover:border-[#1991FF] my-2' for="modal-create-sujet">NOUVEAU SUJET</label>
                               <button class="btn btn-accent"><i class="fa-solid fa-arrows-rotate"></i></button>
                            </div>
                            <div class="content-center flex items-center">
@@ -224,6 +231,29 @@
 
                <?php endif; ?>
 
+               <?php
+               if (isset($_GET['req'])) {
+                  switch ($_GET['req']) {
+                     case 'membres':
+                        require('groupeMembres.php');
+                        break;
+                     default:
+                        header('location: ./?page=azrazr');
+                        break;
+                  }
+               };
+
+               if (isset($_GET['sujet'])) {
+                  switch ($_GET['sujet']) {
+                     case 'sujet':
+                        require('groupeForumSujet.php');
+                        break;
+                     default:
+                        header('location: ./?page=azrazr');
+                        break;
+                  }
+               }
+               ?>
                
                </div>
                <!-- Block de l'activité -->
