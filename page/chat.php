@@ -2,13 +2,8 @@
 $conversations = $controler->conv->conversationModel->getConversation($_SESSION['id']);
 
 if (isset($_GET['conversationId'])) {
-    // la conv sur avec la personne quand on a cliquer
-    // c'est pour récup l'id de l'ami
     $currentConv = $controler->conv->conversationModel->findById($_GET['conversationId'], 'idConversation');
-
-    $messages = $controler->message->messageModel->getMessage($_SESSION['id'], 2, $currentConv['idFriend']);
-
-    var_dump($messages);
+    $messages = $controler->message->messageModel->getMessage($_SESSION['id'], $_GET['conversationId'], $currentConv['idFriend']);
 }
 ?>
 
@@ -31,14 +26,19 @@ if (isset($_GET['conversationId'])) {
             <div class="relative h-full">
 
                 <!-- Message des utilisateurs -->
-                <div class="w-full flex-col">
-                    <!-- message user connecté -->
-                    <div>
-                        <?php foreach ($messages as $m) : ?>
-                            <p><?= $m['message'] ?></p>
-                        <?php endforeach; ?>
-                    </div>
-                    <!-- message user connecté -->
+                <div class="flex-col flex gap-3">
+                    <?php foreach ($messages as $m) : ?>
+                        <!-- La ternaire c'est pour décider la position des messages -->
+                        <div class="flex flex-col <?= $_SESSION['id'] === $m['idUser'] ? 'items-end' : 'items-start' ?>">
+                            <!-- Pour avoir les messages en bleu et en blanc -->
+                            <?php $messagesUserConnected = $_SESSION['id'] === $m['idUser'] ? 'bg-blue-500 text-white' : 'bg-neutral-300 text-black'; ?>
+                            <!-- Pour avoir les messages en bleu et en blanc -->
+
+                            <div class="max-w-[350px] h-auto <?= $messagesUserConnected ?> p-2 rounded-md">
+                                <p><?= $m['message'] ?></p>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
                 </div>
                 <!-- Message des utilisateurs -->
 

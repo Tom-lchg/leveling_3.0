@@ -23,5 +23,6 @@ class Message
     {
         $mymsg = htmlspecialchars($msg);
         $this->messageModel->insertMessage($mymsg, $iduser, $idconv);
+        return $idconv;
     }
 }

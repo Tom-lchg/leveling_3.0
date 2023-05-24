@@ -80,11 +80,11 @@ if (isset($_POST['btn-join-group'])) {
 }
 
 //formulaire pour se retirer d'un groupe
-if(isset($_POST['btn-leave-group'])){
+if (isset($_POST['btn-leave-group'])) {
    $iduser = $_POST['idUser'];
    $idgroupe = $_POST['idGroupe'];
 
-   $non= $controler->groupe->groupeModel->dropUserOnGroup($idgroupe, $iduser);
+   $non = $controler->groupe->groupeModel->dropUserOnGroup($idgroupe, $iduser);
    header("Location: ../?page=home");
 }
 
@@ -156,6 +156,6 @@ if (isset($_POST['delFriend'])) {
 
 // envoyer un message
 if (isset($_POST['btn_msg'])) {
-   $controler->message->checkMessage($_POST['message'], $_SESSION['id'], $_POST['convid']);
-   header('Location: ../?page=chat&conversationId=2');
+   $idconv = $controler->message->checkMessage($_POST['message'], $_SESSION['id'], $_POST['convid']);
+   header('Location: ../?page=chat&conversationId=' . $idconv);
 }
