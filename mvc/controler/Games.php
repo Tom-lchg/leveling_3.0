@@ -12,7 +12,7 @@ class Games
 
    public function __construct()
    {
-      $this->model = new Model('tblGames');
+      $this->model = new Model('tblgames');
       $this->gameModel = new GamesModel();
    }
 }

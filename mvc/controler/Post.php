@@ -12,7 +12,7 @@ class Post
 
    public function __construct()
    {
-      $this->model = new Model('tblPosts');
+      $this->model = new Model('tblposts');
       $this->postModel = new PostModel();
    }
 

@@ -12,7 +12,7 @@ class Groupe
 
    public function __construct()
    {
-      $this->model = new Model('tblGroups');
+      $this->model = new Model('tblgroups');
       $this->groupeModel = new GroupeModel();
    }
 

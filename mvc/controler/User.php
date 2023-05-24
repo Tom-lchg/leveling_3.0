@@ -13,7 +13,7 @@ class User
    public $userModel;
    public function __construct()
    {
-      $this->model = new Model('tblUsers');
+      $this->model = new Model('tblusers');
       $this->userModel = new UserModel();
    }
 
