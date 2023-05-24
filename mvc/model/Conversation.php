@@ -13,7 +13,7 @@ class Conversation
     {
         //$this->pdo = new PDO('mysql:host=localhost;dbname=leveling2', 'root', '');
         $this->pdo = new PDO('mysql:host=172.20.0.161;dbname=leveling2', 'root', 'btssio2023');
-        $this->model = new Model('tblConversation');
+        $this->model = new Model('tblconversation');
     }
 
     public function getAll()
