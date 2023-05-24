@@ -28,7 +28,7 @@ class User
 
    public function getUserProfil($pseudo)
    {
-      $sql = "SELECT * FROM tblUsers WHERE userPseudo = :psd";
+      $sql = "SELECT * FROM tblusers WHERE userPseudo = :psd";
       $stmt = $this->pdo->prepare($sql);
       $stmt->execute([
          ":psd" => $pseudo
@@ -84,7 +84,7 @@ class User
 
    public function getNumberOfPosts($iduser)
    {
-      $sql = "SELECT COUNT(*) FROM tblPosts WHERE fkIdUser = :iduser";
+      $sql = "SELECT COUNT(*) FROM tblposts WHERE fkIdUser = :iduser";
       $stmt = $this->pdo->prepare($sql);
       $stmt->execute(["iduser" => $iduser]);
       return $stmt->fetchColumn();
