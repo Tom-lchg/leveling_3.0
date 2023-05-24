@@ -19,7 +19,7 @@ use \mvc\controler\controler\Controler;
 
 $controler = new Controler();
 if (isset($_SESSION['id'])) {
-   $user = $controler->user->userModel->findById($_SESSION['id'], 'idUser');
+   $user = $controler->user->userModel->findById($_SESSION['id'], 'iduser');
 }
 
 ?>
