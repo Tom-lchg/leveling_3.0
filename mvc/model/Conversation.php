@@ -11,7 +11,8 @@ class Conversation
     private $model;
     public function __construct()
     {
-        $this->pdo = new PDO('mysql:host=localhost;dbname=leveling2', 'root', '');
+        //$this->pdo = new PDO('mysql:host=localhost;dbname=leveling2', 'root', '');
+        $this->pdo = new PDO('mysql:host=172.20.0.161;dbname=leveling2', 'root', 'btssio2023');
         $this->model = new Model('tblConversation');
     }
 
@@ -27,14 +28,14 @@ class Conversation
 
     public function createConv($idOwner, $idFriend)
     {
-        $sql = "INSERT INTO tblConversation VALUES(null, ?, ?)";
+        $sql = "INSERT INTO tblconversation VALUES(null, ?, ?)";
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute([$idOwner, $idFriend]);
     }
 
     public function getConversation($idUserConnected)
     {
-        $sql = "SELECT * FROM tblConversation INNER JOIN tblUsers WHERE idUserConnected = $idUserConnected AND idUser = idFriend";
+        $sql = "SELECT * FROM tblconversation INNER JOIN tblUsers WHERE idUserConnected = $idUserConnected AND idUser = idFriend";
         return $this->pdo->query($sql)->fetchAll();
     }
 }
