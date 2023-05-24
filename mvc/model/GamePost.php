@@ -52,7 +52,7 @@ class GamePost
 
    public function getAllPostsFromGame($idgame)
    {
-      $sql = "SELECT * FROM tblgameposts INNER JOIN tblUsers WHERE fkIdGame = :idgame AND idUser = fkidUser";
+      $sql = "SELECT * FROM tblgameposts INNER JOIN tblusers WHERE fkIdGame = :idgame AND idUser = fkidUser";
       $stmt = $this->pdo->prepare($sql);
       $stmt->execute([":idgame" => $idgame]);
       return $stmt->fetchAll();
