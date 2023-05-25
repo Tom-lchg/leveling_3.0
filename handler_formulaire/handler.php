@@ -71,14 +71,16 @@ if (isset($_POST['btn-add-groupe'])) {
 if (isset($_POST['btn-join-group'])) {
    $iduser = $_POST['idUser'];
    $idgroupe = $_POST['idGroupe'];
+   $privacy = $_POST['privacy'];
 
    $non = $controler->groupe->groupeModel->addUserOnGroup($idgroupe, $iduser);
+   $updateNb = $controler->groupe->groupeModel->addNbPeopleGroupe($privacy, $idgroupe);
 
    if ($non == false) {
       //faudrait changer ca
-      header("Location: ../?page=home&feur");
+      header("Location:../?page=groupes&groupe=".$idgroupe."&privacy=".$_POST['privacy']."");
    } else {
-      header("Location: ../?page=home&quoicou");
+      header("Location:../?page=groupes&groupe=".$idgroupe."&privacy=".$_POST['privacy']."");
    }
 }
 
@@ -86,9 +88,12 @@ if (isset($_POST['btn-join-group'])) {
 if(isset($_POST['btn-leave-group'])){
    $iduser = $_POST['idUser'];
    $idgroupe = $_POST['idGroupe'];
+   $privacy = $_POST['privacy'];
 
    $non= $controler->groupe->groupeModel->dropUserOnGroup($idgroupe, $iduser);
-   header("Location: ../?page=home");
+   $updateNb = $controler->groupe->groupeModel->delNbPeopleGroupe($privacy, $idgroupe);
+
+   header("Location:../?page=groupes&groupe=".$idgroupe."&privacy=".$_POST['privacy']."");
 }
 
 
@@ -229,6 +234,13 @@ if(isset($_POST['btn-update-group-pdp'])){
 // Modification d'un groupe
 
 
+//Ajout d'une personne dans une groupe privé
+if(isset($_POST['btn-add-user-groupe'])){
+   $controler->groupe->groupeModel->insertInGroupUser($_POST['idgroupe'], $_POST['selectedUser']);
+   $updateNb = $controler->groupe->groupeModel->addNbPeopleGroupe($_POST['privacy'], $_POST['idgroupe']);
+   header("Location: ../?page=groupes&groupe=".$_POST['idgroupe']."&privacy=".$_POST['privacy']."");
+}
+//Ajout d'une personne dans une groupe privé
 
 
 

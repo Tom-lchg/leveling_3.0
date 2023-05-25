@@ -1,6 +1,6 @@
 <?php
 $user = $controler->user->userModel->getUserProfil($_GET['user']);
-$groupes = $controler->groupe->groupeModel->getGroupbyUser($user['idUser']);
+$groupes = $controler->groupe->groupeModel->getGroupPublicbyUser($user['idUser']);
 
 
 ?>
@@ -10,9 +10,9 @@ $groupes = $controler->groupe->groupeModel->getGroupbyUser($user['idUser']);
 
 
    
-<div class="container-home p-6">
+<div class="container-home p-4">
 
-<div class="font-bold w-full flex justify-center items-center h-9 bg-neutral text-primary rounded-md"><p>GROUPES</p></div>
+
 
 <div class="mt-2 text-justify">
    <!-- afficher uniquement si c'est le user connecté qui est sur son profil -->
@@ -21,6 +21,8 @@ $groupes = $controler->groupe->groupeModel->getGroupbyUser($user['idUser']);
    <?php endif; ?>
    <!-- afficher uniquement si c'est le user connecté qui est sur son profil -->
 </div>
+
+<div class=" mt-4 font-bold w-full flex justify-center items-center h-9 bg-neutral text-primary rounded-md"><p>VOS GROUPES</p></div>
 
 <!-- afficher uniquement si c'est le user connecté -->
 <?php if ($user['idUser'] === $_SESSION['id']) : ?>
@@ -39,6 +41,7 @@ $groupes = $controler->groupe->groupeModel->getGroupbyUser($user['idUser']);
 <?php foreach($groupes as $groupe){
    $allGroupes = $controler->groupe->groupeModel->findbyIdGroupe($groupe['idgroupe']);
    foreach($allGroupes as $oneGroupe) : ?>
+   
       <div class="container-home rounded-md flex items-center w-full mb-4">
             <div class="shrink-0">
                <a href="./?page=groupes&groupe=<?= $oneGroupe['idGroupe'] ?>&privacy=<?=$oneGroupe['groupePrivacy'] ?>">    
@@ -47,12 +50,11 @@ $groupes = $controler->groupe->groupeModel->getGroupbyUser($user['idUser']);
             </div>
             <div class="ml-2 h-[80px] w-full p-2">
                <p class='drop-shadow-sm font-bold text-accent text-3xl font-toxigenesis'><?= $oneGroupe['groupeName'] ?></p>
-               <p><?= $oneGroupe['groupeDescription']?></p>
+               <p><?= $oneGroupe['groupeDescription']?> - <strong><?= $oneGroupe['groupePrivacy'] ?></strong></p>
             </div>
          </div>
-
+   
    <?php endforeach ; }?>
-
 
 
 

@@ -147,7 +147,7 @@ public function findbyIdGroupe($idgroupe){
 
 
 public function insertInGroupUser($idgroupe , $iduser){
-   $sql = "INSERT INTO tblgroupsuser(null,:idgroupe,:iduser)";
+   $sql = "INSERT INTO tblgroupsuser values(null,:idgroupe,:iduser)";
    $data = array(
       ":idgroupe" => $idgroupe,
       ":iduser" => $iduser
@@ -159,7 +159,7 @@ public function insertInGroupUser($idgroupe , $iduser){
 
 
 
-public function getGroupbyUser($iduser){
+public function getGroupPublicbyUser($iduser){
    $sql = "SELECT * FROM tblgroupsuser WHERE iduser=:iduser";
    $stmt = $this->pdo->prepare($sql);
    $stmt->execute([":iduser" => $iduser]);
@@ -381,6 +381,68 @@ public function updateGroupePriveBanner($tab, $tabimg){
    $prepare->execute($data);
 }
 
+
+public function getMyGroupPrivate($iduser){
+   $sql = "SELECT * from tblgroupsuser WHERE iduser = :iduser";
+   $stmt = $this->pdo->prepare($sql);
+   $stmt->execute([":iduser" => $iduser]);
+   return $stmt->fetchAll();
+}
+
+public function checkUserinGroupePrivate($iduser, $idgroupe){
+   $sql ="SELECT * FROM tblgroupsuser WHERE idgroupe = :idgroupe AND iduser = :iduser";
+   $stmt = $this->pdo->prepare($sql);
+   $stmt->execute([":idgroupe" => $idgroupe, ":iduser" => $iduser]);
+   return $stmt->fetchAll();
+}
+
+public function addNbPeopleGroupe($privacy, $idgroupe){
+   if($privacy == "publique"){
+      $sql= "UPDATE tblgroupspublic SET groupePublicNbUsers = groupePublicNbUsers + 1 WHERE idGroupe =:idgroupe";
+      $data = array(
+         ":idgroupe" => $idgroupe
+      );
+      $prepare = $this->pdo->prepare($sql);
+      $prepare->execute($data);
+
+   }else if($privacy == "prive"){
+      $sql= "UPDATE tblgroupsprivate SET groupePrivateNbUsers = groupePrivateNbUsers + 1 WHERE idGroupe =:idgroupe";
+      $data = array(
+         ":idgroupe" => $idgroupe
+      );
+      $prepare = $this->pdo->prepare($sql);
+      $prepare->execute($data);
+
+   }
+
+}
+
+public function delNbPeopleGroupe($privacy, $idgroupe){
+   if($privacy == "publique"){
+      $sql= "UPDATE tblgroupspublic SET groupePublicNbUsers = groupePublicNbUsers - 1 WHERE idGroupe =:idgroupe";
+      $data = array(
+         ":idgroupe" => $idgroupe
+      );
+      $prepare = $this->pdo->prepare($sql);
+      $prepare->execute($data);
+
+   }else if($privacy == "prive"){
+      $sql= "UPDATE tblgroupsprivate SET groupePrivateNbUsers = groupePrivateNbUsers - 1 WHERE idGroupe =:idgroupe";
+      $data = array(
+         ":idgroupe" => $idgroupe
+      );
+      $prepare = $this->pdo->prepare($sql);
+      $prepare->execute($data);
+
+   }
+}
+
+public function getUserNotOnGroupe($idgroupe){
+   $sql = "SELECT tblusers.* FROM tblusers WHERE tblusers.idUser NOT IN (SELECT tblgroupsuser.iduser FROM tblgroupsuser WHERE tblgroupsuser.idgroupe = :idgroupe)";
+      $stmt = $this->pdo->prepare($sql);
+      $stmt->execute([":idgroupe" => $idgroupe]);
+      return $stmt->fetchAll();
+   }
 
 
 

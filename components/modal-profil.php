@@ -65,36 +65,26 @@ if (isset($_SESSION['id'])) {
 
             <input required="required" maxlength="20" class='input input-bordered w-xs placeholder-[#CCCCCF] placeholder:text-sm' type="text" placeholder="Nom de votre groupe" name='nomGroupe'>
             <textarea required="required" class='textarea textarea-bordered placeholder-[#CCCCCF]' placeholder='Description de votre groupe' name='descGroupe'></textarea>
-
-
-
             <div class="w-20">
-
                <div>
                   <label class="label cursor-pointer">
                      <input required="required" type="radio" name="privacy" value='publique' class="radio checked:bg-blue-500" checked />
                      <span class="label-text ml-4">Public</span>
                   </label>
                </div>
-
                <div>
                   <label class="label cursor-pointer">
                      <input required="required" type="radio" name="privacy" value="prive" class="radio checked:bg-red-500" checked />
                      <span class="label-text ml-4">Privé</span>
                   </label>
                </div>
-
             </div>
-
             <label><p class="text-sm">Photo du groupe</p></label>
             <input type="file" name="pp" class="file-input file-input-bordered w-full max-w-xs" />
-
             <label><p class="text-sm">Bannière du groupe</p></label>
             <input type="file" class="file-input file-input-bordered w-full max-w-xs mb-6" name="banner" />
-
             <button type='submit' name='btn-add-groupe' class='btn'>Créer votre groupe</button>
          </div>
-
       </form>
    </div>
 </div>
@@ -280,5 +270,32 @@ if (isset($_GET['updatePost'])) {
 
 <!-- Modal pour modifier les informations du groupe-->
 
+<!--- Modal pour ajouter une personne dans un groupe privé -->
 
+<input type="checkbox" id="modal-add-user-groupe" class="modal-toggle" />
+<div class="modal bg-modal">
+   <div class="modal-box relative bg-secondary max-w-3xl">
+      <label for="modal-add-user-groupe" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+      <h3 class="text-lg font-bold">AJOUTER UNE PERSONNE :</h3>
+      <?php $allUserNotInGroupe = $controler->groupe->groupeModel->getUserNotOnGroupe($_GET['groupe']);?>
+      <center>
+      <form action="../handler_formulaire/handler.php" method="POST" class='mt-4 w-full' enctype="multipart/form-data">
+         <select class="select w-full max-w-xs" name="selectedUser">
+            <option disabled selected>Liste de tous les utilisateurs qui ne sont pas dans le groupe</option>
+            <?php foreach($allUserNotInGroupe as $oneUser) :?>           
+            <option value="<?= $oneUser['idUser'] ?>"><?= $oneUser['userPseudo'] ?></option>
+            <?php endforeach; ?>
+         </select><br><br>
+         <input type="hidden" name="idgroupe" value="<?= $_GET['groupe'] ?>">
+         <input type="hidden" name="privacy" value="<?= $_GET['privacy'] ?>">
+         <button type='submit' name='btn-add-user-groupe' class='btn btn-accent'>Ajouter cette personne</button>
+   </div>
 
+      </form>
+
+      </center>
+      
+   </div>
+</div>
+
+<!--- Modal pour ajouter une personne dans un groupe privé -->

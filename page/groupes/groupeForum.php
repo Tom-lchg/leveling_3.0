@@ -1,3 +1,13 @@
+<?php $verifGroupePrivate= $controler->groupe->groupeModel->checkUserinGroupePrivate($_SESSION['id'], $_GET['groupe']);
+if($_GET['privacy'] == "prive" && count($verifGroupePrivate) == 0){
+      echo "Vous n'avez pas les droits pour accéder à ce groupe";
+   
+   
+}else{
+      
+   
+
+?>
 <?php  $allGroups = $controler->groupe->groupeModel->getAll(); ?>
 <?php  
    $oneGroupePublic = null;
@@ -81,6 +91,7 @@
                            <!-- Bouton qui permet de quitter le groupe-->
                            <form action="../handler_formulaire/handler.php" method="post" class='max-w-2xl' enctype="multipart/form-data">
                               <input type="hidden" name="idGroupe" value="<?= $_GET['groupe']?>">
+                              <input type="hidden" name="privacy" value="<?= $_GET['privacy']?>">
                               <input type="hidden" name="idUser" value="<?= $_SESSION['id']?>">
                               <input type="submit" class='btn btn-error text-white my-2' name="btn-leave-group" value="QUITTER CE GROUPE">
                            </form>
@@ -91,6 +102,7 @@
                            <!-- Bouton qui permet de rejoindre le groupe-->
                            <form action="../handler_formulaire/handler.php" method="post" class='max-w-2xl' enctype="multipart/form-data">
                               <input type="hidden" name="idGroupe" value="<?= $_GET['groupe']?>">
+                              <input type="hidden" name="privacy" value="<?= $_GET['privacy']?>">
                               <input type="hidden" name="idUser" value="<?= $_SESSION['id']?>">
                               <input type="submit" class='btn bg-accent text-white border-accent hover:bg-[#1991FF] hover:text-white hover:border-[#1991FF] my-2' name="btn-join-group" value="REJOINDRE CE GROUPE">
                            </form>
@@ -98,6 +110,12 @@
                         </div>
                   
                   <?php  }endif; ?>
+                  <?php if($_GET['privacy'] == "prive") :?>
+                  <div class="divider divider-horizontal text-neutral"></div>
+                  <label class='btn bg-accent text-white border-accent hover:bg-[#1991FF] hover:text-white hover:border-[#1991FF] my-2' for="modal-add-user-groupe">AJOUTER UNE PERSONNE</label>
+                  </div>
+                  
+                  <?php endif ;?>      
                   </div>
             </div>
                <!-- Menu du groupe-->
@@ -167,7 +185,6 @@
                         <div class="flex justify-between">
                            <div>
                            <label class='btn bg-accent text-white border-accent hover:bg-[#1991FF] hover:text-white hover:border-[#1991FF] my-2' for="modal-create-sujet">NOUVEAU SUJET</label>
-                              <button class="btn btn-accent"><i class="fa-solid fa-arrows-rotate"></i></button>
                            </div>
                            <div class="content-center flex items-center">
                               <i class="fa-solid fa-magnifying-glass text-2xl text-accent mr-4"></i>
@@ -264,4 +281,6 @@
    </div>
 
 </div>
+
+<?php } ?>
 <!-- Container global -->  
