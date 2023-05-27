@@ -14,11 +14,11 @@ $friends = $controler->friend->friendModel->getFriends($user['idUser']);
    <div class="flex gap-4 justify-center">
 
    <!-- foreach pour afficher tous les amis -->
-   <?php foreach ($friends as $f) : ?>
+   <?php foreach ($friends as $f) { ?>
 
       <!-- Code pour un ami -->
 
-      <div class="container-home rounded-md flex items-center w-[45%] mb-4">
+      <div class="container-home rounded-md flex items-center w-full mb-4">
             <div class="shrink-0">
             <img src="data:<?= $f['userTypeImg'] ?>;base64,<?= base64_encode($f['userImg']) ?>" alt="banniere user" class='object-cover rounded-full h-[80px] w-[80px]'>
             </div>
@@ -33,7 +33,7 @@ $friends = $controler->friend->friendModel->getFriends($user['idUser']);
 
       <!-- Code pour un ami -->
 
-   <?php endforeach; ?>
+   <?php } ?>
 
    </div>
    <!-- foreach pour afficher tous les amis -->
@@ -48,17 +48,5 @@ $friends = $controler->friend->friendModel->getFriends($user['idUser']);
 
 </div>
 
-
-
-      <?php endforeach; ?>
-      <!-- foreach pour afficher tous les amis -->
-   <?php else : ?>
-
-      <div class="m-6 flex justify-center items-center">
-         <p class="my-4">Aucun amis pour le moment...</p>
-      </div>
-
-   <?php endif; ?>
-   <!-- On vérifie que l'utilisateur possède des amis -->
 
 </div>

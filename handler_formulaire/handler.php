@@ -50,9 +50,9 @@ if (isset($_POST['btn-connexion'])) {
 
 // formulaire de modification d'un utilisateur
 if (isset($_POST['btn-edit-profile'])) {
-   $controler->user->updateUser($_POST);
+   $controler->user->updateUser($_POST, $_FILES);
    $user = $_SESSION['pseudo'];
-   header("Location: ../?page=profile&activite&user=$user");
+   //header("Location: ../?page=profile&activite&user=$user");
 }
 
 
@@ -129,7 +129,7 @@ if (isset($_POST['deletePostFromProfil'])) {
    $controler->post->postModel->delPost($_POST['idpost'], $_SESSION['id']);
    // ça sera toujours session pseudo car c'est le user connecté qui peut supprimer ses posts
    $user = $_SESSION['pseudo'];
-   header("Location: ../?page=profile&user=$user");
+   header("Location: ../?page=profile&activite&user=$user");
 }
 
 // formulaire pour l'ajout d'un ami
@@ -158,4 +158,12 @@ if (isset($_POST['delFriend'])) {
 if (isset($_POST['btn_msg'])) {
    $idconv = $controler->message->checkMessage($_POST['message'], $_SESSION['id'], $_POST['convid']);
    header('Location: ../?page=chat&conversationId=' . $idconv);
+}
+
+// delete un avis sur un jeu
+if (isset($_POST['deleteGamePost'])) {
+   $controler->GamePost->GamePostModel->delGamePost($_POST['idgamepost'], $_SESSION['id']);
+   // ça sera toujours session pseudo car c'est le user connecté qui peut supprimer ses posts
+   $game = $_GET['game'];
+   header("Location: ../?page=games&game=$game");
 }

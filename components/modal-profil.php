@@ -30,18 +30,22 @@ if (isset($_SESSION['id'])) {
    <div class="modal-box bg-secondary max-w-3xl">
    <h3 class="text-xl text-neutral font-bold"><i class="fa-solid fa-paintbrush"></i> MODIFIER VOTRE PROFIL</h3>
       <label for="modal-profil" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
-      <form action="../handler_formulaire/handler.php" method="post">
+      <form action="../handler_formulaire/handler.php" method="post" enctype="multipart/form-data">
          <div>
-
-            <div class='mt-4'>
-               <label><p class="text-sm">Pseudonyme</p></label>
-               <input required="required" value="<?= $user['userPseudo'] ?>" maxlength="20" class='mt-4 input input-bordered w-xs placeholder-[#CCCCCF] placeholder:text-sm' type="text" placeholder="Pseudonyme" name='pseudo'>
-            </div>
 
             <div class='mt-4 w-full'>
             <label><p class="text-sm">Biographie</p></label>
             <textarea required="required" class='mt-4 textarea textarea-bordered placeholder-[#CCCCCF] w-full h-24' placeholder='Bio' name='bio'><?= $user['userBio'] ?></textarea>
             </div>
+
+            <div class='mt-4 w-full flex items-center'>
+            <img src="data:<?= $user['userTypeImg'] ?>;base64,<?= base64_encode($user['userImg']) ?>" alt="" class='w-20 h-20 rounded-full shadow-lg'>
+            <input name="img" type="file" class="file-input file-input-bordered file-input-md w-full max-w-xs ml-4"/></div>
+
+            <div class='mt-4 w-full flex items-center'>
+            <img src="data:<?= $user['userTypeBanner'] ?>;base64,<?= base64_encode($user['userBanner']) ?>" alt="" alt="banner" class='h-20 w-40 rounded-lg'>
+            <input name="banner" type="file" class="file-input file-input-bordered file-input-md w-full max-w-xs ml-4"/></div>
+
 
             <div class="mt-4 w-full">
                <button class='btn button w-full' type='submit' name='btn-edit-profile'>Modifier</button>

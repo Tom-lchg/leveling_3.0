@@ -210,57 +210,43 @@ $lvl = $controler->user->userModel->setLvlUser();
 
                      <!-- foreach pour afficher tous les posts -->
                      <?php foreach ($userPosts as $post) : ?>
-                        <div class='bg-secondary h-auto relative p-2 rounded-lg shadow-lg'>
+                        <div class='bg-secondary h-auto relative p-2 rounded-lg shadow-lg mt-4'>
                            <div class="grid grid-cols-post">
-                              <div class="col-start-1 col-end-2">
-                                 <img src="data:<?= $user['userTypeImg'] ?>;base64,<?= base64_encode($user['userImg']) ?>" alt="pp" class='w-14 h-14 rounded-full'>
-                              </div>
-                              <div class="col-start-2 col-end-3 relative">
 
+                              <div class="col-start-1 col-end-3 relative p-4">
                                  <!-- Pseudo et @ -->
                                  <div class='flex gap-4 w-full'>
-                                    <div>
-                                       <h3 class='font-leger text-accent font-toxigenesis'>
+                                    <div class="flex items-center">
+                                    <img src="data:<?= $user['userTypeImg'] ?>;base64,<?= base64_encode($user['userImg']) ?>" alt="pp" class='w-14 h-14 rounded-full'>
+                                       <h3 class='font-leger text-accent font-toxigenesis ml-4'>
                                           <a href="#">
                                              <?= $user['userPseudo'] ?>
                                           </a>
                                        </h3>
                                     </div>
-                                 </div>
-                                 <!-- Pseudo et @ -->
 
                                  <!-- afficher uniquement si le post appartient au user connecté -->
                                  <?php if ($post['fkIdUser'] === $_SESSION['id']) : ?>
-                                    <div class="dropdown absolute right-0 top-0 z-10">
-                                       <label tabindex="0" class="btn-link btn-sm">
-                                          <i class="fa-solid fa-ellipsis-vertical"></i>
-                                       </label>
-                                       <ul tabindex="0" class="dropdown-content menu p-2 shadow rounded-box w-52">
-                                          <li><button class="btn btn-success mb-2 text-white">Modifier</button></li>
+                                    <div class="w-full rounded-md p-3 flex justify-end gap-4">
                                           <form action="../handler_formulaire/handler.php" method="post">
                                              <input type="text" hidden name="idpost" value="<?= $post['idPost'] ?>">
-                                             <li><button type='submit' name="deletePost" class="btn btn-error text-white">Supprimer</button></li>
+                                             <button type='submit' name="deletePostFromProfil" class="btn btn-error text-white"><i class="fa-solid fa-trash"></i></button>
                                           </form>
-                                       </ul>
                                     </div>
                                  <?php endif; ?>
                                  <!-- afficher uniquement si le post appartient au user connecté -->
+
+                                 </div>
+                                 <!-- Pseudo et @ -->
+
+                                 
                                  <div class='my-4'>
+                                 <div class="divider"></div>
                                     <p><?= $post['postContent'] ?></p>
                                  </div>
 
-                                 <!-- message & like -->
-                                 <div class="w-full rounded-md p-3 flex justify-end gap-4">
-                                    <p>
-                                       <i class="fa-solid fa-comment"></i>
-                                       0
-                                    </p>
-                                    <p>
-                                       <i class="fa-solid fa-heart"></i>
-                                       0
-                                    </p>
-                                 </div>
-                                 <!-- message & like -->
+                              
+
                               </div>
                            </div>
 
