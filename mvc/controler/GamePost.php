@@ -21,4 +21,9 @@ class GamePost
       $content = htmlspecialchars($data['content']);
       // $this->GamePostModel->createPost($content);
    }
+
+   public function delGamePost($idgamepost, $iduser)
+   {
+      $this->GamePost->delGamePost($idgamepost, $iduser);
+   }
 }

@@ -77,7 +77,7 @@ $all_games = $controler->games->gameModel->getALl();
                            </div>
                         </div>
                         <div class="card-actions mt-4 self-center">
-                           <a href="?page=profile&user=<?= $user['userPseudo'] ?>" class="btn btn-accent">
+                           <a href="?page=profile&activite&user=<?= $user['userPseudo'] ?>" class="btn btn-accent">
                               Son profil
                            </a>
                         </div>
@@ -103,7 +103,7 @@ $all_games = $controler->games->gameModel->getALl();
 
          <!-- Header -->
          <div class="flex justify-between items-center">
-            <h1 class='font-bold text-xl mb-6 mr-4 text-accent'><i class="fa-regular fa-clock"></i>ACTUALITÉS</h1>
+            <h1 class='font-bold text-xl mb-6 mr-4 text-accent'><i class="fa-regular fa-clock"></i> ACTUALITÉS</h1>
             <label class="btn btn-sm btn-accent" for="modal-create-post">
                <i class="fa-solid fa-plus"></i>
             </label>

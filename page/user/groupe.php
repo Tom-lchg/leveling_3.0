@@ -25,13 +25,13 @@ $groupes = $controler->groupe->groupeModel->getGroupPublicbyUser($user['idUser']
 <div class=" mt-4 font-bold w-full flex justify-center items-center h-9 bg-neutral text-primary rounded-md"><p>VOS GROUPES</p></div>
 
 <!-- afficher uniquement si c'est le user connecté -->
-<?php if ($user['idUser'] === $_SESSION['id']) : ?>
+
    <!-- Si l'utilisateur n'as pas de groupe -->
    <?php if (count($groupes) === 0) : ?>
-      <div class="m-6 flex justify-center items-center">
+
+   <div class="m-6 flex justify-center items-center">
          <p>Aucun groupe pour le moment...</p>
-      </div>
-   <?php endif; ?>
+   </div>
    <!-- Si l'utilisateur n'as pas de groupe -->
 <?php endif; ?>
 <br>

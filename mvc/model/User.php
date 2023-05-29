@@ -64,13 +64,14 @@ class User
       $prepare->execute($data);
    }
 
-   public function updateUser($pseudo, $bio, $id)
+   public function updateUser($bio, $id, $img, $banner)
    {
-      $sql = "UPDATE tblusers SET userPseudo = :pseudo, userBio = :bio WHERE idUser = :iduser";
+      $sql = "UPDATE tblUsers SET userBio = :bio, userImg = :img, userBanner = :banner WHERE idUser = :iduser";
       $this->pdo->prepare($sql)->execute([
-         ":pseudo" => $pseudo,
          ":bio" => $bio,
-         ":iduser" => $id
+         ":iduser" => $id,
+         ":img" => $img,
+         ":banner" => $banner,
       ]);
    }
 
@@ -101,25 +102,25 @@ class User
       $currentXP = $xpArray['userXP'];
 
       // if pour savoir notre lvl
-      if ($currentXP == 0 || $currentXP < 200) {
+      if ($currentXP == 0 || $currentXP < 100) {
          $lvl = "1";
-      } else if ($currentXP < 300) {
+      } else if ($currentXP < 200) {
          $lvl = "2";
-      } else if ($currentXP < 600) {
+      } else if ($currentXP < 300) {
          $lvl = "3";
-      } else if ($currentXP < 900) {
+      } else if ($currentXP < 400) {
          $lvl = "4";
-      } else if ($currentXP < 1200) {
+      } else if ($currentXP < 500) {
          $lvl = "5";
-      } else if ($currentXP < 1500) {
+      } else if ($currentXP < 600) {
          $lvl = "6";
-      } else if ($currentXP < 1800) {
+      } else if ($currentXP < 700) {
          $lvl = "7";
-      } else if ($currentXP < 2100) {
+      } else if ($currentXP < 800) {
          $lvl = "8";
-      } else if ($currentXP < 2400) {
+      } else if ($currentXP < 900) {
          $lvl = "9";
-      } else if ($currentXP < 2700 || $currentXP > 2700) {
+      } else if ($currentXP < 1000 || $currentXP > 1000) {
          $lvl = "10";
       }
 
