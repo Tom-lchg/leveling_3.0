@@ -77,7 +77,7 @@ $all_games = $controler->games->gameModel->getALl();
                            </div>
                         </div>
                         <div class="card-actions mt-4 self-center">
-                           <a href="?page=profile&user=<?= $user['userPseudo'] ?>" class="btn btn-accent">
+                           <a href="?page=profile&activite&user=<?= $user['userPseudo'] ?>" class="btn btn-accent">
                               Son profil
                            </a>
                         </div>

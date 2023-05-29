@@ -3141,6 +3141,13 @@ html {
    left: 0px;
 }
 
+<<<<<<< HEAD
+=======
+.bottom-0 {
+   bottom: 0px;
+}
+
+>>>>>>> be48edb8faeca321a8d788f5ba669aa5ce162e30
 .top-32 {
    top: 8rem;
 }
@@ -3724,6 +3731,14 @@ html {
    border-color: rgb(233 233 233 / var(--tw-border-opacity));
 }
 
+<<<<<<< HEAD
+=======
+.border-slate-100 {
+   --tw-border-opacity: 1;
+   border-color: rgb(241 245 249 / var(--tw-border-opacity));
+}
+
+>>>>>>> be48edb8faeca321a8d788f5ba669aa5ce162e30
 .border-opacity-50 {
    --tw-border-opacity: 0.5;
 }
@@ -3914,6 +3929,13 @@ html {
    padding-bottom: 0.25rem;
 }
 
+<<<<<<< HEAD
+=======
+.pl-2 {
+   padding-left: 0.5rem;
+}
+
+>>>>>>> be48edb8faeca321a8d788f5ba669aa5ce162e30
 .text-center {
    text-align: center;
 }

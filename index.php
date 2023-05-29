@@ -57,7 +57,7 @@ if (isset($_SESSION['id'])) {
                                  </div>
                               </div>
                            <?php endif; ?>
-                           <a href="./?page=profile&user=<?= $_SESSION['pseudo'] ?>" class='text-white font-toxigenesis'> <?= $_SESSION['pseudo'] ?> </a>
+                           <a href="./?page=profile&activite&user=<?= $_SESSION['pseudo'] ?>" class='text-white font-toxigenesis'> <?= $_SESSION['pseudo'] ?> </a>
                            <a href="./?page=deconnexion" class='item-nav'><button class="btn btn-error">Déconnexion</button></a>
                         </div>
                      <?php endif; ?>
