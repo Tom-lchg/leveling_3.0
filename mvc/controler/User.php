@@ -38,13 +38,14 @@ class User
       }
    }
 
-   public function updateUser($data)
+   public function updateUser($data, $dataimg)
    {
       // parse notre tableau
-      $pseudo = htmlspecialchars($data['pseudo']);
       $bio = htmlspecialchars($data['bio']);
+      $img = file_get_contents($dataimg['img']['tmp_name']);
+      $banner = file_get_contents($dataimg['banner']['tmp_name']);
 
       // on appelle notre model
-      $this->userModel->updateUser($pseudo, $bio, $_SESSION['id']);
+      $this->userModel->updateUser($bio, $_SESSION['id'], $img, $banner);
    }
 }

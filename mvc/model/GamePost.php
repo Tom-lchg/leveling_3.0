@@ -82,4 +82,13 @@ class GamePost
       // arrondit la moyenne à la dizaine
       return round($gradeMoy);
    }
+
+   // Supprimer un avis sur un jeu
+
+   public function delGamePost($idgamepost, $iduser)
+   {
+      $sql = "DELETE FROM tblgameposts WHERE idGamePost = :idgamepost and fkidUser = :iduser";
+      $a = [":idpost" => $idpost, ":iduser" => $iduser];
+      $this->pdo->prepare($sql)->execute($a);
+   }
 }
