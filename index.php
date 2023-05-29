@@ -21,7 +21,7 @@ if (isset($_SESSION['id'])) {
       <div class='grid grid-cols-layout h-auto w-full bg-white'>
 
          <!-- On affiche pas les menu quand on est dans le chat -->
-         <?php if ($_GET['page'] != 'chat' && $_GET['page'] !='connexion' && $_GET['page'] != 'inscription' && $_GET['page'] != 'apropos') : ?>
+         <?php if ($_GET['page'] != 'chat' && $_GET['page'] != 'connexion' && $_GET['page'] != 'inscription' && $_GET['page'] != 'apropos') : ?>
             <!-- Menu en noir -->
 
             <div class="col-start-1 col-end-6 flex justify-between px-[15em] bg-neutral">
