@@ -51,16 +51,19 @@
                             <div class="w-full">
                                 <label for="pp" class='block mb-2 font-leger'>Photo de profil</label>
                                 <input type="file" name='pp' class="file-input file-input-accent w-full bg-secondary" />
+                                <div class="w-full flex justify-end">
+                                <p class="mt-2 font-bold text-accent text-sm"><i class="fa-sharp fa-solid fa-circle-exclamation"></i> JPG UNIQUEMENT</p>
+                                </div>
                             </div>
                         </div>
                         <div class='mt-4 flex gap-4 justify-center'>
                             <div class="w-full">
                                 <label for="pp" class='block mb-2 font-leger'>Bannière du profil</label>
-                                <input type="file" name='banniere' class="file-input-accent file-input w-full bg-secondary" />
+                                <input type="file" accept="image/jpg" name='banniere' class="file-input-accent file-input w-full bg-secondary" />
+                                <div class="w-full flex justify-end">
+                                <p class="mt-2 font-bold text-accent text-sm"><i class="fa-sharp fa-solid fa-circle-exclamation"></i> JPG UNIQUEMENT</p>
+                                </div>
                             </div>
-                        </div>
-                        <div class='mt-4 flex gap-4 justify-center'>
-                            <textarea class="textarea bg-secondary w-full h-36 placeholder:font-leger placeholder-[#CCCCCF] resize-none" name='bio' placeholder="Dites-en plus sur vous, ce que vous aimez, vos jeux préférés..."></textarea>
                         </div>
 
                         <!-- Posé ici en attendant de savoir à quoi ça sert -->

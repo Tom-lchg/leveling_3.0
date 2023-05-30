@@ -40,11 +40,16 @@ if (isset($_SESSION['id'])) {
 
             <div class='mt-4 w-full flex items-center'>
             <img src="data:<?= $user['userTypeImg'] ?>;base64,<?= base64_encode($user['userImg']) ?>" alt="" class='w-20 h-20 rounded-full shadow-lg'>
-            <input name="img" type="file" class="file-input file-input-bordered file-input-md w-full max-w-xs ml-4"/></div>
+            <input name="img" type="file" class="file-input file-input-bordered file-input-md w-full max-w-xs ml-4"/>
+            <p class="ml-4 font-bold text-neutral text-sm"><i class="fa-sharp fa-solid fa-circle-exclamation"></i> JPG UNIQUEMENT</p>
+            </div>
 
             <div class='mt-4 w-full flex items-center'>
             <img src="data:<?= $user['userTypeBanner'] ?>;base64,<?= base64_encode($user['userBanner']) ?>" alt="" alt="banner" class='h-20 w-40 rounded-lg'>
-            <input name="banner" type="file" class="file-input file-input-bordered file-input-md w-full max-w-xs ml-4"/></div>
+            <input name="banner" type="file" class="file-input file-input-bordered file-input-md w-full max-w-xs ml-4"/>
+            <p class="ml-4 font-bold text-neutral text-sm"><i class="fa-sharp fa-solid fa-circle-exclamation"></i> JPG UNIQUEMENT</p>
+            </div>
+            
 
 
             <div class="mt-4 w-full">

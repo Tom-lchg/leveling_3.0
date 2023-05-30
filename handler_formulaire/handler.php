@@ -53,7 +53,7 @@ if (isset($_POST['btn-connexion'])) {
 if (isset($_POST['btn-edit-profile'])) {
    $controler->user->updateUser($_POST, $_FILES);
    $user = $_SESSION['pseudo'];
-   //header("Location: ../?page=profile&activite&user=$user");
+   header("Location: ../?page=profile&activite&user=$user");
 }
 
 
