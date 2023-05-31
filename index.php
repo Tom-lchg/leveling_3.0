@@ -1,14 +1,12 @@
 <?php require('./global/header.php'); ?>
 
 
-
 <?php
 if (isset($_SESSION['id'])) {
    $user = $controler->user->userModel->getUserProfil($_SESSION['pseudo']);
    // récupéré tous les Amis
    $friends = $controler->user->userModel->getFriends($_SESSION['id']);
 }
-
 ?>
 
 
@@ -43,7 +41,7 @@ if (isset($_SESSION['id'])) {
                      <!-- Si on est pas connecté  -->
                      <?php if (!isset($_SESSION['id'])) : ?>
                         <div class='flex gap-4 items-center'>
-                           <a href="./?page=connexion" class='item-nav text-white'>CONNEXION</a>
+                           <a href="./page/connexion.php" class='item-nav text-white'>CONNEXION</a>
                            <a href="./page=inscription" class='item-nav'><button class="btn btn-accent">Inscription</button></a>
                         </div>
                      <?php endif; ?>
@@ -60,7 +58,7 @@ if (isset($_SESSION['id'])) {
                               </div>
                            <?php endif; ?>
                            <a href="./?page=profile&activite&user=<?= $_SESSION['pseudo'] ?>" class='text-white font-toxigenesis'> <?= $_SESSION['pseudo'] ?> </a>
-                           <a href="./?page=deconnexion" class='item-nav'><button class="btn btn-error">Déconnexion</button></a>
+                           <a href="./page/connexion.php" class='item-nav'><button class="btn btn-error">Déconnexion</button></a>
                         </div>
                      <?php endif; ?>
                      <!-- Si on est connecté -->
@@ -113,6 +111,7 @@ if (isset($_SESSION['id'])) {
       </div>
       <!-- Contenu des pages -->
    </div>
+   
 
    <!-- Une fois que le chat est ouvert -->
    <div class="drawer-side">
@@ -166,5 +165,7 @@ if (isset($_SESSION['id'])) {
    <!-- Une fois que le chat est ouvert -->
 
 </div>
+
+
 
 <?php require('./global/header-close.php') ?>

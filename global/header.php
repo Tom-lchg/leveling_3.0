@@ -1,4 +1,8 @@
 <?php
+if(isset($_SESSION['id'])){
+   header('Location: ../page/connexion.php');
+}
+
 // require controler
 require_once('./mvc/controler/Controler.php');
 require_once('./mvc/controler/User.php');

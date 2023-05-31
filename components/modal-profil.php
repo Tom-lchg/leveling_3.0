@@ -1,5 +1,4 @@
 <!-- modal modification de profil -->
-
 <?php
 // je require tout aussi ici car modal-profil n'est pas dans l'arboressence des pages
 
