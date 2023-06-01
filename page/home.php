@@ -2,7 +2,7 @@
 
 // https://www.php.net/manual/en/function.random-int.php
 $random_game = $controler->games->gameModel->findById(random_int(21, 32), 'idGame');
-$all_games = $controler->games->gameModel->getALl();
+$all_games = $controler->games->gameModel->getAll();
 ?>
 
 <div class='h-auto w-full'>

@@ -1,69 +1,68 @@
 <?php $users = $controler->user->userModel->getAll(); ?>
+<?php $Topics = $controler->groupe->groupeModel->getTopicById($_GET['sujet']); ?>
+<?php foreach ($Topics as $oneTopic) : ?>
+<?php $detailsUser = $controler->user->userModel->findByIdUser($oneTopic['idauteur']); ?>
+<?php  foreach ($detailsUser as $oneDetailsUser) : ?>
 
 <div class="border border-[#E9E9E9] rounded-md w-full">
 
 <div class="w-full rounded-t-md bg-accent text-white p-2 font-semibold ">
-    <a href="javascript:history.back()"><i class="fa-solid fa-arrow-left"></i></a>
-    Yu-Gi-Oh! Power of Chaos
+    <a href="./?page=groupes&groupe=<?= $_GET['groupe']?>&privacy=<?= $_GET['privacy'] ?>"><i class="fa-solid fa-arrow-left"></i></a>
+    <?= $oneTopic['titre'] ?>
 </div>
+
+<!-- un message-->
+
+<div class="p-4 border border-[#1991FF] rounded-md mx-4 mt-4">
+
+<div class="flex items-center mb-4">
+<img src="data:<?= $oneDetailsUser['userTypeImg'] ?>;base64,<?= base64_encode($oneDetailsUser['userImg']) ?>" alt="" class="rounded-full w-10">
+    <a href="./?page=profile&user=<?= $oneDetailsUser['userPseudo'] ?>"> 
+        <div class="ml-2">
+            <p class="font-toxigenesis hover:text-accent cursor-pointer"><?= $oneDetailsUser['userPseudo']?></p>
+            <p class="text-xs"><?= $oneTopic['datesujet'] ?></p>
+        </div>
+    </a>
+</div>
+
+<p> <?= $oneTopic['content']?></p>
+</div>
+<?php endforeach ;?>
+<?php endforeach ;?>
 
 
 <!-- un message-->
 
-<div class="p-4 border border-[#E9E9E9] rounded-md mx-4 mt-4">
+<!-- un message-->
 
+
+<!-------METTRE LES FOREACH------->
+<?php $allAnswers = $controler->groupe->groupeModel->findTopicById($_GET['sujet']);?>
+<?php foreach($allAnswers as $oneAnswer) : ?>
+<?php $allUsers = $controler->user->userModel->findByIdUser($oneAnswer['idUserAnswer']);?>
+<?php foreach($allUsers as $oneUser) : ?>
+<div class="p-4 border border-[#E9E9E9] rounded-md mx-4 mt-4">
 <div class="flex items-center mb-4">
-     <img src="../assets/pp.jpg" alt="" class="rounded-full w-10">
+     <img src="data:<?= $oneUser['userTypeImg'] ?>;base64,<?= base64_encode($oneUser['userImg']) ?>" alt="" class="rounded-full w-10">
      <div class="ml-2">
-        <p class="font-toxigenesis hover:text-accent cursor-pointer">KiSEi</p>
-        <p class="text-xs">Le 23/04/2023 à 18:00</p>
+        <p class="font-toxigenesis hover:text-accent cursor-pointer"><?= $oneUser['userPseudo'] ?></p>
+        <p class="text-xs">Le <?= $oneAnswer['dateAnswers']?></p>
      </div>
 </div>
 
-<p>
-    Bonjour à tous,
-
-    Je me suis remis il y a peu à Yu-gi-oh - Duel des Ténèbres sur émulateur et j'ai un souci avec la capacité du deck.
-    Je ne peux lancer de duel parce qu'on m'annonce une capacité qui est dépassée pourtant quand je regarde mon deck je suis a 529/750, j'ai donc plus de 200 de marge...
-
-    J'arrive à lancer le duel en réduisant un peu la capacité mais du coup ça me bloque grandement dans la constitution du deck puisque je ne peux plus mettre mes nouvelles cartes puissantes...
-
-    Est-ce que vous auriez une idée d'où cela pourrait venir ?
-    Bug de le rom ?
-
-    Merci d'avance !
-</p>
+<p><?= $oneAnswer['content']?></p>
 </div>
 
 <!-- un message-->
-
-<!-- un message-->
-
-<div class="p-4 border border-[#E9E9E9] rounded-md mx-4 mt-4">
-
-<div class="flex items-center mb-4">
-     <img src="../assets/pp4.jpg" alt="" class="rounded-full w-10">
-     <div class="ml-2">
-        <p class="font-toxigenesis hover:text-accent cursor-pointer">B0ltek</p>
-        <p class="text-xs">Le 23/04/2023 à 18:21</p>
-     </div>
-</div>
-
-<p>
-    Légal non. 
-    Mais c'pas la question, juste sur le point des ventes tu as raison, et puis les emus son qd même tres présents.
-    Sinon bon boulot, envoie ptete un MP à un modo pour demander de sticker, c'est vraiment bien un topic comme ça
-
-    Edit : c'est fait dans tout les cas je devais MP pour demander autre chose
-</p>
-</div>
-
-<!-- un message-->
-
+<?php endforeach ; ?>
+<?php endforeach ; ?>
+<!-------METTRE LES FOREACH------->
 <!-- bouton pour répondre -->
 <div class="w-full flex items-center p-4">
-    <button name='btn-add-reponse' class='btn bg-accent w-full text-white border-accent hover:bg-[#1991FF] hover:text-white hover:border-[#1991FF]'>RÉPONDRE</button>
+    <label class='btn bg-accent w-full text-white border-accent hover:bg-[#1991FF] hover:text-white hover:border-[#1991FF]' for="modal-topic-answers">RÉPONDRE </label>
 </div>
+
+    
 <!-- bouton pour répondre -->
 
 </div>
