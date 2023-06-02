@@ -1,5 +1,5 @@
 <?php $results = $controler->groupe->groupeModel->getGroupbyIdGroupe($_GET['groupe']);
-        
+       
 
 ?>
 
@@ -20,7 +20,7 @@ if(!$results){ ?>
             <!-- Un membre -->
             <div class="flex items-center mt-4">
                 <img src="data:<?= $oneDetailUser['userTypeImg'] ?>;base64,<?= base64_encode($oneDetailUser['userImg']) ?>" alt="" class="rounded-lg w-14">
-                <p class="ml-4 font-toxigenesis text-2xl"><?= $oneDetailUser['userPseudo']?></p>
+                <a href="./?page=profile&activite&user=<?= $oneDetailUser['userPseudo']?>"><p class="ml-4 font-toxigenesis text-2xl"><?= $oneDetailUser['userPseudo']?></p></a>
             </div>
         </div>
 
