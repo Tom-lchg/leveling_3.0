@@ -1,5 +1,4 @@
 <!-- modal modification de profil -->
-
 <?php
 // je require tout aussi ici car modal-profil n'est pas dans l'arboressence des pages
 
@@ -40,11 +39,16 @@ if (isset($_SESSION['id'])) {
 
             <div class='mt-4 w-full flex items-center'>
             <img src="data:<?= $user['userTypeImg'] ?>;base64,<?= base64_encode($user['userImg']) ?>" alt="" class='w-20 h-20 rounded-full shadow-lg'>
-            <input name="img" type="file" class="file-input file-input-bordered file-input-md w-full max-w-xs ml-4"/></div>
+            <input name="img" type="file" class="file-input file-input-bordered file-input-md w-full max-w-xs ml-4"/>
+            <p class="ml-4 font-bold text-neutral text-sm"><i class="fa-sharp fa-solid fa-circle-exclamation"></i> JPG UNIQUEMENT</p>
+            </div>
 
             <div class='mt-4 w-full flex items-center'>
             <img src="data:<?= $user['userTypeBanner'] ?>;base64,<?= base64_encode($user['userBanner']) ?>" alt="" alt="banner" class='h-20 w-40 rounded-lg'>
-            <input name="banner" type="file" class="file-input file-input-bordered file-input-md w-full max-w-xs ml-4"/></div>
+            <input name="banner" type="file" class="file-input file-input-bordered file-input-md w-full max-w-xs ml-4"/>
+            <p class="ml-4 font-bold text-neutral text-sm"><i class="fa-sharp fa-solid fa-circle-exclamation"></i> JPG UNIQUEMENT</p>
+            </div>
+            
 
 
             <div class="mt-4 w-full">
@@ -95,41 +99,8 @@ if (isset($_SESSION['id'])) {
 <!-- Modal pour créer un groupe -->
 
 
+
 <!-- Modal créer un post -->
-<input type="checkbox" id="modal-create-post" class="modal-toggle" />
-<div class="modal bg-modal">
-   <div class="modal-box relative bg-secondary max-w-3xl">
-      <label for="modal-create-post" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
-      <h3 class="text-lg font-bold">Publier un post</h3>
-
-      <form action="../handler_formulaire/handler.php" method="POST" class='mt-4 w-full' enctype="multipart/form-data">
-
-         <div class='flex flex-col gap-4 w-full '>
-
-            <textarea class='textarea block w-full h-44 resize-none' placeholder='Que voulez-vous partager ?' name='content'></textarea>
-
-            <button type='submit' name='btn-add-post' class='btn btn-accent'>Créer</button>
-         </div>
-
-      </form>
-   </div>
-</div>
-<!-- Modal créer un post -->
-
-
-
-<!-- Modal modifier un post -->
-
-<!-- Si on modifie un post alors on doit récupéré le content et l'id du post -->
-<?php
-$test = "c pas bon";
-if (isset($_GET['updatePost'])) {
-   $test = "c bon";
-}
-?>
-<!-- Si on modifie un post alors on doit récupéré le content et l'id du post -->
-
-
 <input type="checkbox" id="modal-edit-post" class="modal-toggle" />
 <div class="modal bg-modal">
    <div class="modal-box relative bg-secondary max-w-3xl">
@@ -151,7 +122,6 @@ if (isset($_GET['updatePost'])) {
    </div>
 </div>
 <!-- Modal modifier un post -->
-
 
 
 <!-- Modal pour crée un sujet d'un groupe-->
@@ -239,8 +209,8 @@ if (isset($_GET['updatePost'])) {
             <div class="flex flex-row mt-8">
                <div class="basis-1/3">
                   <p class="text-xl ">Photo de profil :</p><br>
-                  <img src="data:<?= $oneGroupePrive===null ? $oneGroupePublic['groupeTypeImg'] : $oneGroupePrive['groupeTypeImg'] ?>;base64,<?= $oneGroupePrive===null ? base64_encode($oneGroupePublic['groupeImg']) :  base64_encode($oneGroupePrive['groupeImg'])?>" class='w-32 h-32 rounded-md absolute z-20 left-10 shadow-lg' alt="">
-                  <br><br><br><br><br><br>
+                  <img src="data:<?= $oneGroupePrive===null ? $oneGroupePublic['groupeTypeImg'] : $oneGroupePrive['groupeTypeImg'] ?>;base64,<?= $oneGroupePrive===null ? base64_encode($oneGroupePublic['groupeImg']) :  base64_encode($oneGroupePrive['groupeImg'])?>" class='max-w-md max-h-40' alt="">
+                  <br><br>
                </div>
                   <div class="basis-2/3 mt-20">
                   <input type="file" class="file-input file-input-bordered w-50" name="update-group-profil" />
@@ -257,7 +227,7 @@ if (isset($_GET['updatePost'])) {
             <div class="flex flex-row mt-8">
                <div class="basis-1/2">
                   <p class="text-xl ">Bannière :</p><br>
-                  <img src="data:<?= $oneGroupePrive===null ? $oneGroupePublic['groupeTypeBanner'] : $oneGroupePrive['groupeTypeBanner'] ?>;base64,<?= $oneGroupePrive===null ? base64_encode($oneGroupePublic['groupeBanner']) :  base64_encode($oneGroupePrive['groupeBanner'])?>" alt="banner" class='rounded-md shadow-lg w-80 h-32 block object-cover absolute'>
+                  <img src="data:<?= $oneGroupePrive===null ? $oneGroupePublic['groupeTypeBanner'] : $oneGroupePrive['groupeTypeBanner'] ?>;base64,<?= $oneGroupePrive===null ? base64_encode($oneGroupePublic['groupeBanner']) :  base64_encode($oneGroupePrive['groupeBanner'])?>" alt="banner" class='max-w-md max-h-40'>
 
                   <br><br><br><br><br><br>
                </div>

@@ -63,6 +63,7 @@ class Groupe
          );
          $prepare = $this->pdo->prepare($sql);
          $prepare->execute($data);
+
       
    }
 }
@@ -447,7 +448,3 @@ public function getUserNotOnGroupe($idgroupe){
 
 
 }
-
-
-
-

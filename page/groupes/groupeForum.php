@@ -255,7 +255,7 @@ if($_GET['privacy'] == "prive" && count($verifGroupePrivate) == 0){
                         require('groupeMembres.php');
                         break;
                      default:
-                        header('location: ./?page=azrazr');
+                        
                         break;
                   }
                };
@@ -266,7 +266,7 @@ if($_GET['privacy'] == "prive" && count($verifGroupePrivate) == 0){
                         require('groupeForumSujet.php');
                         break;
                      default:
-                        header('location: ./?page=azrazr');
+                        
                         break;
                   }
                }

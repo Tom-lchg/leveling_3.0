@@ -47,7 +47,7 @@ class User
          ":nom" => htmlspecialchars($tab['nom']),
          ":prenom" => htmlspecialchars($tab['prenom']),
          ":age" => htmlspecialchars($tab['age']),
-         ":bio" => htmlspecialchars($tab['bio']),
+         ":bio" => "Aucune description",
          ":naissance" => htmlspecialchars($tab['dateNaissance']),
          ":level" => 1,
          ":date" => $dateInscription,

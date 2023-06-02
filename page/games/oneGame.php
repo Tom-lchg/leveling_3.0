@@ -275,7 +275,6 @@ $gamecs = $controler->games->gameModel->findByIdCs($_GET['game'], 'idGame');
 
                     <?php if ($GamePost['fkidUser'] === $_SESSION['id']) : ?>
                                     <div class="w-full rounded-md p-3 flex justify-end gap-4">
-                                          <button type='submit' name="deletePost" class="btn btn-success text-white"><i class="fa-solid fa-pen-to-square"></i></button>
                                           <form action="../handler_formulaire/handler.php" method="post">
                                              <input type="text" hidden name="idpost" value="<?= $GamePost['idGamePost'] ?>">
                                              <button type='submit' name="deleteGamePost" class="btn btn-error text-white"><i class="fa-solid fa-trash"></i></button>
