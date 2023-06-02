@@ -184,7 +184,7 @@ $lvl = $controler->user->userModel->setLvlUser();
 
                            <div class='flex flex-col gap-4 w-full'>
 
-                              <textarea class='textarea block w-full h-24 resize-none textarea-bordered ' placeholder='Que souhaitez-vous partager ?' name='content'></textarea>
+                              <textarea class='textarea block w-full h-24 resize-none textarea-bordered' minlength="10" placeholder='Que souhaitez-vous partager ? (10 caractères minimum)' name='content'></textarea>
 
                               <button type='submit' name='btn-add-post-from-profil' class='btn bg-accent text-white border-accent hover:bg-[#1991FF] hover:text-white hover:border-[#1991FF]'>Publier</button>
                            </div>
@@ -223,6 +223,7 @@ $lvl = $controler->user->userModel->setLvlUser();
                                              <?= $user['userPseudo'] ?>
                                           </a>
                                        </h3>
+                                       <img src="./assets/ranks/<?= $user['userLevel'] ?>/icon.png" alt="" width="24em" class="ml-2">
                                     </div>
 
                                  <!-- afficher uniquement si le post appartient au user connecté -->

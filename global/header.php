@@ -25,6 +25,7 @@ use \mvc\controler\controler\Controler;
 
 $controler = new Controler();
 
+
 ?>
 
 <!DOCTYPE html>

@@ -1,7 +1,8 @@
 <?php
+
 // https://www.php.net/manual/en/function.random-int.php
 $random_game = $controler->games->gameModel->findById(random_int(21, 32), 'idGame');
-$all_games = $controler->games->gameModel->getALl();
+$all_games = $controler->games->gameModel->getAll();
 ?>
 
 <div class='h-auto w-full'>
@@ -11,8 +12,8 @@ $all_games = $controler->games->gameModel->getALl();
       <div class="w-full flex items-center">
          <img src="../assets/games/pp/<?= $random_game['gameImg'] ?>" alt="pp jeux" class='h-48 drop-shadow-md'>
          <div class="mx-6">
-            <p class="font-bold text-4xl drop-shadow-md text-accent"><?= $random_game['gameName'] ?></p>
-            <p class="text-lg drop-shadow-sm break-normal text-primary h-24 w-full text-ellipsis overflow-hidden"><?= $random_game['gameDescription'] ?></p>
+            <p class="font-bold text-4xl drop-shadow-sm text-accent"><?= $random_game['gameName'] ?></p>
+            <p class="text-lg text-primary h-[82px] w-full  text-ellipsis overflow-hidden"><?= $random_game['gameDescription'] ?></p>
             <a class="btn btn-sm mt-4 btn-accent" href="?page=games&game=<?= $random_game['idGame'] ?>">Voir plus</a>
          </div>
       </div>
@@ -52,11 +53,23 @@ $all_games = $controler->games->gameModel->getALl();
 
             <?php $topUsers = $controler->user->userModel->topUsers(); ?>
 
-            <?php foreach ($topUsers as $user) : ?>
+            <?php $i = 1; ?>
+            <?php foreach ($topUsers as $user) { ?>
                <!-- un user -->
                <div class="card w-80 bg-base-100 shadow-xl indicator ">
 
-                  <span class="indicator-item indicator-top indicator-start"><img src="./assets/goldmedal.png" alt="" width="60em"></span>
+               <?php
+               switch ($i) {
+                  case 1: ?>
+                     <span class="indicator-item indicator-top indicator-start"><img src="./assets/goldmedal.png" alt="" width="60em"></span> 
+                     <?php break;
+                  case 2: ?>
+                     <span class="indicator-item indicator-top indicator-start"><img src="./assets/silvermedal.png" alt="" width="60em"></span>
+                     <?php break;
+                  case 3: ?>
+                     <span class="indicator-item indicator-top indicator-start"><img src="./assets/bronzemedal.png" alt="" width="60em"></span> 
+                     <?php break;
+               } ?>
 
                   <figure class="px-10 pt-10">
                      <img src="data:<?= $user['userTypeImg'] ?>;base64,<?= base64_encode($user['userImg']) ?>" alt="" class='rounded-xl w-48 h-48'>
@@ -71,10 +84,6 @@ $all_games = $controler->games->gameModel->getALl();
                               <p class="text-lg font-bold">EXP</p>
                               <p><i class="fa-solid fa-stars"></i><?= $user['userXP'] ?></p>
                            </div>
-                           <div>
-                              <p class="text-lg font-bold">POSTS</p>
-                              <p>3431</p>
-                           </div>
                         </div>
                         <div class="card-actions mt-4 self-center">
                            <a href="?page=profile&activite&user=<?= $user['userPseudo'] ?>" class="btn btn-accent">
@@ -84,8 +93,9 @@ $all_games = $controler->games->gameModel->getALl();
                      </div>
                   </div>
                </div>
+               <?php $i++ ?>
                <!-- un user -->
-            <?php endforeach; ?>
+            <?php } ?>
 
          </div>
          <!-- foreach pour afficher tous les users -->
@@ -104,11 +114,27 @@ $all_games = $controler->games->gameModel->getALl();
          <!-- Header -->
          <div class="flex justify-between items-center">
             <h1 class='font-bold text-xl mb-6 mr-4 text-accent'><i class="fa-regular fa-clock"></i> ACTUALITÉS</h1>
-            <label class="btn btn-sm btn-accent" for="modal-create-post">
-               <i class="fa-solid fa-plus"></i>
-            </label>
          </div>
          <!-- Header -->
+
+         <!-- Créer un post depuis la page d'accueil -->
+         <div class="w-full">
+            
+
+
+      <form action="../handler_formulaire/handler.php" method="POST" class=' w-full' enctype="multipart/form-data">
+
+         <div class='flex flex-col gap-4 w-full'>
+
+            <textarea class='textarea block w-full h-24 resize-none textarea-bordered ' minlength="10" placeholder='Que voulez-vous partager ? (10 caractères minimum)' name='content'></textarea>
+
+            <button type='submit' name='btn-add-post' class='btn btn-accent mb-4'>PUBLIER</button>
+         </div>
+
+      </form>
+
+         </div>
+         <!-- Créer un post depuis la page d'accueil -->
 
          <!-- controler si on a des posts -->
          <?php if (count($posts) !== 0) : ?>
@@ -116,93 +142,52 @@ $all_games = $controler->games->gameModel->getALl();
             <div class="flex flex-col gap-6">
                <!-- foreach pour afficher tous les posts -->
                <?php foreach ($posts as $post) : ?>
-
-
-                  <!-- one post -->
-                  <div class='bg-secondary h-auto relative p-2 rounded-lg shadow-lg'>
-                     <div class="grid grid-cols-post">
-                        <div class="col-start-1 col-end-2">
-                           <img src="data:<?= $post['userTypeImg'] ?>;base64,<?= base64_encode($post['userImg']) ?>" alt="pp" class='w-10 h-14 rounded-full'>
-                        </div>
-                        <div class="col-start-2 col-end-3 relative">
-
-                           <!-- Pseudo -->
-                           <div class='flex gap-4 w-full'>
-                              <div>
-                                 <h3 class='font-semibold text-accent font-xl font-toxigenesis'>
-                                    <a href="#">
-                                       <?= $post['userPseudo'] ?>
-                                    </a>
-                                 </h3>
-                              </div>
-                           </div>
-                           <!-- Pseudo -->
-
                            <?php
                            $postcontent = $controler->post->postModel->getMessage($post['idPost']);
                            ?>
+                     <!-- one post -->
+                        <div class='bg-secondary h-auto relative p-2 rounded-lg shadow-lg mt-4'>
+                           <div class="grid grid-cols-post">
 
-                           <!-- Modal modifier un post car on peut pas faire autrement-->
-                           <input type="checkbox" id="modal-edit-post" class="modal-toggle" />
-                           <div class="modal bg-modal">
-                              <div class="modal-box relative bg-secondary max-w-3xl">
-                                 <label for="modal-edit-post" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
-                                 <h3 class="text-lg font-bold">Modifier votre post <?= $post['idPost'] ?></h3>
-
-                                 <form action="../handler_formulaire/handler.php" method="POST" class='mt-4 w-full' enctype="multipart/form-data">
-
-                                    <div class='flex flex-col gap-4 w-full '>
-
-                                       <textarea class='textarea block w-full h-44 resize-none' name='content'><?= $postcontent ?><?= $post['idPost'] ?></textarea>
-                                       <button type='submit' name='btn-add-post' class='btn btn-accent'>Modifier</button>
+                              <div class="col-start-1 col-end-3 relative p-4">
+                                 <!-- Pseudo et @ -->
+                                 <div class='flex gap-4 w-full'>
+                                    <div class="flex items-center">
+                                    <img src="data:<?= $post['userTypeImg'] ?>;base64,<?= base64_encode($post['userImg']) ?>" alt="pp" class='w-14 h-14 rounded-full'>
+                                       <h3 class='font-leger text-accent font-toxigenesis ml-4'>
+                                          <a href="#">
+                                             <?= $post['userPseudo'] ?>
+                                          </a>
+                                       </h3>
+                                       <img src="./assets/ranks/<?= $post['userLevel'] ?>/icon.png" alt="" width="24em" class="ml-2">
                                     </div>
-                                 </form>
+
+                                 <!-- afficher uniquement si le post appartient au user connecté -->
+                                 <?php if ($post['fkIdUser'] === $_SESSION['id']) : ?>
+                                    <div class="w-full rounded-md p-3 flex justify-end gap-4">
+                                          <form action="../handler_formulaire/handler.php" method="post">
+                                             <input type="text" hidden name="idpost" value="<?= $post['idPost'] ?>">
+                                             <button type='submit' name="deletePostFromProfil" class="btn btn-error text-white"><i class="fa-solid fa-trash"></i></button>
+                                          </form>
+                                    </div>
+                                 <?php endif; ?>
+                                 <!-- afficher uniquement si le post appartient au user connecté -->
+
+                                 </div>
+                                 <!-- Pseudo et @ -->
+
+                                 
+                                 <div class='my-4'>
+                                 <div class="divider"></div>
+                                 <?= $post['postContent'] ?>
+                                 </div>
+
+                              
+
                               </div>
                            </div>
 
-                           <!-- Afficher uniquement si on a un user connecté -->
-                           <?php if (isset($_SESSION['id'])) : ?>
-                              <!-- afficher uniquement si le post appartient au user connecté -->
-                              <?php if ($post['fkIdUser'] === $_SESSION['id']) : ?>
-                                 <div class="dropdown absolute right-0 top-0 z-10">
-                                    <label tabindex="<?= $post['idPost'] ?>" class="btn-link btn-sm">
-                                       <i class="fa-solid fa-ellipsis-vertical"></i>
-                                    </label>
-                                    <ul tabindex="<?= $post['idPost'] ?>" class="dropdown-content menu p-2 shadow rounded-box w-52">
-                                       <label for="modal-edit-post" id="modalEditPost" class="btn text-white btn-success mb-2">
-                                          Modifier
-                                       </label>
-                                       <form action="../handler_formulaire/handler.php" method="post">
-                                          <input type="text" hidden id="currentPostId" name="idpost" value="<?= $post['idPost'] ?>">
-                                          <li><button type='submit' name="deletePost" class="btn btn-error text-white">Supprimer</button></li>
-                                       </form>
-                                    </ul>
-                                 </div>
-                              <?php endif; ?>
-                              <!-- afficher uniquement si le post appartient au user connecté -->
-                           <?php endif; ?>
-                           <!-- Afficher uniquement si on a un user connecté -->
-
-                           <div class='my-4'>
-                              <p><?= $post['postContent'] ?></p>
-                           </div>
-
-                           <!-- message & like -->
-                           <div class="w-full rounded-md p-3 flex justify-end gap-4">
-                              <p>
-                                 <i class="fa-solid fa-comment"></i>
-                                 0
-                              </p>
-                              <p>
-                                 <i class="fa-solid fa-heart"></i>
-                                 0
-                              </p>
-                           </div>
-                           <!-- message & like -->
                         </div>
-                     </div>
-
-                  </div>
                   <!-- one post -->
 
                <?php endforeach; ?>
