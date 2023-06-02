@@ -12,3 +12,5 @@ Leveling est une application web de type réseau social, inspirée de plusieures
 Cette plateforme aura pour but de proposer un espace réservé non pas uniquement à aux joueurs des jeux Ubisoft mais à tous ceux qui souhaitent se retrouver 
 sur une plateforme dédié au jeu-vidéo dans sa globalité
 
+<h3><b>APERÇU</b></h3>
+[en cours]
