@@ -167,7 +167,6 @@ if (isset($_POST['btn_msg'])) {
    header('Location: ../?page=chat&conversationId=' . $idconv);
 }
 
-<<<<<<< HEAD
 // delete un avis sur un jeu
 if (isset($_POST['deleteGamePost'])) {
    $controler->GamePost->GamePostModel->delGamePost($_POST['idgamepost'], $_SESSION['id']);
@@ -175,8 +174,6 @@ if (isset($_POST['deleteGamePost'])) {
    $game = $_GET['game'];
    header("Location: ../?page=games&game=$game");
 }
-=======
->>>>>>> b7f024514ad11684ed0f367d665bc8ce451bb4f9
 
 // ajouter un sujet
 if (isset($_POST['btn-add-topic'])) {

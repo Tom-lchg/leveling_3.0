@@ -86,6 +86,10 @@ $controler = new Controler();
                         <div class='mt-4 flex gap-4 justify-center items-center'>
                             <input type="date" placeholder="Date de naissance" name='dateNaissance' required class="input input-bordered w-full" />
                         </div>
+                        <!-- Posé ici en attendant de savoir à quoi ça sert -->
+                        <div class='mt-4 flex gap-4 justify-center items-center'>
+                        <input type="number" placeholder="Âge" name='age' required class="input input-bordered w-full" />
+                        </div>
                         <div class='mt-4 flex gap-4 justify-center'>
                             <div class="w-full">
                                 <label for="pp" class='block mb-2 font-leger'>Photo de profil</label>
@@ -105,8 +109,7 @@ $controler = new Controler();
                             </div>
                         </div>
 
-                        <!-- Posé ici en attendant de savoir à quoi ça sert -->
-                        <input type="number" placeholder="Âge" name='age' required class="input input-bordered w-full" />
+                        
 
                         <div class='mt-4 flex gap-4 justify-end'>
                             <button class="btn btn-accent w-full" type='submit' name='btn-inscription'>S'inscrire</button>

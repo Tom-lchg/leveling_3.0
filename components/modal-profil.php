@@ -124,10 +124,6 @@ if (isset($_SESSION['id'])) {
 <!-- Modal modifier un post -->
 
 
-<<<<<<< HEAD
-=======
-
->>>>>>> b7f024514ad11684ed0f367d665bc8ce451bb4f9
 <!-- Modal pour crée un sujet d'un groupe-->
 <input type="checkbox" id="modal-create-sujet" class="modal-toggle" />
 <div class="modal bg-modal">
@@ -213,7 +209,6 @@ if (isset($_SESSION['id'])) {
             <div class="flex flex-row mt-8">
                <div class="basis-1/3">
                   <p class="text-xl ">Photo de profil :</p><br>
-<<<<<<< HEAD
                   <img src="data:<?= $oneGroupePrive===null ? $oneGroupePublic['groupeTypeImg'] : $oneGroupePrive['groupeTypeImg'] ?>;base64,<?= $oneGroupePrive===null ? base64_encode($oneGroupePublic['groupeImg']) :  base64_encode($oneGroupePrive['groupeImg'])?>" class='max-w-md max-h-40' alt="">
                   <br><br>
                </div>
