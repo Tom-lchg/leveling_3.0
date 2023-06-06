@@ -38,31 +38,36 @@ class User
    }
 
    public function insertUser($tab, $tabimg)
-   {
-      $dateInscription = date('Y-m-d');
-      $sql = "CALL insertUserSimple(:plat,:canModify,:nom,:prenom,:age,:bio,:naissance,:level,:pseudo,:mail,:password,:role, :date,:img,:timg,:banner,:tbanner, 0)";
-      $data = array(
-         ":plat" => "PC",
-         ":canModify" => 0,
-         ":nom" => htmlspecialchars($tab['nom']),
-         ":prenom" => htmlspecialchars($tab['prenom']),
-         ":age" => htmlspecialchars($tab['age']),
-         ":bio" => "Aucune description",
-         ":naissance" => htmlspecialchars($tab['dateNaissance']),
-         ":level" => 1,
-         ":date" => $dateInscription,
-         ":pseudo" => htmlspecialchars($tab['pseudo']),
-         ":mail" => htmlspecialchars($tab['email']),
-         ":password" => htmlspecialchars($tab['mdp']),
-         ":role" => "user",
-         ":img" => file_get_contents($tabimg['pp']['tmp_name']),
-         ":timg" => $tabimg['pp']['type'],
-         ":banner" => file_get_contents($tabimg['banniere']['tmp_name']),
-         ":tbanner" => $tabimg['banniere']['type']
-      );
-      $prepare = $this->pdo->prepare($sql);
-      $prepare->execute($data);
-   }
+{
+   $dateInscription = date('Y-m-d');
+   $sql = "CALL insertUserSimple(:plat,:canModify,:nom,:prenom,:age,:bio,:naissance,:level,:pseudo,:mail,:password,:role, :date,:img,:timg,:banner,:tbanner, 0)";
+
+   // Hasher le mot de passe
+   $hashedPassword = password_hash($tab['mdp'], PASSWORD_DEFAULT);
+
+   $data = array(
+      ":plat" => "PC",
+      ":canModify" => 0,
+      ":nom" => htmlspecialchars($tab['nom']),
+      ":prenom" => htmlspecialchars($tab['prenom']),
+      ":age" => htmlspecialchars($tab['age']),
+      ":bio" => "Aucune description",
+      ":naissance" => htmlspecialchars($tab['dateNaissance']),
+      ":level" => 1,
+      ":date" => $dateInscription,
+      ":pseudo" => htmlspecialchars($tab['pseudo']),
+      ":mail" => htmlspecialchars($tab['email']),
+      ":password" => $hashedPassword,
+      ":role" => "user",
+      ":img" => file_get_contents($tabimg['pp']['tmp_name']),
+      ":timg" => $tabimg['pp']['type'],
+      ":banner" => file_get_contents($tabimg['banniere']['tmp_name']),
+      ":tbanner" => $tabimg['banniere']['type']
+   );
+
+   $prepare = $this->pdo->prepare($sql);
+   $prepare->execute($data);
+}
 
    public function updateUser($bio, $id, $img, $banner)
    {
