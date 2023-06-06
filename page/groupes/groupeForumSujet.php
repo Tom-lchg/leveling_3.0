@@ -63,6 +63,6 @@
 </div>
 
     
-<!-- bouton pour répondre -->
+<!-- bouton pour répondres -->
 
 </div>
