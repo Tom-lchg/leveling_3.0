@@ -229,7 +229,7 @@ if (isset($_SESSION['id'])) {
                   <p class="text-xl ">Bannière :</p><br>
                   <img src="data:<?= $oneGroupePrive===null ? $oneGroupePublic['groupeTypeBanner'] : $oneGroupePrive['groupeTypeBanner'] ?>;base64,<?= $oneGroupePrive===null ? base64_encode($oneGroupePublic['groupeBanner']) :  base64_encode($oneGroupePrive['groupeBanner'])?>" alt="banner" class='max-w-md max-h-40'>
 
-                  <br><br><br><br><br><br>
+                  <br><br>
                </div>
                   <div class="basis-1/2 mt-20">
                   <input type="file" class="file-input file-input-bordered w-50" name="update-group-banner" />
