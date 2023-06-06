@@ -12,7 +12,7 @@ class Friend
 
     public function __construct()
     {
-        $this->model = new Model('tblGames');
+        $this->model = new Model('tblgames');
         $this->friendModel = new FriendModel();
     }
 }

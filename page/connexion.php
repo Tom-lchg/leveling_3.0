@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?php
 // require controler
 require_once('../mvc/controler/Controler.php');
@@ -59,6 +60,16 @@ $controler = new Controler();
             <a class="tab tab-bordered tab-active" href="connexion.php">Connexion</a>
             <a class="tab tab-bordered" href="apropos.php">À propos</a>
          </div>
+=======
+<div class='p-8 h-screen'>
+   <h1 class='text-3xl font-leger'>Connexion</h1><br>
+   
+<br>
+   <form action="../handler_formulaire/handler.php" class="max-w-2xl" method="POST">
+      <div class='mt-4 flex gap-4'>
+         <input type="email" placeholder="Adresse mail" name='email' required class="inputForm" />
+         <input type="password" placeholder="Mot de passe" name='mdp' required class="inputForm" />
+>>>>>>> b7f024514ad11684ed0f367d665bc8ce451bb4f9
       </div>
 
       <div>

@@ -11,6 +11,7 @@ class GamePost
    private $model;
    public function __construct()
    {
+      //$this->pdo = new PDO('mysql:host=172.20.0.161;dbname=leveling2', 'root', 'btssio2023');
       $this->pdo = new PDO('mysql:host=localhost;dbname=leveling2', 'root', '');
       $this->model = new Model('tblgameposts');
    }
@@ -51,7 +52,7 @@ class GamePost
 
    public function getAllPostsFromGame($idgame)
    {
-      $sql = "SELECT * FROM tblgameposts INNER JOIN tblUsers WHERE fkIdGame = :idgame AND idUser = fkidUser";
+      $sql = "SELECT * FROM tblgameposts INNER JOIN tblusers WHERE fkIdGame = :idgame AND idUser = fkidUser";
       $stmt = $this->pdo->prepare($sql);
       $stmt->execute([":idgame" => $idgame]);
       return $stmt->fetchAll();

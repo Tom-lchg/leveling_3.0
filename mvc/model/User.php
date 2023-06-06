@@ -11,8 +11,9 @@ class User
    private $model;
    public function __construct()
    {
+      //$this->pdo = new PDO('mysql:host=172.20.0.161;dbname=leveling2', 'root', 'btssio2023');
       $this->pdo = new PDO('mysql:host=localhost;dbname=leveling2', 'root', '');
-      $this->model = new Model('tblUsers');
+      $this->model = new Model('tblusers');
    }
 
    public function getAll()
@@ -27,7 +28,7 @@ class User
 
    public function getUserProfil($pseudo)
    {
-      $sql = "SELECT * FROM tblUsers WHERE userPseudo = :psd";
+      $sql = "SELECT * FROM tblusers WHERE userPseudo = :psd";
       $stmt = $this->pdo->prepare($sql);
       $stmt->execute([
          ":psd" => $pseudo
@@ -65,7 +66,11 @@ class User
 
    public function updateUser($bio, $id, $img, $banner)
    {
+<<<<<<< HEAD
       $sql = "UPDATE tblUsers SET userBio = :bio, userImg = :img, userBanner = :banner WHERE idUser = :iduser";
+=======
+      $sql = "UPDATE tblusers SET userPseudo = :pseudo, userBio = :bio WHERE idUser = :iduser";
+>>>>>>> b7f024514ad11684ed0f367d665bc8ce451bb4f9
       $this->pdo->prepare($sql)->execute([
          ":bio" => $bio,
          ":iduser" => $id,
@@ -76,7 +81,7 @@ class User
 
    public function getAllGroupe($iduser)
    {
-      $sql = "SELECT * FROM tblGroups WHERE groupeFkIdUser = :iduser";
+      $sql = "SELECT * FROM tblgroups WHERE groupeFkIdUser = :iduser";
       $stmt = $this->pdo->prepare($sql);
       $stmt->execute(array(":iduser" => $iduser));
       return $stmt->fetchAll();
@@ -84,7 +89,7 @@ class User
 
    public function getNumberOfPosts($iduser)
    {
-      $sql = "SELECT COUNT(*) FROM tblPosts WHERE fkIdUser = :iduser";
+      $sql = "SELECT COUNT(*) FROM tblposts WHERE fkIdUser = :iduser";
       $stmt = $this->pdo->prepare($sql);
       $stmt->execute(["iduser" => $iduser]);
       return $stmt->fetchColumn();
@@ -95,7 +100,7 @@ class User
       // id du user
       $iduser = $_SESSION['id'];
       // on récup l'xp
-      $sql_xp = "SELECT userXP from tblUsers WHERE idUser = $iduser";
+      $sql_xp = "SELECT userXP from tblusers WHERE idUser = $iduser";
       $stmt_xp = $this->pdo->query($sql_xp);
       $xpArray = $stmt_xp->fetch();
       $currentXP = $xpArray['userXP'];
@@ -128,7 +133,7 @@ class User
 
    public function getFriends($idUserConnected)
    {
-      $sql = "SELECT userPseudo, userImg, idUser, userTypeImg FROM tblUsers INNER JOIN tblFriends ON userFriend = idUser and userConnected = $idUserConnected";
+      $sql = "SELECT userPseudo, userImg, idUser, userTypeImg FROM tblusers INNER JOIN tblFriends ON userFriend = idUser and userConnected = $idUserConnected";
 
       $stmt = $this->pdo->query($sql);
       return $stmt->fetchAll();
@@ -136,13 +141,13 @@ class User
 
    public function deleteFriend($idFriend)
    {
-      $sql = "DELETE from tblFriends WHERE userFriend = $idFriend";
+      $sql = "DELETE from tblfriends WHERE userFriend = $idFriend";
       $this->pdo->query($sql);
    }
 
    public function topUsers()
    {
-      $sql = "SELECT * from tblUsers ORDER BY userXP DESC LIMIT 3";
+      $sql = "SELECT * from tblusers ORDER BY userXP DESC LIMIT 3";
       return $this->pdo->query($sql)->fetchAll();
    }
 

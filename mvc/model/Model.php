@@ -51,12 +51,12 @@ class Model
 
       // on récup l'xp actuelle
       $idUser = $_SESSION['id'];
-      $sql_xp = "SELECT userXP from tblUsers WHERE idUser = $idUser";
+      $sql_xp = "SELECT userXP from tblusers WHERE idUser = $idUser";
       $stmt = $this->pdo->query($sql_xp);
       $xp_array = $stmt->fetch();
       $currentXP = $xp_array['userXP'];
 
-      $sql = "UPDATE tblUsers SET userXP = $xp + $currentXP WHERE idUser = :id";
+      $sql = "UPDATE tblusers SET userXP = $xp + $currentXP WHERE idUser = :id";
       $stmt = $this->pdo->prepare($sql);
       $stmt->execute([":id" => $_SESSION['id']]);
    }

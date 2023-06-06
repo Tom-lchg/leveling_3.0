@@ -46,7 +46,11 @@
      <img src="data:<?= $oneUser['userTypeImg'] ?>;base64,<?= base64_encode($oneUser['userImg']) ?>" alt="" class="rounded-full w-10">
      <div class="ml-2">
         <p class="font-toxigenesis hover:text-accent cursor-pointer"><?= $oneUser['userPseudo'] ?></p>
+<<<<<<< HEAD
         <p class="text-xs">Le <?= $oneAnswer['dateAnswers']?></p>
+=======
+        <p class="text-xs">Le <?= $oneAnswer['dateAnswer']?></p>
+>>>>>>> b7f024514ad11684ed0f367d665bc8ce451bb4f9
      </div>
 </div>
 

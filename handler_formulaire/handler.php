@@ -47,8 +47,16 @@ if (isset($_POST['btn-inscription'])) {
 if (isset($_POST['btn-connexion'])) {
    $email = $_POST['email'];
    $mdp = $_POST['mdp'];
+<<<<<<< HEAD
    $controler->user->login($email, $mdp);
    header("Location: ../?page=home");
+=======
+   $test = $controler->user->login($email, $mdp);
+   if(!$test){
+      header("Location: ../?page=connexion&state=false");
+   }
+   
+>>>>>>> b7f024514ad11684ed0f367d665bc8ce451bb4f9
 }
 
 
@@ -170,6 +178,7 @@ if (isset($_POST['btn_msg'])) {
    header('Location: ../?page=chat&conversationId=' . $idconv);
 }
 
+<<<<<<< HEAD
 // delete un avis sur un jeu
 if (isset($_POST['deleteGamePost'])) {
    $controler->GamePost->GamePostModel->delGamePost($_POST['idgamepost'], $_SESSION['id']);
@@ -177,6 +186,8 @@ if (isset($_POST['deleteGamePost'])) {
    $game = $_GET['game'];
    header("Location: ../?page=games&game=$game");
 }
+=======
+>>>>>>> b7f024514ad11684ed0f367d665bc8ce451bb4f9
 
 // ajouter un sujet
 if (isset($_POST['btn-add-topic'])) {
@@ -192,6 +203,12 @@ if (isset($_POST['btn-answer-topic'])) {
    $controler->groupe->groupeModel->addAnswerbyTopic($_POST);
    $controler->groupe->groupeModel->updateNbReponseForTopic($_POST['idsujet']);
    header("Location:../?page=groupes&groupe=".$_POST['idgroupe']."&privacy=".$_POST['privacy']."&sujet=".$_POST['idsujet']."");
+<<<<<<< HEAD
+=======
+
+
+   
+>>>>>>> b7f024514ad11684ed0f367d665bc8ce451bb4f9
 }
 
 // Modification d'un groupe
@@ -224,6 +241,7 @@ if(isset($_POST['btn-update-group-pdp'])){
 
 // Mofification de la bannière d'un groupe
 
+<<<<<<< HEAD
 if(isset($_POST['btn-update-group-banner'])){
    if($_POST['privacy'] == "publique"){
       $controler->groupe->groupeModel->updateGroupePublicBanner($_POST,$_FILES);
@@ -236,6 +254,21 @@ if(isset($_POST['btn-update-group-banner'])){
 
 // Mofification de la bannière d'un groupe
 
+=======
+   if(isset($_POST['btn-update-group-banner'])){
+      if($_POST['privacy'] == "publique"){
+         $controler->groupe->groupeModel->updateGroupePublicBanner($_POST,$_FILES);
+         header("Location: ../?page=groupes&groupe=".$_POST['idgroupe']."&privacy=".$_POST['privacy']."");
+      }else if($_POST['privacy'] == "prive"){
+         $controler->groupe->groupeModel->updateGroupePriveBanner($_POST,$_FILES);
+      header("Location: ../?page=groupes&groupe=".$_POST['idgroupe']."&privacy=".$_POST['privacy']."");
+      }
+   }
+
+// Mofification de la bannière d'un groupe
+
+
+>>>>>>> b7f024514ad11684ed0f367d665bc8ce451bb4f9
 // Modification d'un groupe
 
 
@@ -246,3 +279,9 @@ if(isset($_POST['btn-add-user-groupe'])){
    header("Location: ../?page=groupes&groupe=".$_POST['idgroupe']."&privacy=".$_POST['privacy']."");
 }
 //Ajout d'une personne dans une groupe privé
+<<<<<<< HEAD
+=======
+
+
+
+>>>>>>> b7f024514ad11684ed0f367d665bc8ce451bb4f9

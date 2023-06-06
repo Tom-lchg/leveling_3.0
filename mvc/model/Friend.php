@@ -14,7 +14,8 @@ class Friend
     public function __construct()
     {
         $this->pdo = new PDO('mysql:host=localhost;dbname=leveling2', 'root', '');
-        $this->model = new Model('tblFriends');
+        //$this->pdo = new PDO('mysql:host=172.20.0.161;dbname=leveling2', 'root', 'btssio2023');
+        $this->model = new Model('tblfriends');
         $this->conversationControler = new Conversation();
     }
 
