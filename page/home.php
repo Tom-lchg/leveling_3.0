@@ -204,4 +204,8 @@ $all_games = $controler->games->gameModel->getAll();
       <!-- Postes -->
 
    </div>
+   
+   <?php require('./components/footer.php') ?>
+   
 </div>
+
