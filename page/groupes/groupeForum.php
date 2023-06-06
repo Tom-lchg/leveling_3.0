@@ -44,8 +44,9 @@ if($_GET['privacy'] == "prive" && count($verifGroupePrivate) == 0){
          <!-- Button setting (uniquement afficher pour le modo du groupe) -->
          <?php  if($verifCreator) { ?>
             <label for="modal-update-group" class="">
-            <i class="fa-sharp fa-regular fa-gear"></i>
+            <i class="fas fa-users-cog"></i>
             </label>
+            
          <?php } else {?>
             
          <?php }?>
