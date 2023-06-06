@@ -66,11 +66,7 @@ class User
 
    public function updateUser($bio, $id, $img, $banner)
    {
-<<<<<<< HEAD
       $sql = "UPDATE tblUsers SET userBio = :bio, userImg = :img, userBanner = :banner WHERE idUser = :iduser";
-=======
-      $sql = "UPDATE tblusers SET userPseudo = :pseudo, userBio = :bio WHERE idUser = :iduser";
->>>>>>> b7f024514ad11684ed0f367d665bc8ce451bb4f9
       $this->pdo->prepare($sql)->execute([
          ":bio" => $bio,
          ":iduser" => $id,

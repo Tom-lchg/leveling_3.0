@@ -216,10 +216,6 @@ if (isset($_SESSION['id'])) {
 <<<<<<< HEAD
                   <img src="data:<?= $oneGroupePrive===null ? $oneGroupePublic['groupeTypeImg'] : $oneGroupePrive['groupeTypeImg'] ?>;base64,<?= $oneGroupePrive===null ? base64_encode($oneGroupePublic['groupeImg']) :  base64_encode($oneGroupePrive['groupeImg'])?>" class='max-w-md max-h-40' alt="">
                   <br><br>
-=======
-                  <img src="data:<?= $oneGroupePrive===null ? $oneGroupePublic['groupeTypeImg'] : $oneGroupePrive['groupeTypeImg'] ?>;base64,<?= $oneGroupePrive===null ? base64_encode($oneGroupePublic['groupeImg']) :  base64_encode($oneGroupePrive['groupeImg'])?>" class='w-32 h-32 rounded-md absolute z-20 left-10 shadow-lg' alt="">
-                  <br><br><br><br><br><br>
->>>>>>> b7f024514ad11684ed0f367d665bc8ce451bb4f9
                </div>
                   <div class="basis-2/3 mt-20">
                   <input type="file" class="file-input file-input-bordered w-50" name="update-group-profil" />
@@ -236,15 +232,9 @@ if (isset($_SESSION['id'])) {
             <div class="flex flex-row mt-8">
                <div class="basis-1/2">
                   <p class="text-xl ">Bannière :</p><br>
-<<<<<<< HEAD
                   <img src="data:<?= $oneGroupePrive===null ? $oneGroupePublic['groupeTypeBanner'] : $oneGroupePrive['groupeTypeBanner'] ?>;base64,<?= $oneGroupePrive===null ? base64_encode($oneGroupePublic['groupeBanner']) :  base64_encode($oneGroupePrive['groupeBanner'])?>" alt="banner" class='max-w-md max-h-40'>
 
-                  <br><br>
-=======
-                  <img src="data:<?= $oneGroupePrive===null ? $oneGroupePublic['groupeTypeBanner'] : $oneGroupePrive['groupeTypeBanner'] ?>;base64,<?= $oneGroupePrive===null ? base64_encode($oneGroupePublic['groupeBanner']) :  base64_encode($oneGroupePrive['groupeBanner'])?>" alt="banner" class='rounded-md shadow-lg w-80 h-32 block object-cover absolute'>
-
                   <br><br><br><br><br><br>
->>>>>>> b7f024514ad11684ed0f367d665bc8ce451bb4f9
                </div>
                   <div class="basis-1/2 mt-20">
                   <input type="file" class="file-input file-input-bordered w-50" name="update-group-banner" />
@@ -287,8 +277,4 @@ if (isset($_SESSION['id'])) {
    </div>
 </div>
 
-<<<<<<< HEAD
 <!--- Modal pour ajouter une personne dans un groupe privé -->
-=======
-<!--- Modal pour ajouter une personne dans un groupe privé -->
->>>>>>> b7f024514ad11684ed0f367d665bc8ce451bb4f9
