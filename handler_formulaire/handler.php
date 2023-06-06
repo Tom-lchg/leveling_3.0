@@ -36,7 +36,7 @@ $controler = new Controler();
 // formulaire d'inscription
 if (isset($_POST['btn-inscription'])) {
    $controler->user->register($_POST, $_FILES);
-   header("Location: ../?page=connexion");
+   header("Location: ../page/connexion.php");
 }
 
 
