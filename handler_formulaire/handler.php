@@ -248,6 +248,7 @@ if (isset($_POST['btn-del-group'])) {
    $controler->groupe->groupeModel->delOneGroupOnGroups($idgroupe);
    $controler->groupe->groupeModel->delOneGroupOnTopics($idgroupe);
    $controler->groupe->groupeModel->delOneGroupOnTopicAnswer($idgroupe);
+   $controler->groupe->groupeModel->delOneGroupOnGroupsUser($idgroupe);
    if($_POST["privacy"] === "prive"){
       $controler->groupe->groupeModel->delOneGroupOnGroupsPrivate($idgroupe);
    }else if($_POST["privacy"] === "publique"){
