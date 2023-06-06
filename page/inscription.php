@@ -108,9 +108,6 @@ $controler = new Controler();
                                 </div>
                             </div>
                         </div>
-
-                        
-
                         <div class='mt-4 flex gap-4 justify-end'>
                             <button class="btn btn-accent w-full" type='submit' name='btn-inscription'>S'inscrire</button>
                         </div>
