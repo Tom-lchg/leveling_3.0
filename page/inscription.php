@@ -88,7 +88,7 @@ $controler = new Controler();
                         </div>
                         <!-- Posé ici en attendant de savoir à quoi ça sert -->
                         <div class='mt-4 flex gap-4 justify-center items-center'>
-                        <input type="number" placeholder="Âge" name='age' required class="input input-bordered w-full" />
+                        <input type="number" min="0" placeholder="Âge" name='age' required class="input input-bordered w-full" />
                         </div>
                         <div class='mt-4 flex gap-4 justify-center'>
                             <div class="w-full">

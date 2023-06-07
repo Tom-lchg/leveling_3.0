@@ -240,3 +240,24 @@ if (isset($_POST['btn-add-user-groupe'])) {
    header("Location: ../?page=groupes&groupe=" . $_POST['idgroupe'] . "&privacy=" . $_POST['privacy'] . "");
 }
 //Ajout d'une personne dans une groupe privé
+
+// Supprimer un groupe
+if (isset($_POST['btn-del-group'])) {
+   $idgroupe = $_POST['idgroupe'];
+   
+   $controler->groupe->groupeModel->delOneGroupOnGroups($idgroupe);
+   $controler->groupe->groupeModel->delOneGroupOnTopics($idgroupe);
+   $controler->groupe->groupeModel->delOneGroupOnTopicAnswer($idgroupe);
+   $controler->groupe->groupeModel->delOneGroupOnGroupsUser($idgroupe);
+   if($_POST["privacy"] === "prive"){
+      $controler->groupe->groupeModel->delOneGroupOnGroupsPrivate($idgroupe);
+   }else if($_POST["privacy"] === "publique"){
+      $controler->groupe->groupeModel->delOneGroupOnGroupsPublic($idgroupe);
+   }
+
+   header ("Location : ../?page=groupes");
+
+}
+
+
+// Supprimer un groupe

@@ -238,6 +238,14 @@ if (isset($_SESSION['id'])) {
                <button type='submit' name='btn-update-group-banner' class='btn btn-accent'>Enregistrer la nouvelle bannière</button>  
             </div>
       </form>
+
+      <form action="../handler_formulaire/handler.php" method="POST" class='mt-4 w-full' enctype="multipart/form-data">
+         <input type="hidden" name="idgroupe" value="<?= $_GET['groupe'] ?>">
+         <input type="hidden" name="privacy" value="<?= $_GET['privacy'] ?>">
+         <div class='mt-8 flex gap-4 justify-center'>
+            <button type='submit' name='btn-del-group' class="btn btn-error">Supprimer ce groupe</button>
+         </div>
+      </form>
    </div>
    </div>
 </div>

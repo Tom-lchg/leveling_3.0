@@ -455,4 +455,41 @@ class Groupe
       $stmt->execute([":idgroupe" => $idgroupe]);
       return $stmt->fetchAll();
    }
+
+
+   public function delOneGroupOnGroups($idgroupe){
+      $sql ="DELETE FROM tblgroups WHERE idGroupe = :idgroupe";
+      $prepare = $this->pdo->prepare($sql);
+      $prepare->execute([":idgroupe" => $idgroupe]);
+   }
+   public function delOneGroupOnGroupsPublic($idgroupe){
+      $sql ="DELETE FROM tblgroupspublic WHERE idGroupe = :idgroupe";
+      $prepare = $this->pdo->prepare($sql);
+      $prepare->execute([":idgroupe" => $idgroupe]);
+   }
+   public function delOneGroupOnGroupsPrivate($idgroupe){
+      $sql ="DELETE FROM tblgroupsprivate WHERE idGroupe = :idgroupe";
+      $prepare = $this->pdo->prepare($sql);
+      $prepare->execute([":idgroupe" => $idgroupe]);
+   }
+   public function delOneGroupOnGroupsUser($idgroupe){
+      $sql ="DELETE FROM tblgroupsuser WHERE idgroupe = :idgroupe";
+      $prepare = $this->pdo->prepare($sql);
+      $prepare->execute([":idgroupe" => $idgroupe]);
+   }
+
+   public function delOneGroupOnTopics($idgroupe){
+      $sql ="DELETE FROM tbltopics WHERE idGroupe = :idgroupe";
+      $prepare = $this->pdo->prepare($sql);
+      $prepare->execute([":idgroupe" => $idgroupe]);
+   }
+   public function delOneGroupOnTopicAnswer($idgroupe){
+      $sql ="DELETE FROM tbltopicsanswers WHERE idGroupe = :idgroupe";
+      $prepare = $this->pdo->prepare($sql);
+      $prepare->execute([":idgroupe" => $idgroupe]);
+   }
+
+
+
+
 }
