@@ -1,3 +1,4 @@
+
 <?php
 $conversations = $controler->conv->conversationModel->getConversation($_SESSION['id']);
 
@@ -7,7 +8,7 @@ if (isset($_GET['conversationId'])) {
 }
 ?>
 
-<div class="flex h-screen max-w-web mx-auto">
+<div class="flex max-w-web mx-auto rounded-md border">
     <div class="w-[300px] bg-slate-50 h-full overflow-y-scroll">
         <?php foreach ($conversations as $c) : ?>
             <a href="?page=chat&conversationId=<?= $c['idConversation'] ?>">
@@ -21,7 +22,7 @@ if (isset($_GET['conversationId'])) {
     <div class="w-full flex-1 bg-white h-screen p-4 relative">
         <!-- On vérifie si on a selectionner une conv -->
         <?php if (!isset($_GET['conversationId'])) : ?>
-            <h1>Aucune conversation selectionner</h1>
+            <h1>Aucune conversation selectionnée</h1>
         <?php else : ?>
             <div class="relative h-full">
 

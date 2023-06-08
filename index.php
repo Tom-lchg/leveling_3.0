@@ -42,7 +42,7 @@ if (isset($_SESSION['id'])) {
                      <?php if (!isset($_SESSION['id'])) : ?>
                         <div class='flex gap-4 items-center'>
                            <a href="./page/connexion.php" class='item-nav text-white'>CONNEXION</a>
-                           <a href="./page=inscription" class='item-nav'><button class="btn btn-accent">Inscription</button></a>
+                           <a href="./page/inscription.php" class='item-nav'><button class="btn btn-accent">Inscription</button></a>
                         </div>
                      <?php endif; ?>
                      <!-- Si on est pas connecté  -->
