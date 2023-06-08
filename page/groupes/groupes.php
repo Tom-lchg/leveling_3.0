@@ -7,7 +7,7 @@
 
    <?php if (!isset($_GET['groupe'])) : ?>
       <div class="flex justify-between">
-      <div class='basis-1/2 title font-toxigenesis'>GROUPES PUBLICS</div>
+      <div class='basis-1/2 title font-toxigenesis'>GROUPES</div>
       <?php if (isset($_SESSION['id'])){ ?>
          <div>
             <div>
@@ -19,7 +19,7 @@
             </div>
          </div>   
          <?php }else{  ?>
-            <a href="./?page=connexion"><button class="btn btn-info">CONNECTEZ-VOUS POUR CREER UN GROUPE !</button></a>
+            <a href="./?page=connexion"><button class="btn btn-info">CONNECTEZ-VOUS POUR CRÉER UN GROUPE !</button></a>
          <?php }  ?>
       </div>
       

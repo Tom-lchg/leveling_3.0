@@ -21,8 +21,8 @@ $lvl = $controler->user->userModel->setLvlUser();
 
    <div class='h-56 relative mt-4'>
       <!-- bannière de user -->
-
-      <img src="data:<?= $user['userTypeBanner'] ?>;base64,<?= base64_encode($user['userBanner']) ?>" alt="" alt="banner" class='rounded-t-lg h-full block w-full object-cover absolute'>
+      <img src="data:<?= $user['userTypeBanner'] ?>;base64,<?= base64_encode($user['userBanner']) ?>" alt="" alt="banner" class='rounded-t-lg h-full block w-full object-cover absolute z-0'>
+      <div class="bg-gradient-to-t from-neutral h-56 absolute w-full rounded-t-lg z-5"></div>
       <!-- bannière de user -->
 
       <!-- Pseudo + Settings -->
