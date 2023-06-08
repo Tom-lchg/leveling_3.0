@@ -35,7 +35,7 @@ class Conversation
 
     public function getConversation($idUserConnected)
     {
-        $sql = "SELECT * FROM tblconversation INNER JOIN tblUsers WHERE idUserConnected = $idUserConnected AND idUser = idFriend";
+        $sql = "SELECT * FROM tblconversation INNER JOIN tblusers WHERE idUserConnected = $idUserConnected AND idUser = idFriend";
         return $this->pdo->query($sql)->fetchAll();
     }
 }

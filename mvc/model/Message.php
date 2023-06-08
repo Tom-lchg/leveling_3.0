@@ -12,8 +12,8 @@ class Message
 
     public function __construct()
     {
-        $this->pdo = new PDO('mysql:host=localhost;dbname=leveling2', 'root', '');
-        //$this->pdo = new PDO('mysql:host=172.20.0.161;dbname=leveling2', 'root', 'btssio2023');
+        //$this->pdo = new PDO('mysql:host=localhost;dbname=leveling2', 'root', '');
+        $this->pdo = new PDO('mysql:host=172.20.0.161;dbname=leveling2', 'root', 'btssio2023');
         $this->model = new Model('tblmessages');
     }
 
@@ -40,7 +40,7 @@ class Message
 
     public function getMessage($iduser, $convid, $idFriend)
     {
-        $sql = "SELECT m.message, u.userPseudo, u.userImg, u.idUser FROM tblmessages m INNER JOIN tblConversation c INNER JOIN tblUsers u WHERE m.fkIdConversation = $convid AND m.fkIdUser = u.idUser";
+        $sql = "SELECT m.message, u.userPseudo, u.userImg, u.idUser FROM tblmessages m INNER JOIN tblconversation c INNER JOIN tblusers u WHERE m.fkIdConversation = $convid AND m.fkIdUser = u.idUser";
 
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute();
