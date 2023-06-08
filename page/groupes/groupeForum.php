@@ -32,7 +32,8 @@ if($_GET['privacy'] == "prive" && count($verifGroupePrivate) == 0){
 
    <div class='h-56 relative mt-4'>
       <!-- bannière de groupe -->
-      <img src="data:<?= $oneGroupePrive===null ? $oneGroupePublic['groupeTypeBanner'] : $oneGroupePrive['groupeTypeBanner'] ?>;base64,<?= $oneGroupePrive===null ? base64_encode($oneGroupePublic['groupeBanner']) :  base64_encode($oneGroupePrive['groupeBanner'])?>" alt="banner" class='rounded-t-lg h-full block w-full object-cover absolute'>
+      <img src="data:<?= $oneGroupePrive===null ? $oneGroupePublic['groupeTypeBanner'] : $oneGroupePrive['groupeTypeBanner'] ?>;base64,<?= $oneGroupePrive===null ? base64_encode($oneGroupePublic['groupeBanner']) :  base64_encode($oneGroupePrive['groupeBanner'])?>" alt="banner" class='rounded-t-lg h-full block w-full object-cover absolute z-0'>
+      <div class="bg-gradient-to-t from-neutral h-56 absolute w-full rounded-t-lg z-5"></div>
       <!-- bannière de user -->
 
       <!-- Nom du groupe + Settings -->
