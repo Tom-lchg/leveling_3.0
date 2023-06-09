@@ -1,6 +1,6 @@
 <?php
 if (isset($_GET['page'])) {
-   
+
    switch ($_GET['page']) {
       case 'home':
          require('home.php');
@@ -23,15 +23,19 @@ if (isset($_GET['page'])) {
       case 'deconnexion':
          require('deconnexion.php');
          break;
-         case 'apropos':
+      case 'apropos':
          require('apropos.php');
          break;
       case 'chat':
          require('chat.php');
          break;
+      case 'search-results':
+         require('search-results.php');
+         break;
       default:
          require('notFound.php');
          break;
-   }} else {
-      echo "aaa";
    }
+} else {
+
+}
