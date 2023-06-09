@@ -9,8 +9,7 @@ require_once('../mvc/controler/Games.php');
 require_once('../mvc/controler/Post.php');
 require_once('../mvc/controler/Friend.php');
 require_once('../mvc/controler/GamePost.php');
-require_once('../mvc/controler/Conversation.php');
-require_once('../mvc/controler/Message.php');
+require_once('../mvc/controler/Chat.php');
 
 
 // require model
@@ -21,8 +20,7 @@ require_once('../mvc/model/Model.php');
 require_once('../mvc/model/Post.php');
 require_once('../mvc/model/Friend.php');
 require_once('../mvc/model/GamePost.php');
-require_once('../mvc/model/Conversation.php');
-require_once('../mvc/model/Message.php');
+require_once('../mvc/model/Chat.php');
 
 use \mvc\controler\controler\Controler;
 
@@ -161,12 +159,6 @@ if (isset($_POST['delFriend'])) {
    header("Location: ../?page=home");
 }
 
-// envoyer un message
-if (isset($_POST['btn_msg'])) {
-   $idconv = $controler->message->checkMessage($_POST['message'], $_SESSION['id'], $_POST['convid']);
-   header('Location: ../?page=chat&conversationId=' . $idconv);
-}
-
 // delete un avis sur un jeu
 if (isset($_POST['deleteGamePost'])) {
    $controler->GamePost->GamePostModel->delGamePost($_POST['idgamepost'], $_SESSION['id']);
@@ -244,20 +236,25 @@ if (isset($_POST['btn-add-user-groupe'])) {
 // Supprimer un groupe
 if (isset($_POST['btn-del-group'])) {
    $idgroupe = $_POST['idgroupe'];
-   
+
    $controler->groupe->groupeModel->delOneGroupOnGroups($idgroupe);
    $controler->groupe->groupeModel->delOneGroupOnTopics($idgroupe);
    $controler->groupe->groupeModel->delOneGroupOnTopicAnswer($idgroupe);
    $controler->groupe->groupeModel->delOneGroupOnGroupsUser($idgroupe);
-   if($_POST["privacy"] === "prive"){
+   if ($_POST["privacy"] === "prive") {
       $controler->groupe->groupeModel->delOneGroupOnGroupsPrivate($idgroupe);
-   }else if($_POST["privacy"] === "publique"){
+   } else if ($_POST["privacy"] === "publique") {
       $controler->groupe->groupeModel->delOneGroupOnGroupsPublic($idgroupe);
    }
 
-   header ("Location : ../?page=groupes");
-
+   header("Location : ../?page=groupes");
 }
 
 
 // Supprimer un groupe
+
+// envoyer un message dans le chat général
+if (isset($_POST['btn_send_message_chat'])) {
+   $controler->chat->sendMessage($_POST['iduser'], $_POST['message']);
+   header('Location: ../?page=chat');
+}
