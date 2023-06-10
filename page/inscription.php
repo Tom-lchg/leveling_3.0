@@ -7,8 +7,7 @@ require_once('../mvc/controler/Games.php');
 require_once('../mvc/controler/Post.php');
 require_once('../mvc/controler/GamePost.php');
 require_once('../mvc/controler/Friend.php');
-require_once('../mvc/controler/Conversation.php');
-require_once('../mvc/controler/Message.php');
+require_once('../mvc/controler/Chat.php');
 
 // require model
 require_once('../mvc/model/User.php');
@@ -18,8 +17,7 @@ require_once('../mvc/model/Model.php');
 require_once('../mvc/model/Post.php');
 require_once('../mvc/model/GamePost.php');
 require_once('../mvc/model/Friend.php');
-require_once('../mvc/model/Conversation.php');
-require_once('../mvc/model/Message.php');
+require_once('../mvc/model/Chat.php');
 
 use \mvc\controler\controler\Controler;
 
@@ -66,7 +64,13 @@ $controler = new Controler();
                 <div class="divider w-14"></div>
             </div>
 
+            <div class="w-full flex justify-center ">
+                <p class="text-red-500"><?php if(isset($_GET['mail'])){echo "Le mail est déjà utilisé, choissisez-en un autre !";} ?></p>
+                <p class="text-red-500"><?php if(isset($_GET['pseudo'])){echo "Le pseudo est déjà utilisé, choissisez-en un autre !";} ?></p>
+            </div>
+
             <div class="w-full flex justify-center">
+                
 
                 <div class="w-[25rem]">
                     <form action="../handler_formulaire/handler.php" method="post" class='' enctype="multipart/form-data">
@@ -88,7 +92,7 @@ $controler = new Controler();
                         </div>
                         <!-- Posé ici en attendant de savoir à quoi ça sert -->
                         <div class='mt-4 flex gap-4 justify-center items-center'>
-                        <input type="number" min="0" placeholder="Âge" name='age' required class="input input-bordered w-full" />
+                            <input type="number" min="0" placeholder="Âge" name='age' required class="input input-bordered w-full" />
                         </div>
                         <div class='mt-4 flex gap-4 justify-center'>
                             <div class="w-full">

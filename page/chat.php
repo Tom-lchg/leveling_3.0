@@ -1,61 +1,45 @@
 <?php
-$conversations = $controler->conv->conversationModel->getConversation($_SESSION['id']);
-
-if (isset($_GET['conversationId'])) {
-    $currentConv = $controler->conv->conversationModel->findById($_GET['conversationId'], 'idConversation');
-    $messages = $controler->message->messageModel->getMessage($_SESSION['id'], $_GET['conversationId'], $currentConv['idFriend']);
-}
+$messages = $controler->chat->chatModel->getMessageFromUser();
 ?>
 
-<div class="flex h-screen max-w-web mx-auto">
-    <div class="w-[300px] bg-slate-50 h-full overflow-y-scroll">
-        <?php foreach ($conversations as $c) : ?>
-            <a href="?page=chat&conversationId=<?= $c['idConversation'] ?>">
-                <div class="bg-slate-200 p-4 flex items-center gap-4">
-                    <img src="data:<?= $c['userTypeImg'] ?>;base64,<?= base64_encode($c['userImg']) ?>" alt="user pp" class="rounded-full w-10 h-10">
-                    <h1 class="font-leger text-black"><?= $c['userPseudo'] ?></h1>
-                </div>
-            </a>
-        <?php endforeach; ?>
-    </div>
-    <div class="w-full flex-1 bg-white h-screen p-4 relative">
-        <!-- On vérifie si on a selectionner une conv -->
-        <?php if (!isset($_GET['conversationId'])) : ?>
-            <h1>Aucune conversation selectionner</h1>
-        <?php else : ?>
-            <div class="relative h-full">
+<div class='basis-1/2 title font-toxigenesis p-8'>CHAT</div>
 
-                <!-- Message des utilisateurs -->
-                <div class="flex-col flex gap-3">
-                    <?php foreach ($messages as $m) : ?>
-                        <!-- La ternaire c'est pour décider la position des messages -->
-                        <div class="flex flex-col <?= $_SESSION['id'] === $m['idUser'] ? 'items-end' : 'items-start' ?>">
-                            <!-- Pour avoir les messages en bleu et en blanc -->
-                            <?php $messagesUserConnected = $_SESSION['id'] === $m['idUser'] ? 'bg-blue-500 text-white' : 'bg-neutral-300 text-black'; ?>
-                            <!-- Pour avoir les messages en bleu et en blanc -->
+<div class="p-4 container-home h-[37rem] flex items-end">
 
-                            <div class="max-w-[350px] h-auto <?= $messagesUserConnected ?> p-2 rounded-md">
-                                <p><?= $m['message'] ?></p>
-                            </div>
+    <div class="h-full w-full flex items-end">
+
+        <div class="w-full h-full overflow-y-auto">
+            <!-- Message des utilisateurs -->
+            <?php foreach ($messages as $m) : ?>
+                <?php
+                // ternaire pour décider la couleur des messages
+                $messageFromUserConnected = $m['idUser'] === $_SESSION['id'];
+                ?>
+                <div class="chat chat-start">
+                    <div class="chat-image avatar">
+                        <div class="w-10 rounded-full">
+                            <a href="/?page=profile&activite&user=<?= $m['userPseudo'] ?>" target="_blank">
+                                <img src="data:image/jpeg;base64,<?= base64_encode($m['userImg']) ?>" />
+                            </a>
                         </div>
-                    <?php endforeach; ?>
-                </div>
-                <!-- Message des utilisateurs -->
-
-                <!-- Taper message -->
-                <form action="../handler_formulaire/handler.php" class="absolute bottom-0 w-full" method="POST">
-                    <div class="flex gap-4 items-center">
-                        <input type="text" class=" w-full bg-slate-50 rounded-md h-10 outline-slate-100 active:border-slate-100 focus:border-slate-100 text-black pl-2" name="message">
-                        <input type="text" hidden name="convid" value="<?= $_GET['conversationId'] ?>">
-                        <button type="submit" class="btn btn-sm" name="btn_msg">
-                            <i class="fa-solid fa-paper-plane"></i>
-                        </button>
                     </div>
-                </form>
-                <!-- Taper message -->
-
-            </div>
-        <?php endif; ?>
-        <!-- On vérifie si on a selectionner une conv -->
+                    <div class="chat-header"><?= $m['userPseudo'] ?> à <?= $m['chatHeure'] ?></div>
+                    <div class="chat-bubble <?= $messageFromUserConnected ? "bg-cyan-600 text-white" : "" ?>"><?= $m['chatMessage'] ?></div>
+                </div>
+            <?php endforeach; ?>
+            <!-- Message des utilisateurs -->
+        </div>
     </div>
 </div>
+
+<!-- Input pour écrire un message -->
+<div class="flex mt-4 container-home">
+    <form action="../handler_formulaire/handler.php" method="post" class="flex w-full">
+        <input type="text" placeholder="Écrire un message..." name="message" class="input w-full flex-1" />
+        <input type="text" hidden name="iduser" value="<?= $_SESSION['id'] ?>">
+        <button class="ml-4 btn btn-accent" type="submit" name="btn_send_message_chat">
+            <i class="fa-solid fa-paper-plane"></i>
+        </button>
+    </form>
+</div>
+<!-- Input pour écrire un message -->
