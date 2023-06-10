@@ -13,4 +13,5 @@ Cette plateforme aura pour but de proposer un espace réservé non pas uniquemen
 sur une plateforme dédié au jeu-vidéo dans sa globalité
 
 <h3><b>APERÇU</b></h3>
-[en cours]
+
+![apercu](https://github.com/KiSEiGitHub/leveling_3.0/assets/92577997/cbaf8b95-a743-434c-a87a-1f708142d026)

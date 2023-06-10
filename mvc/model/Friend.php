@@ -16,7 +16,6 @@ class Friend
         //$this->pdo = new PDO('mysql:host=localhost;dbname=leveling2', 'root', '');
         $this->pdo = new PDO('mysql:host=172.20.0.161;dbname=leveling2', 'root', 'btssio2023');
         $this->model = new Model('tblfriends');
-        $this->conversationControler = new Conversation();
     }
 
     public function getAll()

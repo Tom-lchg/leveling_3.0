@@ -1,5 +1,5 @@
 <?php
-if(isset($_SESSION['id'])){
+if (isset($_SESSION['id'])) {
    header('Location: ../page/connexion.php');
 }
 
@@ -11,8 +11,7 @@ require_once('./mvc/controler/Games.php');
 require_once('./mvc/controler/Post.php');
 require_once('./mvc/controler/GamePost.php');
 require_once('./mvc/controler/Friend.php');
-require_once('./mvc/controler/Conversation.php');
-require_once('./mvc/controler/Message.php');
+require_once('./mvc/controler/Chat.php');
 
 // require model
 require_once('./mvc/model/User.php');
@@ -22,8 +21,7 @@ require_once('./mvc/model/Model.php');
 require_once('./mvc/model/Post.php');
 require_once('./mvc/model/GamePost.php');
 require_once('./mvc/model/Friend.php');
-require_once('./mvc/model/Conversation.php');
-require_once('./mvc/model/Message.php');
+require_once('./mvc/model/Chat.php');
 
 use \mvc\controler\controler\Controler;
 
