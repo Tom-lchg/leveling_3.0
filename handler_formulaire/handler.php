@@ -33,8 +33,23 @@ $controler = new Controler();
 
 // formulaire d'inscription
 if (isset($_POST['btn-inscription'])) {
-   $controler->user->register($_POST, $_FILES);
-   header("Location: ../page/connexion.php");
+   var_dump($_POST);
+   $checkMail = $controler->user->userModel->checkMailAlreadyUser($_POST['email']);
+   $checkPseudo = $controler->user->userModel->checkPseudoAlreadyUser($_POST['pseudo']);
+   if (count($checkMail) > 0 ) {
+      header("Location: ../page/inscription.php?mail=false");
+      exit();
+   } else if (count($checkPseudo) > 0) {
+      header("Location: ../page/inscription.php?pseudo=false");
+      exit();
+   }else if(count($checkMail) > 0 && count($checkPseudo) > 0) {
+      header("Location: ../page/inscription.php?mail=false&pseudo=false");
+      exit();
+   }else{
+      $controler->user->register($_POST, $_FILES);
+      header("Location: ../page/connexion.php");
+      exit();
+   }
 }
 
 

@@ -64,7 +64,13 @@ $controler = new Controler();
                 <div class="divider w-14"></div>
             </div>
 
+            <div class="w-full flex justify-center ">
+                <p class="text-red-500"><?php if(isset($_GET['mail'])){echo "Le mail est déjà utilisé, choissisez-en un autre !";} ?></p>
+                <p class="text-red-500"><?php if(isset($_GET['pseudo'])){echo "Le pseudo est déjà utilisé, choissisez-en un autre !";} ?></p>
+            </div>
+
             <div class="w-full flex justify-center">
+                
 
                 <div class="w-[25rem]">
                     <form action="../handler_formulaire/handler.php" method="post" class='' enctype="multipart/form-data">
