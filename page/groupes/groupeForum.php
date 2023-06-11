@@ -32,7 +32,8 @@ if($_GET['privacy'] == "prive" && count($verifGroupePrivate) == 0){
 
    <div class='h-56 relative mt-4'>
       <!-- bannière de groupe -->
-      <img src="data:<?= $oneGroupePrive===null ? $oneGroupePublic['groupeTypeBanner'] : $oneGroupePrive['groupeTypeBanner'] ?>;base64,<?= $oneGroupePrive===null ? base64_encode($oneGroupePublic['groupeBanner']) :  base64_encode($oneGroupePrive['groupeBanner'])?>" alt="banner" class='rounded-t-lg h-full block w-full object-cover absolute'>
+      <img src="data:<?= $oneGroupePrive===null ? $oneGroupePublic['groupeTypeBanner'] : $oneGroupePrive['groupeTypeBanner'] ?>;base64,<?= $oneGroupePrive===null ? base64_encode($oneGroupePublic['groupeBanner']) :  base64_encode($oneGroupePrive['groupeBanner'])?>" alt="banner" class='rounded-t-lg h-full block w-full object-cover absolute z-0'>
+      <div class="bg-gradient-to-t from-neutral h-56 absolute w-full rounded-t-lg z-5"></div>
       <!-- bannière de user -->
 
       <!-- Nom du groupe + Settings -->
@@ -43,8 +44,9 @@ if($_GET['privacy'] == "prive" && count($verifGroupePrivate) == 0){
 
          <!-- Button setting (uniquement afficher pour le modo du groupe) -->
          <?php  if($verifCreator) { ?>
-            <label for="modal-update-group" class="">
-            <i class="fas fa-users-cog"></i>
+
+            <label for="modal-update-group" class="btn btn-ghost btn-sm">
+               <i class="fa-solid fa-paintbrush"></i>
             </label>
             
          <?php } else {?>
@@ -74,7 +76,7 @@ if($_GET['privacy'] == "prive" && count($verifGroupePrivate) == 0){
                   <div class="divider divider-horizontal text-neutral"></div>
                   <div>
                      <!-- La date de l'inscription du user -->
-                     <p class="font-bold">CRÉATION</p
+                     <p class="font-bold">CRÉATION</p>
                      <p>21 Avril 2022</p>
                      <!-- La date de l'inscription du user -->
                   </div>
@@ -187,10 +189,7 @@ if($_GET['privacy'] == "prive" && count($verifGroupePrivate) == 0){
                            <div>
                            <label class='btn bg-accent text-white border-accent hover:bg-[#1991FF] hover:text-white hover:border-[#1991FF] my-2' for="modal-create-sujet">NOUVEAU SUJET</label>
                            </div>
-                           <div class="content-center flex items-center">
-                              <i class="fa-solid fa-magnifying-glass text-2xl text-accent mr-4"></i>
-                              <input type="text" placeholder="Recherche" class="input input-sm input-bordered border-accent w-full max-w-xs rounded-full placeholder:text-[#E9E9E9]" />
-                        </div>
+                           
 
                      </div>
 

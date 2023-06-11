@@ -1,32 +1,3 @@
-<?php
-// require controler
-require_once('../mvc/controler/Controler.php');
-require_once('../mvc/controler/User.php');
-require_once('../mvc/controler/Groupe.php');
-require_once('../mvc/controler/Games.php');
-require_once('../mvc/controler/Post.php');
-require_once('../mvc/controler/GamePost.php');
-require_once('../mvc/controler/Friend.php');
-require_once('../mvc/controler/Conversation.php');
-require_once('../mvc/controler/Message.php');
-
-// require model
-require_once('../mvc/model/User.php');
-require_once('../mvc/model/Games.php');
-require_once('../mvc/model/Groupe.php');
-require_once('../mvc/model/Model.php');
-require_once('../mvc/model/Post.php');
-require_once('../mvc/model/GamePost.php');
-require_once('../mvc/model/Friend.php');
-require_once('../mvc/model/Conversation.php');
-require_once('../mvc/model/Message.php');
-
-use \mvc\controler\controler\Controler;
-
-$controler = new Controler();
-
-
-?>
 
 <!DOCTYPE html>
 <html lang="en" data-theme="mytheme">
@@ -73,7 +44,7 @@ $controler = new Controler();
          <div class="w-96">
                <p class="text-justify">Alors qu'Ubisoft est passé du statut d'entreprise familiale à celui d'organisation mondiale, 
                 notre désir d'adopter de nouvelles idées et technologies n'a jamais faibli. 
-                Nous avons aujourd'hui décidé de lancer notre toute nouvelle plateforme LEVELING, 
+                Nous avons aujourd'hui décidé de lancer notre toute nouvelle plateforme <b>LEVELING</b>, 
                 un espace réservé non pas uniquement à nos joueurs mais à tous ceux qui souhaitent se
                 retrouver sur une plateforme dédié au jeu-vidéo dans sa globalité. 
                 Venez créer votre communauté, échanger avec les autres utilisateurs et vous tenir au

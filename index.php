@@ -18,8 +18,6 @@ if (isset($_SESSION['id'])) {
       <!-- Contenu des pages -->
       <div class='grid grid-cols-layout h-auto w-full bg-white'>
 
-         <!-- On affiche pas les menu quand on est dans le chat -->
-         <?php if ($_GET['page'] != 'chat' && $_GET['page'] != 'connexion' && $_GET['page'] != 'inscription' && $_GET['page'] != 'apropos') : ?>
             <!-- Menu en noir -->
 
             <div class="col-start-1 col-end-6 flex justify-between px-[15em] bg-neutral">
@@ -42,7 +40,7 @@ if (isset($_SESSION['id'])) {
                      <?php if (!isset($_SESSION['id'])) : ?>
                         <div class='flex gap-4 items-center'>
                            <a href="./page/connexion.php" class='item-nav text-white'>CONNEXION</a>
-                           <a href="./page=inscription" class='item-nav'><button class="btn btn-accent">Inscription</button></a>
+                           <a href="./page/inscription.php" class='item-nav'><button class="btn btn-accent">Inscription</button></a>
                         </div>
                      <?php endif; ?>
                      <!-- Si on est pas connecté  -->
@@ -79,28 +77,33 @@ if (isset($_SESSION['id'])) {
                      <a href="./?page=home"><button class="btn btn-ghost text-white btn-sm">Accueil</button></a>
                      <a href="./?page=games"><button class="btn btn-ghost text-white btn-sm">Jeux</button></a>
                      <a href="./?page=groupes"><button class="btn btn-ghost text-white btn-sm">Groupes</button></a>
-                     <!-- trigger chat drawer -->
-                     <label for="my-drawer-4" class="btn btn-ghost text-white btn-sm">Amis</label>
-                     <!-- trigger chat drawer -->
                      <a href="./?page=chat" target="_blank"><button class="btn btn-ghost text-white btn-sm">Chat</button></a>
                   </div>
                </div>
                <!-- Menu -->
 
                <!-- Barre de recherche -->
+
+
+
                <div class="justify-end flex">
-                  <div class="content-center flex items-center">
+                  <div class="justify-center flex items-center">
                      <i class="fa-solid fa-magnifying-glass text-2xl text-white mr-4"></i>
-                     <input type="text" placeholder="Recherche" class="input input-sm w-full max-w-xs rounded-full" />
+                     <form method="post" action="./handler_formulaire/handler.php">
+                        <select name="type" id="word-search" class="select select-sm w-26 h-2 rounded-full">
+                           <option value="users">Utilisateurs</option>
+                           <option value="games">Jeux</option>
+                           <option value="groups">Groupes</option>
+                        </select>
+                        <input name="word" type="text" placeholder="Recherche" class="input input-sm w-26 max-w-xs rounded-full" />
+                        <button hidden type='submit' name='search'></button>
+                     </form>
                   </div>
                </div>
                <!-- Barre de recherche -->
 
             </div>
             <!-- Menu en bleu -->
-
-         <?php endif; ?>
-         <!-- On affiche pas les menu quand on est dans le chat -->
 
          <!-- Router -->
          <div class="col-start-1 col-end-7 px-[15em]">
@@ -113,56 +116,6 @@ if (isset($_SESSION['id'])) {
    </div>
    
 
-   <!-- Une fois que le chat est ouvert -->
-   <div class="drawer-side">
-      <label for="my-drawer-4" class="drawer-overlay"></label>
-      <div class="menu p-4 w-80 text-base-content  bg-neutral">
-
-         <h1 class="text-xl text-white">Tous vos amis</h1>
-
-         <!-- Liste des amis -->
-         <div class="flex flex-col gap-6 mt-6">
-            <?php foreach ($friends as $f) : ?>
-               <div class="flex justify-between">
-
-                  <!-- PP + image -->
-                  <div class="flex items-center gap-4">
-                     <img src="data:<?= $f['userTypeImg'] ?>;base64,<?= base64_encode($f['userImg']) ?>" alt="user img" class="rounded-full w-10 h-10">
-                     <h3 class="font-leger haa">
-                        <a href="?page=profile&user=<?= $f['userPseudo'] ?>" class="cursor-pointer">
-                           <?= $f['userPseudo'] ?>
-                        </a>
-                     </h3>
-                  </div>
-                  <!-- PP + image -->
-
-                  <!-- settings -->
-                  <div class="flex gap-2">
-                     <a href="?page=chat" target="_blank">
-                        <button class="btn btn-sm btn-accent text-white block">
-                           <i class="fa-solid fa-message"></i>
-                        </button>
-                     </a>
-
-                     <form action="./handler_formulaire/handler.php" method="POST">
-                        <!-- input invisible -->
-                        <input type="text" hidden name="idfriend" value="<?= $f['idUser'] ?>">
-                        <!-- input invisible -->
-                        <button class="btn btn-sm btn-error text-white" type="submit" name="delFriend">
-                           <i class="fa-solid fa-user-minus"></i>
-                        </button>
-                     </form>
-                  </div>
-                  <!-- settings -->
-
-               </div>
-            <?php endforeach; ?>
-         </div>
-         <!-- Liste des amis -->
-
-      </div>
-   </div>
-   <!-- Une fois que le chat est ouvert -->
 
 </div>
 

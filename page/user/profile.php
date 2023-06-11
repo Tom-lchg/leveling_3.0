@@ -21,8 +21,8 @@ $lvl = $controler->user->userModel->setLvlUser();
 
    <div class='h-56 relative mt-4'>
       <!-- bannière de user -->
-
-      <img src="data:<?= $user['userTypeBanner'] ?>;base64,<?= base64_encode($user['userBanner']) ?>" alt="" alt="banner" class='rounded-t-lg h-full block w-full object-cover absolute'>
+      <img src="data:<?= $user['userTypeBanner'] ?>;base64,<?= base64_encode($user['userBanner']) ?>" alt="" alt="banner" class='rounded-t-lg h-full block w-full object-cover absolute z-0'>
+      <div class="bg-gradient-to-t from-neutral h-56 absolute w-full rounded-t-lg z-5"></div>
       <!-- bannière de user -->
 
       <!-- Pseudo + Settings -->
@@ -184,7 +184,7 @@ $lvl = $controler->user->userModel->setLvlUser();
 
                            <div class='flex flex-col gap-4 w-full'>
 
-                              <textarea class='textarea block w-full h-24 resize-none textarea-bordered' minlength="10" placeholder='Que souhaitez-vous partager ? (10 caractères minimum)' name='content'></textarea>
+                              <textarea required class='textarea block w-full h-24 resize-none textarea-bordered' minlength="10" placeholder='Que souhaitez-vous partager ? (10 caractères minimum)' name='content'></textarea>
 
                               <button type='submit' name='btn-add-post-from-profil' class='btn bg-accent text-white border-accent hover:bg-[#1991FF] hover:text-white hover:border-[#1991FF]'>Publier</button>
                            </div>
@@ -201,7 +201,7 @@ $lvl = $controler->user->userModel->setLvlUser();
                      <!-- Si l'utilisateur n'as pas de posts -->
                      <?php if (count($userPosts) === 0) : ?>
                         <div class="m-6 flex justify-center items-center">
-                              <p>Aucune activité pour le moment...</p>
+                           <p>Aucune activité pour le moment...</p>
                         </div>
                      <?php endif; ?>
                      <!-- Si l'utilisateur n'as pas de posts -->
@@ -217,7 +217,7 @@ $lvl = $controler->user->userModel->setLvlUser();
                                  <!-- Pseudo et @ -->
                                  <div class='flex gap-4 w-full'>
                                     <div class="flex items-center">
-                                    <img src="data:<?= $user['userTypeImg'] ?>;base64,<?= base64_encode($user['userImg']) ?>" alt="pp" class='w-14 h-14 rounded-full'>
+                                       <img src="data:<?= $user['userTypeImg'] ?>;base64,<?= base64_encode($user['userImg']) ?>" alt="pp" class='w-14 h-14 rounded-full'>
                                        <h3 class='font-leger text-accent font-toxigenesis ml-4'>
                                           <a href="#">
                                              <?= $user['userPseudo'] ?>
@@ -226,27 +226,27 @@ $lvl = $controler->user->userModel->setLvlUser();
                                        <img src="./assets/ranks/<?= $user['userLevel'] ?>/icon.png" alt="" width="24em" class="ml-2">
                                     </div>
 
-                                 <!-- afficher uniquement si le post appartient au user connecté -->
-                                 <?php if ($post['fkIdUser'] === $_SESSION['id']) : ?>
-                                    <div class="w-full rounded-md p-3 flex justify-end gap-4">
+                                    <!-- afficher uniquement si le post appartient au user connecté -->
+                                    <?php if ($post['fkIdUser'] === $_SESSION['id']) : ?>
+                                       <div class="w-full rounded-md p-3 flex justify-end gap-4">
                                           <form action="../handler_formulaire/handler.php" method="post">
                                              <input type="text" hidden name="idpost" value="<?= $post['idPost'] ?>">
                                              <button type='submit' name="deletePostFromProfil" class="btn btn-error text-white"><i class="fa-solid fa-trash"></i></button>
                                           </form>
-                                    </div>
-                                 <?php endif; ?>
-                                 <!-- afficher uniquement si le post appartient au user connecté -->
+                                       </div>
+                                    <?php endif; ?>
+                                    <!-- afficher uniquement si le post appartient au user connecté -->
 
                                  </div>
                                  <!-- Pseudo et @ -->
 
-                                 
+
                                  <div class='my-4'>
-                                 <div class="divider"></div>
+                                    <div class="divider"></div>
                                     <p><?= $post['postContent'] ?></p>
                                  </div>
 
-                              
+
 
                               </div>
                            </div>
@@ -262,9 +262,9 @@ $lvl = $controler->user->userModel->setLvlUser();
 
                <?php
                if (isset($_GET['amis'])) {
-                     require('amis.php'); 
-               } elseif (isset($_GET['groupes'])){
-                     require('groupe.php');
+                  require('amis.php');
+               } elseif (isset($_GET['groupes'])) {
+                  require('groupe.php');
                }
                ?>
                </div>

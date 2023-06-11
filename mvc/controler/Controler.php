@@ -8,8 +8,8 @@ use Games\Games;
 use Post\Post;
 use GamePost\GamePost;
 use Friend\Friend;
-use Conversation\Conversation;
-use Message\Message;
+use Chat\Chat;
+use Models\Model;
 
 class Controler
 {
@@ -19,8 +19,8 @@ class Controler
    public $post;
    public $gamepost;
    public $friend;
-   public $conv;
-   public $message;
+   public $chat;
+   public $model;
 
    public function __construct()
    {
@@ -30,7 +30,7 @@ class Controler
       $this->post = new Post();
       $this->gamepost = new GamePost();
       $this->friend = new Friend();
-      $this->conv = new Conversation();
-      $this->message = new Message();
+      $this->chat = new Chat();
+      $this->model = new Model("");
    }
 }

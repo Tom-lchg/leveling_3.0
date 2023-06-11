@@ -7,7 +7,7 @@
 
    <?php if (!isset($_GET['groupe'])) : ?>
       <div class="flex justify-between">
-      <div class='basis-1/2 title font-toxigenesis'>GROUPES PUBLICS</div>
+      <div class='basis-1/2 title font-toxigenesis'>GROUPES</div>
       <?php if (isset($_SESSION['id'])){ ?>
          <div>
             <div>
@@ -18,9 +18,7 @@
                <!-- ce bouton renvoie sur la modal qui est définit dans le fichier modal-profil -->
             </div>
          </div>   
-         <?php }else{  ?>
-            <a href="./?page=connexion"><button class="btn btn-info">CONNECTEZ-VOUS POUR CREER UN GROUPE !</button></a>
-         <?php }  ?>
+         <?php } ?>
       </div>
       
       <div class='flex gap-4 mt-4 flex-wrap'>
