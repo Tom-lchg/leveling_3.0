@@ -57,8 +57,12 @@ if (isset($_POST['btn-inscription'])) {
 if (isset($_POST['btn-connexion'])) {
    $email = $_POST['email'];
    $mdp = $_POST['mdp'];
-   $controler->user->login($email, $mdp);
-   header("Location: ../?page=home");
+
+   if ($controler->user->login($email, $mdp)) {
+      header("Location: ../?page=home");
+   } else {
+      header("Location: ../?page=home?state=false");
+   }
 }
 
 //formulaire search

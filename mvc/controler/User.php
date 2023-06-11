@@ -23,7 +23,7 @@ class User
       $this->userModel->insertUser($data, $img);
    }
 
-   public function login($mail, $mdp)
+   public function logdin($mail, $mdp)
    {
       $users = $this->userModel->getAll();
       foreach ($users as $user) {
@@ -36,6 +36,20 @@ class User
          }
       }
    }
+
+   public function login($email, $password)
+{
+   $user = $this->userModel->getUserByEmail($email);
+
+   if ($user && password_verify($password, $user['userPassword'])) {
+      // Définir les variables de session
+      $_SESSION['id'] = $user['idUser'];
+      $_SESSION['pseudo'] = $user['userPseudo'];
+      return true;
+   }
+
+   return false;
+}
 
    public function updateUser($data, $dataimg)
    {

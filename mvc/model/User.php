@@ -174,4 +174,14 @@ class User
       $stmt->execute(array(":userPseudo" => $username));
       return $stmt->fetchAll();
    }
+
+   public function getUserByEmail($email)
+{
+   $query = "SELECT * FROM tblusers WHERE userMail = :email";
+   $stmt = $this->pdo->prepare($query);
+   $stmt->bindParam(':email', $email);
+   $stmt->execute();
+
+   return $stmt->fetch(PDO::FETCH_ASSOC);
+}
 }
