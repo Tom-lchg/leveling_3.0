@@ -44,8 +44,9 @@ if($_GET['privacy'] == "prive" && count($verifGroupePrivate) == 0){
 
          <!-- Button setting (uniquement afficher pour le modo du groupe) -->
          <?php  if($verifCreator) { ?>
-            <label for="modal-update-group" class="">
-            <i class="fas fa-users-cog"></i>
+
+            <label for="modal-update-group" class="btn btn-ghost btn-sm">
+               <i class="fa-solid fa-paintbrush"></i>
             </label>
             
          <?php } else {?>
@@ -75,7 +76,7 @@ if($_GET['privacy'] == "prive" && count($verifGroupePrivate) == 0){
                   <div class="divider divider-horizontal text-neutral"></div>
                   <div>
                      <!-- La date de l'inscription du user -->
-                     <p class="font-bold">CRÉATION</p
+                     <p class="font-bold">CRÉATION</p>
                      <p>21 Avril 2022</p>
                      <!-- La date de l'inscription du user -->
                   </div>
