@@ -255,7 +255,7 @@ CREATE TABLE IF NOT EXISTS `tblgameposts` (
 -- Structure de la table `tblgames`
 --
 
-DROP TABLE IF EXISTS `tblgames`;
+
 CREATE TABLE IF NOT EXISTS `tblgames` (
   `idGame` int NOT NULL AUTO_INCREMENT,
   `gameName` varchar(50) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
@@ -461,7 +461,7 @@ CREATE TABLE IF NOT EXISTS `tbltopicsanswers` (
 -- Structure de la table `tblusers`
 --
 
-DROP TABLE IF EXISTS `tblusers`;
+
 CREATE TABLE IF NOT EXISTS `tblusers` (
   `idUser` int(10) NOT NULL AUTO_INCREMENT,
   `userNom` varchar(50) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
