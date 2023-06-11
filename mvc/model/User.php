@@ -177,7 +177,7 @@ class User
 
    public function getUserByEmail($email) {
       // Assurez-vous d'avoir une connexion à la base de données ici
-      $stmt = $pdo->prepare("SELECT * FROM tblusers WHERE userMail = ?");
+      $stmt = $this->$pdo->prepare("SELECT * FROM tblusers WHERE userMail = ?");
       $stmt->bind_param("s", $email);
       $stmt->execute();
       $result = $stmt->get_result();
@@ -185,5 +185,5 @@ class User
       $stmt->close();
 
       return $user;
-  }
+}
 }
