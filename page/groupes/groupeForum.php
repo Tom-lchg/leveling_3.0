@@ -189,10 +189,7 @@ if($_GET['privacy'] == "prive" && count($verifGroupePrivate) == 0){
                            <div>
                            <label class='btn bg-accent text-white border-accent hover:bg-[#1991FF] hover:text-white hover:border-[#1991FF] my-2' for="modal-create-sujet">NOUVEAU SUJET</label>
                            </div>
-                           <div class="content-center flex items-center">
-                              <i class="fa-solid fa-magnifying-glass text-2xl text-accent mr-4"></i>
-                              <input type="text" placeholder="Recherche" class="input input-sm input-bordered border-accent w-full max-w-xs rounded-full placeholder:text-[#E9E9E9]" />
-                        </div>
+                           
 
                      </div>
 
