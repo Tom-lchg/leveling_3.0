@@ -83,10 +83,21 @@ if (isset($_SESSION['id'])) {
                <!-- Menu -->
 
                <!-- Barre de recherche -->
+
+
+
                <div class="justify-end flex">
-                  <div class="content-center flex items-center">
+                  <div class="justify-center flex items-center">
                      <i class="fa-solid fa-magnifying-glass text-2xl text-white mr-4"></i>
-                     <input type="text" placeholder="Recherche" class="input input-sm w-full max-w-xs rounded-full" />
+                     <form method="post" action="./handler_formulaire/handler.php">
+                        <select name="type" id="word-search" class="select select-sm w-26 h-2 rounded-full">
+                           <option value="users">Utilisateurs</option>
+                           <option value="games">Jeux</option>
+                           <option value="groups">Groupes</option>
+                        </select>
+                        <input name="word" type="text" placeholder="Recherche" class="input input-sm w-26 max-w-xs rounded-full" />
+                        <button hidden type='submit' name='search'></button>
+                     </form>
                   </div>
                </div>
                <!-- Barre de recherche -->

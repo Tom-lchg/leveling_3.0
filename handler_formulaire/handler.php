@@ -21,6 +21,7 @@ require_once('../mvc/model/Post.php');
 require_once('../mvc/model/Friend.php');
 require_once('../mvc/model/GamePost.php');
 require_once('../mvc/model/Chat.php');
+require_once('../mvc/model/Model.php');
 
 use \mvc\controler\controler\Controler;
 
@@ -44,6 +45,13 @@ if (isset($_POST['btn-connexion'])) {
    $mdp = $_POST['mdp'];
    $controler->user->login($email, $mdp);
    header("Location: ../?page=home");
+}
+
+//formulaire search
+if (isset($_POST['search'])){
+   $word = $_POST['word'];
+   $type = $_POST['type'];
+   header("Location:../?page=search-results&type=$type&search=$word");
 }
 
 

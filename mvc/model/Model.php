@@ -36,6 +36,30 @@ class Model
       return $this->pdo->query("SELECT * FROM tblgamescs WHERE $target = $id")->fetch();
    }
 
+   public function search($word, $type){
+
+      $sql="";
+
+      switch($type){
+            case "users":
+            $sql = "SELECT userImg, userTypeImg, userPseudo, userLevel FROM tblusers WHERE userPseudo LIKE '%$word%'";
+            break;
+
+            case "games":
+            $sql = "SELECT idGame, gameImg, gameName, gameGenre FROM tblgames WHERE gameName LIKE '%$word%'";
+            break;
+
+            case "groups":
+            $sql = "SELECT idGroupe, groupeImg, groupeTypeImg, groupeName, groupePrivacy, groupeDescription FROM tblgroups WHERE groupeName LIKE '%$word%'";
+            break;
+      }
+
+
+      $stmt = $this->pdo->query($sql);
+      return $stmt->fetchAll();
+
+   }
+
    public function addXP($target)
    {
       switch ($target) {

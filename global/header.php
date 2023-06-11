@@ -22,6 +22,7 @@ require_once('./mvc/model/Post.php');
 require_once('./mvc/model/GamePost.php');
 require_once('./mvc/model/Friend.php');
 require_once('./mvc/model/Chat.php');
+require_once('./mvc/model/Model.php');
 
 use \mvc\controler\controler\Controler;
 

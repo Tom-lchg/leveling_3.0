@@ -9,6 +9,7 @@ use Post\Post;
 use GamePost\GamePost;
 use Friend\Friend;
 use Chat\Chat;
+use Models\Model;
 
 class Controler
 {
@@ -19,6 +20,7 @@ class Controler
    public $gamepost;
    public $friend;
    public $chat;
+   public $model;
 
    public function __construct()
    {
@@ -29,5 +31,6 @@ class Controler
       $this->gamepost = new GamePost();
       $this->friend = new Friend();
       $this->chat = new Chat();
+      $this->model = new Model("");
    }
 }
