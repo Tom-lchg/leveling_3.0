@@ -18,9 +18,7 @@
                <!-- ce bouton renvoie sur la modal qui est définit dans le fichier modal-profil -->
             </div>
          </div>   
-         <?php }else{  ?>
-            <a href="./?page=connexion"><button class="btn btn-info">CONNECTEZ-VOUS POUR CRÉER UN GROUPE !</button></a>
-         <?php }  ?>
+         <?php } ?>
       </div>
       
       <div class='flex gap-4 mt-4 flex-wrap'>
