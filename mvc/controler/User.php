@@ -32,7 +32,6 @@ class User
                // set variable de session
                $_SESSION['id'] = $user['idUser'];
                $_SESSION['pseudo'] = $user['userPseudo'];
-               header('Location: .././?page=home');
             }
          }
       }
