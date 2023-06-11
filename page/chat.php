@@ -33,7 +33,7 @@ $messages = $controler->chat->chatModel->getMessageFromUser();
 </div>
 
 <!-- Input pour écrire un message -->
-<div class="flex mt-4 container-home">
+<div class="flex mt-4 container-home static">
     <form action="../handler_formulaire/handler.php" method="post" class="flex w-full">
         <input type="text" placeholder="Écrire un message..." name="message" class="input w-full flex-1" />
         <input type="text" hidden name="iduser" value="<?= $_SESSION['id'] ?>">

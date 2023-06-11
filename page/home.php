@@ -205,7 +205,7 @@ $all_games = $controler->games->gameModel->getAll();
 
    </div>
    
-   <?php require('./components/footer.php') ?>
+   
    
 </div>
 
