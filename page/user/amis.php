@@ -24,7 +24,7 @@ $friends = $controler->friend->friendModel->getFriends($user['idUser']);
             </div>
             <div class="ml-2 h-[80px] w-full p-2 flex items-center">
                <p class='drop-shadow-sm font-bold text-accent text-3xl'>
-               <a href="../?page=profile&user=<?= $f['userPseudo'] ?>">
+               <a href="../?page=profile&activite&user=<?= $f['userPseudo'] ?>">
                   <h2 class='text-xl font-leger font-toxigenesis text-accent'><?= $f['userPseudo'] ?></h2>
                </a>
                </p>
@@ -49,4 +49,6 @@ $friends = $controler->friend->friendModel->getFriends($user['idUser']);
 </div>
 
 
+
 </div>
+

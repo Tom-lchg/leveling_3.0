@@ -22,7 +22,7 @@ $groupes = $controler->groupe->groupeModel->getGroupPublicbyUser($user['idUser']
    <!-- afficher uniquement si c'est le user connecté qui est sur son profil -->
 </div>
 
-<div class=" mt-4 font-bold w-full flex justify-center items-center h-9 bg-neutral text-primary rounded-md"><p>VOS GROUPES</p></div>
+<div class=" mt-4 font-bold w-full flex justify-center items-center h-9 bg-neutral text-primary rounded-md"><p>GROUPES</p></div>
 
 <!-- afficher uniquement si c'est le user connecté -->
 <?php if ($user['idUser'] === $_SESSION['id']) : ?>
