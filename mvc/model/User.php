@@ -175,13 +175,15 @@ class User
       return $stmt->fetchAll();
    }
 
-   public function getUserByEmail($email)
-{
-   $query = "SELECT * FROM tblusers WHERE userMail = :email";
-   $stmt = $this->pdo->prepare($query);
-   $stmt->bindParam(':email', $email);
-   $stmt->execute();
+   public function getUserByEmail($email) {
+      // Assurez-vous d'avoir une connexion à la base de données ici
+      $stmt = $pdo->prepare("SELECT * FROM tblusers WHERE userMail = ?");
+      $stmt->bind_param("s", $email);
+      $stmt->execute();
+      $result = $stmt->get_result();
+      $user = $result->fetch_assoc();
+      $stmt->close();
 
-   return $stmt->fetch(PDO::FETCH_ASSOC);
-}
+      return $user;
+  }
 }

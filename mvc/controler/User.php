@@ -23,33 +23,20 @@ class User
       $this->userModel->insertUser($data, $img);
    }
 
-   public function logdin($mail, $mdp)
-   {
-      $users = $this->userModel->getAll();
-      foreach ($users as $user) {
-         if (password_verify($mdp, $user['userPassword'])) {
-            if ($user['userMail'] === $mail) {
-               // set variable de session
-               $_SESSION['id'] = $user['idUser'];
-               $_SESSION['pseudo'] = $user['userPseudo'];
-            }
-         }
+
+
+   public function login($email, $mdp) {
+      // Vérification des informations d'identification de l'utilisateur
+      $user = $this->userModel->getUserByEmail($email);
+      if ($user && password_verify($mdp, $user['userPassword'])) {
+            session_start();
+            $_SESSION['id'] = $user['idUser'];
+            $_SESSION['pseudo'] = $user['userPseudo'];
+         return true;
+      } else {
+         return false;
       }
    }
-
-   public function login($email, $password)
-{
-   $user = $this->userModel->getUserByEmail($email);
-
-   if ($user && password_verify($password, $user['userPassword'])) {
-      // Définir les variables de session
-      $_SESSION['id'] = $user['idUser'];
-      $_SESSION['pseudo'] = $user['userPseudo'];
-      return true;
-   }
-
-   return false;
-}
 
    public function updateUser($data, $dataimg)
    {
