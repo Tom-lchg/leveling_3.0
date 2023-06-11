@@ -11,8 +11,8 @@ class User
    private $model;
    public function __construct()
    {
-      //$this->pdo = new PDO('mysql:host=172.20.0.161;dbname=leveling2', 'root', 'btssio2023');
-      $this->pdo = new PDO('mysql:host=localhost;dbname=leveling2', 'root', '');
+      $this->pdo = new PDO('mysql:host=172.20.0.161;dbname=leveling2', 'root', 'btssio2023');
+        //$this->pdo = new PDO('mysql:host=localhost;dbname=leveling2', 'root', '');
       $this->model = new Model('tblusers');
    }
 
@@ -71,7 +71,7 @@ class User
 
    public function updateUser($bio, $id, $img, $banner)
    {
-      $sql = "UPDATE tblUsers SET userBio = :bio, userImg = :img, userBanner = :banner WHERE idUser = :iduser";
+      $sql = "UPDATE tblusers SET userBio = :bio, userImg = :img, userBanner = :banner WHERE idUser = :iduser";
       $this->pdo->prepare($sql)->execute([
          ":bio" => $bio,
          ":iduser" => $id,
@@ -134,7 +134,7 @@ class User
 
    public function getFriends($idUserConnected)
    {
-      $sql = "SELECT userPseudo, userImg, idUser, userTypeImg FROM tblusers INNER JOIN tblFriends ON userFriend = idUser and userConnected = $idUserConnected";
+      $sql = "SELECT userPseudo, userImg, idUser, userTypeImg FROM tblusers INNER JOIN tblfriends ON userFriend = idUser and userConnected = $idUserConnected";
 
       $stmt = $this->pdo->query($sql);
       return $stmt->fetchAll();
@@ -157,6 +157,20 @@ class User
       $sql = "SELECT * FROM tblusers WHERE idUser = :iduser";
       $stmt = $this->pdo->prepare($sql);
       $stmt->execute(array(":iduser" => $iduser));
+      return $stmt->fetchAll();
+   }
+
+   public function checkMailAlreadyUser($mail){
+      $sql = "SELECT * FROM tblusers WHERE userMail  = :usermail ";
+      $stmt = $this->pdo->prepare($sql);
+      $stmt->execute(array(":usermail" => $mail));
+      return $stmt->fetchAll();
+   }
+
+   public function checkPseudoAlreadyUser($username){
+      $sql = "SELECT * FROM tblusers WHERE userPseudo  = :userPseudo ";
+      $stmt = $this->pdo->prepare($sql);
+      $stmt->execute(array(":userPseudo" => $username));
       return $stmt->fetchAll();
    }
 }
