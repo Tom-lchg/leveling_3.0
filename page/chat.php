@@ -24,7 +24,7 @@ $messages = $controler->chat->chatModel->getMessageFromUser();
                         </div>
                     </div>
                     <div class="chat-header"><?= $m['userPseudo'] ?> à <?= $m['chatHeure'] ?></div>
-                    <div class="chat-bubble <?= $messageFromUserConnected ? "bg-cyan-600 text-white" : "" ?>"><?= $m['chatMessage'] ?></div>
+                    <div class="chat-bubble <?= $messageFromUserConnected ? "bg-accent text-white" : "" ?>"><?= $m['chatMessage'] ?></div>
                 </div>
             <?php endforeach; ?>
             <!-- Message des utilisateurs -->
