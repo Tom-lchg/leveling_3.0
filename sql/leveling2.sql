@@ -479,7 +479,7 @@ CREATE TABLE IF NOT EXISTS `tblusers` (
   `userTypeImg` varchar(50) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci DEFAULT NULL,
   `userBanner` longblob,
   `userTypeBanner` varchar(50) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci DEFAULT NULL,
-  `userXP` int NOT NULL,
+  `userXP` int(10) NOT NULL,
   PRIMARY KEY (`idUser`)
 ) ENGINE=InnoDB AUTO_INCREMENT=44 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
@@ -510,7 +510,7 @@ CREATE TABLE IF NOT EXISTS `tblusersadmin` (
   `userAdminTypeImg` varchar(50) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci DEFAULT NULL,
   `userAdminBanner` longblob,
   `userAdminTypeBanner` varchar(50) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci DEFAULT NULL,
-  `userAdminXP` int NOT NULL,
+  `userAdminXP` int(10) NOT NULL,
   KEY `idUser` (`idUser`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
@@ -540,7 +540,7 @@ CREATE TABLE IF NOT EXISTS `tbluserssimple` (
   `userSimpleTypeImg` varchar(50) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci DEFAULT NULL,
   `userSimpleBanner` longblob,
   `userSimpleTypeBanner` varchar(50) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci DEFAULT NULL,
-  `userSimpleXP` int NOT NULL,
+  `userSimpleXP` int(10) NOT NULL,
   KEY `idUser` (`idUser`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
