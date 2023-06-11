@@ -463,7 +463,7 @@ CREATE TABLE IF NOT EXISTS `tbltopicsanswers` (
 
 DROP TABLE IF EXISTS `tblusers`;
 CREATE TABLE IF NOT EXISTS `tblusers` (
-  `idUser` int NOT NULL AUTO_INCREMENT,
+  `idUser` int(10) NOT NULL AUTO_INCREMENT,
   `userNom` varchar(50) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
   `userPrenom` varchar(50) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
   `userAge` varchar(50) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
@@ -491,7 +491,7 @@ CREATE TABLE IF NOT EXISTS `tblusers` (
 
 DROP TABLE IF EXISTS `tblusersadmin`;
 CREATE TABLE IF NOT EXISTS `tblusersadmin` (
-  `idUser` int NOT NULL,
+  `idUser` int(10) NOT NULL,
   `userAdminGrade` varchar(50) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
   `userAdminFonction` varchar(50) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
   `userCanModify` int NOT NULL,
@@ -522,7 +522,7 @@ CREATE TABLE IF NOT EXISTS `tblusersadmin` (
 
 DROP TABLE IF EXISTS `tbluserssimple`;
 CREATE TABLE IF NOT EXISTS `tbluserssimple` (
-  `idUser` int NOT NULL,
+  `idUser` int(10) NOT NULL,
   `userSimplePlateforme` varchar(50) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
   `userSimpleCanModify` int NOT NULL,
   `userNom` varchar(50) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
