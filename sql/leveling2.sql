@@ -133,7 +133,7 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `insertUserInGroupe` (IN `p_idGroupe
 End$$
 
 DROP PROCEDURE IF EXISTS `insertUserSimple`$$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `insertUserSimple` (IN `p_userSimplePlateforme` VARCHAR(50), IN `p_userSimpleCanModify` INT(1), IN `p_userNom` VARCHAR(50), IN `p_userPrenom` VARCHAR(50), IN `p_userAge` VARCHAR(50), IN `p_userBio` VARCHAR(50), IN `p_userNaissance` VARCHAR(50), IN `p_userLevel` INT(11), IN `p_userPseudo` VARCHAR(50), IN `p_userMail` VARCHAR(50), IN `p_userPassword` VARCHAR(255), IN `p_userRole` VARCHAR(50), IN `p_userDateInscription` VARCHAR(50), IN `p_userImg` LONGBLOB, IN `p_userTypeImg` VARCHAR(50), IN `p_userBanner` LONGBLOB, IN `p_userTypeBanner` VARCHAR(50), IN `p_userXP` INT(6))  Begin
+CREATE DEFINER=`root`@`localhost` PROCEDURE `insertUserSimple` (IN `p_userSimplePlateforme` VARCHAR(50), IN `p_userSimpleCanModify` INT(1), IN `p_userNom` VARCHAR(50), IN `p_userPrenom` VARCHAR(50), IN `p_userAge` VARCHAR(50), IN `p_userBio` VARCHAR(50), IN `p_userNaissance` VARCHAR(50), IN `p_userLevel` INT(11), IN `p_userPseudo` VARCHAR(50), IN `p_userMail` VARCHAR(50), IN `p_userPassword` VARCHAR(255), IN `p_userRole` VARCHAR(50), IN `p_userDateInscription` VARCHAR(50), IN `p_userImg` LONGBLOB, IN `p_userTypeImg` VARCHAR(50), IN `p_userBanner` LONGBLOB, IN `p_userTypeBanner` VARCHAR(50), IN `p_userXP` INT(3))  Begin
         Declare p_idUser int(11);
         insert into tblusers values(null,p_userNom, p_userPrenom, p_userAge, p_userBio,p_userNaissance,p_userLevel,p_userPseudo,p_userMail,p_userPassword,p_userRole,p_userDateInscription, p_userImg, p_userTypeImg, p_userBanner, p_userTypeBanner, p_userXP);
 
