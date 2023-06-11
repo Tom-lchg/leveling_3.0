@@ -49,4 +49,6 @@ $friends = $controler->friend->friendModel->getFriends($user['idUser']);
 </div>
 
 
+
 </div>
+
