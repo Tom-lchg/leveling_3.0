@@ -34,7 +34,6 @@ $controler = new Controler();
 
 // formulaire d'inscription
 if (isset($_POST['btn-inscription'])) {
-   var_dump($_POST);
    $checkMail = $controler->user->userModel->checkMailAlreadyUser($_POST['email']);
    $checkPseudo = $controler->user->userModel->checkPseudoAlreadyUser($_POST['pseudo']);
    if (count($checkMail) > 0 ) {
