@@ -54,7 +54,7 @@ if (isset($_POST['btn-inscription'])) {
 
 
 // formulaire de connexion
-if (isset($_POST['btn-connexion'])) {
+if (isset($_POST['btn-cDonnexion'])) {
    $email = $_POST['email'];
    $mdp = $_POST['mdp'];
    if($controler->user->login($email, $mdp)){
@@ -63,6 +63,17 @@ if (isset($_POST['btn-connexion'])) {
       header("Location: ../?page=home?oui=false");
    }
    
+}
+
+if (isset($_POST['btn-connexion'])) {
+   $email = $_POST['email'];
+   $mdp = $_POST['mdp'];
+
+   if ($controler->user->login($email, $mdp)) {
+      header("Location: ../?page=home");
+   } else {
+      header("Location: ../?page=home?oui=trueskyrock");
+   }
 }
 
 //formulaire search

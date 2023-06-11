@@ -174,4 +174,18 @@ class User
       $stmt->execute(array(":userPseudo" => $username));
       return $stmt->fetchAll();
    }
+
+   public function getUserByEmail($email)
+{
+   // Effectuer une requête pour récupérer l'utilisateur correspondant à l'e-mail donné
+   // Assurez-vous d'utiliser une requête préparée pour éviter les attaques par injection SQL
+
+   // Exemple de code avec PDO :
+   $query = "SELECT * FROM tblusers WHERE userMail = :email";
+   $stmt = $this->pdo->prepare($query);
+   $stmt->bindParam(':email', $email);
+   $stmt->execute();
+
+   return $stmt->fetch(PDO::FETCH_ASSOC);
+}
 }
