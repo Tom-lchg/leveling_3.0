@@ -58,7 +58,7 @@ if (isset($_POST['btn-connexion'])) {
    $email = $_POST['email'];
    $mdp = $_POST['mdp'];
    $controler->user->login($email, $mdp);
-   header("Location: ../?page=home?oui=oui");
+   header("Location: ../?page=home");
 }
 
 //formulaire search
