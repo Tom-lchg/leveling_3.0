@@ -27,8 +27,8 @@ class User
    {
       $users = $this->userModel->getAll();
       foreach ($users as $user) {
-         if (password_verify($mdp, $user['userPassword'])) {
-            if ($user['userMail'] === $mail) {
+         if ($user['userMail'] === $mail) {
+            if (password_verify($mdp, $user['userPassword'])) {
                // set variable de session
                $_SESSION['id'] = $user['idUser'];
                $_SESSION['pseudo'] = $user['userPseudo'];
