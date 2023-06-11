@@ -77,9 +77,6 @@ if (isset($_SESSION['id'])) {
                      <a href="./?page=home"><button class="btn btn-ghost text-white btn-sm">Accueil</button></a>
                      <a href="./?page=games"><button class="btn btn-ghost text-white btn-sm">Jeux</button></a>
                      <a href="./?page=groupes"><button class="btn btn-ghost text-white btn-sm">Groupes</button></a>
-                     <!-- trigger chat drawer -->
-                     <label for="my-drawer-4" class="btn btn-ghost text-white btn-sm">Amis</label>
-                     <!-- trigger chat drawer -->
                      <a href="./?page=chat" target="_blank"><button class="btn btn-ghost text-white btn-sm">Chat</button></a>
                   </div>
                </div>
@@ -108,56 +105,6 @@ if (isset($_SESSION['id'])) {
    </div>
    
 
-   <!-- Une fois que le chat est ouvert -->
-   <div class="drawer-side">
-      <label for="my-drawer-4" class="drawer-overlay"></label>
-      <div class="menu p-4 w-80 text-base-content  bg-neutral">
-
-         <h1 class="text-xl text-white">Tous vos amis</h1>
-
-         <!-- Liste des amis -->
-         <div class="flex flex-col gap-6 mt-6">
-            <?php foreach ($friends as $f) : ?>
-               <div class="flex justify-between">
-
-                  <!-- PP + image -->
-                  <div class="flex items-center gap-4">
-                     <img src="data:<?= $f['userTypeImg'] ?>;base64,<?= base64_encode($f['userImg']) ?>" alt="user img" class="rounded-full w-10 h-10">
-                     <h3 class="font-leger haa">
-                        <a href="?page=profile&user=<?= $f['userPseudo'] ?>" class="cursor-pointer">
-                           <?= $f['userPseudo'] ?>
-                        </a>
-                     </h3>
-                  </div>
-                  <!-- PP + image -->
-
-                  <!-- settings -->
-                  <div class="flex gap-2">
-                     <a href="?page=chat" target="_blank">
-                        <button class="btn btn-sm btn-accent text-white block">
-                           <i class="fa-solid fa-message"></i>
-                        </button>
-                     </a>
-
-                     <form action="./handler_formulaire/handler.php" method="POST">
-                        <!-- input invisible -->
-                        <input type="text" hidden name="idfriend" value="<?= $f['idUser'] ?>">
-                        <!-- input invisible -->
-                        <button class="btn btn-sm btn-error text-white" type="submit" name="delFriend">
-                           <i class="fa-solid fa-user-minus"></i>
-                        </button>
-                     </form>
-                  </div>
-                  <!-- settings -->
-
-               </div>
-            <?php endforeach; ?>
-         </div>
-         <!-- Liste des amis -->
-
-      </div>
-   </div>
-   <!-- Une fois que le chat est ouvert -->
 
 </div>
 

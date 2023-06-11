@@ -168,16 +168,19 @@ if (isset($_SESSION['id'])) {
    </div>
 </div>
 
-<!-- Modal pour répondre à un un sujet d'un groupe--
+<!-- Modal pour répondre à un un sujet d'un groupe-->
 
-<!-- Modal pour modifier les informations du groupe-->
+<!-- Modal pour modifier les informations du groupe -->
 <input type="checkbox" id="modal-update-group" class="modal-toggle" />
 <div class="modal bg-modal">
-   <div class="modal-box relative bg-secondary max-w-3xl">
+   <div class="modal-box bg-secondary max-w-3xl">
+   <h3 class="text-xl text-neutral font-bold"><i class="fa-solid fa-paintbrush"></i> MODIFIER VOTRE GROUPE</h3>
       <label for="modal-update-group" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
-      <h3 class="text-lg font-bold text-neutral">Modifier le groupe :</h3>
-      <?php $oneGroupePublic = null; $oneGroupePrive = null;?>
-      <?php if($_GET['privacy'] == "publique"){
+      
+      <?php 
+      $oneGroupePublic = null; 
+      $oneGroupePrive = null;
+      if($_GET['privacy'] == "publique"){
          $oneGroupePublic = $controler->groupe->groupeModel->getOneGroupPublic($_GET["groupe"]);
       }else{
          $oneGroupePrive = $controler->groupe->groupeModel->getOneGroupPrive($_GET["groupe"]);
@@ -185,65 +188,80 @@ if (isset($_SESSION['id'])) {
       ?>
 
       <form action="../handler_formulaire/handler.php" method="POST" class='mt-4 w-full' enctype="multipart/form-data">
+         <div>
+
          <input type="hidden" name="idgroupe" value="<?= $_GET['groupe'] ?>">
          <input type="hidden" name="privacy" value="<?= $_GET['privacy'] ?>">
-         <div class='flex flex-col gap-4 w-full text-neutral '>
-            <label for="">
-               <p class="text-xl ">Nom :</p>
-               <input required="required" maxlength="100" class='input input-bordered w-120 placeholder-[#CCCCCF] placeholder:text-sm text-neutral' type="text" value="<?= $oneGroupePrive==null ? $oneGroupePublic['groupeName'] : $oneGroupePrive['groupeName'] ?>" name='update-title'>
-            </label>
-            <label for="">
-               <p class="text-xl l">Description :</p>
-               <input required="required" maxlength="100" class='input input-bordered w-200 placeholder-[#CCCCCF] placeholder:text-sm text-neutral' type="text" value="<?= $oneGroupePrive===null ? $oneGroupePublic['groupeDescription'] : $oneGroupePrive['groupeDescription'] ?>" name='update-desc'>
-            </label>
-            <button type='submit' name='btn-update-group-text' class='btn btn-accent'>Enregistrer le nom et la description</button>
-         </div>     
+
+         <div class="mt-4 w-full">
+            <label><p class="text-sm">Nom</p></label>
+            <input required="required" maxlength="20" class='input input-bordered w-120 placeholder-[#CCCCCF] placeholder:text-sm text-neutral' type="text" value="<?= $oneGroupePrive==null ? $oneGroupePublic['groupeName'] : $oneGroupePrive['groupeName'] ?>" name='update-title'>
+         </div>
+
+         <div class="mt-4 w-full">
+            <label><p class="text-sm">Description</p></label>
+            <textarea required="required" maxlength="100" class='textarea textarea-bordered w-full placeholder-[#CCCCCF] placeholder:text-sm text-neutral' type="text" name='update-desc'><?= $oneGroupePrive===null ? $oneGroupePublic['groupeDescription'] : $oneGroupePrive['groupeDescription'] ?></textarea>
+         </div>
+
+         <div class="mt-4 w-full">
+            <button type='submit' name='btn-update-group-text' class='btn btn-accent w-full'>Enregistrer le nom et la description</button>
+         </div>
+
+         <div class="divider w-full"></div> 
+
+         </div>
       </form>
 
 
       <form action="../handler_formulaire/handler.php" method="POST" class='mt-4 w-full' enctype="multipart/form-data">
-      <div class='flex flex-col gap-4 w-full text-neutral '>
+      <div>
+
       <input type="hidden" name="idgroupe" value="<?= $_GET['groupe'] ?>">
       <input type="hidden" name="privacy" value="<?= $_GET['privacy'] ?>">
 
-            <div class="flex flex-row mt-8">
-               <div class="basis-1/3">
-                  <p class="text-xl ">Photo de profil :</p><br>
-                  <img src="data:<?= $oneGroupePrive===null ? $oneGroupePublic['groupeTypeImg'] : $oneGroupePrive['groupeTypeImg'] ?>;base64,<?= $oneGroupePrive===null ? base64_encode($oneGroupePublic['groupeImg']) :  base64_encode($oneGroupePrive['groupeImg'])?>" class='max-w-md max-h-40' alt="">
-                  <br><br>
-               </div>
-                  <div class="basis-2/3 mt-20">
-                  <input type="file" class="file-input file-input-bordered w-50" name="update-group-profil" />
-                  </div>
-               </div>  
-               <button type='submit' name='btn-update-group-pdp' class='btn btn-accent'>Enregistrer la nouvelle photo de profil</button>  
-            </div>
+      <div class='mt-4 w-full flex items-center'>
+            <img src="data:<?= $oneGroupePrive===null ? $oneGroupePublic['groupeTypeImg'] : $oneGroupePrive['groupeTypeImg'] ?>;base64,<?= $oneGroupePrive===null ? base64_encode($oneGroupePublic['groupeImg']) :  base64_encode($oneGroupePrive['groupeImg'])?>" class='w-20 h-20 rounded-full shadow-lg' alt="">
+            <input type="file" class="file-input file-input-bordered file-input-md w-full max-w-xs ml-4" name="update-group-profil" />
+            <p class="ml-4 font-bold text-neutral text-sm"><i class="fa-sharp fa-solid fa-circle-exclamation"></i> JPG UNIQUEMENT</p>
+      </div>
+
+      <div class="mt-4 w-full">
+         <button type='submit' name='btn-update-group-pdp' class='btn btn-accent w-full'>Enregistrer la nouvelle photo de profil</button>  
+      </div>
+
+      <div class="divider w-full"></div> 
+
+      </div>
       </form>
 
       <form action="../handler_formulaire/handler.php" method="POST" class='mt-4 w-full' enctype="multipart/form-data">
-      <div class='flex flex-col gap-4 w-full text-neutral '>
+      <div>
+
       <input type="hidden" name="idgroupe" value="<?= $_GET['groupe'] ?>">
       <input type="hidden" name="privacy" value="<?= $_GET['privacy'] ?>">
-            <div class="flex flex-row mt-8">
-               <div class="basis-1/2">
-                  <p class="text-xl ">Bannière :</p><br>
-                  <img src="data:<?= $oneGroupePrive===null ? $oneGroupePublic['groupeTypeBanner'] : $oneGroupePrive['groupeTypeBanner'] ?>;base64,<?= $oneGroupePrive===null ? base64_encode($oneGroupePublic['groupeBanner']) :  base64_encode($oneGroupePrive['groupeBanner'])?>" alt="banner" class='max-w-md max-h-40'>
 
-                  <br><br><br><br><br><br>
-               </div>
-                  <div class="basis-1/2 mt-20">
-                  <input type="file" class="file-input file-input-bordered w-50" name="update-group-banner" />
-                  </div>
-               </div>  
-               <button type='submit' name='btn-update-group-banner' class='btn btn-accent'>Enregistrer la nouvelle bannière</button>  
-            </div>
+      <div class='mt-4 w-full flex items-center'>
+            <img src="data:<?= $oneGroupePrive===null ? $oneGroupePublic['groupeTypeBanner'] : $oneGroupePrive['groupeTypeBanner'] ?>;base64,<?= $oneGroupePrive===null ? base64_encode($oneGroupePublic['groupeBanner']) :  base64_encode($oneGroupePrive['groupeBanner'])?>" alt="banner" class='h-20 w-40 rounded-lg'>
+            <input type="file" class="file-input file-input-bordered file-input-md w-full max-w-xs ml-4" name="update-group-banner" />
+            <p class="ml-4 font-bold text-neutral text-sm"><i class="fa-sharp fa-solid fa-circle-exclamation"></i> JPG UNIQUEMENT</p>
+      </div>
+
+      <div class="mt-4 w-full">
+            <button type='submit' name='btn-update-group-banner' class='btn btn-accent w-full'>Enregistrer la nouvelle bannière</button>  
+      </div>
+
+      <div class="divider w-full"></div> 
+
+      </div>
       </form>
 
       <form action="../handler_formulaire/handler.php" method="POST" class='mt-4 w-full' enctype="multipart/form-data">
+
          <input type="hidden" name="idgroupe" value="<?= $_GET['groupe'] ?>">
          <input type="hidden" name="privacy" value="<?= $_GET['privacy'] ?>">
-         <div class='mt-8 flex gap-4 justify-center'>
-            <button type='submit' name='btn-del-group' class="btn btn-error">Supprimer ce groupe</button>
+
+         <div class='mt-4 w-full'>
+            <button type='submit' name='btn-del-group' class="btn btn-error w-full">Supprimer ce groupe</button>
          </div>
       </form>
    </div>

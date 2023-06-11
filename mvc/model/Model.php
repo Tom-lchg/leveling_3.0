@@ -40,11 +40,11 @@ class Model
    {
       switch ($target) {
          case "post": {
-               $xp = 200;
+               $xp = 10;
                break;
             }
          case "groupe": {
-               $xp = 150;
+               $xp = 20;
                break;
             }
       }

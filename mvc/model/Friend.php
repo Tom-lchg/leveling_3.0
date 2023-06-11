@@ -34,8 +34,6 @@ class Friend
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute([$_SESSION['id'], $idFriend]);
 
-        // on créer la conversation
-        $this->conversationControler->checkConvIfExist($idFriend);
     }
 
     public function getFriends($idUser)

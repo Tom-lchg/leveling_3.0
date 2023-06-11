@@ -247,7 +247,7 @@ $gamecs = $controler->games->gameModel->findByIdCs($_GET['game'], 'idGame');
                                     </div>
                                 <?php break; ?>
 
-                                <?php case ($GamePost['postGrade'] > 15 && $GamePost['postGrade'] < 20) : ?>
+                                <?php case ($GamePost['postGrade'] > 15 && $GamePost['postGrade'] <= 20) : ?>
                                     <div class="bg-lime-500 rounded-full h-14 w-14 flex justify-center items-center text-white font-bold">
                                         <p><?= $GamePost['postGrade'] ?></p>
                                     </div>
