@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : dim. 11 juin 2023 à 20:13
+-- Généré le : dim. 11 juin 2023 à 20:20
 -- Version du serveur : 8.0.31
 -- Version de PHP : 8.0.26
 
@@ -123,7 +123,7 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `insertUserAdmin` (IN `p_userAdminGr
         and userMail = p_userMail and userPassword = p_userPassword and userRole = p_userRole and userDateInscription =p_userDateInscription;
 
         insert into tblusersadmin values (p_idUser, p_userAdminGrade, p_userAdminFonction,p_userSimpleCanModify, p_userNom,p_userPrenom, p_userAge, p_userBio , p_userNaissance, p_userLevel, p_userPseudo, p_userMail, p_userPassword, p_userRole, p_userDateInscription,
-        p_userImg, p_userTypeImg, p_userBanner, p_userTypeBanner);
+        p_userImg, p_userTypeImg, p_userBanner, p_userTypeBanner,p_userXP);
     End$$
 
 DROP PROCEDURE IF EXISTS `insertUserInGroupe`$$
@@ -141,7 +141,7 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `insertUserSimple` (IN `p_userSimple
         and userMail = p_userMail and userPassword = p_userPassword and userRole = p_userRole and userDateInscription =p_userDateInscription;
 
         insert into tbluserssimple values (p_idUser, p_userSimplePlateforme, p_userSimpleCanModify, p_userNom,p_userPrenom, p_userAge, p_userBio , p_userNaissance, p_userLevel, p_userPseudo, p_userMail, p_userPassword, p_userRole, p_userDateInscription,
-        p_userImg, p_userTypeImg,p_userBanner, p_userTypeBanner);
+        p_userImg, p_userTypeImg,p_userBanner, p_userTypeBanner, p_userXP);
     End$$
 
 DROP PROCEDURE IF EXISTS `updateGameConsole`$$
@@ -510,6 +510,7 @@ CREATE TABLE IF NOT EXISTS `tblusersadmin` (
   `userAdminTypeImg` varchar(50) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci DEFAULT NULL,
   `userAdminBanner` longblob,
   `userAdminTypeBanner` varchar(50) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci DEFAULT NULL,
+  `userAdminXP` int NOT NULL,
   KEY `idUser` (`idUser`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
@@ -539,6 +540,7 @@ CREATE TABLE IF NOT EXISTS `tbluserssimple` (
   `userSimpleTypeImg` varchar(50) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci DEFAULT NULL,
   `userSimpleBanner` longblob,
   `userSimpleTypeBanner` varchar(50) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci DEFAULT NULL,
+  `userSimpleXP` int NOT NULL,
   KEY `idUser` (`idUser`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 
