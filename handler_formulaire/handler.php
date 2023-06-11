@@ -72,7 +72,7 @@ if (isset($_POST['btn-connexion'])) {
    if ($controler->user->login($email, $mdp)) {
       header("Location: ../?page=home");
    } else {
-      header("Location: ../?page=home?oui=trueskyrock");
+      header("Location: ../?page=home&oui=trueskyrock");
    }
 }
 
