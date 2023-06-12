@@ -11,8 +11,8 @@ class User
    private $model;
    public function __construct()
    {
-      $this->pdo = new PDO('mysql:host=172.20.0.161;dbname=leveling2', 'root', 'btssio2023');
-        //$this->pdo = new PDO('mysql:host=localhost;dbname=leveling2', 'root', '');
+      // $this->pdo = new PDO('mysql:host=172.20.0.161;dbname=leveling2', 'root', 'btssio2023');
+      $this->pdo = new PDO('mysql:host=localhost;dbname=leveling2', 'root', '');
       $this->model = new Model('tblusers');
    }
 
@@ -160,14 +160,16 @@ class User
       return $stmt->fetchAll();
    }
 
-   public function checkMailAlreadyUser($mail){
+   public function checkMailAlreadyUser($mail)
+   {
       $sql = "SELECT * FROM tblusers WHERE userMail  = :usermail ";
       $stmt = $this->pdo->prepare($sql);
       $stmt->execute(array(":usermail" => $mail));
       return $stmt->fetchAll();
    }
 
-   public function checkPseudoAlreadyUser($username){
+   public function checkPseudoAlreadyUser($username)
+   {
       $sql = "SELECT * FROM tblusers WHERE userPseudo  = :userPseudo ";
       $stmt = $this->pdo->prepare($sql);
       $stmt->execute(array(":userPseudo" => $username));

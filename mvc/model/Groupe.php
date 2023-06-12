@@ -12,8 +12,8 @@ class Groupe
    private $model;
    public function __construct()
    {
-      $this->pdo = new PDO('mysql:host=172.20.0.161;dbname=leveling2', 'root', 'btssio2023');
-      //$this->pdo = new PDO('mysql:host=localhost;dbname=leveling2', 'root', '');
+      // $this->pdo = new PDO('mysql:host=172.20.0.161;dbname=leveling2', 'root', 'btssio2023');
+      $this->pdo = new PDO('mysql:host=localhost;dbname=leveling2', 'root', '');
       $this->model = new Model('tblgroups');
    }
 
@@ -457,39 +457,41 @@ class Groupe
    }
 
 
-   public function delOneGroupOnGroups($idgroupe){
-      $sql ="DELETE FROM tblgroups WHERE idGroupe = :idgroupe";
+   public function delOneGroupOnGroups($idgroupe)
+   {
+      $sql = "DELETE FROM tblgroups WHERE idGroupe = :idgroupe";
       $prepare = $this->pdo->prepare($sql);
       $prepare->execute([":idgroupe" => $idgroupe]);
    }
-   public function delOneGroupOnGroupsPublic($idgroupe){
-      $sql ="DELETE FROM tblgroupspublic WHERE idGroupe = :idgroupe";
+   public function delOneGroupOnGroupsPublic($idgroupe)
+   {
+      $sql = "DELETE FROM tblgroupspublic WHERE idGroupe = :idgroupe";
       $prepare = $this->pdo->prepare($sql);
       $prepare->execute([":idgroupe" => $idgroupe]);
    }
-   public function delOneGroupOnGroupsPrivate($idgroupe){
-      $sql ="DELETE FROM tblgroupsprivate WHERE idGroupe = :idgroupe";
+   public function delOneGroupOnGroupsPrivate($idgroupe)
+   {
+      $sql = "DELETE FROM tblgroupsprivate WHERE idGroupe = :idgroupe";
       $prepare = $this->pdo->prepare($sql);
       $prepare->execute([":idgroupe" => $idgroupe]);
    }
-   public function delOneGroupOnGroupsUser($idgroupe){
-      $sql ="DELETE FROM tblgroupsuser WHERE idgroupe = :idgroupe";
-      $prepare = $this->pdo->prepare($sql);
-      $prepare->execute([":idgroupe" => $idgroupe]);
-   }
-
-   public function delOneGroupOnTopics($idgroupe){
-      $sql ="DELETE FROM tbltopics WHERE idGroupe = :idgroupe";
-      $prepare = $this->pdo->prepare($sql);
-      $prepare->execute([":idgroupe" => $idgroupe]);
-   }
-   public function delOneGroupOnTopicAnswer($idgroupe){
-      $sql ="DELETE FROM tbltopicsanswers WHERE idGroupe = :idgroupe";
+   public function delOneGroupOnGroupsUser($idgroupe)
+   {
+      $sql = "DELETE FROM tblgroupsuser WHERE idgroupe = :idgroupe";
       $prepare = $this->pdo->prepare($sql);
       $prepare->execute([":idgroupe" => $idgroupe]);
    }
 
-
-
-
+   public function delOneGroupOnTopics($idgroupe)
+   {
+      $sql = "DELETE FROM tbltopics WHERE idGroupe = :idgroupe";
+      $prepare = $this->pdo->prepare($sql);
+      $prepare->execute([":idgroupe" => $idgroupe]);
+   }
+   public function delOneGroupOnTopicAnswer($idgroupe)
+   {
+      $sql = "DELETE FROM tbltopicsanswers WHERE idGroupe = :idgroupe";
+      $prepare = $this->pdo->prepare($sql);
+      $prepare->execute([":idgroupe" => $idgroupe]);
+   }
 }

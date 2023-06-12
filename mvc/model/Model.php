@@ -12,8 +12,8 @@ class Model
    public function __construct($table)
    {
       $this->table = $table;
-      $this->pdo = new PDO('mysql:host=172.20.0.161;dbname=leveling2', 'root', 'btssio2023');
-        //$this->pdo = new PDO('mysql:host=localhost;dbname=leveling2', 'root', '');
+      // $this->pdo = new PDO('mysql:host=172.20.0.161;dbname=leveling2', 'root', 'btssio2023');
+      $this->pdo = new PDO('mysql:host=localhost;dbname=leveling2', 'root', '');
    }
 
    public function getAll()
@@ -36,20 +36,21 @@ class Model
       return $this->pdo->query("SELECT * FROM tblgamescs WHERE $target = $id")->fetch();
    }
 
-   public function search($word, $type){
+   public function search($word, $type)
+   {
 
-      $sql="";
+      $sql = "";
 
-      switch($type){
-            case "users":
+      switch ($type) {
+         case "users":
             $sql = "SELECT userImg, userTypeImg, userPseudo, userLevel FROM tblusers WHERE userPseudo LIKE '%$word%'";
             break;
 
-            case "games":
+         case "games":
             $sql = "SELECT idGame, gameImg, gameName, gameGenre FROM tblgames WHERE gameName LIKE '%$word%'";
             break;
 
-            case "groups":
+         case "groups":
             $sql = "SELECT idGroupe, groupeImg, groupeTypeImg, groupeName, groupePrivacy, groupeDescription FROM tblgroups WHERE groupeName LIKE '%$word%'";
             break;
       }
@@ -57,7 +58,6 @@ class Model
 
       $stmt = $this->pdo->query($sql);
       return $stmt->fetchAll();
-
    }
 
    public function addXP($target)

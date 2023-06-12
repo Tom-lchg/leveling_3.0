@@ -11,8 +11,8 @@ class GamePost
    private $model;
    public function __construct()
    {
-      $this->pdo = new PDO('mysql:host=172.20.0.161;dbname=leveling2', 'root', 'btssio2023');
-        //$this->pdo = new PDO('mysql:host=localhost;dbname=leveling2', 'root', '');
+      // $this->pdo = new PDO('mysql:host=172.20.0.161;dbname=leveling2', 'root', 'btssio2023');
+      $this->pdo = new PDO('mysql:host=localhost;dbname=leveling2', 'root', '');
       $this->model = new Model('tblgameposts');
    }
 
@@ -89,7 +89,7 @@ class GamePost
    public function delGamePost($idgamepost, $iduser)
    {
       $sql = "DELETE FROM tblgameposts WHERE idGamePost = :idgamepost and fkidUser = :iduser";
-      $a = [":idpost" => $idpost, ":iduser" => $iduser];
+      $a = [":idpost" => $idgamepost, ":iduser" => $iduser];
       $this->pdo->prepare($sql)->execute($a);
    }
 }
