@@ -61,7 +61,8 @@ if (isset($_POST['btn-connexion'])) {
       header("Location: ../?page=home");
       exit();
    } else {
-      header("Location: ../?page=home&oui=false");
+      header("Location: ../page/connexion?state=false");
+      session_destroy();
       exit();
    }
 }
