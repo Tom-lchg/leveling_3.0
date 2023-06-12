@@ -277,7 +277,6 @@ if (isset($_SESSION['id'])) {
    <div class="modal-box relative bg-secondary max-w-3xl">
       <label for="modal-add-user-groupe" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
       <h3 class="text-lg font-bold">AJOUTER UNE PERSONNE :</h3>
-      <input type="hidden" name="idgroupe" value="<?=  ?>">
       <?php $allUserNotInGroupe = $controler->groupe->groupeModel->getUserNotOnGroupe(isset($_GET['groupe']) ? $_GET['groupe'] : '');?>
       <center>
       <form action="../handler_formulaire/handler.php" method="POST" class='mt-4 w-full' enctype="multipart/form-data">
