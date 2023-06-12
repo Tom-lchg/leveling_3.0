@@ -44,7 +44,7 @@
             </div>
 
             <div class="w-full flex justify-center ">
-               <p class="text-red-500"><?php if(isset($_GET['state'])){echo "Connexion échoué, vérifiez vos identifiants !";} ?></p>
+               <p class="text-red-500"><?php if(isset($_GET['state'])){echo "Connexion échouée, vérifiez vos identifiants !";} ?></p>
             </div>
             <br>
             <div class="w-full flex justify-center">
