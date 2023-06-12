@@ -29,7 +29,6 @@ class User
       // Vérification des informations d'identification de l'utilisateur
       $user = $this->userModel->getUserByEmail($email);
       if ($user && password_verify($mdp, $user['userPassword'])) {
-            session_start();
             $_SESSION['id'] = $user['idUser'];
             $_SESSION['pseudo'] = $user['userPseudo'];
          return true;
