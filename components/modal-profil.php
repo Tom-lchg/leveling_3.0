@@ -105,7 +105,7 @@ if (isset($_SESSION['id'])) {
 <div class="modal bg-modal">
    <div class="modal-box relative bg-secondary max-w-3xl">
       <label for="modal-edit-post" id="closeModalEditPost" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
-      <h3 class="text-lg font-bold"><?= $test ?></h3>
+      <h3 class="text-lg font-bold"></h3>
 
       <form action="../handler_formulaire/handler.php" method="POST" class='mt-4 w-full' enctype="multipart/form-data">
 
@@ -133,9 +133,9 @@ if (isset($_SESSION['id'])) {
 
       <form action="../handler_formulaire/handler.php" method="POST" class='mt-4 w-full' enctype="multipart/form-data">
          <div class='flex flex-col gap-4 w-full '>
-            <input type="hidden" name="idgroupe" value="<?= $_GET['groupe']?>">
-            <input type="hidden" name="idauteur" value="<?= $_SESSION['id']?>">
-            <input type="hidden" name="privacy" value="<?= $_GET['privacy']?>">
+            <input type="hidden" name="idgroupe" value="<?= isset($_GET['groupe']) ? $_GET['groupe'] : '' ?>">
+            <input type="hidden" name="idauteur" value="<?= isset($_SESSION['id']) ? $_SESSION['id'] : '' ?>">
+            <input type="hidden" name="privacy" value="<?= isset($_GET['privacy']) ? $_GET['privacy'] : '' ?>">
             <input required="required" maxlength="100" class='input input-bordered w-xs placeholder-[#CCCCCF] placeholder:text-sm' type="text" placeholder="Titre du sujet" name='titreSujet'>
             <textarea class='textarea textarea-accent text-md textarea-xl' placeholder='Corp du sujet' name='descSujet'></textarea>
             <button type='submit' name='btn-add-topic' class='btn btn-accent'>Créer votre sujet</button>
@@ -156,10 +156,10 @@ if (isset($_SESSION['id'])) {
 
       <form action="../handler_formulaire/handler.php" method="POST" class='mt-4 w-full' enctype="multipart/form-data">
          <div class='flex flex-col gap-4 w-full '>
-            <input type="hidden" name="idsujet" value="<?= $_GET['sujet']?>">
-            <input type="hidden" name="idauteur" value="<?= $_SESSION['id']?>">
-            <input type="hidden" name="idgroupe" value="<?= $_GET['groupe']?>">
-            <input type="hidden" name="privacy" value="<?= $_GET['privacy']?>">
+            <input type="hidden" name="idsujet" value="<?= isset($_GET['sujet']) ? $_GET['sujet'] : '' ?>">
+            <input type="hidden" name="idauteur" value="<?= isset($_SESSION['id']) ? $_SESSION['id'] : '' ?>">
+            <input type="hidden" name="idgroupe" value="<?= isset($_GET['groupe']) ? $_GET['groupe'] : '' ?>">
+            <input type="hidden" name="privacy" value="<?= isset($_GET['privacy']) ? $_GET['privacy'] : '' ?>">
             <textarea class='textarea textarea-accent text-md textarea-xl' placeholder='Corp de la réponse' name='descAnswers'></textarea>
             <button type='submit' name='btn-answer-topic' class='btn btn-accent'>Publier votre réponse</button>
          </div>
@@ -190,8 +190,8 @@ if (isset($_SESSION['id'])) {
       <form action="../handler_formulaire/handler.php" method="POST" class='mt-4 w-full' enctype="multipart/form-data">
          <div>
 
-         <input type="hidden" name="idgroupe" value="<?= $_GET['groupe'] ?>">
-         <input type="hidden" name="privacy" value="<?= $_GET['privacy'] ?>">
+         <input type="hidden" name="idgroupe" value="<?= isset($_GET['groupe']) ? $_GET['groupe'] : '' ?>">
+         <input type="hidden" name="privacy" value="<?= isset($_GET['privacy']) ? $_GET['privacy'] : '' ?>">
 
          <div class="mt-4 w-full">
             <label><p class="text-sm">Nom</p></label>
@@ -216,8 +216,8 @@ if (isset($_SESSION['id'])) {
       <form action="../handler_formulaire/handler.php" method="POST" class='mt-4 w-full' enctype="multipart/form-data">
       <div>
 
-      <input type="hidden" name="idgroupe" value="<?= $_GET['groupe'] ?>">
-      <input type="hidden" name="privacy" value="<?= $_GET['privacy'] ?>">
+      <input type="hidden" name="idgroupe" value="<?= isset($_GET['groupe']) ? $_GET['groupe'] : '' ?>">
+      <input type="hidden" name="privacy" value="<?= isset($_GET['privacy']) ? $_GET['privacy'] : '' ?>">
 
       <div class='mt-4 w-full flex items-center'>
             <img src="data:<?= $oneGroupePrive===null ? $oneGroupePublic['groupeTypeImg'] : $oneGroupePrive['groupeTypeImg'] ?>;base64,<?= $oneGroupePrive===null ? base64_encode($oneGroupePublic['groupeImg']) :  base64_encode($oneGroupePrive['groupeImg'])?>" class='w-20 h-20 rounded-full shadow-lg' alt="">
@@ -236,9 +236,9 @@ if (isset($_SESSION['id'])) {
 
       <form action="../handler_formulaire/handler.php" method="POST" class='mt-4 w-full' enctype="multipart/form-data">
       <div>
-
-      <input type="hidden" name="idgroupe" value="<?= $_GET['groupe'] ?>">
-      <input type="hidden" name="privacy" value="<?= $_GET['privacy'] ?>">
+      
+         <input type="hidden" name="idgroupe" value="<?= isset($_GET['groupe']) ? $_GET['groupe'] : '' ?>">
+         <input type="hidden" name="privacy" value="<?= isset($_GET['privacy']) ? $_GET['privacy'] : '' ?>">
 
       <div class='mt-4 w-full flex items-center'>
             <img src="data:<?= $oneGroupePrive===null ? $oneGroupePublic['groupeTypeBanner'] : $oneGroupePrive['groupeTypeBanner'] ?>;base64,<?= $oneGroupePrive===null ? base64_encode($oneGroupePublic['groupeBanner']) :  base64_encode($oneGroupePrive['groupeBanner'])?>" alt="banner" class='h-20 w-40 rounded-lg'>
@@ -257,8 +257,8 @@ if (isset($_SESSION['id'])) {
 
       <form action="../handler_formulaire/handler.php" method="POST" class='mt-4 w-full' enctype="multipart/form-data">
 
-         <input type="hidden" name="idgroupe" value="<?= $_GET['groupe'] ?>">
-         <input type="hidden" name="privacy" value="<?= $_GET['privacy'] ?>">
+         <input type="hidden" name="idgroupe" value="<?= isset($_GET['groupe']) ? $_GET['groupe'] : '' ?>">
+         <input type="hidden" name="privacy" value="<?= isset($_GET['privacy']) ? $_GET['privacy'] : '' ?>">
 
          <div class='mt-4 w-full'>
             <button type='submit' name='btn-del-group' class="btn btn-error w-full">Supprimer ce groupe</button>
@@ -286,8 +286,8 @@ if (isset($_SESSION['id'])) {
             <option value="<?= $oneUser['idUser'] ?>"><?= $oneUser['userPseudo'] ?></option>
             <?php endforeach; ?>
          </select><br><br>
-         <input type="hidden" name="idgroupe" value="<?= $_GET['groupe'] ?>">
-         <input type="hidden" name="privacy" value="<?= $_GET['privacy'] ?>">
+         <input type="hidden" name="idgroupe" value="<?= isset($_GET['groupe']) ? $_GET['groupe'] : '' ?>">
+         <input type="hidden" name="privacy" value="<?= isset($_GET['privacy']) ? $_GET['privacy'] : '' ?>">">
          <button type='submit' name='btn-add-user-groupe' class='btn btn-accent'>Ajouter cette personne</button>
    </div>
 
