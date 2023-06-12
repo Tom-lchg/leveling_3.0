@@ -180,10 +180,10 @@ if (isset($_SESSION['id'])) {
       <?php 
       $oneGroupePublic = null; 
       $oneGroupePrive = null;
-      if($_GET['privacy'] == "publique"){
-         $oneGroupePublic = $controler->groupe->groupeModel->getOneGroupPublic($_GET["groupe"]);
+      if(isset($_GET['privacy']) ? $_GET['privacy'] : '' == "publique"){
+         $oneGroupePublic = $controler->groupe->groupeModel->getOneGroupPublic(isset($_GET['groupe']) ? $_GET['groupe']: '');
       }else{
-         $oneGroupePrive = $controler->groupe->groupeModel->getOneGroupPrive($_GET["groupe"]);
+         $oneGroupePrive = $controler->groupe->groupeModel->getOneGroupPrive(isset($_GET['groupe']) ? $_GET['groupe']: '');
       }
       ?>
 
