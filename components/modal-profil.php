@@ -195,12 +195,12 @@ if (isset($_SESSION['id'])) {
 
          <div class="mt-4 w-full">
             <label><p class="text-sm">Nom</p></label>
-            <input required="required" maxlength="20" class='input input-bordered w-120 placeholder-[#CCCCCF] placeholder:text-sm text-neutral' type="text" value="<?= $oneGroupePrive==null ? $oneGroupePublic['groupeName'] : $oneGroupePrive['groupeName'] ?>" name='update-title'>
+            <input required="required" maxlength="20" class='input input-bordered w-120 placeholder-[#CCCCCF] placeholder:text-sm text-neutral' type="text" value="<?= isset($oneGroupePrive) && isset($oneGroupePrive['groupeName']) ? $oneGroupePrive['groupeName'] : (isset($oneGroupePublic['groupeName']) ? $oneGroupePublic['groupeName'] : '') ?>" name='update-title'>
          </div>
 
          <div class="mt-4 w-full">
             <label><p class="text-sm">Description</p></label>
-            <textarea required="required" maxlength="100" class='textarea textarea-bordered w-full placeholder-[#CCCCCF] placeholder:text-sm text-neutral' type="text" name='update-desc'><?= $oneGroupePrive===null ? $oneGroupePublic['groupeDescription'] : $oneGroupePrive['groupeDescription'] ?></textarea>
+            <textarea required="required" maxlength="100" class='textarea textarea-bordered w-full placeholder-[#CCCCCF] placeholder:text-sm text-neutral' type="text" name='update-desc'><?= isset($oneGroupePrive) && isset($oneGroupePrive['groupeDescription']) ? $oneGroupePrive['groupeDescription'] : (isset($oneGroupePublic['groupeDescription']) ? $oneGroupePublic['groupeDescription'] : '') ?></textarea>
          </div>
 
          <div class="mt-4 w-full">
@@ -220,7 +220,8 @@ if (isset($_SESSION['id'])) {
       <input type="hidden" name="privacy" value="<?= isset($_GET['privacy']) ? $_GET['privacy'] : '' ?>">
 
       <div class='mt-4 w-full flex items-center'>
-            <img src="data:<?= $oneGroupePrive===null ? $oneGroupePublic['groupeTypeImg'] : $oneGroupePrive['groupeTypeImg'] ?>;base64,<?= $oneGroupePrive===null ? base64_encode($oneGroupePublic['groupeImg']) :  base64_encode($oneGroupePrive['groupeImg'])?>" class='w-20 h-20 rounded-full shadow-lg' alt="">
+      <img src="data:<?= isset($oneGroupePrive) && isset($oneGroupePrive['groupeTypeImg']) ? $oneGroupePrive['groupeTypeImg'] : (isset($oneGroupePublic['groupeTypeImg']) ? $oneGroupePublic['groupeTypeImg'] : '') ?>;base64,<?= isset($oneGroupePrive) && isset($oneGroupePrive['groupeImg']) ? base64_encode($oneGroupePrive['groupeImg']) : (isset($oneGroupePublic['groupeImg']) ? base64_encode($oneGroupePublic['groupeImg']) : '') ?>" class='w-20 h-20 rounded-full shadow-lg' alt="">
+
             <input type="file" class="file-input file-input-bordered file-input-md w-full max-w-xs ml-4" name="update-group-profil" />
             <p class="ml-4 font-bold text-neutral text-sm"><i class="fa-sharp fa-solid fa-circle-exclamation"></i> JPG UNIQUEMENT</p>
       </div>
