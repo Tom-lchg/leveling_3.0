@@ -44,7 +44,7 @@ if (isset($_SESSION['id'])) {
             <textarea required="required" name='gamepostcontent' class='my-4 textarea textarea-bordered block w-full h-44 resize-none  placeholder-[#CCCCCF] placeholder:text-sm' placeholder="Qu'avez-vous pensé du jeu ?"></textarea>
 
             <div class="flex justify-end">
-               <input hidden name="idgame" value="<?= $_GET['game'] ?>" type="text">
+            <input type="hidden" name="idgame" value="<?= isset($_GET['game']) ? $_GET['game'] : '' ?>">
                <button type='submit' name='btn-add-post-game' class='btn w-full'>PUBLIER</button>
             </div>
             
