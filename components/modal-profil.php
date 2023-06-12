@@ -241,7 +241,11 @@ if (isset($_SESSION['id'])) {
          <input type="hidden" name="privacy" value="<?= isset($_GET['privacy']) ? $_GET['privacy'] : '' ?>">
 
       <div class='mt-4 w-full flex items-center'>
-            <img src="data:<?= $oneGroupePrive===null ? $oneGroupePublic['groupeTypeBanner'] : $oneGroupePrive['groupeTypeBanner'] ?>;base64,<?= $oneGroupePrive===null ? base64_encode($oneGroupePublic['groupeBanner']) :  base64_encode($oneGroupePrive['groupeBanner'])?>" alt="banner" class='h-20 w-40 rounded-lg'>
+      <?php if ($oneGroupePrive === null): ?>
+         <img src="data:<?= isset($oneGroupePublic['groupeTypeBanner']) ? $oneGroupePublic['groupeTypeBanner'] : '' ?>;base64,<?= isset($oneGroupePublic['groupeBanner']) ? base64_encode($oneGroupePublic['groupeBanner']) : '' ?>" alt="banner" class='h-20 w-40 rounded-lg'>
+      <?php else: ?>
+         <img src="data:<?= isset($oneGroupePrive['groupeTypeBanner']) ? $oneGroupePrive['groupeTypeBanner'] : '' ?>;base64,<?= isset($oneGroupePrive['groupeBanner']) ? base64_encode($oneGroupePrive['groupeBanner']) : '' ?>" alt="banner" class='h-20 w-40 rounded-lg'>
+      <?php endif; ?>
             <input type="file" class="file-input file-input-bordered file-input-md w-full max-w-xs ml-4" name="update-group-banner" />
             <p class="ml-4 font-bold text-neutral text-sm"><i class="fa-sharp fa-solid fa-circle-exclamation"></i> JPG UNIQUEMENT</p>
       </div>
