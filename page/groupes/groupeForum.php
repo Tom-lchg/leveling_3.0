@@ -15,7 +15,7 @@ if($_GET['privacy'] == "prive" && count($verifGroupePrivate) == 0){
 
    if($_GET['privacy'] == "publique"){
       $oneGroupePublic = $controler->groupe->groupeModel->getOneGroupPublic($_GET["groupe"]);
-   }else if($_GET['privacy'] == "prive"){
+   }else if($_GET['privacy'] == "prive") {
       $oneGroupePrive = $controler->groupe->groupeModel->getOneGroupPrive($_GET["groupe"]);
 
    }

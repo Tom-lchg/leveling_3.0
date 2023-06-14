@@ -47,7 +47,6 @@
                <p class="text-red-500"><?php if(isset($_GET['state'])){echo "Connexion échouée, vérifiez vos identifiants !";} ?></p>
             </div>
             <br>
-
             <div class="w-full flex justify-center">
                <div class="w-72">
                   <form action="../handler_formulaire/handler.php" class="max-w-2xl" method="POST">
