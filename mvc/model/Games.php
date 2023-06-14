@@ -37,4 +37,3 @@ class Games
    {
       return $this->model->findByIdCs($id, $target);
    }
-}
