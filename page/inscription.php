@@ -67,6 +67,7 @@ $controler = new Controler();
             <div class="w-full flex justify-center ">
                 <p class="text-red-500"><?php if(isset($_GET['mail'])){echo "Le mail est déjà utilisé, choissisez-en un autre !";} ?></p>
                 <p class="text-red-500"><?php if(isset($_GET['pseudo'])){echo "Le pseudo est déjà utilisé, choissisez-en un autre !";} ?></p>
+                <p class="text-red-500"><?php if(isset($_GET['password'])){echo "Le mot de passe doit contenir au minimum de 8 caractères, 1 caratère alphanumérique , 1 chiffre et 1 majuscule !";} ?></p>
             </div>
 
             <div class="w-full flex justify-center">

@@ -34,6 +34,8 @@ $controler = new Controler();
 
 // formulaire d'inscription
 if (isset($_POST['btn-inscription'])) {
+   $mdp = $_POST['mdp'];
+   if (strlen($mdp) >= $longueur_min && preg_match('/[A-Z]/', $mdp) && preg_match('/[0-9]/', $mdp) && preg_match('/[a-zA-Z0-9]/', $mdp)) {
    $checkMail = $controler->user->userModel->checkMailAlreadyUser($_POST['email']);
    $checkPseudo = $controler->user->userModel->checkPseudoAlreadyUser($_POST['pseudo']);
    if (count($checkMail) > 0 ) {
@@ -50,6 +52,10 @@ if (isset($_POST['btn-inscription'])) {
       header("Location: ../page/connexion.php");
       exit();
    }
+   }else {
+      header("Location: ../page/inscription.php?password=false");
+      exit();
+}
 }
 
 
