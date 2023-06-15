@@ -34,7 +34,8 @@ $controler = new Controler();
 
 // formulaire d'inscription
 if (isset($_POST['btn-inscription'])) {
-   $checkMail = $controler->user->userModel->checkMailAlreadyUser($_POST['email']);
+   if($_POST['email-confirm'] === $_POST['email']){
+      $checkMail = $controler->user->userModel->checkMailAlreadyUser($_POST['email']);
    $checkPseudo = $controler->user->userModel->checkPseudoAlreadyUser($_POST['pseudo']);
    if (count($checkMail) > 0 ) {
       header("Location: ../page/inscription.php?mail=false");
@@ -50,14 +51,19 @@ if (isset($_POST['btn-inscription'])) {
       header("Location: ../page/connexion.php");
       exit();
    }
+
+   }else {
+      header("Location: ../page/inscription.php?same=0");
+   }
+   
 }
 
 
 // formulaire de connexion
 if (isset($_POST['btn-connexion'])) {
-   $email = $_POST['email'];
+   $pseudo = $_POST['pseudo'];
    $mdp = $_POST['mdp'];
-   if ($controler->user->login($email, $mdp)) {
+   if ($controler->user->login($pseudo, $mdp)) {
       header("Location: ../?page=home");
       exit();
    } else {

@@ -67,6 +67,7 @@ $controler = new Controler();
             <div class="w-full flex justify-center ">
                 <p class="text-red-500"><?php if(isset($_GET['mail'])){echo "Le mail est déjà utilisé, choissisez-en un autre !";} ?></p>
                 <p class="text-red-500"><?php if(isset($_GET['pseudo'])){echo "Le pseudo est déjà utilisé, choissisez-en un autre !";} ?></p>
+                <p class="text-red-500"><?php if(isset($_GET['same'])){echo "Les champs emails ne sont pas identiques !";} ?></p>
             </div>
 
             <div class="w-full flex justify-center">
@@ -74,6 +75,14 @@ $controler = new Controler();
 
                 <div class="w-[25rem]">
                     <form action="../handler_formulaire/handler.php" method="post" class='' enctype="multipart/form-data">
+                        
+                        <div class='mt-4 flex gap-4 justify-center'>
+                            <input type="radio" id="masculin" name="sexe" value="masculin" required>
+                            <label for="masculin">Masculin</label><br>
+  
+                                <input type="radio" id="feminin" name="sexe" value="feminin" required>
+                                <label for="feminin">Féminin</label><br><br>
+                        </div>
                         <div class='mt-4 w-full flex gap-4 justify-center'>
                             <input maxlength="20" type="text" placeholder="Prénom" name='prenom' required class="input input-bordered w-full" />
                             <input maxlength="20" type="text" placeholder="Nom" name='nom' required class="input input-bordered w-full" />
@@ -82,6 +91,9 @@ $controler = new Controler();
                         <div class='mt-4 flex gap-4 justify-center'>
                             <input maxlength="40" type="email" placeholder="E-mail" name='email' required class="input input-bordered w-full" />
 
+                        </div>
+                        <div class='mt-4 flex gap-4 justify-center'>
+                            <input maxlength="40" type="email" placeholder="Confirmer votre e-mail" name='email-confirm' required class="input input-bordered w-full" />
                         </div>
                         <div class='mt-4 flex gap-4 justify-center'>
                             <input maxlength="15" type="text" placeholder="Pseudo" name='pseudo' required class="input input-bordered" />

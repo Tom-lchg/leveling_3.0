@@ -35,6 +35,17 @@
             <div class="ml-4">
                <p class='drop-shadow-sm font-bold text-accent text-3xl font-toxigenesis'><?= $oneGroupe['groupeName'] ?></p>
                <p class="text-sm font-semibold">Groupe Public - <?= $oneGroupe['groupePublicNbUsers'] ?> membres</p>
+               <?php $allUserforOneGroup=$controler->groupe->groupeModel->getForOneGroup($oneGroupe['idGroupe']);?>
+               
+               <?php foreach ($allUserforOneGroup as $oneUser) :?>
+               <?php $allUserforOneGroup=$controler->user->userModel->findById("iduser",$oneUser['iduser'], )?>
+               <?php $allMenforOneGroup = $controler->groupe->groupeModel->getNbSexeManbyGroup($oneGroupe['idGroupe'])?>
+               <?php $allWomenforOneGroup = $controler->groupe->groupeModel->getNbSexeWomanbyGroup($oneGroupe['idGroupe'])?>
+            
+               <p><?php echo $allMenforOneGroup['nbHommes'] . " hommes & " . $allWomenforOneGroup['nbFemme'] . " femmes"; ?></p>
+
+               <?php endforeach ; ?>
+
                <p><?= $oneGroupe['groupeDescription']?></p>
             </div>
          </div>

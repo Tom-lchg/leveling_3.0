@@ -51,7 +51,7 @@
                <div class="w-72">
                   <form action="../handler_formulaire/handler.php" class="max-w-2xl" method="POST">
                      <div>
-                        <input type="email" placeholder="E-mail" name='email' required class="input input-bordered w-full max-w-xs mb-4" />
+                        <input type="text" placeholder="pseudo" name='pseudo' required class="input input-bordered w-full max-w-xs mb-4" />
                         <input type="password" placeholder="Mot de passe" name='mdp' required class="input input-bordered w-full max-w-xs mb-4" />
                         <button class="btn btn-accent w-full" type='submit' name='btn-connexion'>Connexion</button>
                      </div>

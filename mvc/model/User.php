@@ -40,7 +40,7 @@ class User
    public function insertUser($tab, $tabimg)
    {
       $dateInscription = date('Y-m-d');
-      $sql = "CALL insertUserSimple(:plat,:canModify,:nom,:prenom,:age,:bio,:naissance,:level,:pseudo,:mail,:password,:role, :date,:img,:timg,:banner,:tbanner, 0)";
+      $sql = "CALL insertUserSimple(:plat,:canModify,:sexe,:nom,:prenom,:age,:bio,:naissance,:level,:pseudo,:mail,:password,:role, :date,:img,:timg,:banner,:tbanner, 0)";
 
       // Hasher le mot de passe
       $hashedPassword = password_hash($tab['mdp'], PASSWORD_DEFAULT);
@@ -48,6 +48,7 @@ class User
       $data = array(
          ":plat" => "PC",
          ":canModify" => 0,
+         ":sexe" => htmlspecialchars($tab['sexe']),
          ":nom" => htmlspecialchars($tab['nom']),
          ":prenom" => htmlspecialchars($tab['prenom']),
          ":age" => htmlspecialchars($tab['age']),
@@ -184,4 +185,16 @@ class User
 
       return $user;
    }
+
+   public function getUserPseudo($pseudo) {
+      // Assurez-vous d'avoir une connexion à la base de données ici
+      $sql = "SELECT * FROM tblusers WHERE userPseudo = ?";
+      $stmt = $this->pdo->prepare($sql);
+      $stmt->execute([$pseudo]);
+      $user = $stmt->fetch(PDO::FETCH_ASSOC);
+      $stmt->closeCursor();
+
+      return $user;
+   }
+
 }

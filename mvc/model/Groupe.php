@@ -490,6 +490,26 @@ class Groupe
    }
 
 
+   public function getForOneGroup($idgroupe){
+      $sql ="SELECT idgroupe, iduser FROM tblgroupsuser WHERE idgroupe = :idgroupe";
+      $stmt = $this->pdo->prepare($sql);
+      $stmt->execute([":idgroupe" => $idgroupe]);
+      return $stmt->fetchAll();
+   }
 
+   public function getNbSexeManbyGroup($idgroupe){
+      $sql ="SELECT COUNT(*) AS nbHommes FROM tblusers p JOIN tblgroups g ON p.idUser = g.idGroupe JOIN tblgroupsuser gu ON p.idUser = gu.iduser WHERE g.idGroupe = :idgroupe AND p.UserSexe = 'masculin';";
+      $stmt = $this->pdo->prepare($sql);
+      $stmt->execute([":idgroupe" => $idgroupe]);
+      return $stmt->fetchAll();
+   }
+
+   public function getNbSexeWomanbyGroup($idgroupe){
+      $sql ="SELECT COUNT(*) AS nbFemme FROM tblusers p JOIN tblgroups g ON p.idUser = g.idGroupe JOIN tblgroupsuser gu ON p.idUser = gu.iduser WHERE g.idGroupe = :idgroupe AND p.UserSexe = 'feminin';";
+      $stmt = $this->pdo->prepare($sql);
+      $stmt->execute([":idgroupe" => $idgroupe]);
+      return $stmt->fetchAll();
+   }
+   
 
 }
