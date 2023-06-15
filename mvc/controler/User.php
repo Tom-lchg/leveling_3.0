@@ -27,7 +27,7 @@ class User
 
    public function login($pseudo, $mdp) {
       // Vérification des informations d'identification de l'utilisateur
-      $user = $this->userModel->getUserByPseudo($pseudo);
+      $user = $this->userModel->getUserPseudo($pseudo);
       if ($user && password_verify($mdp, $user['userPassword'])) {
             $_SESSION['id'] = $user['idUser'];
             $_SESSION['pseudo'] = $user['userPseudo'];
