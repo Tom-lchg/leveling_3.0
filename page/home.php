@@ -33,7 +33,7 @@ $all_games = $controler->games->gameModel->getAll();
             <div class="swiper-wrapper">
                <!-- foreach de tous les jeux -->
                <?php foreach ($all_games as $game) : ?>
-                  <div class="swiper-slide"><img src="../assets/games/pp/<?= $game['gameImg'] ?>" alt="pp jeux" class='h-[15rem]'></div>
+                  <div class="swiper-slide"><a href="?page=games&game=<?= $game['idGame'] ?>"><img src="../assets/games/pp/<?= $game['gameImg'] ?>" alt="pp jeux" class='h-[15rem]'></a></div>
                <?php endforeach; ?>
                <!-- foreach de tous les jeux -->
             </div>
