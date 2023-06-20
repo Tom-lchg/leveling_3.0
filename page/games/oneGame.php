@@ -3,6 +3,7 @@
 $game = $controler->games->gameModel->findById($_GET['game'], 'idGame');
 $gamepc = $controler->games->gameModel->findByIdPc($_GET['game'], 'idGame');
 $gamecs = $controler->games->gameModel->findByIdCs($_GET['game'], 'idGame');
+$gamesperf = $controler->games->gameModel->getPerf();
 
 ?>
 
@@ -17,6 +18,60 @@ $gamecs = $controler->games->gameModel->findByIdCs($_GET['game'], 'idGame');
         <!-- Pseudo + Settings -->
         <div class='ml-[12em] top-60 absolute z-10 justify-between flex text-2xl h-auto text-white font-leger'>
             <p class='drop-shadow-2xl border-accent font-bold text-3xl font-toxigenesis'><?= $game['gameName'] ?></p>
+
+
+            <!-------------------- PERFORMANCE -------------------->
+
+            <div class="ml-4 bg-neutral w-auto flex px-4 rounded-md">
+
+            <?php if ($_SESSION['pseudo'] == "GARCIA_Clara") { ?>
+
+                <?php foreach ($gamesperf as $onegameperf) {
+
+                    if ($onegameperf['idGame'] == $_GET['game']) {
+
+                        ?> <p><?php echo $onegameperf['performance']; ?> : </p><?php
+
+                        switch ($onegameperf['nbetoile']) {
+                            case 1: ?>
+                                <div class="ml-2">
+                                    <i class="fa-solid fa-star text-amber-500"></i>
+                                </div>
+                            <?php break;
+                            case 2: ?>
+                                <div class="ml-2">
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                </div>
+                            <?php break;
+                            case 3: ?>
+                                <div class="ml-2">
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                </div>
+                            <?php break;
+                            case 4: ?>
+                                <div class="ml-2">
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                </div>
+                <?php break;
+                        }
+                    }
+                } ?>
+
+
+
+            <?php } ?>
+
+            </div>
+
+            <!-------------------- PERFORMANCE -------------------->
+
+
         </div>
         <!-- Pseudo + Settings -->
 
@@ -40,30 +95,33 @@ $gamecs = $controler->games->gameModel->findByIdCs($_GET['game'], 'idGame');
 
 
                             <!-- Switch pour la couleur associée à la note -->
-                            <?php switch ($gradeMoy){
-                                case ($gradeMoy < 5) : ?>
+                            <?php switch ($gradeMoy) {
+                                case ($gradeMoy < 5): ?>
                                     <div class="bg-red-600 rounded-full h-14 w-14 flex justify-center items-center text-white font-bold">
                                         <p><?= $gradeMoy ?></p>
                                     </div>
-                                <?php break; ?>
+                                    <?php break; ?>
 
-                                <?php case ($gradeMoy > 5 && $gradeMoy < 10) : ?>
+                                <?php
+                                case ($gradeMoy > 5 && $gradeMoy < 10): ?>
                                     <div class="bg-orange-500 rounded-full h-14 w-14 flex justify-center items-center text-white font-bold">
                                         <p><?= $gradeMoy ?></p>
                                     </div>
-                                <?php break; ?>
+                                    <?php break; ?>
 
-                                <?php case ($gradeMoy > 10 && $gradeMoy < 15) : ?>
+                                <?php
+                                case ($gradeMoy > 10 && $gradeMoy < 15): ?>
                                     <div class="bg-amber-400 rounded-full h-14 w-14 flex justify-center items-center text-white font-bold">
                                         <p><?= $gradeMoy ?></p>
                                     </div>
-                                <?php break; ?>
+                                    <?php break; ?>
 
-                                <?php case ($gradeMoy > 15 && $gradeMoy < 20) : ?>
+                                <?php
+                                case ($gradeMoy > 15 && $gradeMoy < 20): ?>
                                     <div class="bg-lime-500 rounded-full h-14 w-14 flex justify-center items-center text-white font-bold">
                                         <p><?= $gradeMoy ?></p>
                                     </div>
-                                <?php break; ?>
+                                    <?php break; ?>
 
                             <?php } ?>
 
@@ -79,29 +137,31 @@ $gamecs = $controler->games->gameModel->findByIdCs($_GET['game'], 'idGame');
                         <!-- Classification -->
 
                         <!-- Switch pour la couleur associée à la classification -->
-                        <?php 
+                        <?php
                         $gameClass = $game['gameClassification'];
-                        switch ($gameClass){
+                        switch ($gameClass) {
 
-                                case ($gameClass == 3 || $gameClass == 7) : ?>
-                                    <div class="bg-lime-500 rounded-full h-14 w-14 flex justify-center items-center text-white font-bold">
-                                        <p>+<?= $game['gameClassification'] ?></p>
-                                    </div>
+                            case ($gameClass == 3 || $gameClass == 7): ?>
+                                <div class="bg-lime-500 rounded-full h-14 w-14 flex justify-center items-center text-white font-bold">
+                                    <p>+<?= $game['gameClassification'] ?></p>
+                                </div>
                                 <?php break; ?>
 
-                                <?php case ($gameClass == 12 || $gameClass == 16) : ?>
-                                    <div class="bg-orange-500 rounded-full h-14 w-14 flex justify-center items-center text-white font-bold">
-                                        <p>+<?= $game['gameClassification'] ?></p>
-                                    </div>
+                            <?php
+                            case ($gameClass == 12 || $gameClass == 16): ?>
+                                <div class="bg-orange-500 rounded-full h-14 w-14 flex justify-center items-center text-white font-bold">
+                                    <p>+<?= $game['gameClassification'] ?></p>
+                                </div>
                                 <?php break; ?>
 
-                                <?php case ($gameClass == 18) : ?>
-                                    <div class="bg-red-600 rounded-full h-14 w-14 flex justify-center items-center text-white font-bold">
-                                        <p>+<?= $game['gameClassification'] ?></p>
-                                    </div>
+                            <?php
+                            case ($gameClass == 18): ?>
+                                <div class="bg-red-600 rounded-full h-14 w-14 flex justify-center items-center text-white font-bold">
+                                    <p>+<?= $game['gameClassification'] ?></p>
+                                </div>
                                 <?php break; ?>
 
-                            <?php } ?>
+                        <?php } ?>
 
                         <!-- Switch pour la couleur associée à la classification -->
 
@@ -120,6 +180,7 @@ $gamecs = $controler->games->gameModel->findByIdCs($_GET['game'], 'idGame');
 <div class='grid grid-rows-2 grid-cols-4 gap-6 mt-4 pb-4 h-auto max-w-7xl mx-auto'>
 
     <div class="col-start-1 col-end-4 container-home p-6 h-full">
+
 
         <div class="font-bold w-full flex justify-center items-center h-9 bg-neutral text-primary rounded-md">
             <p>À PROPOS</p>
@@ -211,7 +272,7 @@ $gamecs = $controler->games->gameModel->findByIdCs($_GET['game'], 'idGame');
             <p>NOTES ET AVIS DES UTILISATEURS</p>
         </div>
 
-         <label class='btn w-full bg-accent text-white border-accent hover:bg-[#1991FF] hover:text-white hover:border-[#1991FF] my-2' for="modal-create-post-game">AJOUTER UN AVIS</label>
+        <label class='btn w-full bg-accent text-white border-accent hover:bg-[#1991FF] hover:text-white hover:border-[#1991FF] my-2' for="modal-create-post-game">AJOUTER UN AVIS</label>
 
         <!-- foreach pour afficher tous les posts -->
         <?php foreach ($allGamePost as $GamePost) : ?>
@@ -227,35 +288,38 @@ $gamecs = $controler->games->gameModel->findByIdCs($_GET['game'], 'idGame');
 
                     <div class="flex justify-center">
 
-                    <!-- Switch pour la couleur associée à la note -->
-                    <?php switch ($GamePost['postGrade']){
-                                case ($GamePost['postGrade'] < 5) : ?>
-                                    <div class="bg-red-600 rounded-full h-14 w-14 flex justify-center items-center text-white font-bold">
-                                        <p><?= $GamePost['postGrade'] ?></p>
-                                    </div>
+                        <!-- Switch pour la couleur associée à la note -->
+                        <?php switch ($GamePost['postGrade']) {
+                            case ($GamePost['postGrade'] < 5): ?>
+                                <div class="bg-red-600 rounded-full h-14 w-14 flex justify-center items-center text-white font-bold">
+                                    <p><?= $GamePost['postGrade'] ?></p>
+                                </div>
                                 <?php break; ?>
 
-                                <?php case ($GamePost['postGrade'] > 5 && $GamePost['postGrade'] < 10) : ?>
-                                    <div class="bg-orange-500 rounded-full h-14 w-14 flex justify-center items-center text-white font-bold">
-                                        <p><?= $GamePost['postGrade'] ?></p>
-                                    </div>
+                            <?php
+                            case ($GamePost['postGrade'] > 5 && $GamePost['postGrade'] < 10): ?>
+                                <div class="bg-orange-500 rounded-full h-14 w-14 flex justify-center items-center text-white font-bold">
+                                    <p><?= $GamePost['postGrade'] ?></p>
+                                </div>
                                 <?php break; ?>
 
-                                <?php case ($GamePost['postGrade'] >= 10 && $GamePost['postGrade'] <= 15) : ?>
-                                    <div class="bg-amber-400 rounded-full h-14 w-14 flex justify-center items-center text-white font-bold">
-                                        <p><?= $GamePost['postGrade'] ?></p>
-                                    </div>
+                            <?php
+                            case ($GamePost['postGrade'] >= 10 && $GamePost['postGrade'] <= 15): ?>
+                                <div class="bg-amber-400 rounded-full h-14 w-14 flex justify-center items-center text-white font-bold">
+                                    <p><?= $GamePost['postGrade'] ?></p>
+                                </div>
                                 <?php break; ?>
 
-                                <?php case ($GamePost['postGrade'] > 15 && $GamePost['postGrade'] <= 20) : ?>
-                                    <div class="bg-lime-500 rounded-full h-14 w-14 flex justify-center items-center text-white font-bold">
-                                        <p><?= $GamePost['postGrade'] ?></p>
-                                    </div>
+                            <?php
+                            case ($GamePost['postGrade'] > 15 && $GamePost['postGrade'] <= 20): ?>
+                                <div class="bg-lime-500 rounded-full h-14 w-14 flex justify-center items-center text-white font-bold">
+                                    <p><?= $GamePost['postGrade'] ?></p>
+                                </div>
                                 <?php break; ?>
 
-                            <?php } ?>
+                        <?php } ?>
 
-                            <!-- Switch pour la couleur associée à la note -->
+                        <!-- Switch pour la couleur associée à la note -->
                     </div>
                 </div>
                 <!-- Image + note de l'utilisateur -->
@@ -274,12 +338,12 @@ $gamecs = $controler->games->gameModel->findByIdCs($_GET['game'], 'idGame');
                     <p class="text-justify"><?= $GamePost['postContent'] ?></p>
 
                     <?php if ($GamePost['fkidUser'] === $_SESSION['id']) : ?>
-                                    <div class="w-full rounded-md p-3 flex justify-end gap-4">
-                                          <form action="../handler_formulaire/handler.php" method="post">
-                                             <input type="text" hidden name="idpost" value="<?= $GamePost['idGamePost'] ?>">
-                                             <button type='submit' name="deleteGamePost" class="btn btn-error text-white"><i class="fa-solid fa-trash"></i></button>
-                                          </form>
-                                    </div>
+                        <div class="w-full rounded-md p-3 flex justify-end gap-4">
+                            <form action="../handler_formulaire/handler.php" method="post">
+                                <input type="text" hidden name="idpost" value="<?= $GamePost['idGamePost'] ?>">
+                                <button type='submit' name="deleteGamePost" class="btn btn-error text-white"><i class="fa-solid fa-trash"></i></button>
+                            </form>
+                        </div>
                     <?php endif; ?>
                 </div>
 
